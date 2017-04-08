@@ -1,0 +1,588 @@
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+}
+
+body {
+  min-width: 320px;
+  font-family: Open Sans;
+  line-height: 1.5;
+  text-align: center;
+  color: #333;
+  background-color: #000;
+}
+
+h1 {
+    font-size: 40px;
+}
+
+h2 {
+    font-size: 32px;
+}
+
+h3 {
+    font-size: 28px;
+}
+
+h4 {
+    font-size: 24px;
+}
+
+h5 {
+    font-size: 20px;
+}
+
+h6 {
+    font-size: 16px;
+}
+
+p {
+  font-size: 14px;
+}
+
+button {
+  font-size: 16px;
+  font-weight: bold;
+  padding: 15px 30px;
+  line-height: 20px;
+  border-radius: 4px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+input {
+  font-family: Open Sans;
+  font-weight: normal;
+  font-size: 20px;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  padding: 20px;
+}
+
+textarea {
+  font-family: Open Sans;
+  font-weight: normal;
+  font-size: 20px;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  padding: 20px;
+}
+
+/* -- HEADER -- */
+
+header {
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.70);
+  position: fixed;
+}
+
+.headerContent {
+  height: 70px;
+  width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0px 30px;
+}
+
+.logo img {
+  float: left;
+  height: 70px;
+  padding: 20px 0px;
+}
+
+.hamburger img {
+  display: none;
+  float: right;
+  height: 70px;
+  padding: 25px 0px;
+}
+
+nav a {
+  float: right;
+  display: inline-block;
+  height: 70px;
+  line-height: 70px;
+  color: #fff;
+  margin-left: 20px;
+  text-transform: uppercase;
+  font-weight: 300;
+  letter-spacing: 2px;
+}
+
+nav a:hover {
+  color: #BEDB39;
+  border-bottom: 5px solid;
+}
+
+/* -- MAIN -- */
+
+main {
+  width: 100%;
+}
+
+.inlineBlock {
+  display: inline-block;
+}
+
+.contentblockTitle {
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.contentblockTitle h1 {
+  padding-top: 100px;
+  text-transform: uppercase;
+  font-weight: 800;
+}
+
+.contentblockTitle h5 {
+  padding-bottom: 50px;
+  font-weight: 300;
+  font-style: italic;
+}
+
+/* -- hero -- */
+
+#mainHero {
+  background-image: url("./img/HeroImage.jpg");
+  height: 100%;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.heroContent {
+  width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 200px 30px 100px 30px;
+  color: #fff;
+}
+
+.vpOne {
+  font-size: 40px;
+  font-weight: 300;
+  font-style: italic;
+}
+
+.vpTwo {
+  font-size: 72px;
+  font-weight: 800;
+  margin-bottom: 50px;
+}
+
+.heroContent button {
+  border: 2px solid #FFE11A;
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.30);
+}
+
+.heroContent button:hover {
+  color: #333;
+  background-color: #FFE11A;
+}
+
+/* -- services -- */
+
+#mainServices {
+  background-color: #fff;
+}
+
+.servicesContent {
+  display: flex;
+  width: 1200px;
+  float: left;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0px 15px 70px 15px;
+}
+
+.serviceBlock {
+  width: 100%;
+  float: left;
+  margin-left: 15px;
+  margin-right: 15px;
+  margin-bottom: 30px;
+}
+
+.serviceBlock h5 {
+  padding-top: 20px;
+}
+
+.serviceBlock p {
+  padding-top: 10px;
+}
+
+.serviceIcon {
+  height: 100px;
+  width: 100px;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 50px;
+  background-color: #FD7400;
+}
+
+.Ecommerce {padding: 25px 21px;}
+.Responsive {padding: 26px 22px;}
+.Security {padding: 20px 24px;}
+
+/* -- portfolio -- */
+
+#mainPortfolio {
+  background-color: #eee;
+}
+
+.portfolioContent {
+  display: inline-block;
+  width: 1200px;
+  height: inherit;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0px 15px 70px 15px;
+}
+
+.portfolioBlock {
+  width: 360px;
+  min-width: 240px;
+  border-radius: 4px;
+  background-color: #fff;
+  float: left;
+  margin-bottom: 30px;
+  margin-left: 15px;
+  margin-right: 15px;
+  overflow: hidden;
+}
+
+.portfolioBlock h5 {
+  padding-top: 15px;
+}
+.portfolioBlock h6 {
+  font-weight: 300;
+  font-style: italic;
+  padding-bottom: 15px;
+}
+
+.imageContainer {
+  background-size: 100%;
+  padding-top: 56.25%;
+  overflow: hidden;
+}
+
+.imageOne {background-image: url("./img/portfolio/roundicons-free.png");}
+.imageTwo {background-image: url("./img/portfolio/startup-framework-preview.png");}
+.imageThree {background-image: url("./img/portfolio/treehouse-preview.png");}
+.imageFour {background-image: url("./img/portfolio/golden-preview.png");}
+.imageFive {background-image: url("./img/portfolio/escape-preview.png");}
+.imageSix {background-image: url("./img/portfolio/dreams-preview.png");}
+
+#mainAbout {
+  background-image: url("./img/HeroImage.jpg");
+  height: 100%;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: #fff;
+}
+
+.aboutContainer {
+  height: 800px;
+  width: 100%;
+}
+
+.partnersContainer {
+  height: 200px;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.3);
+
+}
+
+#mainTeam {
+  background-color: #fff;
+}
+
+.teamContent {
+  display: flex;
+  width: 1200px;
+  float: left;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0px 15px 40px 15px;
+}
+
+.teamBlock {
+  width: 100%;
+  float: left;
+  margin-left: 15px;
+  margin-right: 15px;
+  margin-bottom: 30px;
+}
+
+.teamPhoto {
+  height: 200px;
+  width: 200px;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 100px;
+  background-size: cover;
+}
+
+.perosnOne {background-image: url("./img/team/personOne.png");}
+.personTwo {background-image: url("./img/team/personTwo.png");}
+.personThree {background-image: url("./img/team/personThree.png");}
+
+.teamBlock h5 {
+  padding-top: 20px;
+}
+
+.teamBlock h6 {
+  font-weight: 300;
+  padding-bottom: 10px;
+}
+
+.teamsocialBlock {
+  width: 180px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.teamsocialBlock a {
+  float: left;
+  display: inline-block;
+  margin-left: 10px;
+  margin-right: 10px;
+  padding: 0px;
+  padding-top: 20px;
+  line-height: 40px;
+}
+
+.teamsocialBlock img {
+  width: 40px;
+}
+
+#mainContact {
+  background-color: #004358;
+  color: #fff;
+}
+
+.contactContent {
+  width: 1200px;
+  height: inherit;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0px 15px 70px 15px;
+}
+
+.infoBlock {
+  width: calc(50% - 30px);
+  float: left;
+  margin-left: 15px;
+  margin-right: 15px;
+}
+
+.messageBlock {
+  width: calc(50% - 30px);
+  float: right;
+  margin-left: 15px;
+  margin-right: 15px;
+}
+
+.infoField{
+  height: 60px;
+  width: 100%;
+  margin-bottom: 30px;
+  border-radius: 4px;
+  background-color: #fff;
+}
+
+.messageField{
+  height: 240px;
+  width: 100%;
+  margin-bottom: 30px;
+  border-radius: 4px;
+  background-color: #fff;
+}
+
+.contactContent button {
+  margin-top: 20px;
+  border: 2px solid #FFE11A;
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.30);
+}
+
+.contactContent button:hover {
+  color: #333;
+  background-color: #FFE11A;
+}
+
+
+/* -- FOOTER -- */
+
+footer {
+  width: 100%;
+  background-color: #1F8A70;
+}
+
+.footerContent {
+  height: 100px;
+  line-height: 100px;
+  width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0px 30px;
+}
+
+.footerContent h6 {
+  width: calc(50% - 90px);
+  text-align: left;
+  float: left;
+  color: #fff;
+  font-weight: normal;
+}
+
+.footersocialBlock {
+  display: flex;
+  float: left;
+  width: 180px;
+}
+
+.footersocialBlock a {
+  margin-left: 10px;
+  margin-right: 10px;
+  padding: 0px;
+  padding-top: 30px;
+  line-height: 40px;
+}
+
+.footersocialBlock img {
+  width: 40px;
+}
+
+.eula {
+  width: calc(50% - 90px);
+  float: right;
+}
+
+.eula a {
+  padding-left: 20px;
+  color: #FFE11A;
+}
+
+@media screen and (max-width:1200px) {
+
+  .headerContent {
+    width: 100%;
+  }
+
+  .heroContent {
+    width: 100%;
+  }
+
+  .servicesContent {
+    width: 100%;
+  }
+
+  .portfolioContent {
+    width: 100%;
+  }
+
+  .portfolioBlock {
+    width: calc(50% - 30px);
+  }
+
+  .teamContent {
+    width: 100%;
+  }
+
+  .contactContent {
+    width: 100%;
+  }
+
+  .footerContent {
+    width: 100%;
+  }
+
+}
+
+@media screen and (max-width:900px) {
+
+  .hamburger img {
+    display: block;
+  }
+
+  nav {
+    display: none;
+  }
+
+  .heroContent {
+    padding-top: 150px;
+  }
+
+  .vpOne {
+    font-size: 32px;
+  }
+
+  .vpTwo {
+    font-size: 48px;
+  }
+
+  .servicesContent {
+    display: block;
+  }
+
+  .serviceBlock {
+    width: calc(100% - 30px)
+  }
+
+  .portfolioContent {
+    display: block;
+  }
+
+  .portfolioBlock {
+    width: calc(50% - 30px);
+  }
+
+  .teamContent {
+    display: block;
+  }
+
+  .teamBlock {
+    width: calc(100% - 30px)
+  }
+
+  .infoBlock {
+    width: calc(100% - 30px);
+  }
+
+  .messageBlock {
+    width: calc(100% - 30px);
+  }
+
+}
+
+@media screen and (max-width:600px) {
+
+  button {
+    width: calc(100% - 30px)
+  }
+
+  .heroContent {
+    padding-top: 100px;
+    padding-bottom: 50px;
+  }
+
+  .vpOne {
+    font-size: 28px;
+  }
+
+  .portfolioBlock {
+    width: calc(100% - 30px);
+  }
+
+}
