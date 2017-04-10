@@ -296,15 +296,66 @@ main {
 }
 
 .aboutContainer {
-  height: 800px;
   width: 100%;
+}
+
+.aboutContent {
+  width: 1200px;
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #fff;
+}
+
+.ptB1 {
+
+  float: left;
+  clear: right;
+  text-align: right;
+}
+
+.ptB2 {
+
+  float: right;
+  clear: left;
+  text-align: left;
+}
+
+.pictureBlock{
+  width: 200px;
+  height: 200px;
+  margin-bottom: 50px;
+  border-radius: 100px;
+  background-size: cover;
+  border: 10px solid #fff;
+}
+
+.a1 {background-image: url("./img/about/about1.jpg");}
+.a2 {background-image: url("./img/about/about2.jpg");}
+.a3 {background-image: url("./img/about/about3.jpg");}
+.a4 {background-image: url("./img/about/about4.jpg");}
+
+.textBlock {
+  width: calc(50% - 160px);
+  min-height: 200px;
+  margin-left: 30px;
+  margin-right: 30px;
+  margin-bottom: 50px;
+  padding: 30px;
+  border-radius: 4px;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.textBlock h5 {
+  color: #FD7400;
+  margin-bottom: 10px;
 }
 
 .partnersContainer {
   height: 200px;
+  margin-top: 20px;
   width: 100%;
   background-color: rgba(255, 255, 255, 0.3);
-
 }
 
 #mainTeam {
@@ -511,6 +562,10 @@ footer {
     width: calc(50% - 30px);
   }
 
+  .aboutContent {
+    width: 100%
+  }
+
   .teamContent {
     width: 100%;
   }
@@ -561,6 +616,16 @@ footer {
 
   .portfolioBlock {
     width: calc(50% - 30px);
+  }
+
+  .pictureBlock{
+    margin-left: calc(50% - 100px);
+    margin-right: calc(50% - 100px);
+  }
+
+  .textBlock {
+    width: calc(100% - 60px);
+    text-align: center;
   }
 
   .teamContent {
