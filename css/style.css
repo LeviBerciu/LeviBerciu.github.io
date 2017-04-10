@@ -161,18 +161,22 @@ main {
   width: 1200px;
   margin-left: auto;
   margin-right: auto;
-  padding: 200px 30px 100px 30px;
+  padding: 200px 15px 100px 15px;
   color: #fff;
 }
 
 .vpOne {
   font-size: 40px;
   font-weight: 300;
+  margin-left: 15px;
+  margin-right: 15px;
   font-style: italic;
 }
 
 .vpTwo {
   font-size: 72px;
+  margin-left: 15px;
+  margin-right: 15px;
   font-weight: 800;
   margin-bottom: 50px;
 }
@@ -426,55 +430,66 @@ main {
 
 footer {
   width: 100%;
+  height: auto;
   background-color: #1F8A70;
 }
 
 .footerContent {
-  height: 100px;
-  line-height: 100px;
   width: 1200px;
+  height: 100px;
   margin-left: auto;
   margin-right: auto;
   padding: 0px 30px;
 }
 
-.footerContent h6 {
+.copyrightBlock {
   width: calc(50% - 90px);
+  line-height: 100px;
   text-align: left;
   float: left;
+}
+
+.footerContent h6 {
   color: #fff;
   font-weight: normal;
 }
 
-.footersocialBlock {
-  display: flex;
+.socialBlock {
   float: left;
+  height: 100px;
   width: 180px;
+  line-height: 100px;
 }
 
-.footersocialBlock a {
+.socialBlock a {
+  float: left;
   margin-left: 10px;
   margin-right: 10px;
   padding: 0px;
   padding-top: 30px;
-  line-height: 40px;
+  line-height: 100%;
 }
 
-.footersocialBlock img {
+.socialBlock img {
   width: 40px;
 }
 
-.eula {
+.eulaBlock {
+  float: left;
   width: calc(50% - 90px);
-  float: right;
+  line-height: 100px;
 }
 
-.eula a {
-  padding-left: 20px;
+.eulaBlock a {
+  float: right;
   color: #FFE11A;
 }
 
-@media screen and (max-width:1200px) {
+.eulaBlock a:first-child {
+  margin-left: 20px;
+}
+
+@media screen and (max-width: 1200px) {
 
   .headerContent {
     width: 100%;
@@ -510,7 +525,7 @@ footer {
 
 }
 
-@media screen and (max-width:900px) {
+@media screen and (max-width: 900px) {
 
   .hamburger img {
     display: block;
@@ -562,6 +577,33 @@ footer {
 
   .messageBlock {
     width: calc(100% - 30px);
+  }
+
+  .footerContent {
+    height: 200px;
+  }
+
+  .copyrightBlock {
+    padding-top: 20px;
+    width: 100%;
+    line-height: 30px;
+    text-align: center;
+  }
+
+  .socialBlock {
+    margin-left: calc(50% - 90px);
+  }
+
+  .eulaBlock {
+    padding-bottom: 20px;
+    width: 100%;
+    line-height: 30px;
+  }
+
+  .eulaBlock a {
+    float: none;
+    margin-left: 10px;
+    margin-right: 10px;
   }
 
 }
