@@ -351,13 +351,6 @@ main {
   margin-bottom: 10px;
 }
 
-.partnersContainer {
-  height: 200px;
-  margin-top: 20px;
-  width: 100%;
-  background-color: rgba(255, 255, 255, 0.3);
-}
-
 #mainTeam {
   background-color: #fff;
 }
