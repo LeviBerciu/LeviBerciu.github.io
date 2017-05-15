@@ -141,7 +141,7 @@ main {
 
 .skillRow {
   height: 15px;
-  margin-top: 10px;
+  margin-top: 15px;
 }
 
 .skillRow h4 {
@@ -232,17 +232,23 @@ main {
 }
 
 .oviewRow {
-  height: 15px;
-  margin-top: 10px;
+  margin-top: 15px;
+}
+
+.oviewRow h4 {
+  font-weight: normal;
+  line-height: 25px;
+  text-align: left;
+  margin-bottom: 10px;
 }
 
 .oviewRow p {
   font-weight: normal;
-  text-align: justify;
   width: 100%;
-  float: left;
   line-height: 25px;
+  margin-bottom: 25px;
 }
+
 
 
 @media (max-width: 1000px) {
