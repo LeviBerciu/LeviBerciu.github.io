@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Generator: Adobe Illustrator 21.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!-- Generator: Adobe Illustrator 21.0.2, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 viewBox="0 0 78 78" style="enable-background:new 0 0 78 78;" xml:space="preserve">
 <style type="text/css">
-	.st0{fill:none;stroke:#58595B;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
+	.st0{fill:none;stroke:#444;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
 </style>
 <polyline class="st0" points="56.9,27.2 56.9,53.4 21.1,53.4 21.1,27.2 "/>
-<path class="st0" d="M33.1,27.2L33.1,27.2c0-1.4-1.1-2.7-2.7-2.7h-6.7c-1.4,0-2.7,1.1-2.7,2.7l0,0"/>
+<path class="st0" d="M33.2,27.2L33.2,27.2c0-1.4-1.1-2.7-2.7-2.7h-6.7c-1.4,0-2.7,1.1-2.7,2.7l0,0"/>
 <line class="st0" x1="21.1" y1="32.5" x2="56.9" y2="32.5"/>
-<line class="st0" x1="33.1" y1="27.2" x2="56.9" y2="27.2"/>
+<line class="st0" x1="33.2" y1="27.2" x2="56.9" y2="27.2"/>
 </svg>
