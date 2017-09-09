@@ -23,6 +23,13 @@ p {
   text-align: justify;
 }
 
+ul {
+  text-align: left;
+  margin-left: 30px;
+  margin-top: -15px;
+  line-height: 25px;
+}
+
 body {
   background-color: #FFB733;
 }
@@ -41,6 +48,7 @@ main {
 .English {width: 70%;}
 .Hungarian {width: 90%}
 .Romanian {width: 80%}
+.Spanish {width: 30%}
 
 .Photoshop {width: 90%;}
 .Illustrator {width: 80%}
