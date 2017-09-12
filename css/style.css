@@ -52,6 +52,7 @@ main {
 
 .Photoshop {width: 90%;}
 .Illustrator {width: 80%}
+.InDesign {width: 50%}
 .AutoCAD {width: 40%}
 
 .Axure {width: 90%;}
@@ -60,11 +61,12 @@ main {
 
 .HTML {width: 60%;}
 .CSS {width: 70%}
-.JavaScript {width: 30%}
+.JavaScript {width: 10%}
 
 .StudioMax {width: 60%;}
 .SolidWorks {width: 80%}
 .SketchUp {width: 40%}
+.ZBrush {width: 20%}
 
 .Premiere {width: 80%;}
 .AfterEffects {width: 50%}
