@@ -31,7 +31,7 @@ ul {
 }
 
 body {
-  background-color: #FFB733;
+  background-color: #FAC023;
 }
 
 main {
@@ -163,7 +163,7 @@ main {
 
 .skillBar {
   height: 5px;
-  background-color: rgba(255, 183, 51, 0.25);
+  background-color: rgba(250, 192, 35, 0.25);
   width: 50%;
   float: right;
   margin-top: 5px;
@@ -171,7 +171,7 @@ main {
 
 .progress {
   height: inherit;
-  background-color: #FFB733;
+  background-color: #FAC023;
 }
 
 .signiture {
@@ -193,18 +193,18 @@ main {
   line-height: 45px;
   width: 50%;
   background-color: transparent;
-  border-bottom: 5px solid rgba(255, 183, 51, 0.25);
+  border-bottom: 5px solid rgba(250, 192, 35, 0.25);
   text-align: center;
   font-weight: bold;
   display: inline-block;
 }
 
 .tablinks:hover {
-  border-color: rgba(255, 183, 51, 0.50);
+  border-color: rgba(250, 192, 35, 0.50);
 }
 
 .tablinks.active {
-  border-color: rgba(255, 183, 51, 1);
+  border-color: rgba(250, 192, 35, 1);
 }
 
 .overviewBT {
