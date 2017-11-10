@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 
+<!-- https://jeromeetienne.github.io/AR.js/three.js/examples/marker-training/examples/generator.html -->
+
 <html>
 
 <head>
@@ -12,8 +14,7 @@
 	<a-scene embedded artoolkit='sourceType: webcam;'>
     <a-box position='0 0.5 0' material='opacity: 0.85;'></a-box>
 		<!-- <a-marker-camera preset='hiro'></a-marker-camera> -->
-    <!-- <a-marker-camera type='pattern' url='your-url-here'></a-marker-camera> -->
-    <a-marker-camera type='pattern' src='pattern.patt'></a-marker-camera>
+    <a-marker-camera type='pattern' patternUrl='pattern-marker.patt'></a-marker-camera>
 	</a-scene>
 </body>
 
