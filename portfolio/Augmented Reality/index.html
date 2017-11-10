@@ -7,23 +7,22 @@
 <head>
   <script src="https://aframe.io/releases/0.7.0/aframe.min.js"> </script>
   <script src="https://rawgit.com/jeromeetienne/ar.js/master/aframe/build/aframe-ar.js"></script>
+  <script>THREEx.ArToolkitContext.baseURL = 'https://rawgit.com/jeromeetienne/ar.js/master/three.js/'</script>
 
 </head>
 
 <body style='margin : 0px; overflow: hidden;'>
 
-
-
 	<a-scene embedded artoolkit='sourceType: webcam;'>
 
     <a-assets>
-<a-asset-item id="wolf" src="wolf.obj"></a-asset-item>
-  </a-assets>
+      <item id="wolf" src="model/wolf.obj"/>
+    </a-assets>
 
-<a-entity obj-model="obj: #wolf"></a-entity>
+    <a-obj-model src="#wolf" position="0 0.5 0" scale="0.01 0.01 0.01"></a-obj-model>
     <!-- <a-box position='0 0.5 0' material='opacity: 0.85;'></a-box> -->
-		<!-- <a-marker-camera preset='hiro'></a-marker-camera> -->
-    <a-marker-camera type='pattern' patternUrl='wolf.patt'></a-marker-camera>
+
+    <a-marker-camera preset='hiro'></a-marker-camera>
 
 	</a-scene>
 </body>
