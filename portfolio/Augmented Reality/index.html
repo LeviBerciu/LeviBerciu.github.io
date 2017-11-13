@@ -6,7 +6,8 @@
 
 <head>
   <script src="https://aframe.io/releases/0.7.0/aframe.min.js"> </script>
-  <script src="https://rawgit.com/jeromeetienne/ar.js/master/aframe/build/aframe-ar.js"></script>
+  <!-- <script src="https://rawgit.com/jeromeetienne/ar.js/master/aframe/build/aframe-ar.js"></script> -->
+  <script src="aframe-ar.js"></script>
 
 </head>
 
@@ -15,13 +16,13 @@
 	<a-scene embedded artoolkit="sourceType: webcam" vr-mode-ui="enabled: false" arjs="trackingMethod: best; debugUIEnabled: false;">
 
     <a-assets>
-      <item id="wolf" src="assets/wolf.obj"/>
+      <item id="wolf" src="wolf.obj"/>
     </a-assets>
 
     <a-obj-model src="#wolf" position="0 0 0.2" scale="0.005 0.005 0.005"></a-obj-model>
 
     <!-- <a-marker-camera preset='hiro'></a-marker-camera> -->
-    <a-marker-camera type='pattern' patternUrl='assets/data/wolf.patt'></a-marker-camera>
+    <a-marker-camera preset='custom' url='wolf.patt'></a-marker-camera>
 
 	</a-scene>
 </body>
