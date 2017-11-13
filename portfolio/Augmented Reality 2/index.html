@@ -16,11 +16,14 @@
     	<a-scene embedded artoolkit="sourceType: webcam" vr-mode-ui="enabled: false" arjs="trackingMethod: best; debugUIEnabled: false;">
 
         <a-assets>
-          <item id="house" src="house.obj"/>
+           <a-asset-item id="house-obj" src="house.obj"></a-asset-item>
+           <a-asset-item id="house-mtl" src="house.mtl"></a-asset-item>
         </a-assets>
 
         <!-- <a-box height="1" width="1" depth="1" position="0 0.5 0"></a-box> -->
-        <a-obj-model src="#house" position="0 0 0" scale="1 1 1"></a-obj-model>
+        <!-- <a-obj-model src="#house-obj" position="0 0 0" scale="1 1 1"></a-obj-model> -->
+
+        <a-entity obj-model="obj: #house-obj; mtl: #house-mtl"></a-entity>
 
         <a-marker-camera preset="hiro"></a-marker-camera>
 
