@@ -8185,19 +8185,19 @@ AFRAME.registerComponent('arjs-anchor', {
 			arProfile.changeMatrixMode(_this.data.changeMatrixMode)
 
 			// honor this.data.preset
-			// if( _this.data.preset === 'hiro' ){
-			// 	arProfile.defaultMarkerParameters.type = 'pattern'
-			// 	arProfile.defaultMarkerParameters.patternUrl = THREEx.ArToolkitContext.baseURL+'examples/marker-training/examples/pattern-files/pattern-hiro.patt'
-			// 	arProfile.defaultMarkerParameters.markersAreaEnabled = false
-			// }else if( _this.data.preset === 'kanji' ){
-			// 	arProfile.defaultMarkerParameters.type = 'pattern'
-			// 	arProfile.defaultMarkerParameters.patternUrl = THREEx.ArToolkitContext.baseURL+'examples/marker-training/examples/pattern-files/pattern-kanji.patt'
-			// 	arProfile.defaultMarkerParameters.markersAreaEnabled = false
-			// }else if( _this.data.preset === 'area' ){
-			// 	arProfile.defaultMarkerParameters.type = 'barcode'
-			// 	arProfile.defaultMarkerParameters.barcodeValue = 1001
-			// 	arProfile.defaultMarkerParameters.markersAreaEnabled = true
-			}if( _this.data.preset === 'custom' ){
+			if( _this.data.preset === 'hiro' ){
+				arProfile.defaultMarkerParameters.type = 'pattern'
+				arProfile.defaultMarkerParameters.patternUrl = THREEx.ArToolkitContext.baseURL+'examples/marker-training/examples/pattern-files/pattern-hiro.patt'
+				arProfile.defaultMarkerParameters.markersAreaEnabled = false
+			}else if( _this.data.preset === 'kanji' ){
+				arProfile.defaultMarkerParameters.type = 'pattern'
+				arProfile.defaultMarkerParameters.patternUrl = THREEx.ArToolkitContext.baseURL+'examples/marker-training/examples/pattern-files/pattern-kanji.patt'
+				arProfile.defaultMarkerParameters.markersAreaEnabled = false
+			}else if( _this.data.preset === 'area' ){
+				arProfile.defaultMarkerParameters.type = 'barcode'
+				arProfile.defaultMarkerParameters.barcodeValue = 1001
+				arProfile.defaultMarkerParameters.markersAreaEnabled = true
+			}else if( _this.data.preset === 'custom' ){
 +				arProfile.defaultMarkerParameters.type = 'pattern'
 +				arProfile.defaultMarkerParameters.patternUrl = _this.data.patternUrl;
 +				arProfile.defaultMarkerParameters.markersAreaEnabled = false
