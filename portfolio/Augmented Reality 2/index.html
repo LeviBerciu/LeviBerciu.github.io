@@ -15,14 +15,14 @@
 
     	<a-scene embedded artoolkit="sourceType: webcam" vr-mode-ui="enabled: false" arjs="trackingMethod: best; debugUIEnabled: false;">
 
-        <a-entity light="type: ambient; color: #fff; intensity: 2"></a-entity>
+        <a-entity light="type: ambient; color: #fff; intensity: 1.5"></a-entity>
 
         <a-assets>
            <a-asset-item id="test-obj" src="test.obj"></a-asset-item>
            <a-asset-item id="test-mtl" src="test.mtl"></a-asset-item>
         </a-assets>
 
-          <a-obj-model src="#test-obj" mtl="#test-mtl" position="0 0 0" scale="2 2 2"></a-obj-model>
+          <a-obj-model src="#test-obj" mtl="#test-mtl" position="0 0 0" scale="1.5 1.5 1.5"></a-obj-model>
 
         <a-marker-camera preset="hiro"></a-marker-camera>
 
