@@ -1,6 +1,6 @@
 # This file uses centimeters as units for non-parametric coordinates.
 
-mtllib Chalet.mtl
+mtllib house.mtl
 g default
 v -5.897636 0.000000 4.277130
 v 0.441698 0.000000 4.277130
