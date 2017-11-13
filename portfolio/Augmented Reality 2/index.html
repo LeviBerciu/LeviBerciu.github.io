@@ -18,11 +18,14 @@
         <a-assets>
            <a-asset-item id="house-obj" src="house.obj"></a-asset-item>
            <a-asset-item id="house-mtl" src="house.mtl"></a-asset-item>
+           <a-asset-item id="house-png" src="house.png"></a-asset-item>
         </a-assets>
 
         <!-- <a-box height="1" width="1" depth="1" position="0 0.5 0"></a-box> -->
-        <a-obj-model src="#house-obj" position="0 0 0" scale="1 1 1"></a-obj-model>
+        <!-- <a-obj-model src="#house-obj" position="0 0 0" scale="1 1 1"></a-obj-model> -->
 
+        <a-entity obj-model="obj: #ship-obj; material: #house-png"></a-entity>
+<!-- mtl: #ship-mtl; -->
         <a-marker-camera preset="hiro"></a-marker-camera>
 
     	</a-scene>
