@@ -975,31 +975,31 @@
 		}, 1);
 	};
 
-	// ARController.prototype._copyImageToHeap = function(image) {
-	// 	if (!image) {
-	// 		image = this.image;
-	// 	}
-  //
-  //
-	// 	if (this.orientation === 'portrait') {
-	// 		this.ctx.save();
-	// 		this.ctx.translate(this.canvas.width, 0);
-	// 		this.ctx.rotate(Math.PI/2);
-	// 		this.ctx.drawImage(image, 0, 0, this.canvas.height, this.canvas.width); // draw video
-	// 		this.ctx.restore();
-	// 	} else {
-	// 		this.ctx.drawImage(image, 0, 0, this.canvas.width, this.canvas.height); // draw video
-	// 	}
-  //
-	// 	var imageData = this.ctx.getImageData(0, 0, this.canvas.width, this.canvas.height);
-	// 	var data = imageData.data;
-  //
-	// 	if (this.dataHeap) {
-	// 		this.dataHeap.set( data );
-	// 		return true;
-	// 	}
-	// 	return false;
-	// };
+	ARController.prototype._copyImageToHeap = function(image) {
+		if (!image) {
+			image = this.image;
+		}
+
+
+		if (this.orientation === 'portrait') {
+			this.ctx.save();
+			this.ctx.translate(this.canvas.width, 0);
+			this.ctx.rotate(Math.PI/2);
+			this.ctx.drawImage(image, 0, 0, this.canvas.height, this.canvas.width); // draw video
+			this.ctx.restore();
+		} else {
+			this.ctx.drawImage(image, 0, 0, this.canvas.width, this.canvas.height); // draw video
+		}
+
+		var imageData = this.ctx.getImageData(0, 0, this.canvas.width, this.canvas.height);
+		var data = imageData.data;
+
+		if (this.dataHeap) {
+			this.dataHeap.set( data );
+			return true;
+		}
+		return false;
+	};
 
  	ARController.prototype._copyImageToHeap = function(image) {
  		if (!image) {
