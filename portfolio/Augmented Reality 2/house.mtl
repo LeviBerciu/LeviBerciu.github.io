@@ -12,5 +12,5 @@ newmtl Chalet_mat1
 	Kd 0.0000 0.0000 0.0000
 	Ks 0.0000 0.0000 0.0000
 	Ke 0.0000 0.0000 0.0000
-	map_Ka https://cdn.rawgit.com/LeviBerciu/LeviBerciu.github.io/feb03694/portfolio/Augmented%20Reality%202/house.png
-	map_Kd https://cdn.rawgit.com/LeviBerciu/LeviBerciu.github.io/feb03694/portfolio/Augmented%20Reality%202/house.png
+	map_Ka E:\GitHub\LeviBerciu.github.io\portfolio\Augmented Reality 2\Chalet_BaseColor.png
+	map_Kd E:\GitHub\LeviBerciu.github.io\portfolio\Augmented Reality 2\Chalet_BaseColor.png
