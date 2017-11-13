@@ -1,5 +1,5 @@
 # 3ds Max Wavefront OBJ Exporter v0.97b - (c)2007 guruware
-# File Created: 13.11.2017 17:44:50
+# File Created: 13.11.2017 17:48:36
 
 mtllib test.mtl
 
@@ -25,9 +25,9 @@ vn 0.0000 0.0000 -1.0000
 vn -1.0000 0.0000 -0.0000
 # 6 vertex normals
 
-vt 10.0000 0.0000 0.0000
-vt 10.0000 10.0000 0.0000
-vt 0.0000 10.0000 0.0000
+vt 1.0000 0.0000 0.0000
+vt 1.0000 1.0000 0.0000
+vt 0.0000 1.0000 0.0000
 vt 0.0000 0.0000 0.0000
 # 4 texture coords
 
