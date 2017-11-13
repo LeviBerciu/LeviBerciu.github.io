@@ -5,24 +5,27 @@
 <html>
 
 <head>
+
   <script src="https://aframe.io/releases/0.7.0/aframe.min.js"> </script>
   <script src="https://rawgit.com/jeromeetienne/ar.js/master/aframe/build/aframe-ar.js"></script>
 
 </head>
 
-<body style='margin : 0px; overflow: hidden;'>
+<body style='margin : 0px; overflow: hidden' height="100%">
 
-	<a-scene embedded artoolkit="sourceType: webcam" vr-mode-ui="enabled: false" arjs="trackingMethod: best; debugUIEnabled: false;">
+    	<a-scene embedded artoolkit="sourceType: webcam" vr-mode-ui="enabled: false" arjs="trackingMethod: best; debugUIEnabled: false;">
 
-    <a-assets>
-      <item id="wolf" src="wolf.obj"/>
-    </a-assets>
+        <a-assets>
+          <item id="wolf" src="wolf.obj"/>
+        </a-assets>
 
-    <!-- <a-box height="1" width="1" depth="1" position="0 0.5 0"></a-box> -->
-    <a-obj-model src="#wolf" position="0 0 0.2" scale="0.005 0.005 0.005"></a-obj-model>
-    <a-marker-camera preset='hiro'></a-marker-camera>
+        <!-- <a-box height="1" width="1" depth="1" position="0 0.5 0"></a-box> -->
+        <a-obj-model src="#wolf" position="0 0 0.2" scale="0.005 0.005 0.005"></a-obj-model>
 
-	</a-scene>
+        <a-marker-camera preset='hiro'></a-marker-camera>
+
+    	</a-scene>
+
 </body>
 
 </html>
