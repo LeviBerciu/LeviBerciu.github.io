@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+
+<!-- https://jeromeetienne.github.io/AR.js/three.js/examples/marker-training/examples/generator.html -->
+
+<html>
+
+<head>
+
+  <script src="https://aframe.io/releases/0.7.0/aframe.min.js"> </script>
+  <script src="https://rawgit.com/jeromeetienne/ar.js/master/aframe/build/aframe-ar.js"></script>
+
+</head>
+
+<body style="margin : 0px; overflow: hidden">
+
+    	<a-scene embedded artoolkit="sourceType: webcam" vr-mode-ui="enabled: thrue" arjs="trackingMethod: best; debugUIEnabled: false;">
+
+        <a-marker preset="hiro">
+            <a-box height="1" width="1" depth="1" position="0 0 0" scale="1 1 1" color="#fff"></a-box>
+        </a-marker>
+
+        <a-entity camera></a-entity>
+
+    	</a-scene>
+
+</body>
+
+</html>
