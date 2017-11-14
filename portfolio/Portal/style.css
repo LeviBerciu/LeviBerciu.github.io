@@ -1,0 +1,9 @@
+. logo: {
+  position: fixed;
+  top: 100px;
+  right: 100px;
+ height: 100px;
+ width: 100pc;
+ background-color: #fff;
+ z-index: 1
+}

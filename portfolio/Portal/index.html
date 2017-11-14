@@ -14,21 +14,23 @@
 
 </head>
 
-<body style="margin : 0px; overflow: hidden">
+  <div style='position: fixed; top: 5%; right: 5%; width:10%; z-index: 1;'>
+    <div class="logo"> <a href="https://goo.gl/Ra7wyp"> <img type="svg" src="PortalLogo.svg" alt=""> </a> </div>
+  </div>
 
-    <a-scene embedded artoolkit="sourceType: webcam" vr-mode-ui="enabled: false" arjs="trackingMethod: best; debugUIEnabled: false;">
+  <a-scene embedded artoolkit="sourceType: webcam" vr-mode-ui="enabled: false" arjs="trackingMethod: best; debugUIEnabled: false;">
 
-    	<a-marker preset="hiro">
-              <a-box position='0 0.5 0' material='color: #fff; opacity: 0.5'></a-box>
-    	</a-marker>
+    <a-marker preset="hiro">
+      <a-box position='0 0.5 0' material='color: #fff; opacity: 0.5'></a-box>
+    </a-marker>
 
-      <a-marker preset="kanji">
-              <a-box position='0 0.5 0' material='color: #000; opacity: 0.5'></a-box>
-      </a-marker>
+    <a-marker preset="kanji">
+      <a-box position='0 0.5 0' material='color: #000; opacity: 0.5'></a-box>
+    </a-marker>
 
     	<a-entity camera></a-entity>
 
-    </a-scene>
+  </a-scene>
 
 </body>
 
