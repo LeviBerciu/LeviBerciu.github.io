@@ -6,6 +6,7 @@
 
 <head>
 
+  <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
   <script src="https://aframe.io/releases/0.7.0/aframe.min.js"> </script>
   <script src="https://rawgit.com/jeromeetienne/ar.js/master/aframe/build/aframe-ar.js"></script>
 
@@ -15,11 +16,15 @@
 
     <a-scene embedded artoolkit="sourceType: webcam" vr-mode-ui="enabled: thrue" arjs="trackingMethod: best; debugUIEnabled: false;">
 
-      <a-marker preset="hiro">
-        <a-box height="1" width="1" depth="1" position="0 0.5 0"></a-box>
+    	<a-marker preset="hiro">
+              <a-box position='0 0.5 0' material='color: #fff; opacity: 0.5'></a-box>
+    	</a-marker>
+
+      <a-marker preset="kanji">
+              <a-box position='0 0.5 0' material='color: #000; opacity: 0.5'></a-box>
       </a-marker>
 
-      <a-camera camera></a-camera>
+    	<a-entity camera></a-entity>
 
     </a-scene>
 
