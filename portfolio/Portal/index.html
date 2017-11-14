@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+
+<!-- https://jeromeetienne.github.io/AR.js/three.js/examples/marker-training/examples/generator.html -->
+
+<html>
+
+<head>
+
+  <script src="https://aframe.io/releases/0.7.1/aframe.min.js"> </script>
+  <script src="https://rawgit.com/jeromeetienne/ar.js/master/aframe/build/aframe-ar.js"></script>
+  <!-- Portrait Fix -->
+  <script src="threex-artoolkitsource.js"></script>
+  <script src="artoolkit.api.js"></script>
+
+</head>
+
+<body style="margin : 0px; overflow: hidden">
+
+    <a-scene embedded artoolkit="sourceType: webcam" vr-mode-ui="enabled: false" arjs="trackingMethod: best; debugUIEnabled: false;">
+
+    	<a-marker preset="hiro">
+              <a-box position='0 0.5 0' material='color: #fff; opacity: 0.5'></a-box>
+    	</a-marker>
+
+      <a-marker preset="kanji">
+              <a-box position='0 0.5 0' material='color: #000; opacity: 0.5'></a-box>
+      </a-marker>
+
+    	<a-entity camera></a-entity>
+
+    </a-scene>
+
+</body>
+
+</html>
