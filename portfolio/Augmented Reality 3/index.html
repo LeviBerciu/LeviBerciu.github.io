@@ -8,12 +8,13 @@
 
   <script src="https://aframe.io/releases/0.7.0/aframe.min.js"> </script>
   <script src="https://rawgit.com/jeromeetienne/ar.js/master/aframe/build/aframe-ar.js"></script>
+  <script src="threex-artoolkitsource.js"></script>
 
 </head>
 
 <body style="margin : 0px; overflow: hidden">
 
-    <a-scene embedded artoolkit="sourceType: webcam" vr-mode-ui="enabled: thrue" arjs="trackingMethod: best; debugUIEnabled: false;">
+    <a-scene embedded artoolkit="sourceType: webcam" vr-mode-ui="enabled: false" arjs="trackingMethod: best; debugUIEnabled: false;">
 
     	<a-marker preset="hiro">
               <a-box position='0 0.5 0' material='color: #fff; opacity: 0.5'></a-box>
