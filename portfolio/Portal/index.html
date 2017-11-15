@@ -14,30 +14,30 @@
   <!-- Portrait Fix -->
   <script src="threex-artoolkitsource.js"></script>
   <script src="artoolkit.api.js"></script>
-  <!-- Hide Address Bar -->
-  <!-- <script src="hide-address-bar.js"></script> -->
 
 </head>
 
 <body>
-  
+
   <div style='position: fixed; top: 0; right: 0; width:100%; padding-top: 100%; z-index: 1;'>
     <div style='position: absolute; top: 4%; right: 4%; width: 12%; opacity: 0.25;' class="logo"> <a href="https://goo.gl/Ra7wyp"> <img type="svg" src="PortalLogo.svg" alt=""> </a> </div>
   </div>
 
   <a-scene embedded artoolkit="sourceType: webcam" vr-mode-ui="enabled: false" arjs="trackingMethod: best; debugUIEnabled: false;">
 
-    <a-assets>
+    <!-- <a-assets>
        <a-asset-item id="house-obj" src="house.obj"></a-asset-item>
        <a-asset-item id="house-mtl" src="house.mtl"></a-asset-item>
-    </a-assets>
+    </a-assets> -->
 
     <a-marker preset="hiro">
-      <a-obj-model src="#house-obj" mtl="#house-mtl" position="0 0 0" scale="1 1 1"></a-obj-model>
+      <!-- <a-obj-model src="#house-obj" mtl="#house-mtl" position="0 0 0" scale="1 1 1"></a-obj-model> -->
+      <a-cylinder color="#fff" height="0.05" radius="1" opacity="0.5"></a-cylinder>
     </a-marker>
 
     <a-marker preset="kanji">
-      <a-box position='0 0.5 0' material='color: #000; opacity: 0.5'></a-box>
+      <!-- <a-obj-model src="#house-obj" mtl="#house-mtl" position="0 0 0" scale="1 1 1"></a-obj-model> -->
+      <a-cylinder color="#000" height="0.05" radius="1" opacity="0.5"></a-cylinder>
     </a-marker>
 
     	<a-entity camera></a-entity>
