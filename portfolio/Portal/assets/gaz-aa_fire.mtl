@@ -12,7 +12,7 @@ newmtl Material__51
 	Kd 0.5880 0.5880 0.5880
 	Ks 0.0000 0.0000 0.0000
 	Ke 0.0000 0.0000 0.0000
-	map_Kd assets\gaz-aa_fire_engine.jpg
+	map_Kd gaz-aa_fire_engine.jpg
 
 newmtl Material__50
 	Ns 10.0000
@@ -25,7 +25,7 @@ newmtl Material__50
 	Kd 0.5880 0.5880 0.5880
 	Ks 0.0000 0.0000 0.0000
 	Ke 0.0000 0.0000 0.0000
-	map_Kd assets\\gaz-aa_fire_detail.jpg
+	map_Kd gaz-aa_fire_detail.jpg
 
 newmtl Material__54
 	Ns 10.0000
@@ -38,7 +38,7 @@ newmtl Material__54
 	Kd 0.5880 0.5880 0.5880
 	Ks 0.0000 0.0000 0.0000
 	Ke 0.0000 0.0000 0.0000
-	map_Kd assets\gaz-aa_fire_wing.jpg
+	map_Kd gaz-aa_fire_wing.jpg
 
 newmtl Material__52
 	Ns 10.0000
@@ -51,7 +51,7 @@ newmtl Material__52
 	Kd 0.5880 0.5880 0.5880
 	Ks 0.0000 0.0000 0.0000
 	Ke 0.0000 0.0000 0.0000
-	map_Kd assets\gaz-aa_fire_frame.jpg
+	map_Kd gaz-aa_fire_frame.jpg
 
 newmtl Material__53
 	Ns 10.0000
@@ -64,7 +64,7 @@ newmtl Material__53
 	Kd 0.5880 0.5880 0.5880
 	Ks 0.0000 0.0000 0.0000
 	Ke 0.0000 0.0000 0.0000
-	map_Kd assets\gaz-aa_fire_wheel.jpg
+	map_Kd gaz-aa_fire_wheel.jpg
 
 newmtl Material__49
 	Ns 10.0000
@@ -77,4 +77,4 @@ newmtl Material__49
 	Kd 0.5880 0.5880 0.5880
 	Ks 0.0000 0.0000 0.0000
 	Ke 0.0000 0.0000 0.0000
-	map_Kd assets\gaz-aa_fire_cabin.jpg
+	map_Kd gaz-aa_fire_cabin.jpg
