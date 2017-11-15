@@ -11,18 +11,21 @@
   <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 
   <script src="https://aframe.io/releases/0.7.1/aframe.min.js"></script>
-  <script src="https://rawgit.com/jeromeetienne/ar.js/master/aframe/build/aframe-ar.js"></script>
+  <!-- <script src="https://rawgit.com/jeromeetienne/ar.js/master/aframe/build/aframe-ar.js"></script> -->
+
+  <!-- fix for custom marker problem -->
+  <script src="js/aframe-ar.js"></script>
   <!-- keep the canvas the same aspect ratio as the video even on portrait -->
-  <script src="threex-artoolkitsource.js"></script>
+  <script src="js/threex-artoolkitsource.js"></script>
   <!-- now sending non deformed image data in portrait mode ( rotated and scaled to fit in the middle ) -->
-  <script src="artoolkit.api.js"></script>
+  <script src="ja/artoolkit.api.js"></script>
 
 </head>
 
 <body>
 
   <div style='position: fixed; top: 0; right: 0; width:100%; padding-top: 100%; z-index: 1;'>
-    <div style='position: absolute; top: 4%; right: 4%; width: 12%; opacity: 0.25;' class="logo"> <a href="https://goo.gl/Ra7wyp"> <img type="svg" src="PortalLogo.svg" alt=""> </a> </div>
+    <div style='position: absolute; top: 4%; right: 4%; width: 12%; opacity: 0.25;' class="logo"> <a href="https://goo.gl/Ra7wyp"> <img type="svg" src="assets/PortalLogo.svg" alt=""> </a> </div>
   </div>
 
   <a-scene embedded artoolkit="sourceType: webcam" vr-mode-ui="enabled: false" arjs="trackingMethod: best; debugUIEnabled: false;">
