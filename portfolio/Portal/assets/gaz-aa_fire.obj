@@ -1,5 +1,5 @@
 # 3ds Max Wavefront OBJ Exporter v0.97b - (c)2007 guruware
-# File Created: 15.11.2017 18:38:15
+# File Created: 15.11.2017 19:00:16
 
 mtllib gaz-aa_fire.mtl
 
@@ -1133,7 +1133,7 @@ vt 0.2964 0.8987 0.0000
 # 717 texture coords
 
 g gaz_aa_fire_engine
-usemtl Material__51
+usemtl Material__63
 s 4
 f 1/1/1 2/2/1 3/3/1 4/4/1 
 s 32
@@ -4641,7 +4641,7 @@ vt 0.6104 0.1065 0.0000
 # 1532 texture coords
 
 g gaz_aa_fire_detail
-usemtl Material__50
+usemtl Material__62
 s 8
 f 301/718/103 302/719/104 303/720/104 304/721/103 
 f 302/719/104 305/722/105 306/723/105 303/720/104 
@@ -7378,7 +7378,7 @@ vt 0.3711 0.7097 0.0000
 # 593 texture coords
 
 g gaz_aa_fire_wing
-usemtl Material__54
+usemtl Material__66
 s 1
 f 1747/2250/380 1748/2251/381 1749/2252/382 1750/2253/383 
 f 1748/2251/381 1751/2254/384 1752/2255/385 1749/2252/382 
@@ -11733,7 +11733,7 @@ vt 0.3491 0.9705 0.0000
 # 2299 texture coords
 
 g gaz_aa_fire_frame
-usemtl Material__52
+usemtl Material__64
 s 1
 f 2361/2843/846 2362/2844/846 2363/2845/846 2364/2846/846 
 s 2
@@ -13345,7 +13345,7 @@ vt 0.3742 0.4724 0.0000
 # 304 texture coords
 
 g gaz_aa_fire_wheel
-usemtl Material__53
+usemtl Material__65
 s 2
 f 3360/5142/1310 3361/5143/1311 3362/5144/1311 3363/5145/1310 
 f 3361/5143/1311 3364/5146/1312 3365/5147/1312 3362/5144/1311 
@@ -14693,7 +14693,7 @@ vt 0.9677 0.3454 0.0000
 # 488 texture coords
 
 g gaz_aa_fire_cabin
-usemtl Material__49
+usemtl Material__61
 s 1
 f 3680/5446/1489 3681/5447/1490 3682/5448/1491 3683/5449/1492 
 f 3681/5447/1490 3684/5450/1493 3685/5451/1494 3682/5448/1491 
