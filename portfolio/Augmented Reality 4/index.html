@@ -9,10 +9,10 @@
   </head>
   <body>
     <a-scene embedded artoolkit="sourceType: webcam" vr-mode-ui="enabled: false" arjs="trackingMethod: best; debugUIEnabled: false;">
-      <a-marker type='pattern' url='wolf.patt'>
+      <a-marker preset='custom' type='pattern' url='wolf.patt'>
         <a-box position='0 0.5 0' material='color: #fff; opacity: 0.5'></a-box>
       </a-marker>
-      <a-marker type='pattern' url='arjs.patt'>
+      <a-marker preset='custom' type='pattern' url='arjs.patt'>
         <a-box position='0 0.5 0' material='color: #fff; opacity: 0.5'></a-box>
       </a-marker>
       <a-entity camera></a-entity>
