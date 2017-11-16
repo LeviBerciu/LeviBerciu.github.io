@@ -12,8 +12,8 @@ newmtl Material__63
 	Kd 0.5880 0.5880 0.5880
 	Ks 0.0000 0.0000 0.0000
 	Ke 0.0000 0.0000 0.0000
-	map_Ka gaz-aa_fire_engine.jpg
-	map_Kd gaz-aa_fire_engine.jpg
+	map_Ka firetruck_engine.jpg
+	map_Kd firetruck_engine.jpg
 
 newmtl Material__62
 	Ns 10.0000
@@ -26,8 +26,8 @@ newmtl Material__62
 	Kd 0.5880 0.5880 0.5880
 	Ks 0.0000 0.0000 0.0000
 	Ke 0.0000 0.0000 0.0000
-	map_Ka gaz-aa_fire_detail.jpg
-	map_Kd gaz-aa_fire_detail.jpg
+	map_Ka firetruck_detail.jpg
+	map_Kd firetruck_detail.jpg
 
 newmtl Material__66
 	Ns 10.0000
@@ -40,8 +40,8 @@ newmtl Material__66
 	Kd 0.5880 0.5880 0.5880
 	Ks 0.0000 0.0000 0.0000
 	Ke 0.0000 0.0000 0.0000
-	map_Ka gaz-aa_fire_wing.jpg
-	map_Kd gaz-aa_fire_wing.jpg
+	map_Ka firetruck_wing.jpg
+	map_Kd firetruck_wing.jpg
 
 newmtl Material__64
 	Ns 10.0000
@@ -54,8 +54,8 @@ newmtl Material__64
 	Kd 0.5880 0.5880 0.5880
 	Ks 0.0000 0.0000 0.0000
 	Ke 0.0000 0.0000 0.0000
-	map_Ka gaz-aa_fire_frame.jpg
-	map_Kd gaz-aa_fire_frame.jpg
+	map_Ka firetruck_frame.jpg
+	map_Kd firetruck_frame.jpg
 
 newmtl Material__65
 	Ns 10.0000
@@ -68,8 +68,8 @@ newmtl Material__65
 	Kd 0.5880 0.5880 0.5880
 	Ks 0.0000 0.0000 0.0000
 	Ke 0.0000 0.0000 0.0000
-	map_Ka gaz-aa_fire_wheel.jpg
-	map_Kd gaz-aa_fire_wheel.jpg
+	map_Ka firetruck_wheel.jpg
+	map_Kd firetruck_wheel.jpg
 
 newmtl Material__61
 	Ns 10.0000
@@ -82,5 +82,5 @@ newmtl Material__61
 	Kd 0.5880 0.5880 0.5880
 	Ks 0.0000 0.0000 0.0000
 	Ke 0.0000 0.0000 0.0000
-	map_Ka gaz-aa_fire_cabin.jpg
-	map_Kd gaz-aa_fire_cabin.jpg
+	map_Ka firetruck_cabin.jpg
+	map_Kd firetruck_cabin.jpg
