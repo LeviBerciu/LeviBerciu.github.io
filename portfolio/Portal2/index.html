@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+  <script src="https://aframe.io/releases/0.7.1/aframe.min.js"></script>
+
+</head>
+
+<body>
+
+  <!-- <div style='position: fixed; top: 0; right: 0; width:100%; padding-top: 100%; z-index: 1;'>
+    <div style='position: absolute; top: 4%; right: 4%; width: 12%; opacity: 0.25;' class="logo"> <a href="https://goo.gl/Ra7wyp"> <img type="svg" src="assets/PortalLogo.svg" alt=""> </a> </div>
+  </div> -->
+
+  <a-scene>
+
+  <a-assets>
+    <img id="sky" src="assets/sky.jpg"/>
+  </a-assets>
+
+  <a-sky src="#sky"></a-sky>
+
+  <a-plane width="4" height="4" rotation="-90 0 0" color="#f00"></a-plane>
+
+  </a-scene>
+
+</body>
+
+</html>
