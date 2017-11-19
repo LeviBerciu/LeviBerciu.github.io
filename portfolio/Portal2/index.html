@@ -18,7 +18,9 @@
     <a-asset-item id="street-mtl" src="assets/street.mtl"></a-asset-item>
   </a-assets>
 
-  <a-light type="point" position="0 10 0" color="#fff" intensity="0.5"></a-light>
+  <a-light type="ambient" intensity="0.75"></a-light>
+
+  <a-light type="directional" position="0 10 0" rotation="-90 0 0" intensity="0.25" target="#street-obj"></a-light>
 
   <a-sky src="#sky"></a-sky>
 
