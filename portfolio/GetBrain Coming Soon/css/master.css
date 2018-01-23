@@ -1,0 +1,32 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.background {
+  background-color: #FFD700;
+  width: 100vw;
+  height: 100vh;
+  text-align: center;
+}
+
+.container {
+  width: 280px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: calc(50vh - 50px);
+  display: inline-block;
+}
+
+.animate {
+  fill:none;
+  stroke: #4a4a4a;
+  stroke-width:8;
+  stroke-linecap:round;
+}
+
+@keyframes anim {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
