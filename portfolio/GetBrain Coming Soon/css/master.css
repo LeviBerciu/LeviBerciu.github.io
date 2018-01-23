@@ -59,10 +59,12 @@ span {
 
 @media screen and (max-width: 720px) {
 
+  h1 {
+    margin-top: 50px;
+  }
+
   .container {
-    width: 260px;
-    margin-left: auto;
-    margin-right: auto;
+    width: 240px;
     margin-top: 100px;
   }
 
