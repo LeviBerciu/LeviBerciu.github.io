@@ -6,6 +6,7 @@
 body {
   background-color: #FFD700;
   width: 100%;
+  min-width: 320px;
   height: 100vh;
   text-align: center;
 }
