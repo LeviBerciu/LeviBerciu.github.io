@@ -5,6 +5,8 @@
 
 body {
   background-color: #FFD700;
+  width: 100vw;
+  height: 100vh;
   text-align: center;
 }
 
@@ -59,7 +61,12 @@ span {
   }
 }
 
-@media screen and (max-width: 980px) {
+@media screen and (max-width: 640px) {
+
+  body {
+    background-color: #FFD700;
+    text-align: center;
+  }
 
   .container {
     width: 72%;
