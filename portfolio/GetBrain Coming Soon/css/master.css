@@ -51,7 +51,7 @@ span {
 .animate {
   fill:none;
   stroke: #4a4a4a;
-  stroke-width:8;
+  stroke-width:7.5;
   stroke-linecap:round;
 }
 
