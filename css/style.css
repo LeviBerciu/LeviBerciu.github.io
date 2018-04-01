@@ -44,13 +44,13 @@ main {
   margin-bottom: 50px;
   border-radius: 4px;
   overflow: hidden;
-  box-shadow: 0px 20px 40px rgba(0,0,0,0.25);
+  box-shadow: 0px 20px 40px rgba(0,0,0,0.30);
 }
 
 .English {width: 70%;}
 .Hungarian {width: 90%}
 .Romanian {width: 80%}
-.Spanish {width: 20%}
+.Spanish {width: 10%}
 
 .Photoshop {width: 90%;}
 .Illustrator {width: 80%}
@@ -246,6 +246,7 @@ main {
   margin-top: 10px;
   line-height: 25px;
 }
+
 .oviewRow {
   margin-top: 20px;
   padding: 15px 15px 20px 15px;
@@ -261,6 +262,37 @@ main {
 }
 
 .oviewRow p {
+  font-weight: normal;
+  width: 100%;
+  line-height: 25px;
+}
+
+.portoLink {
+  position: relative;
+  background-size: cover;
+  margin-top: 20px;
+  padding-top: 56.25%;
+  border-radius: 2px;
+  /* box-shadow: 0px 10px 20px rgba(0,0,0,0.15); */
+}
+
+.portoCont {
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.85));
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  padding: 75px 15px 10px 15px;
+  color: #fff;
+  text-align: left;
+}
+
+.portoLink h4 {
+  font-weight: normal;
+  line-height: 25px;
+  text-align: left;
+  margin-bottom: 10px;
+}
+
+.portoLink p {
   font-weight: normal;
   width: 100%;
   line-height: 25px;
