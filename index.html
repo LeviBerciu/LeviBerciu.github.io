@@ -14,6 +14,9 @@
   <body>
     <main>
 
+      <script>window.addEventListener('message', function(event) {const frameWindow = document.querySelector('#iframePrice'); if (event.data.type === 'iframeSize') {frameWindow.height = event.data.size.h; frameWindow.width = event.data.size.w;}}); </script><iframe id='iframePrice' sandbox='allow-scripts allow-forms allow-same-origin' src='https://www.efterskole.dk/da/Schools/PriceCalculationIframe?SchoolID={29CC1FF8-0D95-4BF2-9B15-8EBC89BC0353}' marginwidth='0' marginheight='0' frameborder='0'></iframe>
+         <script>window.addEventListener('message', function(event) {const frameWindow = document.querySelector('#iframeAvailablePlaces'); if (event.data.type === 'iframeSize') {frameWindow.height = event.data.size.h; frameWindow.width = event.data.size.w;}}); </script><iframe id='iframeAvailablePlaces' sandbox='allow-scripts allow-forms allow-same-origin' src='https://www.efterskole.dk/da/Schools/AvailablePlacesIframe?SchoolID={8B7854DC-AA1A-4E5B-8031-8B141E9CB27D}' marginwidth='0' marginheight='0' frameborder='0'></iframe>
+
 <!-- Left Part -->
 
       <div class="containerLeft">
@@ -447,7 +450,7 @@
             <img src="svg/UiPrototypes.svg">
           </div>
           <div class="oviewTitle">
-              <h4>U I&nbsp;&nbsp;&nbsp;P R O T O T Y P E S</h4>
+              <h4>U I&nbsp;&nbsp;&nbsp;P R O T O T Y P EvS</h4>
           </div>
           <div class="oviewText">
               <p><b>Some of my high-fidelity user interface prototypes created using <a href="https://www.axure.com/">Axure RP</a></b></p><br>
