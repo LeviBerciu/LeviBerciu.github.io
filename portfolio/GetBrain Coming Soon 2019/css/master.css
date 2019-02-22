@@ -1,0 +1,93 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #FFD700;
+  width: 100vw;
+  height: 100vh;
+  text-align: center;
+}
+
+button {
+  width: 100%;
+  margin-top: 40px;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 40px;
+  border-radius: 4px;
+  color: #000;
+  background-color: #FFD700;
+  border: 2px solid #000;
+}
+
+button:hover {
+  color: #FFD700;
+  background-color: #000;
+}
+
+button:active {
+  color: #000;
+  background-color: #FFD700;
+}
+
+h1 {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 800;
+  color: #000;
+  margin-top: 60px;
+  font-size: 24px;
+  line-height: 30px;
+}
+
+span {
+  font-weight: 300;
+}
+
+.container {
+  position: relative;
+  width: 320px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: calc(50vh - 250px);
+  display: inline-block;
+}
+
+.animate {
+  fill:none;
+  stroke: #FFD700;
+  stroke-width:2.5;
+  stroke-linecap:round;
+}
+
+.background {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: -1;
+  width: 100%;
+}
+
+.animatebackground {
+  fill:none;
+  stroke: #000;
+  stroke-width:7.5;
+  stroke-linecap:round;
+}
+
+@keyframes anim {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@media screen and (max-width: 640px) {
+
+  .container {
+    width: 72%;
+    margin-top: 16%;
+    margin-bottom: 16%;
+  }
+
+}
