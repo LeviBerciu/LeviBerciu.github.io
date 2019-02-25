@@ -17,25 +17,25 @@ button {
   font-weight: 600;
   line-height: 40px;
   border-radius: 4px;
-  color: #000;
+  color: #4a4a4a;
   background-color: #FFD700;
-  border: 2px solid #000;
+  border: 2px solid #4a4a4a;
 }
 
 button:hover {
   color: #FFD700;
-  background-color: #000;
+  background-color: #4a4a4a;
 }
 
 button:active {
-  color: #000;
+  color: #4a4a4a;
   background-color: #FFD700;
 }
 
 h1 {
   font-family: 'Open Sans', sans-serif;
   font-weight: 800;
-  color: #000;
+  color: #4a4a4a;
   margin-top: 60px;
   font-size: 24px;
   line-height: 30px;
@@ -71,7 +71,7 @@ span {
 
 .animatebackground {
   fill:none;
-  stroke: #000;
+  stroke: #4a4a4a;
   stroke-width:7.5;
   stroke-linecap:round;
 }
