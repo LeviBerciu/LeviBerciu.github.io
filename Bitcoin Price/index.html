@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bitcoin Price</title>
+    <link rel="stylesheet" href="styles/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="wrapper">
+        <div class="header">
+            <img class="logo" src="assets/BTC_Logo.svg" alt="BTC_Logo">
+            <h1>Bitcoin Price</h1>
+        </div>
+        <ul class="tabs">
+            <li data-target ="#usd">USD</li>
+            <li data-target ="#gbp">GBP</li>
+            <li data-target ="#eur">EUR</li>
+        </ul>
+        <div class="content">
+            <div id="usd" class="rate-container">$ <span class="usd-data"></span></div>
+            <div id="gbp" class="rate-container">£ <span class="gbp-data"></span></div>
+            <div id="eur" class="rate-container">€ <span class="eur-data"></span></div>
+            <div class="time-container">Last updated: <span class="time-data"></span></div>
+            <button class="refresh">Refresh</button>
+        </div>
+    </div>
+
+    <script src="scripts/script.js"></script>
+</body>
+</html>

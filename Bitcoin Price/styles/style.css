@@ -1,0 +1,121 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    min-width: 320px;
+    padding: 20px;
+    font-family: 'Nunito Sans', sans-serif;
+    color: #263238;
+    background-color: #ECEFF1;
+    font-weight: 300;
+}
+
+h1{
+    font-weight: 700;
+}
+
+button{
+    display: block;
+    border: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow: visible;
+    background: none;
+    background-color: #3F51B5;
+    font-size: 0.75em;
+    line-height: 36px;
+    border-radius: 2px;
+    color: #ffffff;
+    text-transform: uppercase;
+    font-weight: 600;
+    outline: 0;
+    opacity: 1;
+    transition: all 150ms;
+}
+
+button:hover{
+    opacity: 0.75;
+}
+
+.wrapper{
+    max-width: 400px;
+    margin: auto;
+    background-color: #ffffff;
+    border-radius: 4px;
+    box-shadow: 0px 40px 40px -40px rgba(26, 35, 126, 0.25);;
+}
+
+.header{
+    padding: 20px;
+    text-align: center;
+    border-radius: 4px 4px 0px 0px;
+    color: #ffffff;
+    background-color: #303F9F;
+}
+
+.logo{
+    margin: 20px;
+    width: 120px;
+    transform: rotate(0deg);
+    transition: all 1s;
+}
+
+.tabs{
+    display: flex;
+    padding: 0px 20px 0px 20px;
+    list-style: none;
+    color: #ffffff;
+    background-color: #1A237E;
+}
+
+.tabs li{
+    padding: 4px 20px 0px 20px;
+    opacity: 0.25;
+    line-height: 32px;
+    border-style: solid;
+    border-color:  #1A237E;
+    border-width: 0px 0px 4px 0px;
+    transition: all 150ms;
+}
+
+.tabs li:hover{
+    opacity: 0.5;
+}
+
+.tabs li.active{
+    opacity: 1;
+    border-color: #f7931a;
+}
+
+.content{
+    padding: 20px;
+}
+
+.rate-container{
+    display: none;
+    margin: 0px 0px 10px 0px;
+    line-height: 30px;
+    font-size: 1.5em;
+}
+
+.rate-container span{
+    font-weight: 800;
+}
+
+.time-container{
+    margin: 0px 0px 10px 0px;
+    font-size: 0.75em;
+    line-height: 29px;
+    color: #B0BEC5;
+    border-style: solid;
+    border-color:  #ECEFF1;
+    border-width: 1px 0px 0px 0px;
+}
+
+.time-data{
+    font-weight: 700;
+}
