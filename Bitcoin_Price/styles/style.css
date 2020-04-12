@@ -41,6 +41,10 @@ button:hover{
     opacity: 0.75;
 }
 
+button:focus{
+    opacity: 1;
+}
+
 .wrapper{
     max-width: 400px;
     margin: auto;
