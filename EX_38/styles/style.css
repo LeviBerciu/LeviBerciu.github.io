@@ -32,10 +32,11 @@ header{
     width: 100%;
     height: 36px;
     padding: 0px 0px 0px 12px;
+    font-family: 'Poppins', sans-serif;
     font-size: 20px;
     font-weight: 200;
     color: #37474f;
-    background-color: rgba(255, 255, 255, 0.25);
+    background-color: rgba(255, 255, 255, 0.1);
     border-radius: 4px;
     transition: all 250ms;
 }
@@ -84,7 +85,7 @@ display: none;
     width: 36px;
     font-weight: 400;
     margin: 0px;
-    background-color: rgba(255, 255, 255, 0.25);
+    background-color: rgba(255, 255, 255, 0.1);
     color: #fff;
     transition: all 250ms;
 }
@@ -103,16 +104,15 @@ display: none;
 
 .dashboard-top{
     padding-top: 60px;
-    background-color: #ef6c00;
+    background: linear-gradient(#ef6c00, #c43e00);
 }
 /* Now Container ----------------------------------------*/
 .current-date{
     width: 100%;
     line-height: 60px;
-    color:rgba(255, 255, 255, 0.50);
-    font-weight: 600;
+    color:rgba(0, 0, 0, 0.5);
+    font-weight: 700;
     text-align: center;
-    text-transform: uppercase;
 }
 .now-container{
     display: flex;
@@ -128,16 +128,23 @@ display: none;
 .current-temp-value{
     font-size: 60px;
     font-weight: 300;
-    line-height: 100px;
+    line-height: 76px;
 }
 .current-temp-unit{
     font-size: 24px;
-    line-height: 60px;
+    line-height: 48px;
 }
-.current-feels_like{
+.current-container{
+    line-height: 24px;
     font-size: 14px;
 }
 .current-feels_like-value{
+    font-weight: 500;
+}
+.current-humidity-value{
+    font-weight: 500;
+}
+.current-wind-value{
     font-weight: 500;
 }
 .current-condition{
@@ -147,10 +154,10 @@ display: none;
     height: 124px;
 }
 .current-condition-image-wrapper{
-    height: 100px;
+    height: 124px;
 }
 .current-condition-image{
-    height: 100px;
+    height: 124px;
 }
 .current-condition-text{
     font-size: 14px;
@@ -164,7 +171,7 @@ display: none;
 
 
 .chart-container{
-    padding: 24px 12px 12px 12px;
+    padding-top: 24px;
     overflow-x: scroll;
 }
 
@@ -172,6 +179,6 @@ display: none;
 
 .chart-wrapper{
     width: 100%;
-    height: 200px;
+    height: 240px;
     min-width: 1280px;
 }

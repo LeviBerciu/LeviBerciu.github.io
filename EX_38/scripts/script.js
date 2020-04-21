@@ -43,10 +43,12 @@ var WF = {
         this.citiesListEL.addEventListener('mousedown', function(e){
             if(e.target.tagName == 'LI'){
                 WF.selectedCity.name = e.target.getAttribute('name');
+                WF.selectedCity.lat = e.target.dataset.lat;
+                WF.selectedCity.lng = e.target.dataset.lng;
                 WF.citySearchEl.setAttribute('placeholder', WF.selectedCity.name);
                 WF.citySearchEl.value = '';
                 WF.citiesListEL.innerHTML = '';
-                WD.getWeatherData(e.target.dataset.lat, e.target.dataset.lng);
+                WD.getWeatherData(WF.selectedCity.lat, WF.selectedCity.lng);
             };
         });
     },
@@ -109,7 +111,12 @@ var WD = {
     currentConditionTextEl: document.querySelector('.current-condition-text'),
     currentFeelsLikeValueEl: document.querySelector('.current-feels_like-value'),
     currentFeelsLikeUnitEl: document.querySelector('.current-feels_like-unit'),
+    currentHumidityValueEl: document.querySelector('.current-humidity-value'),
+    currentWindValueEl: document.querySelector('.current-wind-value'),
+    currentWindUnitEl: document.querySelector('.current-wind-unit'),
     hrTemperatureEl: document.getElementById('hr-temperature').getContext('2d'),
+
+    //Attaches listeners to date element
 
 
     //Defining WD variable
@@ -135,22 +142,29 @@ var WD = {
         };
         //Setting date
         var currentDateObject = new Date(this.weatherData.current.dt * 1000);
-        WD.currentDateEl.textContent = currentDateObject.toDateString();
-        //Setting image and condition
+        var currentDate = currentDateObject.toDateString()
+        var currentTime = currentDateObject.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: false });
+        WD.currentDateEl.textContent = currentDate.substring(0,3) + '. ' + currentDate.substring(4,7) + '. ' + currentDate.substring(8,10) + '. ' + currentTime;
+        //Setting values
         var iconNumber = this.weatherData.current.weather[0].icon;
+        WD.currentHumidityValueEl.textContent = this.weatherData.current.humidity;
         WD.currentConditionImageEl.setAttribute('src', 'assets/' + iconNumber + '.svg');
         WD.currentConditionTextEl.textContent = this.weatherData.current.weather[0].description;
-        //Setting current temperature
+        //Setting values depending on units
         if(WF.selectedUnit == 'imperial'){
             this.currentTempValueEl.textContent = Math.round(this.weatherData.current.temp * 9 / 5 - 459.67);
             this.currentTempUnitEl.textContent = '°F';
             this.currentFeelsLikeValueEl.textContent = Math.round(this.weatherData.current.feels_like * 9 / 5 - 459.67);
             this.currentFeelsLikeUnitEl.textContent = '°F';
+            this.currentWindValueEl.textContent = Math.round(this.weatherData.current.wind_speed * 2.237);
+            this.currentWindUnitEl.textContent = 'mph';
         } else {
             this.currentTempValueEl.textContent = Math.round(this.weatherData.current.temp - 273.15);
             this.currentTempUnitEl.textContent = '°C';
             this.currentFeelsLikeValueEl.textContent = Math.round(this.weatherData.current.feels_like - 273.15);
             this.currentFeelsLikeUnitEl.textContent = '°C';
+            this.currentWindValueEl.textContent = Math.round(this.weatherData.current.wind_speed * 3.6);
+            this.currentWindUnitEl.textContent = 'km/h';
         };
         //Setting chart labels
         var hrDataPoints = 24; //max 48
@@ -159,14 +173,17 @@ var WD = {
             var hourlyDateObject = new Date(this.weatherData.hourly[i].dt * 1000);
             chartHours.push(hourlyDateObject.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: false }));
         };
-        // var chartCondition = new Array;
-        // for(var i = 0; i < hrDataPoints; i++){
-        //     chartCondition.push(this.weatherData.hourly[i].weather[0].main);
-        // };
-        // var chartLabels = new Array;
-        // for(var i = 0; i < hrDataPoints; i++){
-        //     chartLabels.push([chartHours[i],chartCondition[i]]);
-        // };
+
+        
+        var chartCondition = new Array;
+        for(var i = 0; i < hrDataPoints; i++){
+            var weatherImage = new Image();
+            var iconNumber = this.weatherData.hourly[i].weather[0].icon;
+            weatherImage.src ='./assets/'+ iconNumber +'.svg';
+            weatherImage.setAttribute('width', '32px');
+            weatherImage.setAttribute('height', '32px');
+            chartCondition.push(weatherImage);
+        };
 
         //Setting chart data
         var chartTemp = new Array;
@@ -190,12 +207,18 @@ var WD = {
                 datasets: [{
                     label: 'Temperature',
                     data: chartTemp,
+                    pointStyle: chartCondition,
+                    backgroundColor: 'rgba(0, 0, 0, 0.1)',
+                    borderColor:'rgba(0, 0, 0, 0)',
                 }],
             },
             options: { 
                 layout: {
                     padding: {
-                        top: 24,
+                        top: 36,
+                        right: 36,
+                        left:24,
+                        bottom:12,
                     }
                 },
                 tooltips: {
@@ -210,6 +233,7 @@ var WD = {
                     yAxes: [{
                         gridLines: {
                             display: false,
+                            drawBorder: false, 
                         },
                         ticks: {
                             display: false,
@@ -218,9 +242,12 @@ var WD = {
                         },
                     }],
                     xAxes: [{
+                        gridLines: {
+                            drawBorder: false, 
+                        },
                         ticks: {
-                            fontColor: 'rgba(255, 255, 255, 0.50)',
-                            padding: 6,
+                            fontColor: 'rgba(255, 255, 255, 0.6)',
+                            padding: 12,
                         },
                     }],
                 },
@@ -230,6 +257,7 @@ var WD = {
                             return value + '°';
                         },
                         align: 'top',
+                        offset: 16,
                         color: '#fff',
                     }
                 }, 
