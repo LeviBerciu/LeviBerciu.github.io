@@ -115,9 +115,13 @@ var WD = {
     currentWindValueEl: document.querySelector('.current-wind-value'),
     currentWindUnitEl: document.querySelector('.current-wind-unit'),
     hrTemperatureEl: document.getElementById('hr-temperature').getContext('2d'),
-
-    //Attaches listeners to date element
-
+    dailyCardsEL: document.querySelectorAll('.daily-card'),
+    dailyDatesEL: document.querySelectorAll('.daily-date'),
+    dailyConditionImagesEl: document.querySelectorAll('.daily-condition-image'),
+    dailyConditionTextsEl: document.querySelectorAll('.daily-condition-text'),
+    dailyMaxtempValuesEl: document.querySelectorAll('.daily-maxtemp-value'),
+    dailyMintempValuesEl: document.querySelectorAll('.daily-mintemp-value'),
+    dailyUnitsEl: document.querySelectorAll('.daily-unit'),
 
     //Defining WD variable
     weatherData: undefined,
@@ -144,7 +148,7 @@ var WD = {
         var currentDateObject = new Date(this.weatherData.current.dt * 1000);
         var currentDate = currentDateObject.toDateString()
         var currentTime = currentDateObject.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: false });
-        WD.currentDateEl.textContent = currentDate.substring(0,3) + '. ' + currentDate.substring(4,7) + '. ' + currentDate.substring(8,10) + '. ' + currentTime;
+        WD.currentDateEl.textContent = currentDate.substring(0,3) + '. ' + currentDate.substring(4,7) + '. ' + currentDate.substring(8,10) + '. - ' + currentTime;
         //Setting values
         var iconNumber = this.weatherData.current.weather[0].icon;
         WD.currentHumidityValueEl.textContent = this.weatherData.current.humidity;
@@ -173,8 +177,6 @@ var WD = {
             var hourlyDateObject = new Date(this.weatherData.hourly[i].dt * 1000);
             chartHours.push(hourlyDateObject.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: false }));
         };
-
-        
         var chartCondition = new Array;
         for(var i = 0; i < hrDataPoints; i++){
             var weatherImage = new Image();
@@ -184,7 +186,6 @@ var WD = {
             weatherImage.setAttribute('height', '32px');
             chartCondition.push(weatherImage);
         };
-
         //Setting chart data
         var chartTemp = new Array;
         for(var i = 0; i < hrDataPoints; i++){
@@ -216,9 +217,9 @@ var WD = {
                 layout: {
                     padding: {
                         top: 36,
-                        right: 36,
-                        left:24,
-                        bottom:12,
+                        left: 18,
+                        right: 28,
+                        bottom: 12,
                     }
                 },
                 tooltips: {
@@ -263,6 +264,35 @@ var WD = {
                 }, 
             },
         });
+        //Populating dayli cards top
+        for(var i = 0; i < 6; i++){
+            var dailyDateObject = new Date(this.weatherData.daily[i+1].dt * 1000);
+            var dailyDate = dailyDateObject.toDateString()
+            this.dailyDatesEL[i].textContent = dailyDate.substring(0,3) + '. ' + dailyDate.substring(4,7) + '. ' + dailyDate.substring(8,10);
+        }
+        for(var i = 0; i < 6; i++){
+            var iconNumber = this.weatherData.daily[i+1].weather[0].icon;
+            this.dailyConditionImagesEl[i].setAttribute('src', 'assets/' + iconNumber + '.svg');
+            this.dailyConditionTextsEl[i].textContent = this.weatherData.daily[i+1].weather[0].description;
+        }
+        //Populating dayli cards bottom
+        if(WF.selectedUnit == 'imperial'){
+            for(var i = 0; i < 6; i++){
+                this.dailyMaxtempValuesEl[i].textContent = Math.round(this.weatherData.daily[i+1].temp.max * 9 / 5 - 459.67);
+                this.dailyMintempValuesEl[i].textContent = Math.round(this.weatherData.daily[i+1].temp.min * 9 / 5 - 459.67);
+            }
+            for(var i = 0; i < this.dailyUnitsEl.length; i++){
+                this.dailyUnitsEl[i].textContent = '°F';
+            }
+        } else {
+            for(var i = 0; i < 6; i++){
+                this.dailyMaxtempValuesEl[i].textContent = Math.round(this.weatherData.daily[i+1].temp.max - 273.15);
+                this.dailyMintempValuesEl[i].textContent = Math.round(this.weatherData.daily[i+1].temp.min - 273.15);
+            }
+            for(var i = 0; i < this.dailyUnitsEl.length; i++){
+                this.dailyUnitsEl[i].textContent = '°C';
+            }
+        };
     },
 }
 
