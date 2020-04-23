@@ -101,14 +101,25 @@ display: none;
 
 .dashboard-top{
     padding-top: 60px;
-    background: linear-gradient(#ef6c00, #c43e00);
+    background: linear-gradient(#e91e63, #c2185b);
+}
+/* Welcome ----------------------------------------*/
+.welcome-wrapper{
+    padding: 200px 48px 48px 48px;
+    text-align: center;
+    font-size: 24px;
+    font-weight: 100;
+}
+.welcome-wrapper p{
+    font-size: 16px;
+    font-weight: 500;
 }
 /* Now Container ----------------------------------------*/
 .current-date{
     width: 100%;
     line-height: 60px;
-    color:rgba(0, 0, 0, 0.4);
-    font-weight: 300;
+    color:#fff;
+    font-weight: 200;
     text-align: center;
 }
 .now-container{
@@ -187,8 +198,8 @@ display: none;
 .daily-date{
     width: 100%;
     line-height: 24px;
-    color:rgba(0, 0, 0, 0.4);
-    font-weight: 300;
+    color:#fff;
+    font-weight: 200;
     text-align: center;
 }
 .daily-condition{
