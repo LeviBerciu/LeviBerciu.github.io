@@ -160,16 +160,16 @@ var WD = {
         WD.currentConditionTextEl.textContent = this.weatherData.current.weather[0].description;
         switch(iconNumber){
             case "01n": case "01d": case "02n": case "02d":
-                this.dashboardTopEl.style.background = 'linear-gradient(#ffa000, #ff6f00)';
+                this.dashboardTopEl.style.background = 'linear-gradient(#26c6da, #00acc1)';
             break;
             case "03n": case "03d": case "04n": case "04d":
-                this.dashboardTopEl.style.background = 'linear-gradient(#c0ca33, #9e9d24)';
+                this.dashboardTopEl.style.background = 'linear-gradient(#00bcd4, #0097a7)';
             break;
             case "09n": case "09d": case "10n": case "10d": case "13n": case "13d":
                 this.dashboardTopEl.style.background = 'linear-gradient(#00acc1, #00838f)';
             break;
             case "11n": case "11d": case "50n": case "50d":
-                this.dashboardTopEl.style.background = 'linear-gradient(#e91e63, #c2185b)';
+                this.dashboardTopEl.style.background = 'linear-gradient(#0097a7, #006064)';
             break;
             default: alert('Error setting background gradient');
         }
@@ -295,16 +295,16 @@ var WD = {
             this.dailyConditionTextsEl[i].textContent = this.weatherData.daily[i+1].weather[0].description;
             switch(iconNumber){
                 case "01n": case "01d": case "02n": case "02d":
-                    this.dailyCardsEL[i].style.background = 'linear-gradient(#ffa000, #ff6f00)';
+                    this.dailyCardsEL[i].style.background = 'linear-gradient(#26c6da, #00acc1)';
                 break;
                 case "03n": case "03d": case "04n": case "04d":
-                    this.dailyCardsEL[i].style.background = 'linear-gradient(#c0ca33, #9e9d24)';
-                break;
-                case "09n": case "09d": case "10n": case "10d": case "13n": case "13d":
                     this.dailyCardsEL[i].style.background = 'linear-gradient(#00bcd4, #0097a7)';
                 break;
+                case "09n": case "09d": case "10n": case "10d": case "13n": case "13d":
+                    this.dailyCardsEL[i].style.background = 'linear-gradient(#00acc1, #00838f)';
+                break;
                 case "11n": case "11d": case "50n": case "50d":
-                    this.dailyCardsEL[i].style.background = 'linear-gradient(#e91e63, #c2185b)';
+                    this.dailyCardsEL[i].style.background = 'linear-gradient(#0097a7, #006064)';
                 break;
                 default: alert('Error setting background gradient');
             }
