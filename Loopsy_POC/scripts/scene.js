@@ -2,7 +2,9 @@ var canvas = document.getElementById('renderCanvas'); // Get the canvas element
 canvas.height = window.innerWidth;
 canvas.width = window.innerWidth;
 
-var engine = new BABYLON.Engine(canvas, true); // Generate the BABYLON 3D engine
+//var engine = new BABYLON.Engine(canvas, true); // Generate the BABYLON 3D engine
+var engine = new BABYLON.Engine(canvas, true);
+engine.setHardwareScalingLevel(0.5)
 
 // Controls
 var lightPivotSlider = document.getElementById('lightPivotSlider');
@@ -67,7 +69,7 @@ var createScene = function () {
             light2.intensity = 1.5;
 
             // Shadows
-            var shadowGenerator = new BABYLON.ShadowGenerator(5120, light1);
+            var shadowGenerator = new BABYLON.ShadowGenerator(6144, light1);
             for(var i = 0; i < scene.meshes.length; i++){
                 shadowGenerator.addShadowCaster(scene.meshes[i])
                 scene.meshes[i].receiveShadows = true;
@@ -151,7 +153,6 @@ var createScene = function () {
             }
 
             console.log(scene);
-
         });  
     });
     return scene;
