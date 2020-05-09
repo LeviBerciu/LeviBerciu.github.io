@@ -2,9 +2,8 @@ var canvas = document.getElementById('renderCanvas'); // Get the canvas element
 canvas.height = window.innerWidth;
 canvas.width = window.innerWidth;
 
-//var engine = new BABYLON.Engine(canvas, true); // Generate the BABYLON 3D engine
-var engine = new BABYLON.Engine(canvas, true);
-engine.setHardwareScalingLevel(0.5)
+var engine = new BABYLON.Engine(canvas, true); // Generate the BABYLON 3D engine
+//engine.setHardwareScalingLevel(0.5)
 
 // Controls
 var lightPivotSlider = document.getElementById('lightPivotSlider');
@@ -151,8 +150,6 @@ var createScene = function () {
                 secondaryMat.albedoColor = new BABYLON.Color3.FromHexString(defaultSecColor);
                 secondaryPicker.value = defaultSecColor;
             }
-
-            console.log(scene);
         });  
     });
     return scene;
