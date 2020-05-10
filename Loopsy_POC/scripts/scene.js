@@ -3,7 +3,6 @@ canvas.height = window.innerWidth;
 canvas.width = window.innerWidth;
 
 var engine = new BABYLON.Engine(canvas, true); // Generate the BABYLON 3D engine
-//engine.setHardwareScalingLevel(0.5)
 
 // Controls
 var lightPivotSlider = document.getElementById('lightPivotSlider');
@@ -37,7 +36,7 @@ var createScene = function () {
     camera.lowerBetaLimit = 0;
 	camera.upperBetaLimit = Math.PI / 2;
 	camera.lowerRadiusLimit = 6;
-	camera.upperRadiusLimit = 20;
+    camera.upperRadiusLimit = 20;
 
     // Append 3D model & execute when ready
     BABYLON.SceneLoader.Append('./assets/', 'robot_arm.gltf', scene, function () {
@@ -60,20 +59,16 @@ var createScene = function () {
             // Lights
             var light1 = new BABYLON.DirectionalLight('light1', new BABYLON.Vector3(0, -Math.PI / 2, defaulLightZ), scene);
             light1.intensity = 3;
-            //light1.autoUpdateExtends = false;
-            //light1.autoCalcShadowZBounds = true;
             
             var light2 = new BABYLON.HemisphericLight('light2', new BABYLON.Vector3(0, 1, 0), scene);
             light2.intensity = 1.5;
 
             // Shadows
-            var shadowGenerator = new BABYLON.CascadedShadowGenerator(2048, light1); //6144
+            var shadowGenerator = new BABYLON.CascadedShadowGenerator(1024, light1); //6144
             for(var i = 0; i < scene.meshes.length; i++){
                 shadowGenerator.addShadowCaster(scene.meshes[i])
                 scene.meshes[i].receiveShadows = true;
             }
-            //shadowGenerator.usePercentageCloserFiltering = true;
-            //shadowGenerator.filteringQuality = BABYLON.ShadowGenerator.QUALITY_HIGH;
             shadowGenerator.forceBackFacesOnly = true;
             shadowGenerator.autoCalcDepthBounds = true;
 
@@ -99,7 +94,11 @@ var createScene = function () {
             // Ground material
             var groundMat = new BABYLON.ShadowOnlyMaterial('mat', scene);
             groundMat.alpha = 0.25;
+            //groundMat.allowShaderHotSwapping = true;
+            //groundMat.depthFunction = 1;
             ground.material = groundMat;
+            
+            
    
             // Primary material
             var primaryMat = new BABYLON.PBRMaterial('defaultMat', scene);
