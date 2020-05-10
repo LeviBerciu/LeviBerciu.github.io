@@ -65,19 +65,17 @@ var createScene = function () {
             light2.intensity = 1.5;
 
             // Shadows
-            var shadowGenerator = new BABYLON.CascadedShadowGenerator(2048, light1);
+            var shadowGenerator = new BABYLON.CascadedShadowGenerator(2560, light1);
             for(var i = 0; i < scene.meshes.length; i++){
                 shadowGenerator.addShadowCaster(scene.meshes[i])
                 scene.meshes[i].receiveShadows = true;
             };
             shadowGenerator.forceBackFacesOnly = true;
-            
             shadowGenerator.numCascades = 2;
             shadowGenerator.lambda = 0;
             shadowGenerator.cascadeBlendPercentage = 0;
             shadowGenerator.freezeShadowCastersBoundingInfo = true;
-            shadowGenerator.shadowMaxZ = 30;
-            //shadowGenerator.shadowMinZ = 30;
+            shadowGenerator.shadowMaxZ = 38;
             shadowGenerator.depthClamp = false;
             
             // Light direction
