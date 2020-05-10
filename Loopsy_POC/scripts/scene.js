@@ -71,10 +71,13 @@ var createScene = function () {
                 scene.meshes[i].receiveShadows = true;
             };
             shadowGenerator.forceBackFacesOnly = true;
-            shadowGenerator.autoCalcDepthBounds = true;
-            shadowGenerator.autoCalcDepthBoundsRefreshRate = 30;
             shadowGenerator.numCascades = 2;
+            shadowGenerator.autoCalcDepthBounds = true;
+            shadowGenerator.freezeShadowCastersBoundingInfo = true;
+
+            
             shadowGenerator.depthClamp = false;
+            shadowGenerator.stabilizeCascades = false;
             
             // Light direction
             var lightPivot = new BABYLON.TransformNode("root"); 
