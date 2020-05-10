@@ -72,8 +72,13 @@ var createScene = function () {
             };
             shadowGenerator.forceBackFacesOnly = true;
             shadowGenerator.shadowMaxZ = 30;
+            shadowGenerator.numCascades = 4;
+            shadowGenerator.lambda = 0;
+            shadowGenerator.cascadeBlendPercentage = 0;
             shadowGenerator.freezeShadowCastersBoundingInfo = true;
             shadowGenerator.depthClamp = false;
+            
+            
             
             // Light direction
             var lightPivot = new BABYLON.TransformNode("root"); 
