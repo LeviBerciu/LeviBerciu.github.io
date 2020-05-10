@@ -72,7 +72,7 @@ var createScene = function () {
             };
             shadowGenerator.forceBackFacesOnly = true;
             shadowGenerator.autoCalcDepthBounds = true;
-            shadowGenerator.autoCalcDepthBoundsRefreshRate = 2;
+            shadowGenerator.autoCalcDepthBoundsRefreshRate = 30;
             shadowGenerator.numCascades = 2;
             shadowGenerator.depthClamp = false;
             
