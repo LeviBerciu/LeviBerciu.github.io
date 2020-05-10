@@ -72,7 +72,7 @@ var createScene = function () {
             };
             shadowGenerator.forceBackFacesOnly = true;
             
-            shadowGenerator.numCascades = 4;
+            shadowGenerator.numCascades = 2;
             shadowGenerator.lambda = 0;
             shadowGenerator.cascadeBlendPercentage = 0;
             shadowGenerator.freezeShadowCastersBoundingInfo = true;
