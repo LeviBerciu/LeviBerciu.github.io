@@ -17,6 +17,11 @@
         {
             "mesh" : 0,
             "name" : "ground",
+            "scale" : [
+                1.5,
+                1,
+                1.5
+            ],
             "translation" : [
                 -0.25,
                 0,

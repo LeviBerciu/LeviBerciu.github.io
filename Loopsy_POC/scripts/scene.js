@@ -36,7 +36,7 @@ var createScene = function () {
     camera.lowerBetaLimit = 0;
 	camera.upperBetaLimit = Math.PI / 2;
 	camera.lowerRadiusLimit = 6;
-    camera.upperRadiusLimit = 20;
+    camera.upperRadiusLimit = 18;
 
     // Append 3D model & execute when ready
     BABYLON.SceneLoader.Append('./assets/', 'robot_arm.gltf', scene, function () {
@@ -64,7 +64,7 @@ var createScene = function () {
             light2.intensity = 1.5;
 
             // Shadows
-            var shadowGenerator = new BABYLON.CascadedShadowGenerator(1024, light1); //6144
+            var shadowGenerator = new BABYLON.CascadedShadowGenerator(2048, light1);
             for(var i = 0; i < scene.meshes.length; i++){
                 shadowGenerator.addShadowCaster(scene.meshes[i])
                 scene.meshes[i].receiveShadows = true;
@@ -94,12 +94,8 @@ var createScene = function () {
             // Ground material
             var groundMat = new BABYLON.ShadowOnlyMaterial('mat', scene);
             groundMat.alpha = 0.25;
-            //groundMat.allowShaderHotSwapping = true;
-            //groundMat.depthFunction = 1;
             ground.material = groundMat;
             
-            
-   
             // Primary material
             var primaryMat = new BABYLON.PBRMaterial('defaultMat', scene);
             primaryMat.albedoColor = new BABYLON.Color3.FromHexString(defaultPriColor);
