@@ -9,6 +9,11 @@ body{
     background-color: #eceff1;
 }
 
+button{
+    padding: 0.5em;
+    text-transform: uppercase;
+}
+
 .canvasWrapper{
     height: 100vh;
     padding: 32px;

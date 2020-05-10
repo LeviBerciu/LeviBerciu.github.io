@@ -68,7 +68,7 @@ var createScene = function () {
             for(var i = 0; i < scene.meshes.length; i++){
                 shadowGenerator.addShadowCaster(scene.meshes[i])
                 scene.meshes[i].receiveShadows = true;
-            }
+            };
             shadowGenerator.forceBackFacesOnly = true;
             shadowGenerator.autoCalcDepthBounds = true;
 
@@ -92,6 +92,7 @@ var createScene = function () {
             });
 
             // Ground material
+            
             var groundMat = new BABYLON.ShadowOnlyMaterial('mat', scene);
             groundMat.alpha = 0.25;
             ground.material = groundMat;
@@ -102,7 +103,7 @@ var createScene = function () {
             var priamryParts = [part_02, part_05, part_07, part_09, part_11]
             for(var i = 0; i < priamryParts.length; i++){
                 priamryParts[i].material = primaryMat;
-            }
+            };
             primaryPicker.addEventListener('input', function(){
                 primaryMat.albedoColor = new BABYLON.Color3.FromHexString(primaryPicker.value);
             });
@@ -124,8 +125,8 @@ var createScene = function () {
                     scene.meshes[i].material.roughness = 1;
                     scene.meshes[i].material.clearCoat.isEnabled = true;
                     scene.meshes[i].material.clearCoat.roughness = 0.75;
-                }
-            }
+                };
+            };
 
             // Reset to default
             resetButton.addEventListener('click', function(){
@@ -144,7 +145,7 @@ var createScene = function () {
                 primaryPicker.value = defaultPriColor;
                 secondaryMat.albedoColor = new BABYLON.Color3.FromHexString(defaultSecColor);
                 secondaryPicker.value = defaultSecColor;
-            }
+            };
         });  
     });
     return scene;
@@ -162,11 +163,3 @@ engine.runRenderLoop(function () {
 window.addEventListener("resize", function () {
         engine.resize();
 });
-
-
-
-
-
-
-
-
