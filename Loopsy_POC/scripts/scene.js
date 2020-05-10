@@ -65,16 +65,16 @@ var createScene = function () {
             light2.intensity = 1.5;
 
             // Shadows
-            var shadowGenerator = new BABYLON.CascadedShadowGenerator(2048, light1);
-            for(var i = 0; i < scene.meshes.length; i++){
-                shadowGenerator.addShadowCaster(scene.meshes[i])
-                scene.meshes[i].receiveShadows = true;
-            };
-            shadowGenerator.forceBackFacesOnly = true;
-            shadowGenerator.autoCalcDepthBounds = true;
-            shadowGenerator.autoCalcDepthBoundsRefreshRate = 2;
-            shadowGenerator.numCascades = 2;
-            shadowGenerator.depthClamp = false;
+            // var shadowGenerator = new BABYLON.CascadedShadowGenerator(2048, light1);
+            // for(var i = 0; i < scene.meshes.length; i++){
+            //     shadowGenerator.addShadowCaster(scene.meshes[i])
+            //     scene.meshes[i].receiveShadows = true;
+            // };
+            // shadowGenerator.forceBackFacesOnly = true;
+            // shadowGenerator.autoCalcDepthBounds = true;
+            // shadowGenerator.autoCalcDepthBoundsRefreshRate = 2;
+            // shadowGenerator.numCascades = 2;
+            // shadowGenerator.depthClamp = false;
             
             // Light direction
             var lightPivot = new BABYLON.TransformNode("root"); 
