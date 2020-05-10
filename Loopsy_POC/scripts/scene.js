@@ -71,13 +71,9 @@ var createScene = function () {
                 scene.meshes[i].receiveShadows = true;
             };
             shadowGenerator.forceBackFacesOnly = true;
-            shadowGenerator.numCascades = 2;
-            shadowGenerator.autoCalcDepthBounds = true;
+            shadowGenerator.shadowMaxZ = 30;
             shadowGenerator.freezeShadowCastersBoundingInfo = true;
-
-            
             shadowGenerator.depthClamp = false;
-            shadowGenerator.stabilizeCascades = false;
             
             // Light direction
             var lightPivot = new BABYLON.TransformNode("root"); 
@@ -99,7 +95,6 @@ var createScene = function () {
             });
 
             // Ground material
-            
             var groundMat = new BABYLON.ShadowOnlyMaterial('mat', scene);
             groundMat.alpha = 0.25;
             ground.material = groundMat;
