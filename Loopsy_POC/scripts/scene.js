@@ -63,19 +63,18 @@ var createScene = function () {
             light1.autoUpdateExtends = false;
             light1.autoCalcShadowZBounds = true;
             
-
             var light2 = new BABYLON.HemisphericLight('light2', new BABYLON.Vector3(0, 1, 0), scene);
             light2.intensity = 1.5;
 
             // Shadows
-            var shadowGenerator = new BABYLON.ShadowGenerator(6144, light1);
-            for(var i = 0; i < scene.meshes.length; i++){
-                shadowGenerator.addShadowCaster(scene.meshes[i])
-                scene.meshes[i].receiveShadows = true;
-            }
-            shadowGenerator.usePercentageCloserFiltering = true;
-            shadowGenerator.filteringQuality = BABYLON.ShadowGenerator.QUALITY_HIGH;
-            shadowGenerator.forceBackFacesOnly = true;
+            // var shadowGenerator = new BABYLON.ShadowGenerator(6144, light1);
+            // for(var i = 0; i < scene.meshes.length; i++){
+            //     shadowGenerator.addShadowCaster(scene.meshes[i])
+            //     scene.meshes[i].receiveShadows = true;
+            // }
+            // shadowGenerator.usePercentageCloserFiltering = true;
+            // shadowGenerator.filteringQuality = BABYLON.ShadowGenerator.QUALITY_HIGH;
+            // shadowGenerator.forceBackFacesOnly = true;
 
             // Light direction
             var lightPivot = new BABYLON.TransformNode("root"); 
@@ -152,6 +151,7 @@ var createScene = function () {
             }
         });  
     });
+    
     return scene;
 };
 
