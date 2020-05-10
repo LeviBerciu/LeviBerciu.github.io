@@ -1,6 +1,6 @@
 var canvas = document.getElementById('renderCanvas'); // Get the canvas element
-canvas.height = window.innerWidth;
 canvas.width = window.innerWidth;
+canvas.height = window.innerWidth;
 
 var engine = new BABYLON.Engine(canvas, true); // Generate the BABYLON 3D engine
 
