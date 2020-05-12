@@ -6,8 +6,10 @@ var exportButton = document.getElementById('exportButton');
 exportButton.addEventListener('click', function(){
     canvasWrapper.classList.add('record');
     mediaRecorder.start();
-    setTimeout(function (){ mediaRecorder.stop(); canvasWrapper.classList.remove('record');}, 4000);
-    
+    setTimeout(function (){ 
+        mediaRecorder.stop(); 
+        canvasWrapper.classList.remove('record');
+    }, 4000);
 });
 
 var options = {

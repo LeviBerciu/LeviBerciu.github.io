@@ -165,6 +165,21 @@ engine.runRenderLoop(function () {
 });
 
 // Watch for browser/canvas resize events
-window.addEventListener("resize", function () {
+// window.addEventListener("resize", function () {
+//         engine.resize();
+//         console.log('resize');
+// });
+
+var canvasWrapper = document.querySelector('.canvasWrapper');
+
+
+var ro = new ResizeObserver( entries => {
+    for (let entry of entries) {
+        const cr = entry.contentRect;
         engine.resize();
-});
+        console.log('resize');
+    }
+  });
+  
+  // Observe one or multiple elements
+  ro.observe(canvasWrapper);
