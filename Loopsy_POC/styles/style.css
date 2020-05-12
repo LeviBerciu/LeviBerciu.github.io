@@ -6,7 +6,7 @@
 
 body{
     display: flex;
-    background-color: #eceff1;
+    background-color: #37474f;
 }
 
 button{
@@ -23,11 +23,15 @@ button{
 #renderCanvas{
     width: 100%;
     height: 100%;
-    outline: 1px dashed #b0bec5;
+    /* outline: 1px dashed #b0bec5; */
 }
 
 .controlsWrapper{
     padding: 32px;
+}
+
+#videoPreview{
+    width: 460px;
 }
 
 @media only screen and (orientation: portrait) {
