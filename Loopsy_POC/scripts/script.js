@@ -6,6 +6,7 @@ var engine = new BABYLON.Engine(canvas, true); // Generate the BABYLON 3D engine
 engine.setHardwareScalingLevel(1);
 
 // Controls
+var body = document.getElementById('body');
 var lightPivotSlider = document.getElementById('lightPivotSlider');
 var lightSliderZ = document.getElementById('lightSliderZ');
 var environmentPicker = document.getElementById('environmentPicker');
@@ -91,13 +92,11 @@ var createScene = function () {
                 light1.direction.z = lightSliderZ.value
             });
 
-            var body = document.getElementById('body'); // to be removed ***
-
             // Environment color
             scene.clearColor = new BABYLON.Color3.FromHexString(defaultEnvColor);
             environmentPicker.addEventListener('input', function(){
                 scene.clearColor = new BABYLON.Color3.FromHexString(environmentPicker.value);
-                body.style.backgroundColor = environmentPicker.value; // to be removed ***
+                body.style.backgroundColor = environmentPicker.value;
             });
 
             // Ground material
@@ -149,6 +148,7 @@ var createScene = function () {
                 lightSliderZ.value = defaulLightZ;
                 scene.clearColor = new BABYLON.Color3.FromHexString(defaultEnvColor);
                 environmentPicker.value = defaultEnvColor;
+                body.style.backgroundColor = defaultEnvColor;
                 primaryMat.albedoColor = new BABYLON.Color3.FromHexString(defaultPriColor);
                 primaryPicker.value = defaultPriColor;
                 secondaryMat.albedoColor = new BABYLON.Color3.FromHexString(defaultSecColor);
@@ -191,14 +191,13 @@ exportButton.addEventListener('click', function(){
 });
 
 var options = {
-    videoBitsPerSecond : 2500000,
-    mimeType: 'video/webm;codecs=vp9',
+    mimeType: 'video/webm; codecs=vp9',
 };
 
 var videoStream = renderCanvas.captureStream(30);
 var mediaRecorder = new MediaRecorder(videoStream, options);
-
 var chunks = [];
+
 mediaRecorder.ondataavailable = function(e) {
     chunks.push(e.data);
 };
