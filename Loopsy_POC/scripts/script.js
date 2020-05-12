@@ -91,10 +91,13 @@ var createScene = function () {
                 light1.direction.z = lightSliderZ.value
             });
 
+            var body = document.getElementById('body'); // to be removed ***
+
             // Environment color
             scene.clearColor = new BABYLON.Color3.FromHexString(defaultEnvColor);
             environmentPicker.addEventListener('input', function(){
                 scene.clearColor = new BABYLON.Color3.FromHexString(environmentPicker.value);
+                body.style.backgroundColor = environmentPicker.value; // to be removed ***
             });
 
             // Ground material
@@ -167,7 +170,6 @@ engine.runRenderLoop(function () {
 // Watch for browser/canvas resize events
 window.addEventListener("resize", function () {
         engine.resize();
-        console.log('resize');
 });
 
 // RECORD CANVAS ------------------------------------------------------
