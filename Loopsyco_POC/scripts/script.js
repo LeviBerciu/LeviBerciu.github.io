@@ -92,11 +92,9 @@ var createScene = function () {
             for(var i = 0; i < scene.meshes.length; i++){
                 scene.meshes[i].receiveShadows = true;
             };
-            
-            shadowGenerator.usePercentageCloserFiltering = true;
             shadowGenerator.forceBackFacesOnly = true;
+            shadowGenerator.usePercentageCloserFiltering = true;
             
-
             // Environment color
             scene.clearColor = new BABYLON.Color3.FromHexString(defaultEnvColor);
             environmentPicker.addEventListener('input', function(){
@@ -132,12 +130,10 @@ var createScene = function () {
             });
 
             // Global material proprties
-            for(var i = 1; i < scene.meshes.length; i++){
-                if(scene.meshes[i] != ground){
-                    scene.meshes[i].material.roughness = 1;
-                    scene.meshes[i].material.clearCoat.isEnabled = true;
-                    scene.meshes[i].material.clearCoat.roughness = 0.75;
-                };
+            for(var i = 0; i < allParts.length; i++){
+                allParts[i].material.roughness = 1;
+                allParts[i].material.clearCoat.isEnabled = true;
+                allParts[i].material.clearCoat.roughness = 0.75;
             };
 
             // Reset to default
