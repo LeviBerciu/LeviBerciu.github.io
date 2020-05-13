@@ -58,27 +58,19 @@ var createScene = function () {
             var part_10 = scene.getMeshByName('part_10');
             var part_11 = scene.getMeshByName('part_11');
 
+            var allParts = [part_01, part_02, part_03, part_04, part_05, part_06, part_07, part_08, part_09, part_10, part_11] 
+
             // Lights
             var light1 = new BABYLON.DirectionalLight('light1', new BABYLON.Vector3(0, -Math.PI / 2, defaulLightZ), scene);
+            light1.position = new BABYLON.Vector3(0, 12, 0);
             light1.intensity = 3;
+            //light1.autoCalcShadowZBounds = true
+            light1.shadowMinZ =4;
+            light1.shadowMaxZ = 20;
             
             var light2 = new BABYLON.HemisphericLight('light2', new BABYLON.Vector3(0, 1, 0), scene);
             light2.intensity = 1.5;
 
-            // Shadows
-            var shadowGenerator = new BABYLON.CascadedShadowGenerator(2560, light1);
-            for(var i = 0; i < scene.meshes.length; i++){
-                shadowGenerator.addShadowCaster(scene.meshes[i])
-                scene.meshes[i].receiveShadows = true;
-            };
-            shadowGenerator.forceBackFacesOnly = true;
-            shadowGenerator.numCascades = 2;
-            shadowGenerator.lambda = 0;
-            shadowGenerator.cascadeBlendPercentage = 0;
-            shadowGenerator.freezeShadowCastersBoundingInfo = true;
-            shadowGenerator.shadowMaxZ = 38;
-            shadowGenerator.depthClamp = false;
-            
             // Light direction
             var lightPivot = new BABYLON.TransformNode("root"); 
             light1.parent = lightPivot;
@@ -91,6 +83,19 @@ var createScene = function () {
             lightSliderZ.addEventListener('input', function(){
                 light1.direction.z = lightSliderZ.value
             });
+
+            // Shadows
+            var shadowGenerator = new BABYLON.ShadowGenerator(1024, light1);
+            for(var i = 0; i < allParts.length; i++){
+                shadowGenerator.addShadowCaster(allParts[i])
+            };
+            for(var i = 0; i < scene.meshes.length; i++){
+                scene.meshes[i].receiveShadows = true;
+            };
+            
+            shadowGenerator.usePercentageCloserFiltering = true;
+            shadowGenerator.forceBackFacesOnly = true;
+            
 
             // Environment color
             scene.clearColor = new BABYLON.Color3.FromHexString(defaultEnvColor);
