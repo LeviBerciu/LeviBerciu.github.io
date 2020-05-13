@@ -191,7 +191,9 @@ exportButton.addEventListener('click', function(){
 });
 
 var options = {
-    mimeType: 'video/webm; codecs=vp9',
+    videoBitsPerSecond: 2500000,
+    mimeType: 'video/webm;codecs=h264'
+    //mimeType: 'video/webm; codecs=vp9',
 };
 
 var videoStream = renderCanvas.captureStream(30);
@@ -203,7 +205,7 @@ mediaRecorder.ondataavailable = function(e) {
 };
 
 mediaRecorder.onstop = function(e) {
-  var blob = new Blob(chunks, { 'type' : "video/webm" });
+  var blob = new Blob(chunks, { 'type' : 'video/webm' });
   chunks = [];
   var videoURL = URL.createObjectURL(blob);
   videoPreview.src = videoURL;
