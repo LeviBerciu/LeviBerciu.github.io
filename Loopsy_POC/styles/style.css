@@ -43,7 +43,7 @@ button{
     background-color: #ffffff;
 }
 
-#videoPreview{
+video{
     width: 320px;
     height: 320px;
 }

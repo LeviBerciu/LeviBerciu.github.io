@@ -192,7 +192,7 @@ exportButton.addEventListener('click', function(){
 
 var options = {
     videoBitsPerSecond: 2500000,
-    mimeType: 'video/webm;codecs=h264'
+    mimeType: 'video/webm;codecs=h264,vp9,opus'
     //mimeType: 'video/webm; codecs=vp9',
 };
 
