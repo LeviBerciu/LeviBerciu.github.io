@@ -62,12 +62,12 @@ var createScene = function () {
 
             // Lights
             var light1 = new BABYLON.DirectionalLight('light1', new BABYLON.Vector3(0, -Math.PI / 2, defaulLightZ), scene);
-            light1.position = new BABYLON.Vector3(0, 12, 0);
+            light1.position = new BABYLON.Vector3(0, 10, 0);
             light1.intensity = 3;
             light1.autoCalcShadowZBounds = true
             //light1.autoUpdateExtends = false;
-            //light1.shadowMinZ =4;
-            //light1.shadowMaxZ = 20;
+            //light1.shadowMinZ = 3;
+            //light1.shadowMaxZ = 16;
             
             var light2 = new BABYLON.HemisphericLight('light2', new BABYLON.Vector3(0, 1, 0), scene);
             light2.intensity = 1.5;
@@ -95,7 +95,10 @@ var createScene = function () {
             };
             shadowGenerator.forceBackFacesOnly = true;
             //shadowGenerator.usePercentageCloserFiltering = true;
-            
+            //shadowGenerator.frustumEdgeFalloff = 1
+            //shadowGenerator.useContactHardeningShadow = true;
+            shadowGenerator.usePoissonSampling = true;
+ 
             // Environment color
             scene.clearColor = new BABYLON.Color3.FromHexString(defaultEnvColor);
             environmentPicker.addEventListener('input', function(){
