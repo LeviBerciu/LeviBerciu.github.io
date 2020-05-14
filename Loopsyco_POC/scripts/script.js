@@ -185,13 +185,13 @@ var exportButton = document.getElementById('exportButton');
 
 exportButton.addEventListener('click', function(){
     canvasWrapper.classList.add('record');
-    popup.classList.add('visible');
     engine.resize();
     mediaRecorder.start();
     setTimeout(function (){ 
         mediaRecorder.stop(); 
         canvasWrapper.classList.remove('record');
         engine.resize();
+        popup.classList.add('visible');
     }, 4000);
 });
 
