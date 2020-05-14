@@ -48,6 +48,8 @@ button{
 }
 
 .popup{
+    width: 100vw;
+    height: 100vh;
     color: #ffffff;
     background-color: #000000;
     position: fixed;
@@ -56,8 +58,6 @@ button{
     align-items: center;
     left: 0;
     right: 0;
-    width: 100%;
-    height: 100%;
     z-index: 1;
     visibility: hidden;
 }
@@ -84,7 +84,6 @@ button{
 
 video{ 
     width: 100%;
-    height: 100%;
 }
 
 @media only screen and (orientation: portrait) {
