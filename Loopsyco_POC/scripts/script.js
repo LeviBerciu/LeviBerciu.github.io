@@ -65,7 +65,7 @@ var createScene = function () {
             var light1 = new BABYLON.DirectionalLight('light1', new BABYLON.Vector3(0, -Math.PI / 2, defaulLightZ), scene);
             light1.position = new BABYLON.Vector3(0, 0, 0);
             light1.intensity = 3;
-            light1.shadowMinZ = -10;
+            light1.shadowMinZ = -15;
             light1.shadowMaxZ = 5;
             light1.shadowOrthoScale = 1;
             
@@ -177,12 +177,15 @@ window.addEventListener("resize", function () {
 // RECORD CANVAS ------------------------------------------------------
 
 var canvasWrapper = document.querySelector('.canvasWrapper');
+var popup = document.querySelector('.popup');
+var closeButton = document.querySelector('.closeButton');
 var renderCanvas = document.getElementById('renderCanvas');
 var videoPreview = document.getElementById('videoPreview');
 var exportButton = document.getElementById('exportButton');
 
 exportButton.addEventListener('click', function(){
     canvasWrapper.classList.add('record');
+    popup.classList.add('visible');
     engine.resize();
     mediaRecorder.start();
     setTimeout(function (){ 
@@ -205,8 +208,12 @@ mediaRecorder.ondataavailable = function(e) {
 };
 
 mediaRecorder.onstop = function(e) {
-  var blob = new Blob(chunks, { 'type' : 'video/mp4' });
-  chunks = [];
-  var videoURL = URL.createObjectURL(blob);
-  videoPreview.src = videoURL;
+    var blob = new Blob(chunks, { 'type' : 'video/mp4' });
+    chunks = [];
+    var videoURL = URL.createObjectURL(blob);
+    videoPreview.src = videoURL;
 };
+
+closeButton.addEventListener('click', function(){
+    popup.classList.remove('visible');
+});
