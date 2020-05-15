@@ -208,7 +208,7 @@ mediaRecorder.ondataavailable = function(e) {
 };
 
 mediaRecorder.onstop = function(e) {
-    var blob = new Blob(chunks, { 'type' : 'video/mp4' });
+    var blob = new Blob(chunks, { 'type' : 'video/webm' });
     chunks = [];
     var videoURL = URL.createObjectURL(blob);
     videoPreview.src = videoURL;
