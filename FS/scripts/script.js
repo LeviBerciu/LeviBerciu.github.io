@@ -159,9 +159,8 @@ function createAchive(toArchive){
         var link = document.createElement('a');
         link.href = "data:application/zip;base64," + content;
         link.download = "Frames.zip";
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
+        link.textContent = "Download Frames"
+        document.body.appendChild(link); 
     });
 
 }
