@@ -3,7 +3,7 @@ canvas.width = window.innerWidth;
 canvas.height = window.innerWidth;
 
 var engine = new BABYLON.Engine(canvas, true); // Generate the BABYLON 3D engine
-engine.setHardwareScalingLevel(1);
+engine.setHardwareScalingLevel(0.5);
 
 // Controls
 var body = document.getElementById('body');
