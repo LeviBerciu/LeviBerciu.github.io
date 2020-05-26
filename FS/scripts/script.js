@@ -143,8 +143,6 @@ window.addEventListener("resize", function () {
 // ----------------------------------------------- CREATE ZIP & DOWNLOAD
 
 function createAchive(toArchive){
-    
-    console.log(toArchive);
 
     var zip = new JSZip();
 
@@ -162,5 +160,4 @@ function createAchive(toArchive){
         link.textContent = "Download Frames"
         document.body.appendChild(link); 
     });
-
 }
