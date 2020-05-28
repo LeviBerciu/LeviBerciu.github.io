@@ -21,7 +21,7 @@ h1{
     padding: 0px 120px 0px 120px;
 }
 
-/* NAV BAR */
+/* -------------------- NAV BAR */
 
 nav{
     width: 100%;
@@ -40,6 +40,12 @@ nav{
     display: flex;
     float: right;
     list-style: none;
+    text-align: right;
+}
+.navClose{
+    height: 30px;
+    display: none;
+    float: right;
 }
 .navList li a{
     margin: 0px 0px 0px 30px;
@@ -57,13 +63,7 @@ nav{
     color: #37474F;
 }
 
-/* SECTION */
-
-section{
-    width: 100%;
-}
-
-/* FOOTER */
+/* -------------------- FOOTER */
 
 footer{
     width: 100%;
@@ -82,14 +82,19 @@ footer span{
     font-weight: 700;
 }
 
-/* PAGE SPECIFIC */
+/* -------------------- SECTIONS */
+
+
+section{
+    width: 100%;
+}
 
 .valueProposition{
     max-width: 800px;
     padding: 40px 0px 40px 0px;
 }
 
-/* RESPONSIVE 960 */
+/* -------------------- RESPONSIVE 960 */
 
 @media only screen and (max-width: 960px) {
     h1{
@@ -107,6 +112,7 @@ footer span{
         height: 40px;
     }
     .navList li a{
+        font-size: 16px;
         line-height: 40px;
     }
     .valueProposition{
@@ -114,7 +120,7 @@ footer span{
     }
   }
 
-/* RESPONSIVE 720 */
+/* -------------------- RESPONSIVE 720 */
 
 @media only screen and (max-width: 720px) {
     .wrapper{
@@ -131,10 +137,21 @@ footer span{
         display: block;
     }
     .navList{
-        display: none;
+        padding: 0px 40px 0px 80px;
+        height: 100vh;
+        position: absolute;
+        display: block;
+        top: 0;
+        right: 0;
+        background-color: cornsilk;
+    }
+    .navClose{
+        margin: 30px 0px 30px 0px;
+        display: block;
     }
     .navList li a{
-        line-height: 30px;
+        line-height: 60px;
+        margin: 0px;
     }
     footer{
         padding: 20px 0px 20px 0px;
