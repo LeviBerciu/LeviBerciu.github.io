@@ -5,54 +5,60 @@
 }
 body{
     min-width: 320px;
-    font-family: 'Montserrat', sans-serif;
     color: #37474F;
+    font-family: 'Montserrat', sans-serif;
 }
-
 h1{
-    font-size: 60px;
     line-height: 80px;
+    font-size: 60px;
     font-weight: 800;
 }
-
 .wrapper{
     max-width: 1440px;
     margin: auto;
     padding: 0px 120px 0px 120px;
 }
-
 /* -------------------- NAV BAR */
-
+.overlay{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #37474F;
+    opacity: 0.75;
+}
 nav{
     width: 100%;
-    padding: 60px 0px 60px 0px;
     height: 180px;
+    padding: 60px 0px 60px 0px;
 }
 .navLogo{
     height: 60px;
 }
 .navMenu{
-    height: 30px;
     display: none;
     float: right;
+    height: 30px;
 }
 .navList{
     display: flex;
     float: right;
     list-style: none;
     text-align: right;
+    background-color: #ffffff;
 }
 .navClose{
-    height: 30px;
     display: none;
     float: right;
+    height: 30px;
 }
 .navList li a{
     margin: 0px 0px 0px 30px;
     line-height: 60px;
+    color: #B1BEC5;
     font-size: 20px;
     font-weight: 700;
-    color: #B1BEC5;
     text-decoration: none;
     text-transform: uppercase;
 }
@@ -74,9 +80,9 @@ footer{
 
 footer p{
     line-height: 40px;
+    color: #78909D;
     font-size: 16px;
     font-weight: 300;
-    color: #78909D;
 }
 footer span{
     font-weight: 700;
@@ -98,22 +104,22 @@ section{
 
 @media only screen and (max-width: 960px) {
     h1{
-        font-size: 30px;
         line-height: 40px;
+        font-size: 30px;
     }
     .wrapper{
         padding: 0px 80px 0px 80px;
     }
     nav{
-        padding: 40px 0px 40px 0px;
         height: 120px;
+        padding: 40px 0px 40px 0px;
     }
     .navLogo{
         height: 40px;
     }
     .navList li a{
-        font-size: 16px;
         line-height: 40px;
+        font-size: 16px;
     }
     .valueProposition{
         padding: 20px 0px 20px 0px;
@@ -127,8 +133,8 @@ section{
         padding: 0px 40px 0px 40px;
     }
     nav{
-        padding: 30px 0px 30px 0px;
         height: 90px;
+        padding: 30px 0px 30px 0px;
     }
     .navLogo{
         height: 30px;
@@ -137,17 +143,16 @@ section{
         display: block;
     }
     .navList{
-        padding: 0px 40px 0px 80px;
-        height: 100vh;
-        position: absolute;
         display: block;
+        position: absolute;
         top: 0;
         right: 0;
-        background-color: cornsilk;
+        height: 100vh;
+        padding: 0px 40px 0px 80px;
     }
     .navClose{
-        margin: 30px 0px 30px 0px;
         display: block;
+        margin: 30px 0px 30px 0px;
     }
     .navList li a{
         line-height: 60px;
