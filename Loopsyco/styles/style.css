@@ -3,3 +3,143 @@
     padding: 0;
     box-sizing: border-box;
 }
+body{
+    min-width: 320px;
+    font-family: 'Montserrat', sans-serif;
+    color: #37474F;
+}
+
+h1{
+    font-size: 60px;
+    line-height: 80px;
+    font-weight: 800;
+}
+
+.wrapper{
+    max-width: 1440px;
+    margin: auto;
+    padding: 0px 120px 0px 120px;
+}
+
+/* NAV BAR */
+
+nav{
+    width: 100%;
+    padding: 60px 0px 60px 0px;
+    height: 180px;
+}
+.navLogo{
+    height: 60px;
+}
+.navMenu{
+    height: 30px;
+    display: none;
+    float: right;
+}
+.navList{
+    display: flex;
+    float: right;
+    list-style: none;
+}
+.navList li a{
+    margin: 0px 0px 0px 30px;
+    line-height: 60px;
+    font-size: 16px;
+    font-weight: 700;
+    color: #B1BEC5;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+.navList li a.active{
+    color: #37474F;
+}
+.navList li a:hover{
+    color: #37474F;
+}
+
+/* SECTION */
+
+section{
+    width: 100%;
+}
+
+/* FOOTER */
+
+footer{
+    width: 100%;
+    padding: 40px 0px 40px 0px;
+    box-shadow: 0 -1px 0 #B1BEC5;
+    text-align: center;
+}
+
+footer p{
+    line-height: 40px;
+    font-size: 16px;
+    font-weight: 300;
+    color: #78909D;
+}
+footer span{
+    font-weight: 700;
+}
+
+/* PAGE SPECIFIC */
+
+.valueProposition{
+    max-width: 800px;
+    padding: 40px 0px 40px 0px;
+}
+
+/* RESPONSIVE 960 */
+
+@media only screen and (max-width: 960px) {
+    .wrapper{
+        padding: 0px 80px 0px 80px;
+    }
+    nav{
+        padding: 40px 0px 40px 0px;
+        height: 120px;
+    }
+    .navLogo{
+        height: 40px;
+    }
+    .navList li a{
+        line-height: 40px;
+    }
+    .valueProposition{
+        padding: 20px 0px 20px 0px;
+    }
+  }
+
+/* RESPONSIVE 720 */
+
+@media only screen and (max-width: 720px) {
+    h1{
+        font-size: 30px;
+        line-height: 40px;
+    }
+    .wrapper{
+        padding: 0px 40px 0px 40px;
+    }
+    nav{
+        padding: 30px 0px 30px 0px;
+        height: 90px;
+    }
+    .navLogo{
+        height: 30px;
+    }
+    .navMenu{
+        display: block;
+    }
+    .navList{
+        display: none;
+    }
+    .navList li a{
+        line-height: 30px;
+    }
+    footer{
+        padding: 20px 0px 20px 0px;
+    }
+    .valueProposition{
+        padding: 20px 0px 20px 0px;
+    }
+}
