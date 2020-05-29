@@ -45,6 +45,8 @@ nav{
     display: none;
     float: right;
     height: 30px;
+    padding: 3px 0px 3px 0px;
+    opacity: 0.25;
 }
 .navList{
     display: flex;
@@ -58,6 +60,8 @@ nav{
     display: none;
     float: right;
     height: 30px;
+    padding: 3px 0px 3px 0px;
+    opacity: 0.25;
 }
 .navList li a{
     margin: 0px 0px 0px 30px;
