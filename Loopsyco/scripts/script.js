@@ -19,3 +19,12 @@ navUnderlay.addEventListener('click', function(){
     navUnderlay.setAttribute('style', 'visibility: hidden; opacity: 0');
     navList.setAttribute('style', 'right: -200px');
 })
+
+var mql = window.matchMedia('(max-width: 720px)');
+
+function screenTest(e) {
+    navUnderlay.setAttribute('style', 'visibility: hidden; opacity: 0');
+    navList.setAttribute('style', 'right: -200px');
+}
+
+mql.addListener(screenTest);
