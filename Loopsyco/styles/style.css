@@ -45,7 +45,7 @@ nav{
     display: none;
     float: right;
     height: 30px;
-    padding: 3px 0px 3px 0px;
+    padding: 7px 0px 7px 0px;
     opacity: 0.25;
 }
 .navList{
@@ -60,7 +60,7 @@ nav{
     display: none;
     float: right;
     height: 30px;
-    padding: 3px 0px 3px 0px;
+    padding: 6px 0px 6px 0px;
     opacity: 0.25;
 }
 .navList li a{
