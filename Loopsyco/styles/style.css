@@ -1,6 +1,6 @@
 *{
-    margin: 0;
-    padding: 0;
+    margin: 0px;
+    padding: 0px;
     box-sizing: border-box;
 }
 body{
@@ -18,25 +18,30 @@ h1{
     margin: auto;
     padding: 0px 120px 0px 120px;
 }
+
 /* -------------------- NAV BAR */
-.overlay{
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: #37474F;
-    opacity: 0.75;
-}
+
 nav{
     width: 100%;
     height: 180px;
     padding: 60px 0px 60px 0px;
 }
+.navUnderlay{
+    visibility: hidden;
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100vw;
+    height: 100vh;
+    background-color: #37474F;
+    opacity: 0.75;
+    z-index: 0;
+    transition: all 250ms ease-in-out;
+}
 .navLogo{
     height: 60px;
 }
-.navMenu{
+.navMenuButton{
     display: none;
     float: right;
     height: 30px;
@@ -47,8 +52,9 @@ nav{
     list-style: none;
     text-align: right;
     background-color: #ffffff;
+    z-index: 1;
 }
-.navClose{
+.navCloseButton{
     display: none;
     float: right;
     height: 30px;
@@ -56,17 +62,19 @@ nav{
 .navList li a{
     margin: 0px 0px 0px 30px;
     line-height: 60px;
-    color: #B1BEC5;
+    color: #37474F;
+    opacity: 0.25;
     font-size: 20px;
     font-weight: 700;
     text-decoration: none;
     text-transform: uppercase;
+    transition: opacity 150ms ease-in-out;
 }
 .navList li a.active{
-    color: #37474F;
+    opacity: 1;
 }
 .navList li a:hover{
-    color: #37474F;
+    opacity: 1;
 }
 
 /* -------------------- FOOTER */
@@ -139,22 +147,26 @@ section{
     .navLogo{
         height: 30px;
     }
-    .navMenu{
+    .navMenuButton{
         display: block;
     }
     .navList{
         display: block;
-        position: absolute;
-        top: 0;
-        right: 0;
+        position: fixed;
+        width: 200px;
+        top: 0px;
+        right: -200px;
         height: 100vh;
-        padding: 0px 40px 0px 80px;
+        padding: 0px 40px 0px 0px;
+        transition: right 250ms ease-in-out;
     }
-    .navClose{
+    .navCloseButton{
         display: block;
         margin: 30px 0px 30px 0px;
     }
     .navList li a{
+        float: right;
+        clear: right;
         line-height: 60px;
         margin: 0px;
     }
