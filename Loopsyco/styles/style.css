@@ -7,6 +7,7 @@ body{
     min-width: 320px;
     color: #37474F;
     font-family: 'Montserrat', sans-serif;
+    /* background-color: #F50057; */
 }
 h1{
     line-height: 80px;
@@ -35,7 +36,7 @@ nav{
     height: 100vh;
     background-color: #37474F;
     opacity: 0.75;
-    z-index: 0;
+    z-index: 1;
     transition: all 250ms ease-in-out;
 }
 .navLogo{
@@ -59,7 +60,7 @@ nav{
     list-style: none;
     text-align: right;
     background-color: #ffffff;
-    z-index: 1;
+    z-index: 2;
 }
 .navCloseButton{
     display: none;
@@ -111,6 +112,9 @@ footer span{
 section{
     width: 100%;
 }
+
+/* -------------------- LOOPS SPECIFIC */
+
 .valueProposition{
     max-width: 800px;
     padding: 40px 0px 40px 0px;
@@ -120,10 +124,16 @@ section{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
 }
-
 .loopThumbnail{
     width: 100%;
     display: block;
+}
+
+/* -------------------- CONTACT SPECIFIC */
+
+.contactTitle{
+    text-align: center;
+    padding: 40px 0px 40px 0px;
 }
 
 /* -------------------- RESPONSIVE 960 */
@@ -152,6 +162,7 @@ section{
     }
     .loopsGrid{
         grid-template-columns: 1fr 1fr;
+        padding: 40px 0px 80px 0px;
     }
   }
 
@@ -196,6 +207,9 @@ section{
     }
     .valueProposition{
         padding: 20px 0px 20px 0px;
+    }
+    .loopsGrid{
+        padding: 40px 0px 40px 0px;
     }
 }
 
