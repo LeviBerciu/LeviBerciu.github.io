@@ -15,7 +15,7 @@ h1{
 }
 .wrapper{
     max-width: 1440px;
-    margin: auto;
+    margin: 0px auto 0px auto;
     padding: 0px 120px 0px 120px;
 }
 
@@ -40,6 +40,11 @@ nav{
 }
 .navLogo{
     height: 60px;
+    opacity: 1;
+    transition: opacity 150ms ease-in-out;
+}
+.navLogo:hover{
+    opacity: 0.75;
 }
 .navMenuButton{
     display: none;
@@ -106,10 +111,19 @@ footer span{
 section{
     width: 100%;
 }
-
 .valueProposition{
     max-width: 800px;
     padding: 40px 0px 40px 0px;
+}
+.loopsGrid{
+    padding: 40px 0px 120px 0px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.loopThumbnail{
+    width: 100%;
+    display: block;
 }
 
 /* -------------------- RESPONSIVE 960 */
@@ -135,6 +149,9 @@ section{
     }
     .valueProposition{
         padding: 20px 0px 20px 0px;
+    }
+    .loopsGrid{
+        grid-template-columns: 1fr 1fr;
     }
   }
 
@@ -179,5 +196,13 @@ section{
     }
     .valueProposition{
         padding: 20px 0px 20px 0px;
+    }
+}
+
+/* -------------------- RESPONSIVE 480 */
+
+@media only screen and (max-width: 480px) {
+    .loopsGrid{
+        grid-template-columns: 1fr;
     }
 }
