@@ -16,6 +16,11 @@ h1{
     font-size: 60px;
     font-weight: 800;
 }
+h5{
+    line-height: 20px;
+    padding: 0px 0px 12px 0px;
+    font-size: 16px;
+}
 button {
     display: inline-block;
     line-height: 48px;
@@ -35,6 +40,26 @@ button {
 }
 button:hover {
     opacity: 0.75;
+}
+.textBox{
+    width: 100%;
+    height: 48px;
+    padding: 0px 12px 0px 12px;
+    outline: none;
+    border: 1px solid #78909D;
+    border-radius: 4px;
+    font-family: inherit;
+    color: inherit;
+    font-size: 20px;
+}
+.textBox::placeholder{
+    font-weight: 300;
+    color: #B1BEC5;
+}
+.textArea{
+    height: 118px;
+    padding: 10px 12px 10px 12px;
+    resize: none;
 }
 .wrapper{
     max-width: 1440px;
@@ -157,8 +182,27 @@ section{
 }
 .contactForm{
     max-width: 800px;
+    padding: 40px 0px 120px 0px;
     margin: auto;
 }
+.nameInput, .emailInput{
+    width: calc(50% - 20px);
+    margin: 0px 0px 30px 0px;
+}
+.nameInput{
+    float: left;
+}
+.emailInput{
+    float: right;
+}
+.messageInput{
+    margin: 0px 0px 50px 0px;
+}
+.sendButton{
+    display: block;
+    margin: auto;
+}
+
 
 /* -------------------- RESPONSIVE 960 */
 
@@ -232,6 +276,10 @@ section{
     .loopsGrid{
         padding: 40px 0px 40px 0px;
     }
+    .nameInput, .emailInput{
+        width: 100%;
+        float: left;
+    }
 }
 
 /* -------------------- RESPONSIVE 480 */
@@ -239,5 +287,8 @@ section{
 @media only screen and (max-width: 480px) {
     .loopsGrid{
         grid-template-columns: 1fr;
+    }
+    .sendButton{
+        width: 100%;
     }
 }
