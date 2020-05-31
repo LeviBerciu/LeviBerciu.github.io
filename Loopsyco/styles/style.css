@@ -276,6 +276,9 @@ section{
     .loopsGrid{
         padding: 40px 0px 40px 0px;
     }
+    .contactForm{
+        padding: 40px 0px 80px 0px;
+    }
     .nameInput, .emailInput{
         width: 100%;
         float: left;
