@@ -37,6 +37,7 @@ loopsGrid.addEventListener('mouseover', function(e){
     if (e.target.tagName == 'VIDEO'){
         e.target.play()
         e.target.loop = true;
+        console.log('play')
     }
 });
 
@@ -44,5 +45,6 @@ loopsGrid.addEventListener('mouseout', function(e){
     if (e.target.tagName == 'VIDEO'){
         e.target.pause();
         e.target.currentTime = 0;
+        console.log('pause')
     }
 });
