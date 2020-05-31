@@ -7,12 +7,34 @@ body{
     min-width: 320px;
     color: #37474F;
     font-family: 'Montserrat', sans-serif;
-    /* background-color: #F50057; */
+}
+a{
+    text-decoration: none;
 }
 h1{
     line-height: 80px;
     font-size: 60px;
     font-weight: 800;
+}
+button {
+    display: inline-block;
+    line-height: 48px;
+    padding: 0px 30px 0px 30px;
+    background-color :#F50057;
+    border: none;
+    outline: none;
+    border-radius: 4px;
+    font-family : inherit;
+    font-size: 16px;
+    font-weight: 600;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: opacity 150ms ease-in-out;
+}
+button:hover {
+    opacity: 0.75;
 }
 .wrapper{
     max-width: 1440px;
@@ -41,7 +63,6 @@ nav{
 }
 .navLogo{
     height: 60px;
-    opacity: 1;
     transition: opacity 150ms ease-in-out;
 }
 .navLogo:hover{
@@ -76,7 +97,6 @@ nav{
     opacity: 0.25;
     font-size: 20px;
     font-weight: 700;
-    text-decoration: none;
     text-transform: uppercase;
     transition: opacity 150ms ease-in-out;
 }
@@ -135,6 +155,10 @@ section{
     text-align: center;
     padding: 40px 0px 40px 0px;
 }
+.contactForm{
+    max-width: 800px;
+    margin: auto;
+}
 
 /* -------------------- RESPONSIVE 960 */
 
@@ -157,7 +181,7 @@ section{
         line-height: 40px;
         font-size: 16px;
     }
-    .valueProposition{
+    .valueProposition, .contactTitle{
         padding: 20px 0px 20px 0px;
     }
     .loopsGrid{
@@ -203,9 +227,6 @@ section{
         margin: 0px;
     }
     footer{
-        padding: 20px 0px 20px 0px;
-    }
-    .valueProposition{
         padding: 20px 0px 20px 0px;
     }
     .loopsGrid{
