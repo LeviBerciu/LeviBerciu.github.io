@@ -215,9 +215,6 @@ section{
     max-width: 800px;
     max-height: 800px;
     width: calc(100% - 400px);
-    border-radius: 4px;
-    border: 1px dashed #78909D;
-    overflow: hidden;
 }
 .canvasContainer.record{
     max-width: 1080px;
@@ -228,7 +225,8 @@ section{
 }
 #renderCanvas{
     display: block;
-    border-radius: 3px;
+    border-radius: 4px;
+    border: 1px dashed #78909D;
     width: 100%;
 }
 .controlsContainer{
