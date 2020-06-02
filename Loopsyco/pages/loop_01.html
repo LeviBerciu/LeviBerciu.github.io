@@ -8,6 +8,10 @@
     <link rel="icon" type="image/png" href="../assets/favicon.png" sizes="32x32"/>
     <link rel="stylesheet" href="../styles/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <script src="https://cdn.babylonjs.com/babylon.js"></script>
+    <script src="https://cdn.babylonjs.com/loaders/babylonjs.loaders.min.js"></script>
+    <script src="https://cdn.babylonjs.com/materialsLibrary/babylonjs.materials.min.js"></script>
+    <script src="../libraries/jszip/jszip.js"></script>
 </head>
 <body>
 <!-- Nav Bar -->
@@ -26,6 +30,44 @@
             <div class="navUnderlay"></div>
         </div>
     </nav>
+<!-- Loop Details -->
+    <section>
+        <div class="wrapper">
+            <div class="containers">
+                <div class="canvasContainer">
+                    <canvas id="renderCanvas" touch-action="none"></canvas>
+                </div>
+                <div class="controlsContainer">
+                    <div>
+                        <h6>Environment Color</h6>
+                        <input id="environmentPicker" type="color" value="#37474f">
+                    </div><br>
+                    <div>
+                        <h6>Primary Color</h6>
+                        <input id="primaryPicker" type="color" value="#ffab00">
+                    </div><br>
+                    <div>
+                        <h6>Secondary Color</h6>
+                        <input id="secondaryPicker" type="color" value="#ffffff">
+                    </div><br>
+                    <div>
+                        <h6>Light Direction</h6>
+                        <input id="lightPivotSlider" type="range" min="1" max="3" step="0.01" value="2.2">
+                    </div><br>
+                    <div>
+                        <h6>Shedow Length</h6>
+                        <input id="lightSliderZ" type="range" min="0" max="3.14" step="0.01" value="1">
+                    </div><br>
+                    <div>
+                        <button id="resetButton">reset to default</button>
+                    </div><br>
+                    <div>
+                        <button id="exportButton">export frames</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 <!-- Footer -->
     <footer>
         <div class="wrapper">
@@ -34,6 +76,6 @@
     </footer>
 <!-- Scripts -->
     <script src="../scripts/navigation.js"></script>
-    <script src="../scripts/contact.js"></script>
+    <script src="../scripts/loop_01.js"></script>
 </body>
 </html>
