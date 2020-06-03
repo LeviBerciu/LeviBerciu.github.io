@@ -33,12 +33,13 @@ button {
     text-align: center;
     text-decoration: none;
     text-transform: uppercase;
+    cursor: pointer;
     transition: opacity 150ms ease-in-out;
 }
 button.fill {
     line-height: 48px;
     padding: 0px 30px 0px 30px;
-    background-color :#F50057;
+    background-color: #F50057;
     color: white;
 }
 button.line {
@@ -76,6 +77,38 @@ button:hover {
     margin: 0px auto 0px auto;
     padding: 0px 120px 0px 120px;
 }
+.slider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 8px;
+    border-radius: 4px;  
+    background: #ECEFF1;
+    outline: none;
+    cursor: pointer;
+    transition: opacity 150ms ease-in-out;
+}
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%; 
+    background: #F50057;
+}
+.slider::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #F50057;
+    border: 0px;
+}
+.slider::-moz-focus-outer {
+    border: 0;
+}
+.slider:hover {
+   opacity: 0.75;
+}
+
 
 /* -------------------- NAV BAR */
 
@@ -242,7 +275,7 @@ section{
 .controlsContainer{
     float: left;
     width: 320px;
-    padding: 39px;
+    padding: 39px 39px 9px 39px;
     margin: 0px 0px 0px 80px;
     border-radius: 4px;
     border: 1px solid #78909D;
