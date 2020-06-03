@@ -38,25 +38,25 @@
                     <canvas id="renderCanvas" touch-action="none"></canvas>
                 </div>
                 <div class="controlsContainer">
-                    <div>
+                    <div class="control">
                         <h5>Color</h5>
                         <input id="environmentPicker" type="color" value="#37474f">
                         <input id="primaryPicker" type="color" value="#ffab00">
                         <input id="secondaryPicker" type="color" value="#ffffff">
-                    </div><br>
-                    <div>
+                    </div>
+                    <div class="control">
                         <h5>Light Direction</h5>
                         <input id="lightPivotSlider" type="range" min="1" max="3" step="0.01" value="2.2">
-                    </div><br>
-                    <div>
+                    </div>
+                    <div class="control">
                         <h5>Shedow Length</h5>
                         <input id="lightSliderZ" type="range" min="0" max="3.14" step="0.01" value="1">
-                    </div><br>
-                    <div>
-                        <button id="resetButton">reset to default</button>
-                    </div><br>
-                    <div>
-                        <button id="exportButton">export frames</button>
+                    </div>
+                    <div class="control">
+                        <button class="line" id="resetButton">reset to default</button>
+                    </div>
+                    <div class="control">
+                        <button class="fill" id="exportButton">export frames</button>
                     </div>
                 </div>
             </div>
