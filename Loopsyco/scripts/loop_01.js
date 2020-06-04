@@ -1,9 +1,18 @@
 var canvas = document.getElementById('renderCanvas'); // Get the canvas element
+var engine = new BABYLON.Engine(canvas, true); // Generate the BABYLON 3D engine
+engine.setHardwareScalingLevel(0.5);
+
+// Canvas Width = Canvas Height
 canvas.width = window.innerWidth;
 canvas.height = window.innerWidth;
 
-var engine = new BABYLON.Engine(canvas, true); // Generate the BABYLON 3D engine
-engine.setHardwareScalingLevel(0.5);
+// Preventin Window Scroll
+canvas.onwheel = function(event){
+    event.preventDefault();
+};
+canvas.onmousewheel = function(event){
+    event.preventDefault();
+};
 
 // Controls
 var lightPivotSlider = document.getElementById('lightPivotSlider');

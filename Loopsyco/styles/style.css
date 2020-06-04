@@ -87,6 +87,9 @@ button:hover {
     cursor: pointer;
     transition: opacity 150ms ease-in-out;
 }
+.slider:hover {
+    opacity: 0.75;
+}
 .slider::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
@@ -104,9 +107,6 @@ button:hover {
 }
 .slider::-moz-focus-outer {
     border: 0;
-}
-.slider:hover {
-   opacity: 0.75;
 }
 input[type=color]{
 	width: 48px;
@@ -348,6 +348,9 @@ section{
         padding: 40px 0px 0px 0px;
         margin: auto;
         border: none;
+    }
+    .slider:hover {
+        opacity: 1;
     }
   }
 
