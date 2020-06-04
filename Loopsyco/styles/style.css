@@ -130,7 +130,6 @@ input[type="color"]::-moz-color-swatch  {
     border: solid 1px #78909D;
 }
 
-
 /* -------------------- NAV BAR */
 
 nav{
@@ -205,7 +204,6 @@ footer{
     text-align: center;
     clear: both;
 }
-
 footer p{
     line-height: 40px;
     color: #78909D;
@@ -292,6 +290,7 @@ section{
     border-radius: 4px;
     border: 1px dashed #78909D;
     width: 100%;
+    outline: none;
 }
 .controlsContainer{
     float: left;
@@ -342,8 +341,10 @@ section{
     }
     .canvasContainer{
         width: 100%;
+        float: none;
     }
     .controlsContainer{
+        float: none;
         padding: 40px 0px 0px 0px;
         margin: auto;
         border: none;
