@@ -1,7 +1,7 @@
 var navMenuButton = document.querySelector('.navMenuButton')
 var navCloseButton = document.querySelector('.navCloseButton')
 var navList = document.querySelector('.navList')
-var navUnderlay = document.querySelector('.navUnderlay')
+var navUnderlay = document.getElementById('navUnderlay')
 
 navMenuButton.addEventListener('click', function(){
     navList.setAttribute('style', 'right: 0px');

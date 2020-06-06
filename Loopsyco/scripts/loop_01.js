@@ -222,7 +222,7 @@ window.addEventListener("resize", function () {
     engine.resize();
 });
 
-// ----------------------------------------------- CREATE ZIP & DOWNLOAD
+// ----------------------------------------------- CREATE ZIP & EXPORT POP-UP
 
 function createAchive(toArchive){
     var zip = new JSZip();
@@ -241,3 +241,5 @@ function createAchive(toArchive){
         document.body.removeChild(link);
     });
 }
+
+var exportUnderlay = document.getElementById('exportUnderlay')
