@@ -58,13 +58,22 @@
                         <h5>Shadow Visibility</h5>
                         <input id="shadowSlider" type="range" class="slider" min="-1" max="-0" step="0.01" value="-0.25">
                     </div>
-                    <button class="line" id="resetButton">reset to default</button>
-                    <button class="fill" id="exportButton">export frames</button>
+                    <button id="resetButton" class="line">reset to default</button>
+                    <button id="exportButton" class="fill">export frames</button>
                 </div>
             </div>
         </div>
-        <div class="exportPopup">
-            
+    <!-- Export Modal -->
+        <div id="exportModal" class="modal">
+            <div class="modalTop">
+                <h5 class="modalTitle">Export Frames</h5>
+                <img id="exportCloseButton" class="modalClose" src="../assets/close.svg" alt="close">
+            </div>
+            <div class="modalContent">
+                <h2></h2>
+                <a id="downloadFrames" href=""><button class="fill">download frames</button></a>
+                <p></p>
+            </div>
         </div>
         <div id="exportUnderlay" class="underlay"></div>
     </section>

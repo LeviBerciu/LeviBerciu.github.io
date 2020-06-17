@@ -8,18 +8,31 @@ body{
     color: #37474F;
     font-family: 'Montserrat', sans-serif;
 }
-a{
-    text-decoration: none;
-}
 h1{
     line-height: 80px;
     font-size: 60px;
+    font-weight: 800;
+}
+h2{
+    line-height: 40px;
+    font-size: 30px;
+}
+h4{
+    font-size: 20px;
     font-weight: 800;
 }
 h5{
     line-height: 20px;
     padding: 0px 0px 12px 0px;
     font-size: 16px;
+}
+p{
+    line-height: 30px;
+    font-size: 20px;
+    font-weight: 200;
+}
+a{
+    text-decoration: none;
 }
 button {
     display: inline-block;
@@ -67,7 +80,51 @@ button:hover {
     background-color: #37474F;
     opacity: 0.75;
     z-index: 1;
-    transition: all 250ms ease-in-out;
+}
+.modal{
+    visibility: hidden;
+    width: 720px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    border-radius: 4px;
+    transform: translate(-50%, -50%);
+    background-color: #ffffff;
+    z-index: 2;
+}
+.modalTop{
+    float: left;
+    width: 100%;
+    height: 90px;
+    padding: 0px 40px 0px 40px;
+}
+.modalTitle{
+    font-size: 20px;
+    float: left;
+    line-height: 90px;
+    color: #78909D;
+}
+.modalClose{
+    float: right;
+    height: 18px;
+    margin: 36px 0px 36px 0px;
+    opacity: 0.25;
+    transition: opacity 150ms ease-in-out;
+}
+.modalClose:hover{
+    opacity: 1;
+}
+.modalContent{
+    float: left;
+    margin: 0px 40px 40px 40px;
+}
+.modalContent p{
+    float: left;
+    margin-top: 30px;
+}
+.modalContent a{
+    float: left;
+    margin-top: 30px;
 }
 .textBox{
     width: 100%;
@@ -92,6 +149,7 @@ button:hover {
 .slider {
     -webkit-appearance: none;
     width: 100%;
+    max-width: 240px;
     height: 8px;
     border-radius: 4px;  
     background: #ECEFF1;
@@ -360,6 +418,13 @@ section{
     input[type="color"]:hover {
         opacity: 1;
     }
+    .modal{
+        width: calc(100% - 160px);
+        position: absolute;
+        top: 80px;
+        left: 80px;
+        transform: none;
+    }
   }
 
 /* -------------------- RESPONSIVE 720 */
@@ -411,6 +476,17 @@ section{
         width: 100%;
         float: left;
     }
+    .modal{
+        width: calc(100% - 80px);
+        top: 40px;
+        left: 40px;
+    }
+    .modalContent a{
+        width: 100%;
+    }
+    .modalContent button{
+        width: 100%;
+    }
 }
 
 /* -------------------- RESPONSIVE 480 */
@@ -424,5 +500,11 @@ section{
     }
     .controlsContainer{
         width: 100%;
+    }
+    .modal{
+        width: 100%;
+        top: 0px;
+        left: 0px;
+        border-radius: 0px;
     }
 }

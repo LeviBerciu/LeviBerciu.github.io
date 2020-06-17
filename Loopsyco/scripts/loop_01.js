@@ -179,30 +179,34 @@ var createScene = function () {
             var canvasContainer = document.querySelector('.canvasContainer');
             var exportButton = document.getElementById('exportButton');
             exportButton.addEventListener('click', function(){
-                canvasContainer.classList.add('record');
-                engine.resize();
-                animationGroup.pause();
-                animationGroup.goToFrame(0);
-                var frames = new Array;  
-                var animFrameNr = 0;
-                var videoFrameNr = 0;
-                function captureFrames(){
-                    if(animFrameNr < animFrames && videoFrameNr < videoFrames){
-                        BABYLON.Tools.CreateScreenshotUsingRenderTarget(engine, camera, {precision: 0.5}, function (data){
-                                frames.push(data);
-                        }, 'image/png', 1, true);
-                        animFrameNr += animFrames/videoFrames;
-                        videoFrameNr += 1;
-                        animationGroup.goToFrame(animFrameNr);
-                        captureFrames();
-                    } else {
-                        animationGroup.play();
-                        canvasContainer.classList.remove('record');
-                        engine.resize();
-                        createAchive(frames);
+                openModal();
+                window.setTimeout(exportProcess, 100);
+                function exportProcess(){
+                    canvasContainer.classList.add('record');
+                    engine.resize();
+                    animationGroup.pause();
+                    animationGroup.goToFrame(0);
+                    var frames = new Array;  
+                    var animFrameNr = 0;
+                    var videoFrameNr = 0;
+                    function captureFrames(){
+                        if(animFrameNr < animFrames && videoFrameNr < videoFrames){
+                            BABYLON.Tools.CreateScreenshotUsingRenderTarget(engine, camera, {precision: 0.5}, function (data){
+                                    frames.push(data);
+                            }, 'image/png', 1, true);
+                            animFrameNr += animFrames/videoFrames;
+                            videoFrameNr += 1;
+                            animationGroup.goToFrame(animFrameNr);
+                            captureFrames();
+                        } else {
+                            animationGroup.play();
+                            canvasContainer.classList.remove('record');
+                            engine.resize();
+                            createAchive(frames);
+                        }
                     }
+                    captureFrames()
                 }
-                captureFrames()
             });
         });  
     });
@@ -222,7 +226,7 @@ window.addEventListener("resize", function () {
     engine.resize();
 });
 
-// ----------------------------------------------- CREATE ZIP & EXPORT POP-UP
+// ----------------------------------------------- CREATE ZIP
 
 function createAchive(toArchive){
     var zip = new JSZip();
@@ -233,16 +237,56 @@ function createAchive(toArchive){
     zip.generateAsync({
         type: "base64"
     }).then(function(content) {
-        var link = document.createElement('a');
+        var link = document.getElementById('downloadFrames');
         link.href = "data:application/zip;base64," + content;
         link.download = "Frames.zip";
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
+        setModalReady();
     });
 }
 
-var exportUnderlay = document.getElementById('exportUnderlay')
+// ----------------------------------------------- EXPORT POP-UP
+
+var exportModal = document.getElementById('exportModal');
+var exportUnderlay = document.getElementById('exportUnderlay');
+var exportCloseButton = document.getElementById('exportCloseButton');
+
+exportUnderlay.addEventListener('click', function(){
+    closeModal();
+})
+
+exportCloseButton.addEventListener('click', function(){
+    closeModal();
+})
+
+function openModal(){
+    exportModal.setAttribute('style', 'visibility: visible');
+    exportUnderlay.setAttribute('style', 'visibility: visible');
+    setModalProgress();
+}
+
+function closeModal(){
+    exportModal.setAttribute('style', 'visibility: hidden');
+    exportUnderlay.setAttribute('style', 'visibility: hidden');
+    setModalProgress();
+}
+
+var modalTitle = exportModal.querySelector('h2');
+var modalText = exportModal.querySelector('p');
+var modalButton = exportModal.querySelector('a');
+
+function setModalProgress() {
+    modalTitle.textContent = 'We are prepairing your animation frames ...'
+    modalText.textContent = 'This may take a few minutes. Please do not interrupt this process.'
+    modalButton.setAttribute('style', 'display: none');
+    modalButton.href = '';
+}
+
+function setModalReady() {
+    modalTitle.textContent = 'Your animation frames are ready to be downloaded!'
+    modalText.textContent = 'Check the "ABOUT" page to discover different ways of using animation frames.'
+    modalButton.setAttribute('style', 'display: block');
+}
+
 
 
 // When the modal is shown...
