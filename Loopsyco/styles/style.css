@@ -82,6 +82,8 @@ button:hover {
     z-index: 1;
 }
 .modal{
+    max-height: 100vh;
+    overflow-x: auto;
     visibility: hidden;
     width: 720px;
     position: fixed;
@@ -420,10 +422,10 @@ section{
     }
     .modal{
         width: calc(100% - 160px);
-        position: absolute;
-        top: 80px;
+        position: fixed;
+        top: 50%;
         left: 80px;
-        transform: none;
+        transform: translate(0, -50%);
     }
   }
 
@@ -478,7 +480,6 @@ section{
     }
     .modal{
         width: calc(100% - 80px);
-        top: 40px;
         left: 40px;
     }
     .modalContent a{
@@ -505,6 +506,7 @@ section{
         width: 100%;
         top: 0px;
         left: 0px;
+        transform: none;
         border-radius: 0px;
     }
 }
