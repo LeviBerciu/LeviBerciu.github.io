@@ -45,6 +45,7 @@ var createScene = function () {
     camera.setTarget(new BABYLON.Vector3(defaultCamTar[0], defaultCamTar[1], defaultCamTar[2]));
     camera.attachControl(canvas, true);
     camera.wheelPrecision = 20;
+    camera.pinchPrecision = 20;
     camera.lowerBetaLimit = 0;
 	camera.upperBetaLimit = Math.PI / 2;
 	camera.lowerRadiusLimit = 6;
