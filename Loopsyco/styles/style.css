@@ -71,7 +71,6 @@ button:hover {
     padding: 0px 120px 0px 120px;
 }
 .underlay{
-    visibility: hidden;
     position: fixed;
     left: 0px;
     top: 0px;
@@ -83,7 +82,6 @@ button:hover {
 }
 .modal{
     width: 720px;
-    visibility: hidden;
     position: fixed;
     top: 50%;
     left: 50%;
@@ -227,6 +225,9 @@ nav{
     padding: 7px 0px 7px 0px;
     opacity: 0.25;
 }
+#navUnderlay{
+    visibility: hidden;
+}
 .navList{
     display: flex;
     float: right;
@@ -284,6 +285,10 @@ footer span{
 section{
     width: 100%;
 }
+
+/* -------------------- WELCOME SPECIFIC */
+
+
 
 /* -------------------- LOOPS SPECIFIC */
 
@@ -371,6 +376,12 @@ section{
 .control{
     text-align: center;
     margin: 0px 0px 30px 0px;
+}
+#exportModal{
+    visibility: hidden;
+}
+#exportUnderlay{
+    visibility: hidden;
 }
 
 /* -------------------- RESPONSIVE 960 */
