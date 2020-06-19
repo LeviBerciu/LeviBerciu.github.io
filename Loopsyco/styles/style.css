@@ -82,10 +82,8 @@ button:hover {
     z-index: 1;
 }
 .modal{
-    max-height: 100vh;
-    overflow-x: auto;
-    visibility: hidden;
     width: 720px;
+    visibility: hidden;
     position: fixed;
     top: 50%;
     left: 50%;
@@ -117,14 +115,16 @@ button:hover {
     opacity: 1;
 }
 .modalContent{
+    max-height: calc(100vh - 250px);
     float: left;
     margin: 0px 40px 40px 40px;
+    overflow-x: auto;
 }
 .modalContent p{
     float: left;
     margin-top: 30px;
 }
-.modalContent a{
+.modalContent button{
     float: left;
     margin-top: 30px;
 }
@@ -427,6 +427,12 @@ section{
         left: 80px;
         transform: translate(0, -50%);
     }
+    .modalContent{
+        max-height: calc(100vh - 170px);
+        float: left;
+        margin: 0px 40px 40px 40px;
+        overflow-x: auto;
+    }
   }
 
 /* -------------------- RESPONSIVE 720 */
@@ -508,5 +514,8 @@ section{
         left: 0px;
         transform: none;
         border-radius: 0px;
+    }
+    .modalContent{
+        max-height: calc(100vh - 90px);
     }
 }
