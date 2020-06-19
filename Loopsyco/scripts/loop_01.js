@@ -263,18 +263,18 @@ function openModal(){
     exportModal.setAttribute('style', 'visibility: visible');
     exportUnderlay.setAttribute('style', 'visibility: visible');
     setModalProgress();
-    document.body.style.position = 'fixed';
-    document.body.style.top = `-${window.scrollY}px`;
+    // document.body.style.position = 'fixed';
+    // document.body.style.top = `-${window.scrollY}px`;
 }
 
 function closeModal(){
     exportModal.setAttribute('style', 'visibility: hidden');
     exportUnderlay.setAttribute('style', 'visibility: hidden');
     setModalProgress();
-    const scrollY = document.body.style.top;
-    document.body.style.position = '';
-    document.body.style.top = '';
-    window.scrollTo(0, parseInt(scrollY || '0') * -1);
+    // const scrollY = document.body.style.top;
+    // document.body.style.position = '';
+    // document.body.style.top = '';
+    // window.scrollTo(0, parseInt(scrollY || '0') * -1);
 }
 
 var modalTitle = exportModal.querySelector('h2');

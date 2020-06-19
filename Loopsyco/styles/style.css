@@ -343,10 +343,10 @@ section{
     width: calc(100% - 400px);
 }
 .canvasContainer.record{
-    max-width: 1080px;
-    max-height: 1080px;
-    width: 1080px;
-    height: 1080px;
+    max-width: 1082px;
+    max-height: 1082px;
+    width: 1082px;
+    height: 1082px;
     position: absolute;
 }
 #renderCanvas{
