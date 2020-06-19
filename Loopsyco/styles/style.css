@@ -80,8 +80,18 @@ button:hover {
     opacity: 0.75;
     z-index: 1;
 }
+.modalWrapper{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: khaki;
+}
 .modal{
+    max-height: 100%;
     width: 720px;
+    overflow-x: auto;
     position: fixed;
     top: 50%;
     left: 50%;
@@ -113,10 +123,8 @@ button:hover {
     opacity: 1;
 }
 .modalContent{
-    max-height: calc(100vh - 250px);
     float: left;
     margin: 0px 40px 40px 40px;
-    overflow-x: auto;
 }
 .modalContent p{
     float: left;
@@ -286,10 +294,6 @@ section{
     width: 100%;
 }
 
-/* -------------------- WELCOME SPECIFIC */
-
-
-
 /* -------------------- LOOPS SPECIFIC */
 
 .valueProposition{
@@ -439,10 +443,9 @@ section{
         transform: translate(0, -50%);
     }
     .modalContent{
-        max-height: calc(100vh - 170px);
+        max-height: calc(100% - 170px);
         float: left;
         margin: 0px 40px 40px 40px;
-        overflow-x: auto;
     }
   }
 
@@ -525,8 +528,5 @@ section{
         left: 0px;
         transform: none;
         border-radius: 0px;
-    }
-    .modalContent{
-        max-height: calc(100vh - 90px);
     }
 }
