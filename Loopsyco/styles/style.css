@@ -133,8 +133,8 @@ button:hover {
 .modalContent ul{
     line-height: 30px;
     margin-top: 20px;
-    float: left;
     list-style-position: inside;
+    float: left;
     clear: both;
 }
 .modalContent button{
