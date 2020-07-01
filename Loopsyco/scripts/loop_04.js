@@ -24,14 +24,14 @@ var shadowSlider = document.getElementById('shadowSlider');
 var resetButton = document.getElementById('resetButton');
 
 // Default values
-var defaultCamPos = [10, 0, 10];
-var defaultCamTar = [0, 0, 0];
-var defaultLightPivot = 1.5;
-var defaultLightZ = 0;
-var defaultShadow = 0;
-var defaultEnvColor = '#133A59';
-var defaultPriColor = '#00b3db';
-var defaultSecColor = '#24ffcf';
+var defaultCamPos = [2, 7, -10];
+var defaultCamTar = [0.1, 3.5, 0];
+var defaultLightPivot = 2.075;
+var defaultLightZ = 2.2;
+var defaultShadow = 0.75;
+var defaultEnvColor = '#F24141';
+var defaultPriColor = '#FFFFFF';
+var defaultSecColor = '#023E73';
 
 // Create Scene Function
 var createScene = function () {
@@ -46,26 +46,24 @@ var createScene = function () {
     camera.attachControl(canvas, true);
     camera.wheelPrecision = 20;
     camera.pinchPrecision = 100;
-    //camera.lowerBetaLimit = 0;
-	//camera.upperBetaLimit = Math.PI / 2;
-	camera.lowerRadiusLimit = 7;
-    camera.upperRadiusLimit = 24;
+    camera.lowerBetaLimit = 0;
+	camera.upperBetaLimit = Math.PI / 2;
+	camera.lowerRadiusLimit = 6;
+    camera.upperRadiusLimit = 18;
 
     // Append 3D model & execute when ready
-    BABYLON.SceneLoader.Append('../assets/gltfs/', 'loop_03.gltf', scene, function () {
+    BABYLON.SceneLoader.Append('../assets/gltfs/', 'loop_04.gltf', scene, function () {
         scene.executeWhenReady(function () {
 
-            console.log(scene)
-
             // Meshes
-            //var ground = scene.getMeshByName('ground');
+            var ground = scene.getMeshByName('ground');
             var part_01 = scene.getMeshByName('part_01');
             var part_02 = scene.getMeshByName('part_02');
 
             var allParts = [part_01, part_02] 
             
             // Lights
-            var light1 = new BABYLON.DirectionalLight('light1', new BABYLON.Vector3(-Math.PI / 2, 0, defaultLightZ), scene);
+            var light1 = new BABYLON.DirectionalLight('light1', new BABYLON.Vector3(0, -Math.PI / 2, defaultLightZ), scene);
             light1.position = new BABYLON.Vector3(0, 0, 0);
             light1.intensity = 3;
             light1.shadowMinZ = -15;
@@ -85,14 +83,16 @@ var createScene = function () {
 
             // Light angle
             lightSliderZ.addEventListener('input', function(){
-                light1.direction.y = lightSliderZ.value
+                light1.direction.z = lightSliderZ.value
             });
 
             // Shadows
             var shadowGenerator = new BABYLON.ShadowGenerator(2048, light1);
             for(var i = 0; i < allParts.length; i++){
-                 shadowGenerator.addShadowCaster(allParts[i])
-                allParts[i].receiveShadows = true;
+                shadowGenerator.addShadowCaster(allParts[i])
+            };
+            for(var i = 0; i < scene.meshes.length; i++){
+                scene.meshes[i].receiveShadows = true;
             };
             shadowGenerator.forceBackFacesOnly = true;
             shadowGenerator.usePoissonSampling = true;
@@ -110,9 +110,9 @@ var createScene = function () {
             });
 
             // Ground material
-            // var groundMat = new BABYLON.ShadowOnlyMaterial('mat', scene);
-            // groundMat.alpha = 0.25;
-            // ground.material = groundMat;
+            var groundMat = new BABYLON.ShadowOnlyMaterial('mat', scene);
+            groundMat.alpha = 0.25;
+            ground.material = groundMat;
             
             // Primary material
             var primaryMat = new BABYLON.PBRMaterial('defaultMat', scene);
@@ -152,7 +152,7 @@ var createScene = function () {
                 camera.setTarget(new BABYLON.Vector3(defaultCamTar[0], defaultCamTar[1], defaultCamTar[2]));
                 lightPivot.rotation.y = Math.PI * defaultLightPivot;
                 lightPivotSlider.value = defaultLightPivot;
-                light1.direction.y = defaultLightZ;
+                light1.direction.z = defaultLightZ;
                 lightSliderZ.value = defaultLightZ;
                 shadowGenerator.darkness = defaultShadow;
                 shadowSlider.value = - defaultShadow;
@@ -167,7 +167,7 @@ var createScene = function () {
             //Capture Frames
             var animationGroup = scene.animationGroups[0];
             var animFrames = animationGroup.to;
-            var videoFrames = 240;
+            var videoFrames = 60;
             var canvasContainer = document.querySelector('.canvasContainer');
             var exportButton = document.getElementById('exportButton');
             exportButton.addEventListener('click', function(){
