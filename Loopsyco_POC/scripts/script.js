@@ -29,8 +29,8 @@ var createScene = function () {
     // Scene
     var scene = new BABYLON.Scene(engine)
 
-    // Camera
-    var camera = new BABYLON.ArcRotateCamera('camera', scene);
+    //Camera
+    var camera = new BABYLON.ArcRotateCamera("Camera", 0, 0, 0, new BABYLON.Vector3(0, 0, 0), scene);
     camera.setPosition(new BABYLON.Vector3(defaultCamPos[0], defaultCamPos[1], defaultCamPos[2]));
     camera.setTarget(new BABYLON.Vector3(defaultCamTar[0], defaultCamTar[1], defaultCamTar[2]));
     camera.attachControl(canvas, true);
@@ -60,7 +60,6 @@ var createScene = function () {
 
             var allParts = [part_01, part_02, part_03, part_04, part_05, part_06, part_07, part_08, part_09, part_10, part_11] 
             
-
             // Lights
             var light1 = new BABYLON.DirectionalLight('light1', new BABYLON.Vector3(0, -Math.PI / 2, defaulLightZ), scene);
             light1.position = new BABYLON.Vector3(0, 0, 0);

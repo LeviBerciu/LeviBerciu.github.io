@@ -40,7 +40,7 @@ var createScene = function () {
     var scene = new BABYLON.Scene(engine)
 
     // Camera
-    var camera = new BABYLON.ArcRotateCamera('camera', scene);
+    var camera = new BABYLON.ArcRotateCamera("Camera", 0, 0, 0, new BABYLON.Vector3(0, 0, 0), scene);
     camera.setPosition(new BABYLON.Vector3(defaultCamPos[0], defaultCamPos[1], defaultCamPos[2]));
     camera.setTarget(new BABYLON.Vector3(defaultCamTar[0], defaultCamTar[1], defaultCamTar[2]));
     camera.attachControl(canvas, true);

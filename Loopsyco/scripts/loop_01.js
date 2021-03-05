@@ -24,14 +24,14 @@ var shadowSlider = document.getElementById('shadowSlider');
 var resetButton = document.getElementById('resetButton');
 
 // Default values
-var defaultCamPos = [-7, 5, 10];
-var defaultCamTar = [1, 0.4, 0];
-var defaultLightPivot = 1.3;
-var defaultLightZ = -0.2;
-var defaultShadow = 0;
-var defaultEnvColor = '#FFFFFF';
-var defaultPriColor = '#00CFE6';
-var defaultSecColor = '#1E4965';
+var defaultCamPos = [-2, 6.5, -7.5];
+var defaultCamTar = [0, 1.5, 0];
+var defaultLightPivot = 2.2;
+var defaultLightZ = 1;
+var defaultShadow = 0.25;
+var defaultEnvColor = '#37474f';
+var defaultPriColor = '#ffab00';
+var defaultSecColor = '#ffffff';
 
 // Create Scene Function
 var createScene = function () {
@@ -40,7 +40,7 @@ var createScene = function () {
     var scene = new BABYLON.Scene(engine)
 
     // Camera
-    var camera = new BABYLON.ArcRotateCamera("Camera", 0, 0, 0, new BABYLON.Vector3(0, 0, 0), scene);
+    var camera = new BABYLON.ArcRotateCamera('camera', scene);
     camera.setPosition(new BABYLON.Vector3(defaultCamPos[0], defaultCamPos[1], defaultCamPos[2]));
     camera.setTarget(new BABYLON.Vector3(defaultCamTar[0], defaultCamTar[1], defaultCamTar[2]));
     camera.attachControl(canvas, true);
@@ -52,7 +52,7 @@ var createScene = function () {
     camera.upperRadiusLimit = 18;
 
     // Append 3D model & execute when ready
-    BABYLON.SceneLoader.Append('../assets/gltfs/', 'loop_05.gltf', scene, function () {
+    BABYLON.SceneLoader.Append('../assets/gltfs/', 'loop_01.gltf', scene, function () {
         scene.executeWhenReady(function () {
 
             // Meshes
@@ -77,7 +77,7 @@ var createScene = function () {
             light1.intensity = 3;
             light1.shadowMinZ = -15;
             light1.shadowMaxZ = 5;
-            light1.shadowOrthoScale = 0;
+            light1.shadowOrthoScale = 1;
             
             var light2 = new BABYLON.HemisphericLight('light2', new BABYLON.Vector3(0, 1, 0), scene);
             light2.intensity = 1.5;
@@ -126,7 +126,7 @@ var createScene = function () {
             // Primary material
             var primaryMat = new BABYLON.PBRMaterial('defaultMat', scene);
             primaryMat.albedoColor = new BABYLON.Color3.FromHexString(defaultPriColor);
-            var priamryParts = [part_01, part_02, part_03, part_04, part_05, part_06]
+            var priamryParts = [part_02, part_05, part_07, part_09, part_11]
             for(var i = 0; i < priamryParts.length; i++){
                 priamryParts[i].material = primaryMat;
             };
@@ -137,7 +137,7 @@ var createScene = function () {
             // Secondary material
             var secondaryMat = new BABYLON.PBRMaterial('defaultMat', scene);
             secondaryMat.albedoColor = new BABYLON.Color3.FromHexString(defaultSecColor);
-            var secondaryParts = [part_07, part_08, part_09, part_10, part_11]
+            var secondaryParts = [part_01, part_03, part_04, part_06, part_08, part_10]
             for(var i = 0; i < secondaryParts.length; i++){
                 secondaryParts[i].material = secondaryMat;
             }    
@@ -176,7 +176,7 @@ var createScene = function () {
             //Capture Frames
             var animationGroup = scene.animationGroups[0];
             var animFrames = animationGroup.to;
-            var videoFrames = 60;
+            var videoFrames = 120;
             var canvasContainer = document.querySelector('.canvasContainer');
             var exportButton = document.getElementById('exportButton');
             exportButton.addEventListener('click', function(){
