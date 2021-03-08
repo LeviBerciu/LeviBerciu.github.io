@@ -171,6 +171,7 @@ fieldset{
     width: 100%;
     max-width: 240px;
     height: 8px;
+    margin: 12px 0px 12px 0px;
     border-radius: 4px;  
     background: #ECEFF1;
     outline: none;
@@ -201,7 +202,7 @@ fieldset{
 input[type=color]{
 	width: 48px;
     height: 48px;
-    margin: 0px 6px 0px 6px;
+    margin: 6px 6px 6px 6px;
     border: none;
     outline: none;
     cursor: pointer;
@@ -306,7 +307,7 @@ section{
     width: 100%;
 }
 
-/* -------------------- LOOPS SPECIFIC */
+/* -------------------- SCENE SPECIFIC */
 
 .valueProposition{
     max-width: 800px;
@@ -351,7 +352,7 @@ section{
     margin: auto;
 }
 
-/* -------------------- LOOP DETAIL SPECIFIC */
+/* -------------------- SCENE DETAIL SPECIFIC */
 
 .containers{
     float: left;
