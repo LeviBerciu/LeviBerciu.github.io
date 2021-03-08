@@ -171,7 +171,7 @@ fieldset{
     width: 100%;
     max-width: 240px;
     height: 8px;
-    margin: 12px 0px 12px 0px;
+    margin: 0px 0px 12px 0px;
     border-radius: 4px;  
     background: #ECEFF1;
     outline: none;
@@ -392,7 +392,7 @@ section{
 }
 .control{
     text-align: center;
-    margin: 0px 0px 30px 0px;
+    margin: 0px 0px 20px 0px;
 }
 #exportModal{
     visibility: hidden;
