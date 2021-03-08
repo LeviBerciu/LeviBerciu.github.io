@@ -2,11 +2,11 @@ var canvas = document.getElementById('renderCanvas'); // Get the canvas element
 var engine = new BABYLON.Engine(canvas, true); // Generate the BABYLON 3D engine
 engine.setHardwareScalingLevel(0.5);
 
-// Canvas Width = Canvas Height
+// CANVAS 1:1
 canvas.width = window.innerWidth;
 canvas.height = window.innerWidth;
 
-// Preventin Window Scroll
+// NO WINDOW SCROLL WHEN ON CANVAS
 canvas.onwheel = function(event){
     event.preventDefault();
 };
@@ -14,18 +14,20 @@ canvas.onmousewheel = function(event){
     event.preventDefault();
 };
 
-// Controls
+// UI CONTROLS
 var environmentPicker = document.getElementById('environmentPicker');
 var primaryPicker = document.getElementById('primaryPicker');
 var secondaryPicker = document.getElementById('secondaryPicker');
 var lightPivotSlider = document.getElementById('lightPivotSlider');
 var lightSliderZ = document.getElementById('lightSliderZ');
 var shadowSlider = document.getElementById('shadowSlider');
+var cameraSlider = document.getElementById('cameraSlider');
 var resetButton = document.getElementById('resetButton');
 
-// Default values
+// DEFAULT VALUES
 var defaultCamPos = [-2, 6.5, -7.5];
 var defaultCamTar = [0, 1.5, 0];
+var defaultCamFov = 0.8;
 var defaultLightPivot = 2.2;
 var defaultLightZ = 1;
 var defaultShadow = 0.25;
@@ -33,13 +35,13 @@ var defaultEnvColor = '#37474f';
 var defaultPriColor = '#ffab00';
 var defaultSecColor = '#ffffff';
 
-// Create Scene Function
+// CREATE SCENE
 var createScene = function () {
 
-    // Scene
+    // SCENE
     var scene = new BABYLON.Scene(engine)
 
-    // Camera
+    // CAMERA
     var camera = new BABYLON.ArcRotateCamera("Camera", 0, 0, 0, new BABYLON.Vector3(0, 0, 0), scene);
     camera.setPosition(new BABYLON.Vector3(defaultCamPos[0], defaultCamPos[1], defaultCamPos[2]));
     camera.setTarget(new BABYLON.Vector3(defaultCamTar[0], defaultCamTar[1], defaultCamTar[2]));
@@ -47,15 +49,15 @@ var createScene = function () {
     camera.wheelPrecision = 20;
     camera.pinchPrecision = 100;
     camera.lowerBetaLimit = 0;
-	camera.upperBetaLimit = Math.PI / 2;
-	camera.lowerRadiusLimit = 6;
-    camera.upperRadiusLimit = 18;
+	//camera.upperBetaLimit = Math.PI / 2;
+	camera.lowerRadiusLimit = 0;
+    camera.upperRadiusLimit = 200;
 
-    // Append 3D model & execute when ready
+    // APPEND 3D MODEL & EXECUTE WHEN READY
     BABYLON.SceneLoader.Append('../assets/gltfs/', 'loop_01.gltf', scene, function () {
         scene.executeWhenReady(function () {
 
-            // Meshes
+            // MESHES
             var ground = scene.getMeshByName('ground');
             var part_01 = scene.getMeshByName('part_01');
             var part_02 = scene.getMeshByName('part_02');
@@ -71,7 +73,12 @@ var createScene = function () {
 
             var allParts = [part_01, part_02, part_03, part_04, part_05, part_06, part_07, part_08, part_09, part_10, part_11] 
             
-            // Lights
+            // CAMERA FOV
+            cameraSlider.addEventListener('input', function(){
+                camera.fov = cameraSlider.value;
+            });
+
+            // LIGHTS
             var light1 = new BABYLON.DirectionalLight('light1', new BABYLON.Vector3(0, -Math.PI / 2, defaultLightZ), scene);
             light1.position = new BABYLON.Vector3(0, 0, 0);
             light1.intensity = 3;
@@ -82,7 +89,10 @@ var createScene = function () {
             var light2 = new BABYLON.HemisphericLight('light2', new BABYLON.Vector3(0, 1, 0), scene);
             light2.intensity = 1.5;
 
-            // Light direction
+            // var light3 = new BABYLON.HemisphericLight('light3', new BABYLON.Vector3(0, -1, 0), scene);
+            // light3.intensity = 0.5;
+
+            // LIGHT DIRECTION
             var lightPivot = new BABYLON.TransformNode("root"); 
             light1.parent = lightPivot;
             lightPivot.rotation.y = Math.PI * defaultLightPivot;
@@ -90,12 +100,12 @@ var createScene = function () {
                 lightPivot.rotation.y = Math.PI * lightPivotSlider.value;
             });
 
-            // Light angle
+            // LIGHT ANGLE
             lightSliderZ.addEventListener('input', function(){
                 light1.direction.z = lightSliderZ.value
             });
 
-            // Shadows
+            // SHADOW
             var shadowGenerator = new BABYLON.ShadowGenerator(2048, light1);
             for(var i = 0; i < allParts.length; i++){
                 shadowGenerator.addShadowCaster(allParts[i])
@@ -107,23 +117,23 @@ var createScene = function () {
             shadowGenerator.usePoissonSampling = true;
             shadowGenerator.darkness = defaultShadow;
 
-            // Shadow visibility
+            // SHADOW OPACITY
             shadowSlider.addEventListener('input', function(){
                 shadowGenerator.darkness = Math.abs(shadowSlider.value);
             });
 
-            // Environment color
+            // ENVIRONMENT COLOR
             scene.clearColor = new BABYLON.Color3.FromHexString(defaultEnvColor);
             environmentPicker.addEventListener('input', function(){
                 scene.clearColor = new BABYLON.Color3.FromHexString(environmentPicker.value);
             });
 
-            // Ground material
+            // GROUND MATERIAL
             var groundMat = new BABYLON.ShadowOnlyMaterial('mat', scene);
             groundMat.alpha = 0.25;
             ground.material = groundMat;
             
-            // Primary material
+            // PRIMARY COLOR
             var primaryMat = new BABYLON.PBRMaterial('defaultMat', scene);
             primaryMat.albedoColor = new BABYLON.Color3.FromHexString(defaultPriColor);
             var priamryParts = [part_02, part_05, part_07, part_09, part_11]
@@ -134,7 +144,7 @@ var createScene = function () {
                 primaryMat.albedoColor = new BABYLON.Color3.FromHexString(primaryPicker.value);
             });
 
-            // Secondary material
+            // SECONDARY COLOR
             var secondaryMat = new BABYLON.PBRMaterial('defaultMat', scene);
             secondaryMat.albedoColor = new BABYLON.Color3.FromHexString(defaultSecColor);
             var secondaryParts = [part_01, part_03, part_04, part_06, part_08, part_10]
@@ -145,20 +155,22 @@ var createScene = function () {
                 secondaryMat.albedoColor = new BABYLON.Color3.FromHexString(secondaryPicker.value);
             });
 
-            // Global material proprties
+            // GLOBAL MATERIAL
             for(var i = 0; i < allParts.length; i++){
                 allParts[i].material.roughness = 1;
                 allParts[i].material.clearCoat.isEnabled = true;
                 allParts[i].material.clearCoat.roughness = 0.75;
             };
 
-            // Reset to default
+            // RESET TO DEFAULT
             resetButton.addEventListener('click', function(){
                 resetToDefault();
             });
             function resetToDefault(){
                 camera.setPosition(new BABYLON.Vector3(defaultCamPos[0], defaultCamPos[1], defaultCamPos[2]));
                 camera.setTarget(new BABYLON.Vector3(defaultCamTar[0], defaultCamTar[1], defaultCamTar[2]));
+                camera.fov = defaultCamFov;
+                cameraSlider.value = defaultCamFov;
                 lightPivot.rotation.y = Math.PI * defaultLightPivot;
                 lightPivotSlider.value = defaultLightPivot;
                 light1.direction.z = defaultLightZ;
@@ -173,7 +185,7 @@ var createScene = function () {
                 secondaryPicker.value = defaultSecColor;
             };
 
-            //Capture Frames
+            // CAPTURE FARMES
             var animationGroup = scene.animationGroups[0];
             var animFrames = animationGroup.to;
             var videoFrames = 120;
@@ -214,7 +226,7 @@ var createScene = function () {
     return scene;
 };
 
-// Call the createScene function
+// CREATE SCENE
 var scene = createScene(); 
 
 // Register a render loop to repeatedly render the scene
@@ -222,13 +234,12 @@ engine.runRenderLoop(function () {
     scene.render();
 });
 
-// Watch for browser/canvas resize events
+// WATCH FOR BROWSER / CANVAS RESIZE EVENTS
 window.addEventListener("resize", function () {
     engine.resize();
 });
 
-// ----------------------------------------------- CREATE ZIP
-
+// CREATE ZIP FROM FRAMES
 function createAchive(toArchive){
     var zip = new JSZip();
     for(var i = 0; i < toArchive.length; i++ ){
@@ -245,8 +256,7 @@ function createAchive(toArchive){
     });
 }
 
-// ----------------------------------------------- EXPORT POP-UP
-
+// EXPORT POP-UP
 var exportModal = document.getElementById('exportModal');
 var exportUnderlay = document.getElementById('exportUnderlay');
 var exportCloseButton = document.getElementById('exportCloseButton');
