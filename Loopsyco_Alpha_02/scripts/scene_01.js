@@ -87,10 +87,10 @@ var createScene = function () {
             light1.shadowOrthoScale = 1;
             
             var light2 = new BABYLON.HemisphericLight('light2', new BABYLON.Vector3(0, 1, 0), scene);
-            light2.intensity = 1.5;
+            light2.intensity = 1;
 
-            // var light3 = new BABYLON.HemisphericLight('light3', new BABYLON.Vector3(0, -1, 0), scene);
-            // light3.intensity = 0.5;
+            var light3 = new BABYLON.HemisphericLight('light3', new BABYLON.Vector3(0, -1, 0), scene);
+            light3.intensity = 1;
 
             // LIGHT DIRECTION
             var lightPivot = new BABYLON.TransformNode("root"); 
