@@ -102,11 +102,7 @@ var createScene = function () {
             var light1 = new BABYLON.DirectionalLight('light1', new BABYLON.Vector3(0, -Math.PI / 2, defaultLightZ), scene);
             light1.position = new BABYLON.Vector3(0, 0, 0);
             light1.intensity = 3;
-
             light1.autoCalcShadowZBounds = true;
-            //light1.shadowMinZ = -15;
-            //light1.shadowMaxZ = 5;
-            //light1.shadowOrthoScale = 1;
             
             
             var light2 = new BABYLON.HemisphericLight('light2', new BABYLON.Vector3(0, 1, 0), scene);
@@ -139,7 +135,6 @@ var createScene = function () {
                 scene.meshes[i].receiveShadows = true;
             };
             shadowGenerator.forceBackFacesOnly = true;
-            //shadowGenerator.usePoissonSampling = true;
             shadowGenerator.darkness = defaultShadow;
             shadowGenerator.bias = 0;
 
