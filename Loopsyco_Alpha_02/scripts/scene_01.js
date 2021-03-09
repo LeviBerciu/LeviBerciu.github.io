@@ -62,6 +62,7 @@ var createScene = function () {
         scene.executeWhenReady(function () {
 
             // MESHES
+            var bounding_box = scene.getMeshByName('bounding_box');
             var ground = scene.getMeshByName('ground');
             var part_01 = scene.getMeshByName('part_01');
             var part_02 = scene.getMeshByName('part_02');
@@ -75,7 +76,8 @@ var createScene = function () {
             var part_10 = scene.getMeshByName('part_10');
             var part_11 = scene.getMeshByName('part_11');
 
-            var allParts = [part_01, part_02, part_03, part_04, part_05, part_06, part_07, part_08, part_09, part_10, part_11] 
+            var allParts = [part_01, part_02, part_03, part_04, part_05, part_06, part_07, part_08, part_09, part_10, part_11];
+            
 
             // SCENE STATE
             var animationGroup = scene.animationGroups[0];
@@ -88,6 +90,7 @@ var createScene = function () {
 
             stateSlider.addEventListener('input', function(){
                 animationGroup.goToFrame(stateFrames * stateSlider.value);
+                scene.render()
             });
             
             // FIELD OF VIEW
@@ -99,10 +102,12 @@ var createScene = function () {
             var light1 = new BABYLON.DirectionalLight('light1', new BABYLON.Vector3(0, -Math.PI / 2, defaultLightZ), scene);
             light1.position = new BABYLON.Vector3(0, 0, 0);
             light1.intensity = 3;
+
             light1.autoCalcShadowZBounds = true;
-            // light1.shadowMinZ = -15;
-            // light1.shadowMaxZ = 5;
-            // light1.shadowOrthoScale = 1;
+            //light1.shadowMinZ = -15;
+            //light1.shadowMaxZ = 5;
+            //light1.shadowOrthoScale = 1;
+            
             
             var light2 = new BABYLON.HemisphericLight('light2', new BABYLON.Vector3(0, 1, 0), scene);
             light2.intensity = 1;
@@ -125,6 +130,8 @@ var createScene = function () {
 
             // SHADOW
             var shadowGenerator = new BABYLON.ShadowGenerator(2048, light1);
+            shadowGenerator.addShadowCaster(bounding_box);
+            bounding_box.setEnabled (false);
             for(var i = 0; i < allParts.length; i++){
                 shadowGenerator.addShadowCaster(allParts[i])
             };
@@ -132,8 +139,9 @@ var createScene = function () {
                 scene.meshes[i].receiveShadows = true;
             };
             shadowGenerator.forceBackFacesOnly = true;
-            shadowGenerator.usePoissonSampling = true;
+            //shadowGenerator.usePoissonSampling = true;
             shadowGenerator.darkness = defaultShadow;
+            shadowGenerator.bias = 0;
 
             // SHADOW OPACITY
             shadowSlider.addEventListener('input', function(){
