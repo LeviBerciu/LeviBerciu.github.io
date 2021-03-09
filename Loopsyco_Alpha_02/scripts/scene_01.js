@@ -1,5 +1,5 @@
-var canvas = document.getElementById('renderCanvas'); // Get the canvas element
-var engine = new BABYLON.Engine(canvas, true); // Generate the BABYLON 3D engine
+var canvas = document.getElementById('renderCanvas');
+var engine = new BABYLON.Engine(canvas, true);
 engine.setHardwareScalingLevel(0.5);
 
 // CANVAS 1:1
@@ -18,15 +18,17 @@ canvas.onmousewheel = function(event){
 var environmentPicker = document.getElementById('environmentPicker');
 var primaryPicker = document.getElementById('primaryPicker');
 var secondaryPicker = document.getElementById('secondaryPicker');
+var stateSlider = document.getElementById('stateSlider');
+var cameraSlider = document.getElementById('cameraSlider');
 var lightPivotSlider = document.getElementById('lightPivotSlider');
 var lightSliderZ = document.getElementById('lightSliderZ');
 var shadowSlider = document.getElementById('shadowSlider');
-var cameraSlider = document.getElementById('cameraSlider');
 var resetButton = document.getElementById('resetButton');
 
 // DEFAULT VALUES
 var defaultCamPos = [-2, 6.5, -7.5];
 var defaultCamTar = [0, 1.5, 0];
+var defaultSceneState = 0;
 var defaultCamFov = 0.8;
 var defaultLightPivot = 2.2;
 var defaultLightZ = 1;
@@ -53,8 +55,10 @@ var createScene = function () {
 	camera.lowerRadiusLimit = 0;
     camera.upperRadiusLimit = 200;
 
+    camera.minZ = 0;
+
     // APPEND 3D MODEL & EXECUTE WHEN READY
-    BABYLON.SceneLoader.Append('../assets/gltfs/', 'loop_01.gltf', scene, function () {
+    BABYLON.SceneLoader.Append('../assets/gltfs/', 'scene_01.gltf', scene, function () {
         scene.executeWhenReady(function () {
 
             // MESHES
@@ -72,8 +76,21 @@ var createScene = function () {
             var part_11 = scene.getMeshByName('part_11');
 
             var allParts = [part_01, part_02, part_03, part_04, part_05, part_06, part_07, part_08, part_09, part_10, part_11] 
+
+            // SCENE STATE
+            var animationGroup = scene.animationGroups[0];
+            var animFrames = animationGroup.to;
+            var stateFrames = animFrames/120;
+
+            animationGroup.pause();
+            animationGroup.goToFrame(0);
+             
+
+            stateSlider.addEventListener('input', function(){
+                animationGroup.goToFrame(stateFrames * stateSlider.value);
+            });
             
-            // CAMERA FOV
+            // FIELD OF VIEW
             cameraSlider.addEventListener('input', function(){
                 camera.fov = cameraSlider.value;
             });
@@ -82,9 +99,10 @@ var createScene = function () {
             var light1 = new BABYLON.DirectionalLight('light1', new BABYLON.Vector3(0, -Math.PI / 2, defaultLightZ), scene);
             light1.position = new BABYLON.Vector3(0, 0, 0);
             light1.intensity = 3;
-            light1.shadowMinZ = -15;
-            light1.shadowMaxZ = 5;
-            light1.shadowOrthoScale = 1;
+            light1.autoCalcShadowZBounds = true;
+            // light1.shadowMinZ = -15;
+            // light1.shadowMaxZ = 5;
+            // light1.shadowOrthoScale = 1;
             
             var light2 = new BABYLON.HemisphericLight('light2', new BABYLON.Vector3(0, 1, 0), scene);
             light2.intensity = 1;
@@ -169,6 +187,8 @@ var createScene = function () {
             function resetToDefault(){
                 camera.setPosition(new BABYLON.Vector3(defaultCamPos[0], defaultCamPos[1], defaultCamPos[2]));
                 camera.setTarget(new BABYLON.Vector3(defaultCamTar[0], defaultCamTar[1], defaultCamTar[2]));
+                animationGroup.goToFrame(stateFrames * defaultSceneState);
+                stateSlider.value = defaultSceneState;
                 camera.fov = defaultCamFov;
                 cameraSlider.value = defaultCamFov;
                 lightPivot.rotation.y = Math.PI * defaultLightPivot;
