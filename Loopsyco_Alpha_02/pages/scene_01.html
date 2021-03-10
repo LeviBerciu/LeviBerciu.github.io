@@ -63,7 +63,6 @@
                         <input id="shadowSlider" type="range" class="slider" min="-1" max="-0" step="0.01" value="-0.25">
                     </div>
                     <button id="resetButton" class="line">back to default</button>
-                    <!-- <button id="exportButton" class="fill">export frames</button> -->
                     <button id="exportButton" class="fill">grab image</button>
                 </div>
             </div>
@@ -71,13 +70,13 @@
     <!-- Export Modal -->
         <div id="exportModal" class="modal">
             <div class="modalTop">
-                <h5 class="modalTitle">Export Frames</h5>
+                <h5 class="modalTitle">Grab Image</h5>
                 <img id="exportCloseButton" class="modalClose" src="../assets/close.svg" alt="close">
             </div>
             <div class="modalContent">
-                <h2></h2>
-                <a id="downloadFrames" href=""><button class="fill">download frames</button></a>
-                <p></p>
+                <h2>lorem ipsum</h2>
+                <p>lorem ipsum</p>
+                <button id="downloadButton" class="fill">download</button>
             </div>
         </div>
         <div id="exportUnderlay" class="underlay"></div>
@@ -91,5 +90,6 @@
 <!-- Scripts -->
     <script src="../scripts/navigation.js"></script>
     <script src="../scripts/scene_01.js"></script>
+    <script src="../scripts/export_modal.js"></script>
 </body>
 </html>

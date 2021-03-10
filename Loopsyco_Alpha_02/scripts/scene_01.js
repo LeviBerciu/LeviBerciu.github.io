@@ -53,7 +53,6 @@ var createScene = function () {
     camera.lowerBetaLimit = 0;
 	camera.lowerRadiusLimit = 0;
     camera.upperRadiusLimit = 200;
-
     camera.minZ = 0;
 
     // APPEND 3D MODEL & EXECUTE WHEN READY
@@ -77,7 +76,6 @@ var createScene = function () {
 
             var allParts = [part_01, part_02, part_03, part_04, part_05, part_06, part_07, part_08, part_09, part_10, part_11];
             
-
             // SCENE STATE
             var animationGroup = scene.animationGroups[0];
             var animFrames = animationGroup.to;
@@ -86,7 +84,6 @@ var createScene = function () {
             animationGroup.pause();
             animationGroup.goToFrame(0);
              
-
             stateSlider.addEventListener('input', function(){
                 animationGroup.goToFrame(stateFrames * stateSlider.value);
                 scene.render()
@@ -102,7 +99,6 @@ var createScene = function () {
             light1.position = new BABYLON.Vector3(0, 0, 0);
             light1.intensity = 3;
             light1.autoCalcShadowZBounds = true;
-            
             
             var light2 = new BABYLON.HemisphericLight('light2', new BABYLON.Vector3(0, 1, 0), scene);
             light2.intensity = 1;
@@ -146,8 +142,8 @@ var createScene = function () {
             scene.clearColor = new BABYLON.Color3.FromHexString(defaultEnvColor);
             environmentPicker.addEventListener('input', function(){
                 scene.clearColor = new BABYLON.Color3.FromHexString(environmentPicker.value);
+                // scene.clearColor = new BABYLON.Color4(0,0,0,0);
             });
-            // scene.clearColor = new BABYLON.Color4(0,0,0,0);
 
             // GROUND MATERIAL
             var groundMat = new BABYLON.ShadowOnlyMaterial('mat', scene);
@@ -208,54 +204,17 @@ var createScene = function () {
                 secondaryPicker.value = defaultSecColor;
             };
 
-            // EXPORT BUTTON
+            // DOVNLOAD IMAGE
             var canvasContainer = document.querySelector('.canvasContainer');
-            var exportButton = document.getElementById('exportButton');
-            exportButton.addEventListener('click', function(){
-                    canvasContainer.classList.add('record');
-                    engine.resize();
-                    BABYLON.Tools.CreateScreenshotUsingRenderTarget(engine, camera, {precision: 1});
-                    canvasContainer.classList.remove('record');
-                    engine.resize();
+            var downloadButton = document.getElementById('downloadButton');
+            downloadButton.addEventListener('click', function(){
+                canvasContainer.classList.add('record');
+                engine.resize();
+                BABYLON.Tools.CreateScreenshotUsingRenderTarget(engine, camera, {precision: 1});
+                canvasContainer.classList.remove('record');
+                engine.resize();
             });
-
-            // CAPTURE FARMES
-            // var animationGroup = scene.animationGroups[0];
-            // var animFrames = animationGroup.to;
-            // var videoFrames = 120;
-            // var canvasContainer = document.querySelector('.canvasContainer');
-            // var exportButton = document.getElementById('exportButton');
-            // exportButton.addEventListener('click', function(){
-            //     openModal();
-            //     window.setTimeout(exportProcess, 100);
-            //     function exportProcess(){
-            //         canvasContainer.classList.add('record');
-            //         engine.resize();
-            //         animationGroup.pause();
-            //         animationGroup.goToFrame(0);
-            //         var frames = new Array;  
-            //         var animFrameNr = 0;
-            //         var videoFrameNr = 0;
-            //         function captureFrames(){
-            //             if(animFrameNr < animFrames && videoFrameNr < videoFrames){
-            //                 BABYLON.Tools.CreateScreenshotUsingRenderTarget(engine, camera, {precision: 0.5}, function (data){
-            //                         frames.push(data);
-            //                 }, 'image/png', 1, true);
-            //                 animFrameNr += animFrames/videoFrames;
-            //                 videoFrameNr += 1;
-            //                 animationGroup.goToFrame(animFrameNr);
-            //                 captureFrames();
-            //             } else {
-            //                 animationGroup.play();
-            //                 canvasContainer.classList.remove('record');
-            //                 engine.resize();
-            //                 createAchive(frames);
-            //             }
-            //         }
-            //         captureFrames()
-            //     }
-            // });
-        });  
+        });
     });
     return scene;
 };
@@ -272,80 +231,3 @@ engine.runRenderLoop(function () {
 window.addEventListener("resize", function () {
     engine.resize();
 });
-
-// CREATE ZIP FROM FRAMES
-// function createAchive(toArchive){
-//     var zip = new JSZip();
-//     for(var i = 0; i < toArchive.length; i++ ){
-//         baseCode = toArchive[i].replace(/^data:image\/(png|jpg);base64,/, "");
-//         zip.file('frame_' + (i+1) + '.png', baseCode, {base64: true});
-//     }
-//     zip.generateAsync({
-//         type: "base64"
-//     }).then(function(content) {
-//         var link = document.getElementById('downloadFrames');
-//         link.href = "data:application/zip;base64," + content;
-//         link.download = "Frames.zip";
-//         setModalReady();
-//     });
-// }
-
-// EXPORT POP-UP
-var exportModal = document.getElementById('exportModal');
-var exportUnderlay = document.getElementById('exportUnderlay');
-var exportCloseButton = document.getElementById('exportCloseButton');
-
-exportUnderlay.addEventListener('click', function(){
-    closeModal();
-})
-
-exportCloseButton.addEventListener('click', function(){
-    closeModal();
-})
-
-function openModal(){
-    exportModal.setAttribute('style', 'visibility: visible');
-    exportUnderlay.setAttribute('style', 'visibility: visible');
-    setModalProgress();
-    // document.body.style.position = 'fixed';
-    // document.body.style.top = `-${window.scrollY}px`;
-}
-
-function closeModal(){
-    exportModal.setAttribute('style', 'visibility: hidden');
-    exportUnderlay.setAttribute('style', 'visibility: hidden');
-    setModalProgress();
-    // const scrollY = document.body.style.top;
-    // document.body.style.position = '';
-    // document.body.style.top = '';
-    // window.scrollTo(0, parseInt(scrollY || '0') * -1);
-}
-
-var modalTitle = exportModal.querySelector('h2');
-var modalText = exportModal.querySelector('p');
-var modalButton = exportModal.querySelector('a');
-
-function setModalProgress() {
-    modalTitle.textContent = 'We are prepairing your animation frames ...'
-    modalText.textContent = 'This may take a few minutes. Please do not interrupt this process.'
-    modalButton.setAttribute('style', 'display: none');
-    modalButton.href = '';
-}
-
-function setModalReady() {
-    modalTitle.textContent = 'Your animation frames are ready to be downloaded!'
-    modalText.textContent = 'Check the "ABOUT" page to discover different ways of using animation frames.'
-    modalButton.setAttribute('style', 'display: block');
-}
-
-
-
-// When the modal is shown...
-// 
-
-// When the modal is hidden...
-// const scrollY = document.body.style.top;
-// document.body.style.position = '';
-// document.body.style.top = '';
-// window.scrollTo(0, parseInt(scrollY || '0') * -1);
-
