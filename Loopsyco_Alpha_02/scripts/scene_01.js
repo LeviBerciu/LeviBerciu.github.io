@@ -51,7 +51,6 @@ var createScene = function () {
     camera.wheelPrecision = 20;
     camera.pinchPrecision = 100;
     camera.lowerBetaLimit = 0;
-	//camera.upperBetaLimit = Math.PI / 2;
 	camera.lowerRadiusLimit = 0;
     camera.upperRadiusLimit = 200;
 
@@ -148,6 +147,7 @@ var createScene = function () {
             environmentPicker.addEventListener('input', function(){
                 scene.clearColor = new BABYLON.Color3.FromHexString(environmentPicker.value);
             });
+            // scene.clearColor = new BABYLON.Color4(0,0,0,0);
 
             // GROUND MATERIAL
             var groundMat = new BABYLON.ShadowOnlyMaterial('mat', scene);
@@ -183,7 +183,7 @@ var createScene = function () {
                 allParts[i].material.clearCoat.roughness = 0.75;
             };
 
-            // RESET TO DEFAULT
+            // DEFAULT BUTTON
             resetButton.addEventListener('click', function(){
                 resetToDefault();
             });
@@ -208,42 +208,53 @@ var createScene = function () {
                 secondaryPicker.value = defaultSecColor;
             };
 
-            // CAPTURE FARMES
-            var animationGroup = scene.animationGroups[0];
-            var animFrames = animationGroup.to;
-            var videoFrames = 120;
+            // EXPORT BUTTON
             var canvasContainer = document.querySelector('.canvasContainer');
             var exportButton = document.getElementById('exportButton');
             exportButton.addEventListener('click', function(){
-                openModal();
-                window.setTimeout(exportProcess, 100);
-                function exportProcess(){
                     canvasContainer.classList.add('record');
                     engine.resize();
-                    animationGroup.pause();
-                    animationGroup.goToFrame(0);
-                    var frames = new Array;  
-                    var animFrameNr = 0;
-                    var videoFrameNr = 0;
-                    function captureFrames(){
-                        if(animFrameNr < animFrames && videoFrameNr < videoFrames){
-                            BABYLON.Tools.CreateScreenshotUsingRenderTarget(engine, camera, {precision: 0.5}, function (data){
-                                    frames.push(data);
-                            }, 'image/png', 1, true);
-                            animFrameNr += animFrames/videoFrames;
-                            videoFrameNr += 1;
-                            animationGroup.goToFrame(animFrameNr);
-                            captureFrames();
-                        } else {
-                            animationGroup.play();
-                            canvasContainer.classList.remove('record');
-                            engine.resize();
-                            createAchive(frames);
-                        }
-                    }
-                    captureFrames()
-                }
+                    BABYLON.Tools.CreateScreenshotUsingRenderTarget(engine, camera, {precision: 1});
+                    canvasContainer.classList.remove('record');
+                    engine.resize();
             });
+
+            // CAPTURE FARMES
+            // var animationGroup = scene.animationGroups[0];
+            // var animFrames = animationGroup.to;
+            // var videoFrames = 120;
+            // var canvasContainer = document.querySelector('.canvasContainer');
+            // var exportButton = document.getElementById('exportButton');
+            // exportButton.addEventListener('click', function(){
+            //     openModal();
+            //     window.setTimeout(exportProcess, 100);
+            //     function exportProcess(){
+            //         canvasContainer.classList.add('record');
+            //         engine.resize();
+            //         animationGroup.pause();
+            //         animationGroup.goToFrame(0);
+            //         var frames = new Array;  
+            //         var animFrameNr = 0;
+            //         var videoFrameNr = 0;
+            //         function captureFrames(){
+            //             if(animFrameNr < animFrames && videoFrameNr < videoFrames){
+            //                 BABYLON.Tools.CreateScreenshotUsingRenderTarget(engine, camera, {precision: 0.5}, function (data){
+            //                         frames.push(data);
+            //                 }, 'image/png', 1, true);
+            //                 animFrameNr += animFrames/videoFrames;
+            //                 videoFrameNr += 1;
+            //                 animationGroup.goToFrame(animFrameNr);
+            //                 captureFrames();
+            //             } else {
+            //                 animationGroup.play();
+            //                 canvasContainer.classList.remove('record');
+            //                 engine.resize();
+            //                 createAchive(frames);
+            //             }
+            //         }
+            //         captureFrames()
+            //     }
+            // });
         });  
     });
     return scene;
@@ -263,21 +274,21 @@ window.addEventListener("resize", function () {
 });
 
 // CREATE ZIP FROM FRAMES
-function createAchive(toArchive){
-    var zip = new JSZip();
-    for(var i = 0; i < toArchive.length; i++ ){
-        baseCode = toArchive[i].replace(/^data:image\/(png|jpg);base64,/, "");
-        zip.file('frame_' + (i+1) + '.png', baseCode, {base64: true});
-    }
-    zip.generateAsync({
-        type: "base64"
-    }).then(function(content) {
-        var link = document.getElementById('downloadFrames');
-        link.href = "data:application/zip;base64," + content;
-        link.download = "Frames.zip";
-        setModalReady();
-    });
-}
+// function createAchive(toArchive){
+//     var zip = new JSZip();
+//     for(var i = 0; i < toArchive.length; i++ ){
+//         baseCode = toArchive[i].replace(/^data:image\/(png|jpg);base64,/, "");
+//         zip.file('frame_' + (i+1) + '.png', baseCode, {base64: true});
+//     }
+//     zip.generateAsync({
+//         type: "base64"
+//     }).then(function(content) {
+//         var link = document.getElementById('downloadFrames');
+//         link.href = "data:application/zip;base64," + content;
+//         link.download = "Frames.zip";
+//         setModalReady();
+//     });
+// }
 
 // EXPORT POP-UP
 var exportModal = document.getElementById('exportModal');
