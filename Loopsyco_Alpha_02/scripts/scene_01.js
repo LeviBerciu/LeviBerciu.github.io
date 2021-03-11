@@ -207,26 +207,26 @@ var createScene = function () {
             var canvasContainer = document.querySelector('.canvasContainer');
             var downloadButton = document.getElementById('downloadButton');
             var transparentBackground = document.getElementById('transparentBackground');
-            var standardQuality = document.getElementById('standardQuality');
-            var highQuality = document.getElementById('highQuality');
-            var veryHighQuality = document.getElementById('veryHighQuality');
+            var standardSize = document.getElementById('standardSize');
+            var largeSize = document.getElementById('largeSize');
+            var veryLargeSize = document.getElementById('veryLargeSize');
             downloadButton.addEventListener('click', function(){
                 if (transparentBackground.checked){
                     scene.clearColor = new BABYLON.Color4(0,0,0,0);
                 }
                 canvasContainer.classList.add('resize');
                 engine.resize();
-                var quality;
-                if(standardQuality.checked){
-                    quality = 1;
+                var imageSize;
+                if(standardSize.checked){
+                    imageSize = 1;
                 }
-                if(highQuality.checked){
-                    quality = 1.5;
+                if(largeSize.checked){
+                    imageSize = 1.5;
                 }
-                if(veryHighQuality.checked){
-                    quality = 2;
+                if(veryLargeSize.checked){
+                    imageSize = 2;
                 }
-                BABYLON.Tools.CreateScreenshotUsingRenderTarget(engine, camera, {precision: quality});
+                BABYLON.Tools.CreateScreenshotUsingRenderTarget(engine, camera, {precision: imageSize});
                 canvasContainer.classList.remove('resize');
                 engine.resize();
                 scene.clearColor = new BABYLON.Color3.FromHexString(environmentPicker.value);
