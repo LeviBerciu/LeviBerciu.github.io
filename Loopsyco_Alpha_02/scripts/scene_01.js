@@ -61,7 +61,7 @@ var createScene = function () {
 
             // MESHES
             var bounding_box = scene.getMeshByName('bounding_box');
-            var ground = scene.getMeshByName('ground');
+            var plane = scene.getMeshByName('plane');
             var part_01 = scene.getMeshByName('part_01');
             var part_02 = scene.getMeshByName('part_02');
             var part_03 = scene.getMeshByName('part_03');
@@ -145,10 +145,10 @@ var createScene = function () {
                 // scene.clearColor = new BABYLON.Color4(0,0,0,0);
             });
 
-            // GROUND MATERIAL
-            var groundMat = new BABYLON.ShadowOnlyMaterial('mat', scene);
-            groundMat.alpha = 0.25;
-            ground.material = groundMat;
+            // PLANE MATERIAL
+            var planeMat = new BABYLON.ShadowOnlyMaterial('mat', scene);
+            planeMat.alpha = 0.25;
+            plane.material = planeMat;
             
             // PRIMARY COLOR
             var primaryMat = new BABYLON.PBRMaterial('defaultMat', scene);

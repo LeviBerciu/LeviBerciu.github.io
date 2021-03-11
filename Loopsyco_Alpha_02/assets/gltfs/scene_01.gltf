@@ -17,7 +17,7 @@
     "nodes" : [
         {
             "mesh" : 0,
-            "name" : "ground",
+            "name" : "plane",
             "scale" : [
                 1.5,
                 1,
