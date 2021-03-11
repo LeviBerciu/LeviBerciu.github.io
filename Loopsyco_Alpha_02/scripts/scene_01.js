@@ -142,7 +142,6 @@ var createScene = function () {
             scene.clearColor = new BABYLON.Color3.FromHexString(defaultEnvColor);
             environmentPicker.addEventListener('input', function(){
                 scene.clearColor = new BABYLON.Color3.FromHexString(environmentPicker.value);
-                // scene.clearColor = new BABYLON.Color4(0,0,0,0);
             });
 
             // PLANE MATERIAL
@@ -204,15 +203,33 @@ var createScene = function () {
                 secondaryPicker.value = defaultSecColor;
             };
 
-            // DOVNLOAD IMAGE
+            // DOWNLOAD IMAGE
             var canvasContainer = document.querySelector('.canvasContainer');
             var downloadButton = document.getElementById('downloadButton');
+            var transparentBackground = document.getElementById('transparentBackground');
+            var standardQuality = document.getElementById('standardQuality');
+            var highQuality = document.getElementById('highQuality');
+            var veryHighQuality = document.getElementById('veryHighQuality');
             downloadButton.addEventListener('click', function(){
-                canvasContainer.classList.add('record');
+                if (transparentBackground.checked){
+                    scene.clearColor = new BABYLON.Color4(0,0,0,0);
+                }
+                canvasContainer.classList.add('resize');
                 engine.resize();
-                BABYLON.Tools.CreateScreenshotUsingRenderTarget(engine, camera, {precision: 1});
-                canvasContainer.classList.remove('record');
+                var quality;
+                if(standardQuality.checked){
+                    quality = 1;
+                }
+                if(highQuality.checked){
+                    quality = 1.5;
+                }
+                if(veryHighQuality.checked){
+                    quality = 2;
+                }
+                BABYLON.Tools.CreateScreenshotUsingRenderTarget(engine, camera, {precision: quality});
+                canvasContainer.classList.remove('resize');
                 engine.resize();
+                scene.clearColor = new BABYLON.Color3.FromHexString(environmentPicker.value);
             });
         });
     });
@@ -228,6 +245,6 @@ engine.runRenderLoop(function () {
 });
 
 // WATCH FOR BROWSER / CANVAS RESIZE EVENTS
-window.addEventListener("resize", function () {
+window.addEventListener('resize', function () {
     engine.resize();
 });

@@ -363,7 +363,7 @@ section{
     max-height: 800px;
     width: calc(100% - 400px);
 }
-.canvasContainer.record{
+.canvasContainer.resize{
     max-width: 1082px;
     max-height: 1082px;
     width: 1082px;
