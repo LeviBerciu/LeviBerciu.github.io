@@ -51,7 +51,11 @@
                         <h5 class="inputlabel">Message *</h5>
                         <textarea class="textBox textArea" id="message" name="message" placeholder="Your Message ..." required></textarea>
                     </fieldset >
-                    <button class="fill sendButton">send message</button>
+                    <div class="toggle">
+                        <input type="checkbox" id="consent" class="toggleButton">
+                        <label for="consent">I consent to having this website store my personal data so they can respond to my message.</label>
+                    </div>
+                    <button id="sendButton" class="fill sendButton" disabled>send message</button>
                 </div>
                 <div class="thankyou_message" style="display:none;">
                     <h2>Thanks for contacting us! We will get back to you soon!</h2>
@@ -71,6 +75,7 @@
     </footer>
 <!-- Scripts -->
     <script src="../scripts/navigation.js"></script>
+    <script src="../scripts/contact.js"></script>
     <script data-cfasync="false" type="text/javascript" src="../libraries/form-submission-handler.js"></script>
 </body>
 </html>
