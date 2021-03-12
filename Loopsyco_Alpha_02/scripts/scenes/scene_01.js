@@ -175,7 +175,7 @@ var createScene = function () {
             for(var i = 0; i < allParts.length; i++){
                 allParts[i].material.roughness = 1;
                 allParts[i].material.clearCoat.isEnabled = true;
-                allParts[i].material.clearCoat.roughness = 0.75;
+                allParts[i].material.clearCoat.roughness = 1;
             };
 
             // DEFAULT BUTTON
