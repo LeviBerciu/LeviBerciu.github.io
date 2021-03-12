@@ -388,6 +388,10 @@ section{
     display: block;
     margin: auto;
 }
+.thankyou_message{
+    text-align: center;
+    color: #78909D;
+}
 
 /* -------------------- SCENE DETAIL SPECIFIC */
 
