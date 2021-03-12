@@ -145,6 +145,32 @@ fieldset{
     margin-top: 30px;
     clear: both;
 }
+.radioButton {
+    display:none;
+}
+.radioButton + label{
+    background:url('../assets/radio_unchecked.svg') no-repeat;
+    height: 40px;
+    line-height: 24px;
+    display:inline-block;
+    padding: 0px 0px 0px 34px;
+}
+.radioButton:checked + label{
+    background:url('../assets/radio_checked.svg') no-repeat;
+}
+.toggleButton {
+    display:none;
+}
+.toggleButton + label{
+    background:url('../assets/toggle_off.svg') no-repeat;
+    height: 40px;
+    line-height: 24px;
+    display:inline-block;
+    padding: 0px 0px 0px 50px;
+}
+.toggleButton:checked + label{
+    background:url('../assets/toggle_on.svg') no-repeat;
+}
 .textBox{
     width: 100%;
     height: 48px;
@@ -156,6 +182,9 @@ fieldset{
     color: inherit;
     font-size: 20px;
 }
+.textBox:focus {
+    border: 1px solid #F50057;
+  }
 .textBox::placeholder{
     font-weight: 300;
     color: #B1BEC5;

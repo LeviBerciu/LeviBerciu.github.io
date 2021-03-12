@@ -56,7 +56,7 @@ var createScene = function () {
     camera.minZ = 0;
 
     // APPEND 3D MODEL & EXECUTE WHEN READY
-    BABYLON.SceneLoader.Append('../assets/gltfs/', 'scene_01.gltf', scene, function () {
+    BABYLON.SceneLoader.Append('../assets/scenes/', 'scene_01.gltf', scene, function () {
         scene.executeWhenReady(function () {
 
             // MESHES

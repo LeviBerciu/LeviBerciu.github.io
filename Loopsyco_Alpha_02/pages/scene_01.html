@@ -62,8 +62,8 @@
                         <h5>Shadow Opacity</h5>
                         <input id="shadowSlider" type="range" class="slider" min="-1" max="-0" step="0.01" value="-0.25">
                     </div>
-                    <button id="resetButton" class="line">back to default</button>
                     <button id="exportButton" class="fill">grab image</button>
+                    <button id="resetButton" class="line">back to default</button>
                 </div>
             </div>
         </div>
@@ -75,14 +75,20 @@
             </div>
             <div class="modalContent">
                 <div>
-                    <input type="radio" id="standardSize" name="imageSize" value="standardSize" checked>
-                    <label for="standardSize">Standard (2160 x 2160)</label><br>
-                    <input type="radio" id="largeSize" name="imageSize" value="largeSize">
-                    <label for="largeSize">Large (3240 x 3240)</label><br>
-                    <input type="radio" id="veryLargeSize" name="imageSize" value="veryLargeSize">
-                    <label for="veryLargeSize">Very Large (4320 x 4320)</label><br><br>
-                    <input type="checkbox" id="transparentBackground">
-                    <label for="transparentBackground">Transparent Background</label>
+                    <input type="checkbox" id="transparentBackground" class="toggleButton">
+                    <label for="transparentBackground">Enable transparent background.</label>
+                </div>
+                <div>
+                    <input type="radio" id="standardSize" class="radioButton" name="imageSize" value="standardSize" checked>
+                    <label for="standardSize">Standard</label>
+                </div>
+                <div>
+                    <input type="radio" id="largeSize" class="radioButton" name="imageSize" value="largeSize">
+                    <label for="largeSize">Large</label>
+                </div>
+                <div>
+                    <input type="radio" id="veryLargeSize" class="radioButton" name="imageSize" value="veryLargeSize">
+                    <label for="veryLargeSize">Very Large</label>
                 </div>
                 <button id="downloadButton" class="fill">Download</button>
             </div>
