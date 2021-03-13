@@ -94,10 +94,10 @@ var createScene = function () {
                 camera.fov = cameraSlider.value;
                 if(cameraSlider.value > 0.5){
                     camera.wheelPrecision = 35;
-                    camera.pinchPrecision = 150;
-                }else if(cameraSlider.value < 1.1){
+                    camera.pinchPrecision = 175;
+                }else if(cameraSlider.value < 1){
                     camera.wheelPrecision = 5;
-                    camera.pinchPrecision = 50;
+                    camera.pinchPrecision = 25;
                 }else{
                     camera.wheelPrecision = 20
                     camera.pinchPrecision = 100;
