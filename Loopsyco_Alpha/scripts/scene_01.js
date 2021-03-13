@@ -92,6 +92,16 @@ var createScene = function () {
             // FIELD OF VIEW
             cameraSlider.addEventListener('input', function(){
                 camera.fov = cameraSlider.value;
+                if(cameraSlider.value > 0.5){
+                    camera.wheelPrecision = 35;
+                    camera.pinchPrecision = 150;
+                }else if(cameraSlider.value < 1.1){
+                    camera.wheelPrecision = 5;
+                    camera.pinchPrecision = 50;
+                }else{
+                    camera.wheelPrecision = 20
+                    camera.pinchPrecision = 100;
+                }
             });
 
             // LIGHTS
