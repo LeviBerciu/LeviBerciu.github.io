@@ -14,36 +14,50 @@ canvas.onmousewheel = function(event){
     event.preventDefault();
 };
 
-// UI CONTROLS
-var environmentPicker = document.getElementById('environmentPicker');
-var primaryPicker = document.getElementById('primaryPicker');
-var secondaryPicker = document.getElementById('secondaryPicker');
-var stateSlider = document.getElementById('stateSlider');
-var cameraSlider = document.getElementById('cameraSlider');
-var lightPivotSlider = document.getElementById('lightPivotSlider');
-var lightSliderZ = document.getElementById('lightSliderZ');
-var shadowSlider = document.getElementById('shadowSlider');
-var resetButton = document.getElementById('resetButton');
-
 // DEFAULT VALUES
 var defaultCamPos = [-2, 6.5, -7.5];
 var defaultCamTar = [0, 1.5, 0];
-var defaultSceneState = 0;
-var defaultCamFov = 0.8;
-var defaultLightPivot = 2.2;
-var defaultLightZ = 1;
-var defaultShadow = 0.25;
-var defaultEnvColor = '#37474f';
-var defaultPriColor = '#ffab00';
-var defaultSecColor = '#ffffff';
+var defaultColor0 = '#37474f';
+var defaultColor1 = '#ffab00';
+var defaultColor2 = '#ffffff';
+var defaultVariation = 0;
+var defaultFov = 0.8;
+var defaultLightDirection = 2.2;
+var defaultLightAngle = 1;
+var defaultShadowOpacity = 0.25;
 
-// CREATE SCENE
+// UI CONTROLS & SETUP
+var color0Picker = document.getElementById('color0Picker');
+color0Picker.value = defaultColor0;
+
+var color1Picker = document.getElementById('color1Picker');
+color1Picker.value = defaultColor1;
+
+var color2Picker = document.getElementById('color2Picker');
+color2Picker.value = defaultColor2;
+
+var variationSlider = document.getElementById('variationSlider');
+variationSlider.value = defaultVariation;
+
+var fovSlider = document.getElementById('fovSlider');
+fovSlider.value = defaultFov;
+
+var lightDirectionSlider = document.getElementById('lightDirectionSlider');
+lightDirectionSlider.value = defaultLightDirection;
+
+var lightAngleSlider = document.getElementById('lightAngleSlider');
+lightAngleSlider.value = defaultLightAngle;
+
+var shadowOpacitySlider = document.getElementById('shadowOpacitySlider');
+shadowOpacitySlider.value = - defaultShadowOpacity;
+
+var resetButton = document.getElementById('resetButton');
+
+// SCENE SETUP
 var createScene = function () {
-
-    // SCENE
     var scene = new BABYLON.Scene(engine)
 
-    // CAMERA
+    // CAMERA SETUP
     var camera = new BABYLON.ArcRotateCamera("Camera", 0, 0, 0, new BABYLON.Vector3(0, 0, 0), scene);
     camera.setPosition(new BABYLON.Vector3(defaultCamPos[0], defaultCamPos[1], defaultCamPos[2]));
     camera.setTarget(new BABYLON.Vector3(defaultCamTar[0], defaultCamTar[1], defaultCamTar[2]));
@@ -76,26 +90,69 @@ var createScene = function () {
 
             var allParts = [part_01, part_02, part_03, part_04, part_05, part_06, part_07, part_08, part_09, part_10, part_11];
             
-            // SCENE STATE
+            // ENVIRONMENT (0) COLOR
+            scene.clearColor = new BABYLON.Color3.FromHexString(defaultColor0);
+            color0Picker.addEventListener('input', function(){
+                scene.clearColor = new BABYLON.Color3.FromHexString(color0Picker.value);
+            });
+
+            // PLANE MATERIAL
+            var planeMat = new BABYLON.ShadowOnlyMaterial('mat', scene);
+            planeMat.alpha = 0.25;
+            plane.material = planeMat;
+            
+            // MATERIAL 1
+            var material1 = new BABYLON.PBRMaterial('defaultMat', scene);
+            material1.albedoColor = new BABYLON.Color3.FromHexString(defaultColor1);
+            var priamryParts = [part_02, part_05, part_07, part_09, part_11]
+            for(var i = 0; i < priamryParts.length; i++){
+                priamryParts[i].material = material1;
+            };
+            color1Picker.addEventListener('input', function(){
+                material1.albedoColor = new BABYLON.Color3.FromHexString(color1Picker.value);
+            });
+
+             // MATERIAL 2
+            var material2 = new BABYLON.PBRMaterial('defaultMat', scene);
+            material2.albedoColor = new BABYLON.Color3.FromHexString(defaultColor2);
+            var secondaryParts = [part_01, part_03, part_04, part_06, part_08, part_10]
+            for(var i = 0; i < secondaryParts.length; i++){
+                secondaryParts[i].material = material2;
+            }    
+            color2Picker.addEventListener('input', function(){
+                material2.albedoColor = new BABYLON.Color3.FromHexString(color2Picker.value);
+            });
+
+            // GLOBAL MATERIAL
+            for(var i = 0; i < allParts.length; i++){
+                allParts[i].material.roughness = 1;
+                allParts[i].material.clearCoat.isEnabled = true;
+                allParts[i].material.clearCoat.roughness = 1;
+            };
+            
+            // SCENE VARIATION
             var animationGroup = scene.animationGroups[0];
-            var animFrames = animationGroup.to;
-            var stateFrames = animFrames/120;
+            var animationFrames = 120;
+            var animationKeyFrames = animationGroup.to;
+            var sceneFrames = animationKeyFrames/animationFrames;
+
+            console.log(animationGroup)
 
             animationGroup.pause();
             animationGroup.goToFrame(0);
              
-            stateSlider.addEventListener('input', function(){
-                animationGroup.goToFrame(stateFrames * stateSlider.value);
+            variationSlider.addEventListener('input', function(){
+                animationGroup.goToFrame(sceneFrames * variationSlider.value);
                 scene.render()
             });
             
             // FIELD OF VIEW
-            cameraSlider.addEventListener('input', function(){
-                camera.fov = cameraSlider.value;
-                if(cameraSlider.value > 0.5){
+            fovSlider.addEventListener('input', function(){
+                camera.fov = fovSlider.value;
+                if(fovSlider.value > 0.5){
                     camera.wheelPrecision = 35;
                     camera.pinchPrecision = 175;
-                }else if(cameraSlider.value < 1){
+                }else if(fovSlider.value < 1){
                     camera.wheelPrecision = 5;
                     camera.pinchPrecision = 25;
                 }else{
@@ -104,8 +161,8 @@ var createScene = function () {
                 }
             });
 
-            // LIGHTS
-            var light1 = new BABYLON.DirectionalLight('light1', new BABYLON.Vector3(0, -Math.PI / 2, defaultLightZ), scene);
+            // LIGHTS SETUP
+            var light1 = new BABYLON.DirectionalLight('light1', new BABYLON.Vector3(0, -Math.PI / 2, defaultLightAngle), scene);
             light1.position = new BABYLON.Vector3(0, 0, 0);
             light1.intensity = 3;
             light1.autoCalcShadowZBounds = true;
@@ -119,17 +176,17 @@ var createScene = function () {
             // LIGHT DIRECTION
             var lightPivot = new BABYLON.TransformNode("root"); 
             light1.parent = lightPivot;
-            lightPivot.rotation.y = Math.PI * defaultLightPivot;
-            lightPivotSlider.addEventListener('input', function(){
-                lightPivot.rotation.y = Math.PI * lightPivotSlider.value;
+            lightPivot.rotation.y = Math.PI * defaultLightDirection;
+            lightDirectionSlider.addEventListener('input', function(){
+                lightPivot.rotation.y = Math.PI * lightDirectionSlider.value;
             });
 
             // LIGHT ANGLE
-            lightSliderZ.addEventListener('input', function(){
-                light1.direction.z = lightSliderZ.value
+            lightAngleSlider.addEventListener('input', function(){
+                light1.direction.z = lightAngleSlider.value
             });
 
-            // SHADOW
+            // SHADOW SETUP
             var shadowGenerator = new BABYLON.ShadowGenerator(2048, light1);
             shadowGenerator.addShadowCaster(bounding_box);
             bounding_box.setEnabled (false);
@@ -140,53 +197,13 @@ var createScene = function () {
                 scene.meshes[i].receiveShadows = true;
             };
             shadowGenerator.forceBackFacesOnly = true;
-            shadowGenerator.darkness = defaultShadow;
+            shadowGenerator.darkness = defaultShadowOpacity;
             shadowGenerator.bias = 0;
 
             // SHADOW OPACITY
-            shadowSlider.addEventListener('input', function(){
-                shadowGenerator.darkness = Math.abs(shadowSlider.value);
+            shadowOpacitySlider.addEventListener('input', function(){
+                shadowGenerator.darkness = Math.abs(shadowOpacitySlider.value);
             });
-
-            // ENVIRONMENT COLOR
-            scene.clearColor = new BABYLON.Color3.FromHexString(defaultEnvColor);
-            environmentPicker.addEventListener('input', function(){
-                scene.clearColor = new BABYLON.Color3.FromHexString(environmentPicker.value);
-            });
-
-            // PLANE MATERIAL
-            var planeMat = new BABYLON.ShadowOnlyMaterial('mat', scene);
-            planeMat.alpha = 0.25;
-            plane.material = planeMat;
-            
-            // PRIMARY COLOR
-            var primaryMat = new BABYLON.PBRMaterial('defaultMat', scene);
-            primaryMat.albedoColor = new BABYLON.Color3.FromHexString(defaultPriColor);
-            var priamryParts = [part_02, part_05, part_07, part_09, part_11]
-            for(var i = 0; i < priamryParts.length; i++){
-                priamryParts[i].material = primaryMat;
-            };
-            primaryPicker.addEventListener('input', function(){
-                primaryMat.albedoColor = new BABYLON.Color3.FromHexString(primaryPicker.value);
-            });
-
-            // SECONDARY COLOR
-            var secondaryMat = new BABYLON.PBRMaterial('defaultMat', scene);
-            secondaryMat.albedoColor = new BABYLON.Color3.FromHexString(defaultSecColor);
-            var secondaryParts = [part_01, part_03, part_04, part_06, part_08, part_10]
-            for(var i = 0; i < secondaryParts.length; i++){
-                secondaryParts[i].material = secondaryMat;
-            }    
-            secondaryPicker.addEventListener('input', function(){
-                secondaryMat.albedoColor = new BABYLON.Color3.FromHexString(secondaryPicker.value);
-            });
-
-            // GLOBAL MATERIAL
-            for(var i = 0; i < allParts.length; i++){
-                allParts[i].material.roughness = 1;
-                allParts[i].material.clearCoat.isEnabled = true;
-                allParts[i].material.clearCoat.roughness = 1;
-            };
 
             // DEFAULT BUTTON
             resetButton.addEventListener('click', function(){
@@ -195,22 +212,30 @@ var createScene = function () {
             function resetToDefault(){
                 camera.setPosition(new BABYLON.Vector3(defaultCamPos[0], defaultCamPos[1], defaultCamPos[2]));
                 camera.setTarget(new BABYLON.Vector3(defaultCamTar[0], defaultCamTar[1], defaultCamTar[2]));
-                animationGroup.goToFrame(stateFrames * defaultSceneState);
-                stateSlider.value = defaultSceneState;
-                camera.fov = defaultCamFov;
-                cameraSlider.value = defaultCamFov;
-                lightPivot.rotation.y = Math.PI * defaultLightPivot;
-                lightPivotSlider.value = defaultLightPivot;
-                light1.direction.z = defaultLightZ;
-                lightSliderZ.value = defaultLightZ;
-                shadowGenerator.darkness = defaultShadow;
-                shadowSlider.value = - defaultShadow;
-                scene.clearColor = new BABYLON.Color3.FromHexString(defaultEnvColor);
-                environmentPicker.value = defaultEnvColor;
-                primaryMat.albedoColor = new BABYLON.Color3.FromHexString(defaultPriColor);
-                primaryPicker.value = defaultPriColor;
-                secondaryMat.albedoColor = new BABYLON.Color3.FromHexString(defaultSecColor);
-                secondaryPicker.value = defaultSecColor;
+
+                animationGroup.goToFrame(sceneFrames * defaultVariation);
+                variationSlider.value = defaultVariation;
+
+                scene.clearColor = new BABYLON.Color3.FromHexString(defaultColor0);
+                color0Picker.value = defaultColor0;
+
+                material1.albedoColor = new BABYLON.Color3.FromHexString(defaultColor1);
+                color1Picker.value = defaultColor1;
+
+                material2.albedoColor = new BABYLON.Color3.FromHexString(defaultColor2);
+                color2Picker.value = defaultColor2;
+
+                camera.fov = defaultFov;
+                fovSlider.value = defaultFov;
+
+                lightPivot.rotation.y = Math.PI * defaultLightDirection;
+                lightDirectionSlider.value = defaultLightDirection;
+
+                light1.direction.z = defaultLightAngle;
+                lightAngleSlider.value = defaultLightAngle;
+
+                shadowGenerator.darkness = defaultShadowOpacity;
+                shadowOpacitySlider.value = - defaultShadowOpacity;
             };
 
             // DOWNLOAD IMAGE
@@ -239,7 +264,7 @@ var createScene = function () {
                 BABYLON.Tools.CreateScreenshotUsingRenderTarget(engine, camera, {precision: imageSize});
                 canvasContainer.classList.remove('resize');
                 engine.resize();
-                scene.clearColor = new BABYLON.Color3.FromHexString(environmentPicker.value);
+                scene.clearColor = new BABYLON.Color3.FromHexString(color0Picker.value);
             });
         });
     });
@@ -248,8 +273,6 @@ var createScene = function () {
 
 // CREATE SCENE
 var scene = createScene(); 
-
-// Register a render loop to repeatedly render the scene
 engine.runRenderLoop(function () {
     scene.render();
 });

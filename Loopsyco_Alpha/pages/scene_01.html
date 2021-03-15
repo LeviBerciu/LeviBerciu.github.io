@@ -40,27 +40,27 @@
                     <div class="control">
                         <h5>Scene Colors</h5>
                         <div class="colors">
-                            <input id="environmentPicker" type="color" value="#37474f">
-                            <input id="primaryPicker" type="color" value="#ffab00">
-                            <input id="secondaryPicker" type="color" value="#ffffff">
+                            <input id="color0Picker" type="color">
+                            <input id="color1Picker" type="color">
+                            <input id="color2Picker" type="color">
                         </div>
                     </div>
                     <div class="control">
                         <h5>Scene Variation</h5>
-                        <input id="stateSlider" type="range" class="slider" min="0" max="120" step="1" value="0">
+                        <input id="variationSlider" type="range" class="slider" min="0" max="120" step="1">
                     </div>
                     <div class="control">
                         <h5>Field Of View</h5>
-                        <input id="cameraSlider" type="range" class="slider" min="0.1" max="1.5" step="0.01" value="0.8">
+                        <input id="fovSlider" type="range" class="slider" min="0.1" max="1.5" step="0.01">
                     </div>
                     <div class="control">
                         <h5>Light Direction & Angle</h5>
-                        <input id="lightPivotSlider" type="range" class="slider" min="1" max="3" step="0.01" value="2.2">
-                        <input id="lightSliderZ" type="range" class="slider" min="0" max="3.14" step="0.01" value="1">
+                        <input id="lightDirectionSlider" type="range" class="slider" min="1" max="3" step="0.01">
+                        <input id="lightAngleSlider" type="range" class="slider" min="0" max="3.14" step="0.01">
                     </div>
                     <div class="control">
                         <h5>Shadow Opacity</h5>
-                        <input id="shadowSlider" type="range" class="slider" min="-1" max="-0" step="0.01" value="-0.25">
+                        <input id="shadowOpacitySlider" type="range" class="slider" min="-1" max="-0" step="0.01">
                     </div>
                     <button id="exportButton" class="fill">grab image</button>
                     <button id="resetButton" class="line">back to default</button>
