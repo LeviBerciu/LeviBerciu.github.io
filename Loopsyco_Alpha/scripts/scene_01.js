@@ -136,8 +136,6 @@ var createScene = function () {
             var animationKeyFrames = animationGroup.to;
             var sceneFrames = animationKeyFrames/animationFrames;
 
-            console.log(animationGroup)
-
             animationGroup.pause();
             animationGroup.goToFrame(0);
              
@@ -146,19 +144,23 @@ var createScene = function () {
                 scene.render()
             });
             
-            // FIELD OF VIEW
-            fovSlider.addEventListener('input', function(){
-                camera.fov = fovSlider.value;
-                if(fovSlider.value > 0.5){
+            // FIELD OF VIEW & PRECISION
+            function setPrecision(fov){
+                if(fov > 0.5){
                     camera.wheelPrecision = 35;
                     camera.pinchPrecision = 175;
-                }else if(fovSlider.value < 1){
+                }else if(fov < 1){
                     camera.wheelPrecision = 5;
                     camera.pinchPrecision = 25;
                 }else{
                     camera.wheelPrecision = 20
                     camera.pinchPrecision = 100;
                 }
+            }
+
+            fovSlider.addEventListener('input', function(){
+                camera.fov = fovSlider.value;
+                setPrecision(fovSlider.value);
             });
 
             // LIGHTS SETUP
@@ -227,6 +229,7 @@ var createScene = function () {
 
                 camera.fov = defaultFov;
                 fovSlider.value = defaultFov;
+                setPrecision(defaultFov);
 
                 lightPivot.rotation.y = Math.PI * defaultLightDirection;
                 lightDirectionSlider.value = defaultLightDirection;
