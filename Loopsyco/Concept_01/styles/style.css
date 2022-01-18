@@ -1,0 +1,11 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#render-canvas{
+    width: 640px;
+    height: 360px;
+    touch-action: none;
+}

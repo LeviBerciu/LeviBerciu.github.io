@@ -1,0 +1,15 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: #ffab00;
+}
+
+#renderCanvas{
+    width: 720px;
+    height: 720px;
+    touch-action: none;
+}

@@ -15,16 +15,16 @@ canvas.onmousewheel = function(event){
 };
 
 // DEFAULT VALUES
-var defaultCamPos = [5, 12, -10];
-var defaultCamTar = [0, 5, -2];
-var defaultColor0 = '#03A696';
-var defaultColor1 = '#FFFFFF';
-var defaultColor2 = '#F2E205';
-var defaultVariation = 0;
+var defaultCamPos = [-6.1, 6, 2.8];
+var defaultCamTar = [0.1, 1.3, 0.2];
+var defaultColor0 = '#00b3fb';
+var defaultColor1 = '#004263';
+var defaultColor2 = '#ffffff';
+var defaultVariation = 100;
 var defaultFov = 0.8;
-var defaultLightDirection = 1.7;
+var defaultLightDirection = 2.3;
 var defaultLightAngle = 1;
-var defaultShadowOpacity = 0.75;
+var defaultShadowOpacity = 0.5;
 
 // UI CONTROLS & SETUP
 var color0Picker = document.getElementById('color0Picker');
@@ -70,15 +70,19 @@ var createScene = function () {
     camera.minZ = 0;
 
     // APPEND 3D MODEL & EXECUTE WHEN READY
-    BABYLON.SceneLoader.Append('../assets/', 'scene_02.gltf', scene, function () {
+    BABYLON.SceneLoader.Append('../assets/', 'scene_05.gltf', scene, function () {
         scene.executeWhenReady(function () {
 
-            // MESHES;
+            // MESHES
+            var bounding_box = scene.getMeshByName('bounding_box');
             var plane = scene.getMeshByName('plane');
             var part_01 = scene.getMeshByName('part_01');
             var part_02 = scene.getMeshByName('part_02');
+            var part_03 = scene.getMeshByName('part_03');
+            var part_04 = scene.getMeshByName('part_04');
 
-            var allParts = [part_01, part_02];
+
+            var allParts = [part_01, part_02, part_03, part_04];
             
             // ENVIRONMENT (0) COLOR
             scene.clearColor = new BABYLON.Color3.FromHexString(defaultColor0);
@@ -94,7 +98,7 @@ var createScene = function () {
             // MATERIAL 1
             var material1 = new BABYLON.PBRMaterial('defaultMat', scene);
             material1.albedoColor = new BABYLON.Color3.FromHexString(defaultColor1);
-            var priamryParts = [part_01]
+            var priamryParts = [part_04]
             for(var i = 0; i < priamryParts.length; i++){
                 priamryParts[i].material = material1;
             };
@@ -105,7 +109,7 @@ var createScene = function () {
              // MATERIAL 2
             var material2 = new BABYLON.PBRMaterial('defaultMat', scene);
             material2.albedoColor = new BABYLON.Color3.FromHexString(defaultColor2);
-            var secondaryParts = [part_02]
+            var secondaryParts = [part_01, part_02, part_03]
             for(var i = 0; i < secondaryParts.length; i++){
                 secondaryParts[i].material = material2;
             }    
@@ -180,8 +184,6 @@ var createScene = function () {
 
             // SHADOW SETUP
             var shadowGenerator = new BABYLON.ShadowGenerator(2048, light1);
-            //shadowGenerator.addShadowCaster(bounding_box);
-            //bounding_box.setEnabled (false);
             for(var i = 0; i < allParts.length; i++){
                 shadowGenerator.addShadowCaster(allParts[i])
             };

@@ -28,7 +28,7 @@ h5{
 }
 p{
     line-height: 30px;
-    font-size: 20px;
+    font-size: 16px;
     font-weight: 200;
 }
 a{
@@ -339,7 +339,6 @@ footer span{
 
 /* -------------------- SECTIONS */
 
-
 section{
     width: 100%;
 }
@@ -358,6 +357,23 @@ section{
 .sceneThumbnail{
     width: 100%;
     display: block;
+}
+
+/* -------------------- ABOUT SPECIFIC */
+
+.aboutGrid{
+    padding: 40px 0px 120px 0px;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-row-gap: 40px;
+}
+.aboutContainer{
+    width: 100%;
+    display: block;
+}
+.aboutText{
+    margin: auto;
+    padding: 0px 40px 0px 0px;
 }
 
 /* -------------------- CONTACT SPECIFIC */
@@ -489,6 +505,14 @@ section{
     input[type="color"]:hover {
         opacity: 1;
     }
+    .aboutGrid{
+        padding: 0px 0px 120px 0px;
+        grid-template-columns: 1fr;
+        grid-row-gap: 0px;
+    }
+    .aboutText{
+        padding: 40px 0px 20px 0px;
+    }
     .modal{
         width: calc(100% - 160px);
         position: fixed;
@@ -542,6 +566,10 @@ section{
     }
     .scenesGrid{
         padding: 40px 0px 60px 0px;
+        grid-template-columns: 1fr 1fr;
+    }
+    .aboutGrid{
+        padding: 0px 0px 60px 0px;
     }
     .contactForm{
         padding: 20px 0px 60px 0px;

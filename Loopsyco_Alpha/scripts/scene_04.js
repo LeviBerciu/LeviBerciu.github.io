@@ -15,16 +15,16 @@ canvas.onmousewheel = function(event){
 };
 
 // DEFAULT VALUES
-var defaultCamPos = [5, 12, -10];
-var defaultCamTar = [0, 5, -2];
-var defaultColor0 = '#03A696';
-var defaultColor1 = '#FFFFFF';
-var defaultColor2 = '#F2E205';
-var defaultVariation = 0;
+var defaultCamPos = [10, 0, 10];
+var defaultCamTar = [0, 0, 0];
+var defaultColor0 = '#ffa8c2';
+var defaultColor1 = '#cc0063';
+var defaultColor2 = '#fbff03';
+var defaultVariation = 30;
 var defaultFov = 0.8;
-var defaultLightDirection = 1.7;
-var defaultLightAngle = 1;
-var defaultShadowOpacity = 0.75;
+var defaultLightDirection = 2;
+var defaultLightAngle = 0;
+var defaultShadowOpacity = 0;
 
 // UI CONTROLS & SETUP
 var color0Picker = document.getElementById('color0Picker');
@@ -70,11 +70,10 @@ var createScene = function () {
     camera.minZ = 0;
 
     // APPEND 3D MODEL & EXECUTE WHEN READY
-    BABYLON.SceneLoader.Append('../assets/', 'scene_02.gltf', scene, function () {
+    BABYLON.SceneLoader.Append('../assets/', 'scene_04.gltf', scene, function () {
         scene.executeWhenReady(function () {
 
             // MESHES;
-            var plane = scene.getMeshByName('plane');
             var part_01 = scene.getMeshByName('part_01');
             var part_02 = scene.getMeshByName('part_02');
 
@@ -87,9 +86,9 @@ var createScene = function () {
             });
 
             // PLANE MATERIAL
-            var planeMat = new BABYLON.ShadowOnlyMaterial('mat', scene);
-            planeMat.alpha = 0.25;
-            plane.material = planeMat;
+            // var planeMat = new BABYLON.ShadowOnlyMaterial('mat', scene);
+            // planeMat.alpha = 0.25;
+            // plane.material = planeMat;
             
             // MATERIAL 1
             var material1 = new BABYLON.PBRMaterial('defaultMat', scene);
@@ -154,7 +153,7 @@ var createScene = function () {
             });
 
             // LIGHTS SETUP
-            var light1 = new BABYLON.DirectionalLight('light1', new BABYLON.Vector3(0, -Math.PI / 2, defaultLightAngle), scene);
+            var light1 = new BABYLON.DirectionalLight('light1', new BABYLON.Vector3(-Math.PI / 2, 0, defaultLightAngle), scene);
             light1.position = new BABYLON.Vector3(0, 0, 0);
             light1.intensity = 3;
             light1.autoCalcShadowZBounds = true;
@@ -175,7 +174,7 @@ var createScene = function () {
 
             // LIGHT ANGLE
             lightAngleSlider.addEventListener('input', function(){
-                light1.direction.z = lightAngleSlider.value
+                light1.direction.y = lightAngleSlider.value
             });
 
             // SHADOW SETUP
@@ -224,7 +223,7 @@ var createScene = function () {
                 lightPivot.rotation.y = Math.PI * defaultLightDirection;
                 lightDirectionSlider.value = defaultLightDirection;
 
-                light1.direction.z = defaultLightAngle;
+                light1.direction.y = defaultLightAngle;
                 lightAngleSlider.value = defaultLightAngle;
 
                 shadowGenerator.darkness = defaultShadowOpacity;

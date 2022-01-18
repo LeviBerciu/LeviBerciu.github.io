@@ -1,0 +1,24 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    display: flex;
+    background-color: #eceff1;
+}
+
+.canvasWrapper{
+    height: 100vh;
+    padding: 32px;
+}
+
+#renderCanvas{
+    height: 100%;
+    outline: 1px dashed #b0bec5;
+}
+
+.controlsWrapper{
+    padding: 32px;
+}
