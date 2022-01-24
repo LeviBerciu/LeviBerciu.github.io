@@ -70,7 +70,7 @@ var createScene = function () {
     highlightLayer.outerGlow = false;
 
     // APPEND 3D MODEL & EXECUTE WHEN READY
-    BABYLON.SceneLoader.Append('../scene/', 'scene.gltf', scene, function () {
+    BABYLON.SceneLoader.Append('../scenes/scene/', 'scene.gltf', scene, function () {
         scene.executeWhenReady(function () {
 
             // MESHES
