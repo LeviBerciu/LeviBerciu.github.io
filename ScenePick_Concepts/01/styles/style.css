@@ -313,6 +313,7 @@ nav{
     transition: opacity 150ms ease-in-out;
 }
 .navList li a.active{
+    color: #F50057;
     opacity: 1;
 }
 .navList li a:hover{
