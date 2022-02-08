@@ -262,7 +262,7 @@ var createScene = function () {
                 if(veryLargeSize.checked){
                     imageSize = 2;
                 }
-                BABYLON.Tools.CreateScreenshotUsingRenderTarget(engine, camera, {precision: imageSize});
+                BABYLON.Tools.CreateScreenshotUsingRenderTarget(engine, camera, {precision: imageSize}, undefined, undefined, undefined, undefined, "scenepick");
                 canvasContainer.classList.remove('resize');
                 engine.resize();
                 scene.clearColor = new BABYLON.Color3.FromHexString(bgColorPicker.value);
