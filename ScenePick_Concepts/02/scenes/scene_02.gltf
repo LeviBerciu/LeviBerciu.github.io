@@ -26,51 +26,51 @@
     "nodes" : [
         {
             "mesh" : 0,
-            "name" : "part_01"
+            "name" : "Object.001"
         },
         {
             "mesh" : 1,
-            "name" : "part_02"
+            "name" : "Object.002"
         },
         {
             "mesh" : 2,
-            "name" : "part_03"
+            "name" : "Object.003"
         },
         {
             "mesh" : 3,
-            "name" : "plane"
+            "name" : "Object.012"
         },
         {
             "mesh" : 4,
-            "name" : "part_05"
+            "name" : "Object.005"
         },
         {
             "mesh" : 5,
-            "name" : "part_06"
+            "name" : "Object.006"
         },
         {
             "mesh" : 6,
-            "name" : "part_08"
+            "name" : "Object.008"
         },
         {
             "mesh" : 7,
-            "name" : "part_10"
+            "name" : "Object.010"
         },
         {
             "mesh" : 8,
-            "name" : "part_09"
+            "name" : "Object.009"
         },
         {
             "mesh" : 9,
-            "name" : "part_11"
+            "name" : "Object.011"
         },
         {
             "mesh" : 10,
-            "name" : "part_04"
+            "name" : "Object.004"
         },
         {
             "mesh" : 11,
-            "name" : "part_07"
+            "name" : "Object.007"
         }
     ],
     "meshes" : [

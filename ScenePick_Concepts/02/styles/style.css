@@ -351,10 +351,11 @@ section{
     max-width: 800px;
     padding: 40px 0px 40px 0px;
 }
-.scenesGrid{
+.scenesList{
     padding: 40px 0px 120px 0px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
+    list-style-type: none;
 }
 .sceneThumbnail{
     width: 100%;
@@ -566,7 +567,7 @@ section{
     footer{
         padding: 20px 0px 20px 0px;
     }
-    .scenesGrid{
+    .scenesList{
         padding: 40px 0px 60px 0px;
         grid-template-columns: 1fr 1fr;
     }
@@ -595,7 +596,7 @@ section{
 /* -------------------- RESPONSIVE 480 */
 
 @media only screen and (max-width: 480px) {
-    .scenesGrid{
+    .scenesList{
         grid-template-columns: 1fr;
     }
     .sendButton{

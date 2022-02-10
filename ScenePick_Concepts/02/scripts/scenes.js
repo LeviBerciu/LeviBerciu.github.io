@@ -1,15 +1,6 @@
-var loopsGrid = document.querySelector('.loopsGrid')
+// localStorage.setItem('myCat', 'Tom');
+// const cat = localStorage.getItem('myCat');
+// localStorage.removeItem('myCat');
+// localStorage.clear();
 
-loopsGrid.addEventListener('mouseover', function(e){
-    if (e.target.tagName == 'VIDEO'){
-        e.target.play()
-        e.target.loop = true;
-    }
-});
-
-loopsGrid.addEventListener('mouseout', function(e){
-    if (e.target.tagName == 'VIDEO'){
-        e.target.pause();
-        e.target.currentTime = 0;
-    }
-});
+localStorage.setItem("sceneName", "scene_02");
