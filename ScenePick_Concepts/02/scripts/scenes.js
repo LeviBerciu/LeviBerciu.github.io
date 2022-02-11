@@ -1,6 +1,7 @@
-// localStorage.setItem('myCat', 'Tom');
-// const cat = localStorage.getItem('myCat');
-// localStorage.removeItem('myCat');
-// localStorage.clear();
-
-localStorage.setItem("sceneName", "scene_02");
+// SETTING LOCAL STORAGE TO THE CLICKED LINK DATA ATTRIBUTE
+localStorage.clear();
+var scenesList = document.getElementById("scenesList");
+scenesList.addEventListener("click", setLocalStorage, false);
+function setLocalStorage(event){
+    localStorage.setItem('sceneName', event.target.dataset.scenename);
+}

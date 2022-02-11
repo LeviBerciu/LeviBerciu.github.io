@@ -1,6 +1,6 @@
 // READING LOCAL STORAGE
 const sceneName = localStorage.getItem("sceneName");
-console.log(sceneName)
+console.log(sceneName)//tbd
 
 // LOADING SCENE JSON
 fetch("../scenes/" + sceneName + ".json") 
