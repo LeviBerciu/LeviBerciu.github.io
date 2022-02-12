@@ -254,9 +254,9 @@ fetch("../scenes/" + sceneName + ".json")
                 var canvasContainer = document.querySelector(".canvasContainer");
                 var downloadButton = document.getElementById("downloadButton");
                 var transparentBackground = document.getElementById("transparentBackground");
-                var standardSize = document.getElementById("standardSize");
-                var largeSize = document.getElementById("largeSize");
-                var veryLargeSize = document.getElementById("veryLargeSize");
+                var sizeOne = document.getElementById("sizeOne");
+                var sizeTwo = document.getElementById("sizeTwo");
+                var sizeTree = document.getElementById("sizeTree");
                 downloadButton.addEventListener("click", function(){
                     if (transparentBackground.checked){
                         scene.clearColor = new BABYLON.Color4(0,0,0,0);
@@ -264,14 +264,14 @@ fetch("../scenes/" + sceneName + ".json")
                     canvasContainer.classList.add("resize");
                     engine.resize();
                     var imageSize;
-                    if(standardSize.checked){
+                    if(sizeOne.checked){
+                        imageSize = 0.5;
+                    }
+                    if(sizeTwo.checked){
                         imageSize = 1;
                     }
-                    if(largeSize.checked){
+                    if(sizeTree.checked){
                         imageSize = 1.5;
-                    }
-                    if(veryLargeSize.checked){
-                        imageSize = 2;
                     }
                     BABYLON.Tools.CreateScreenshotUsingRenderTarget(engine, camera, {precision: imageSize}, undefined, undefined, undefined, undefined, sceneName);
                     canvasContainer.classList.remove("resize");
