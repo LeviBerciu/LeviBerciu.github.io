@@ -30,10 +30,11 @@ fetch("../scenes/" + sceneName + ".json")
     var defaultLightX = jsonData.environment.light[0];
     var defaultLightY = jsonData.environment.light[1];
     var defaultShadowDarkness = jsonData.environment.shadowDarkness;
-
+    
+    // CONTROLS PANEL
     var environmentControls = document.getElementById("environmentControls");
-    var meshControls = document.getElementById("meshControls");
-    meshControls.setAttribute("style", "display: none");
+    var objectControls = document.getElementById("objectControls");
+    objectControls.setAttribute("style", "display: none");
 
     // SCENE SETUP
     var createScene = function () {
@@ -89,14 +90,25 @@ fetch("../scenes/" + sceneName + ".json")
                     invisObjects[i].material = invisMat;
                 };
 
-                // MESH SELECTION & EDITING
-                var meshColorPicker = new Huebee(document.getElementById("meshColorPicker"), {
+                // BACKGROUND COLOR
+                scene.clearColor = new BABYLON.Color3.FromHexString(defaultBgColor);
+                var environmentColorPicker = new Huebee(document.getElementById("environmentColorPicker"), {
                     notation: 'hex',
                     saturations: 3,
                 });
-                var meshEmissiveSlider = document.getElementById("meshEmissiveSlider")
-                var meshAlphaSlider = document.getElementById("meshAlphaSlider");
-                meshAlphaSlider.setAttribute("style", "direction: rtl");
+                environmentColorPicker.setColor(defaultBgColor)
+                environmentColorPicker.on('change', function(color) {
+                    scene.clearColor = new BABYLON.Color3.FromHexString(color);
+                });
+
+                // MESH SELECTION & EDITING
+                var objectColorPicker = new Huebee(document.getElementById("objectColorPicker"), {
+                    notation: 'hex',
+                    saturations: 3,
+                });
+                var objectEmissiveSlider = document.getElementById("objectEmissiveSlider")
+                var objectAlphaSlider = document.getElementById("objectAlphaSlider");
+                objectAlphaSlider.setAttribute("style", "direction: rtl");
                 var selectedMesh;
                 for(var i = 0; i < invisObjects.length; i++){
                     invisObjects[i].isPickable = false
@@ -105,16 +117,17 @@ fetch("../scenes/" + sceneName + ".json")
                     var ray = scene.createPickingRay(scene.pointerX, scene.pointerY, BABYLON.Matrix.Identity(), camera);
                     var hit = scene.pickWithRay(ray);
                     removeHighlight();
+                    removeHuebee()
                     if (visObjects.includes(hit.pickedMesh)){               
                         highlightLayer.addMesh(hit.pickedMesh, BABYLON.Color3.FromHexString("#ffffff"));
                         selectedMesh = hit.pickedMesh;
-                        meshColorPicker.setColor(selectedMesh.material.albedoColor.toHexString())
-                        meshEmissiveSlider.value = selectedMesh.material.emissiveIntensity;
-                        meshAlphaSlider.value = selectedMesh.material.alpha;
-                        meshControls.setAttribute("style", "display: block");
+                        objectColorPicker.setColor(selectedMesh.material.albedoColor.toHexString())
+                        objectEmissiveSlider.value = selectedMesh.material.emissiveIntensity;
+                        objectAlphaSlider.value = selectedMesh.material.alpha;
+                        objectControls.setAttribute("style", "display: block");
                         environmentControls.setAttribute("style", "display: none");
                     }else{
-                        meshControls.setAttribute("style", "display: none");
+                        objectControls.setAttribute("style", "display: none");
                         environmentControls.setAttribute("style", "display: block");
                     };
                 };
@@ -123,29 +136,24 @@ fetch("../scenes/" + sceneName + ".json")
                         highlightLayer.removeMesh(visObjects[i]);
                     };
                 };
-                meshColorPicker.on('change', function(color) {
+                objectColorPicker.on('change', function(color) {
                     selectedMesh.material.albedoColor = new BABYLON.Color3.FromHexString(color);
                     selectedMesh.material.emissiveColor = new BABYLON.Color3.FromHexString(color);
                 });
-                meshEmissiveSlider.addEventListener("input", function(){
-                    selectedMesh.material.emissiveIntensity = meshEmissiveSlider.value;
-                    selectedMesh.material.emissiveColor = new BABYLON.Color3.FromHexString(meshColorPicker.value);
+                objectEmissiveSlider.addEventListener("input", function(){
+                    selectedMesh.material.emissiveIntensity = objectEmissiveSlider.value;
+                    selectedMesh.material.emissiveColor = new BABYLON.Color3.FromHexString(objectColorPicker.value);
                 });
-                meshAlphaSlider.addEventListener("input", function(){
-                    selectedMesh.material.alpha = meshAlphaSlider.value;
+                objectAlphaSlider.addEventListener("input", function(){
+                    selectedMesh.material.alpha = objectAlphaSlider.value;
                 });
+                function removeHuebee(){ // library bug fix - sometimes huebee did not dissappea
+                    var huebeeElement = document.getElementsByClassName("huebee");
+                    for(var i = 0; i < huebeeElement.length; i++){
+                        huebeeElement[i].remove();
+                    };
+                };
 
-                // BACKGROUND COLOR
-                scene.clearColor = new BABYLON.Color3.FromHexString(defaultBgColor);
-                var bgColorPicker = new Huebee(document.getElementById("bgColorPicker"), {
-                    notation: 'hex',
-                    saturations: 3,
-                });
-                bgColorPicker.setColor(defaultBgColor)
-                bgColorPicker.on('change', function(color) {
-                    console.log( 'color changed to: ' + color )
-                    scene.clearColor = new BABYLON.Color3.FromHexString(color);
-                });
                 
                 // FIELD OF VIEW
                 var fovSlider = document.getElementById("fovSlider");
@@ -222,7 +230,7 @@ fetch("../scenes/" + sceneName + ".json")
                 function resetToDefault(){
                     camera.setPosition(new BABYLON.Vector3(defaultCamPos[0], defaultCamPos[1], defaultCamPos[2]));
                     camera.setTarget(new BABYLON.Vector3(defaultCamTar[0], defaultCamTar[1], defaultCamTar[2]));
-                    bgColorPicker.setColor(defaultBgColor)
+                    environmentColorPicker.setColor(defaultBgColor)
                     fovSlider.value = defaultFov;
                     camera.fov = defaultFov;
                     setPrecision(defaultFov);
@@ -238,7 +246,7 @@ fetch("../scenes/" + sceneName + ".json")
                         visObjects[i].material.emissiveIntensity = jsonData.objects[i].emissiveIntensity;
                         visObjects[i].material.alpha = jsonData.objects[i].alpha;
                     };
-                    meshControls.setAttribute("style", "display: none");
+                    objectControls.setAttribute("style", "display: none");
                     environmentControls.setAttribute("style", "display: block");
                 };
 
@@ -268,7 +276,7 @@ fetch("../scenes/" + sceneName + ".json")
                     BABYLON.Tools.CreateScreenshotUsingRenderTarget(engine, camera, {precision: imageSize}, undefined, undefined, undefined, undefined, sceneName);
                     canvasContainer.classList.remove("resize");
                     engine.resize();
-                    scene.clearColor = new BABYLON.Color3.FromHexString(bgColorPicker.value);
+                    scene.clearColor = new BABYLON.Color3.FromHexString(environmentColorPicker.value);
                 });
             });
         });
