@@ -6,11 +6,13 @@
     <title>scenepick | scene</title>
     <link rel="icon" type="image/png" href="../assets/favicon.png" sizes="16x16"/>
     <link rel="icon" type="image/png" href="../assets/favicon.png" sizes="32x32"/>
+    <link rel="stylesheet" href="../libraries/huebee/huebee.css">
     <link rel="stylesheet" href="../styles/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <script src="https://cdn.babylonjs.com/babylon.js"></script>
     <script src="https://cdn.babylonjs.com/loaders/babylonjs.loaders.min.js"></script>
     <script src="https://cdn.babylonjs.com/materialsLibrary/babylonjs.materials.min.js"></script>
+    <script src="../libraries/huebee/hubee.js"></script>
 </head>
 <body>
 <!-- Nav Bar -->
@@ -37,11 +39,11 @@
                     <canvas id="renderCanvas" touch-action="none"></canvas>
                 </div>
                 <div class="controlsContainer">
-                    <div id="environmentControls">
+                    <div id="environmentControls" class="controlsPanel">
                         <div class="control">
                             <h5>Background color</h5>
                             <div class="colors">
-                                <input id="bgColorPicker" type="color">
+                                <input id="bgColorPicker" class="color-input textBox"/>
                             </div>
                         </div>
                         <div class="control">
@@ -58,15 +60,15 @@
                             <input id="shadowDarknessSlider" type="range" class="slider" min="0" max="1" step="0.01">
                         </div>
                     </div>
-                    <div id="meshControls">
+                    <div id="meshControls" class="controlsPanel">
                         <div class="control">
                             <h5>Color</h5>
                             <div class="colors">
-                                <input id="meshColorPicker" type="color">
+                                <input id="meshColorPicker" class="color-input textBox"/>
                             </div>
                         </div>
                         <div class="control">
-                            <h5>Illumination</h5>
+                            <h5>Self-illumination</h5>
                             <input id="meshEmissiveSlider" type="range" class="slider" min="0" max="1" step="0.01">
                         </div>
                         <div class="control">
@@ -74,8 +76,10 @@
                             <input id="meshAlphaSlider" type="range" class="slider" min="0" max="1" step="0.01">
                         </div>
                     </div>
-                    <button id="exportButton" class="fill">capture image</button>
-                    <button id="resetButton" class="line">reset scene</button>
+                    <div class="sceneButtons">
+                        <button id="exportButton" class="fill">capture image</button>
+                        <button id="resetButton" class="line">reset scene</button>
+                    </div>
                 </div>
             </div>
         </div>

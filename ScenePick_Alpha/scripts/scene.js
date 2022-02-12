@@ -1,6 +1,5 @@
 // READING LOCAL STORAGE
 const sceneName = localStorage.getItem("sceneName");
-console.log(sceneName)//tbd
 
 // LOADING SCENE JSON
 fetch("../scenes/" + sceneName + ".json") 
@@ -32,27 +31,9 @@ fetch("../scenes/" + sceneName + ".json")
     var defaultLightY = jsonData.environment.light[1];
     var defaultShadowDarkness = jsonData.environment.shadowDarkness;
 
-    // ENVIRONMENT CONTROLS
     var environmentControls = document.getElementById("environmentControls");
-    var bgColorPicker = document.getElementById("bgColorPicker");
-    bgColorPicker.value = defaultBgColor
-    var fovSlider = document.getElementById("fovSlider");
-    fovSlider.value = defaultFov;
-    var lightXSlider = document.getElementById("lightXSlider");
-    lightXSlider.value = defaultLightX;
-    var lightYSlider = document.getElementById("lightYSlider");
-    lightYSlider.value = defaultLightY;
-    var shadowDarknessSlider = document.getElementById("shadowDarknessSlider");
-    shadowDarknessSlider.value = defaultShadowDarkness;
-    shadowDarknessSlider.setAttribute("style", "direction: rtl");
-
-    // MESH CONTROLS
     var meshControls = document.getElementById("meshControls");
     meshControls.setAttribute("style", "display: none");
-    var meshColorPicker = document.getElementById("meshColorPicker");
-    var meshEmissiveSlider = document.getElementById("meshEmissiveSlider")
-    var meshAlphaSlider = document.getElementById("meshAlphaSlider");
-    meshAlphaSlider.setAttribute("style", "direction: rtl");
 
     // SCENE SETUP
     var createScene = function () {
@@ -108,7 +89,14 @@ fetch("../scenes/" + sceneName + ".json")
                     invisObjects[i].material = invisMat;
                 };
 
-                // MESH SELECTION
+                // MESH SELECTION & EDITING
+                var meshColorPicker = new Huebee(document.getElementById("meshColorPicker"), {
+                    notation: 'hex',
+                    saturations: 3,
+                });
+                var meshEmissiveSlider = document.getElementById("meshEmissiveSlider")
+                var meshAlphaSlider = document.getElementById("meshAlphaSlider");
+                meshAlphaSlider.setAttribute("style", "direction: rtl");
                 var selectedMesh;
                 for(var i = 0; i < invisObjects.length; i++){
                     invisObjects[i].isPickable = false
@@ -120,27 +108,24 @@ fetch("../scenes/" + sceneName + ".json")
                     if (visObjects.includes(hit.pickedMesh)){               
                         highlightLayer.addMesh(hit.pickedMesh, BABYLON.Color3.FromHexString("#ffffff"));
                         selectedMesh = hit.pickedMesh;
-                        meshColorPicker.value = selectedMesh.material.albedoColor.toHexString();
+                        meshColorPicker.setColor(selectedMesh.material.albedoColor.toHexString())
                         meshEmissiveSlider.value = selectedMesh.material.emissiveIntensity;
                         meshAlphaSlider.value = selectedMesh.material.alpha;
                         meshControls.setAttribute("style", "display: block");
                         environmentControls.setAttribute("style", "display: none");
-                        console.log(selectedMesh.name) //tbd
                     }else{
                         meshControls.setAttribute("style", "display: none");
                         environmentControls.setAttribute("style", "display: block");
-                    }
-                }   
+                    };
+                };
                 function removeHighlight(){
                     for(var i = 0; i < visObjects.length; i++){
                         highlightLayer.removeMesh(visObjects[i]);
                     };
-                }
-
-                // SELECTED MESH EDIT
-                meshColorPicker.addEventListener("input", function(){
-                selectedMesh.material.albedoColor = new BABYLON.Color3.FromHexString(meshColorPicker.value);
-                selectedMesh.material.emissiveColor = new BABYLON.Color3.FromHexString(meshColorPicker.value);
+                };
+                meshColorPicker.on('change', function(color) {
+                    selectedMesh.material.albedoColor = new BABYLON.Color3.FromHexString(color);
+                    selectedMesh.material.emissiveColor = new BABYLON.Color3.FromHexString(color);
                 });
                 meshEmissiveSlider.addEventListener("input", function(){
                     selectedMesh.material.emissiveIntensity = meshEmissiveSlider.value;
@@ -152,11 +137,19 @@ fetch("../scenes/" + sceneName + ".json")
 
                 // BACKGROUND COLOR
                 scene.clearColor = new BABYLON.Color3.FromHexString(defaultBgColor);
-                bgColorPicker.addEventListener("input", function(){
-                    scene.clearColor = new BABYLON.Color3.FromHexString(bgColorPicker.value);
+                var bgColorPicker = new Huebee(document.getElementById("bgColorPicker"), {
+                    notation: 'hex',
+                    saturations: 3,
+                });
+                bgColorPicker.setColor(defaultBgColor)
+                bgColorPicker.on('change', function(color) {
+                    console.log( 'color changed to: ' + color )
+                    scene.clearColor = new BABYLON.Color3.FromHexString(color);
                 });
                 
                 // FIELD OF VIEW
+                var fovSlider = document.getElementById("fovSlider");
+                fovSlider.value = defaultFov;
                 fovSlider.addEventListener("input", function(){
                     camera.fov = fovSlider.value;
                     setPrecision(fovSlider.value);
@@ -187,10 +180,14 @@ fetch("../scenes/" + sceneName + ".json")
                 // LIGHT POSITION
                 var lightPivot = new BABYLON.TransformNode("root"); 
                 light1.parent = lightPivot;
+                var lightXSlider = document.getElementById("lightXSlider");
+                lightXSlider.value = defaultLightX;
                 lightPivot.rotation.x = Math.PI * lightXSlider.value;
                 lightXSlider.addEventListener("input", function(){
                     lightPivot.rotation.x = Math.PI * lightXSlider.value;
                 });
+                var lightYSlider = document.getElementById("lightYSlider");
+                lightYSlider.value = defaultLightY;
                 lightPivot.rotation.y = Math.PI * lightYSlider.value;
                 lightYSlider.addEventListener("input", function(){
                     lightPivot.rotation.y = Math.PI * lightYSlider.value;
@@ -210,6 +207,9 @@ fetch("../scenes/" + sceneName + ".json")
                 shadowGenerator.bias = 0.001
 
                 // SHADOW DARKNESS
+                var shadowDarknessSlider = document.getElementById("shadowDarknessSlider");
+                shadowDarknessSlider.value = defaultShadowDarkness;
+                shadowDarknessSlider.setAttribute("style", "direction: rtl");
                 shadowDarknessSlider.addEventListener("input", function(){
                     shadowGenerator.darkness = shadowDarknessSlider.value;
                 });
@@ -222,8 +222,7 @@ fetch("../scenes/" + sceneName + ".json")
                 function resetToDefault(){
                     camera.setPosition(new BABYLON.Vector3(defaultCamPos[0], defaultCamPos[1], defaultCamPos[2]));
                     camera.setTarget(new BABYLON.Vector3(defaultCamTar[0], defaultCamTar[1], defaultCamTar[2]));
-                    bgColorPicker.value = defaultBgColor;
-                    scene.clearColor = new BABYLON.Color3.FromHexString(defaultBgColor);
+                    bgColorPicker.setColor(defaultBgColor)
                     fovSlider.value = defaultFov;
                     camera.fov = defaultFov;
                     setPrecision(defaultFov);
