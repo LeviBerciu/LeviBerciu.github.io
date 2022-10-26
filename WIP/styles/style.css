@@ -1,0 +1,210 @@
+/* ---------- GENERAL ---------- */
+
+html {
+    box-sizing: border-box;
+    color: #2D2F30;
+}
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+body, h1, h2, h3, h4, h5, h6, p, ol, ul {
+    margin: 0;
+    padding: 0;
+    font-weight: normal;
+}
+ol, ul {
+    list-style: none;
+}
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* ---------- TEXT ---------- */
+
+h1 {
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 700;
+    font-size: 24px;
+    letter-spacing: 0.125em;
+}
+h2 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 40px;
+}
+h3 {
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+}
+p {
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 20px;
+}
+a {
+    text-decoration: none;
+    color: inherit;
+}
+.dark-text {
+    color: #2D2F30;
+}
+.light-text {
+    color: #FFFFFF;
+}
+::-moz-selection { /* Code for Firefox */
+    background: #ffd600
+}
+::selection {
+    background: #ffd600
+}
+
+/* ---------- BUTTONS ---------- */
+
+.button{
+    display: inline-block;
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    letter-spacing: 0.125em;
+}
+.outline-button {
+    height: 40px;
+    margin-top: 20px;
+    background-color: transparent;
+    padding: 12px 40px 0px 40px;
+    border: 1px solid;
+    border-color: inherit;
+    border-radius: 2px;
+    color: inherit;
+    transition: color 0.25s, background-color 0.25s;;
+}
+.dark-button {
+    color: #2D2F30;
+    border-color: #2D2F30;
+}
+.light-button {
+    color: #FFFFFF;
+    border-color: #FFFFFF;
+}
+.dark-button:hover {
+    color: #FFFFFF;
+    background-color: #2D2F30;
+}
+.light-button:hover {
+    color: #2D2F30;
+    background-color: #FFFFFF;
+}
+
+/* ---------- NAVIGATION ---------- */
+
+nav {
+    display: flex;
+    position: fixed;
+    width: 100%;
+    height: 80px;
+    /* backdrop-filter: blur(10px); */
+    /* background-color: rgba(255, 255, 255, 0.75); */
+    background-color: #FFFFFF;
+    box-shadow: 0px 1px 0px 0px #E1E6E9;
+    z-index: 1;
+    transition: top 0.25s;
+}
+.nav-container {
+    display: flex;
+    flex-grow:1;
+    flex-basis:0;
+}
+.nav-tabs {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    padding-left: 32px;
+    gap: 24px;
+}
+.nav-tabs a {
+    padding-top: 34px;
+    height: 80px;
+    transition: box-shadow 0.25s;
+}
+.nav-tabs a:hover {
+    box-shadow: 0px 1px 0px 0px #2D2F30;
+}
+.active-tab {
+    border-bottom: 2px solid #2D2F30;
+    box-shadow: 0px 1px 0px 0px #2D2F30;
+}
+.nav-title {
+    width: 100%;
+    padding-top: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.nav-social {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    padding-right: 24px;
+    gap: 8px;
+}
+.nav-social svg {
+    width: 32px;
+    height: 32px;
+    fill: #2D2F30;
+    border-radius: 2px;
+}
+
+/* ---------- RORJECTS GRID ---------- */
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    place-items: start;
+    padding-top: 80px;
+}
+.projects-grid > [style^='--aspect-ratio']::before {
+    content: "";
+    display: inline-block;
+    padding-bottom: calc(100% / (var(--aspect-ratio)));
+}
+.project-card {
+    position: relative;
+    width: 100%;
+    background-size: cover;
+}
+.card-content {
+    position: absolute;
+    bottom: 0px;
+    left: 0;
+    padding: 80px;
+}
+
+/* ---------- FOOTER ---------- */
+
+footer{
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px -1px 0px 0px #E1E6E9;
+}
+
+/* ---------- BRAKEPOINT 1440---------- */
+
+@media only screen and (max-width: 1440px){
+}
+
+/* ---------- BRAKEPOINT 1200---------- */
+
+@media only screen and (max-width: 1200px){
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+}
