@@ -193,7 +193,7 @@ nav {
 .details-container {
     padding-top: 120px;
     padding-right: 480px;
-    padding-bottom: 20px;
+    padding-bottom: 0px;
     margin-left: 240px;
     margin-right: 240px;
 }
@@ -241,7 +241,11 @@ nav {
     width: 240px;
     height: 120px;
     top: -160px;
-    left: -120px
+    left: -120px;
+
+    margin-left: auto;
+    margin-right: auto;
+
 }
 
 /* ---------- FOOTER ---------- */
@@ -280,7 +284,6 @@ footer {
     .details-container {
         padding-top: 80px;
         padding-right: 0px;
-        padding-bottom: 20px;
         margin-left: 0px;
         margin-right: 0px;
     }
@@ -292,9 +295,8 @@ footer {
         padding-right: 120px;
     }
     .details-description {
-        padding-top: 40px;
+        padding-top: 20px;
         padding-bottom: 40px;
-
         position: static;
         width: 100%;
     }
@@ -328,8 +330,15 @@ footer {
     .about-photo {
         width: 240px;
     }
+    .about-container {
+        margin-left: 30px;
+        margin-right: 30px;
+    }
     .about-details {
-        width: calc(100% - 240px);
+        width: 100%;
+        float: left;
+        padding-left: 0px;
+        padding-right: 0px;
     }
 }
 
@@ -343,16 +352,8 @@ footer {
         padding-left: 30px;
         padding-right: 30px;
     }
-    .about-container {
-        margin-left: 30px;
-        margin-right: 30px;
-    }
-    .about-details {
-        width: 100%;
-        float: left;
-        padding-left: 0px;
-        padding-right: 0px;
-    }
+
+}
 
 /* ---------- BRAKEPOINT 480 ---------- */
 
