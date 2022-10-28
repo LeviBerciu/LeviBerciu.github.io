@@ -20,6 +20,9 @@ img {
     max-width: 100%;
     height: auto;
 }
+::selection {
+    background: #ffd600
+}
 
 /* ---------- TEXT ---------- */
 
@@ -56,12 +59,6 @@ a {
 }
 .light-text {
     color: #FFFFFF;
-}
-::-moz-selection { /* Code for Firefox */
-    background: #ffd600
-}
-::selection {
-    background: #ffd600
 }
 
 /* ---------- BUTTONS ---------- */
