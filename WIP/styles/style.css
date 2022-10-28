@@ -102,6 +102,55 @@ a {
     background-color: #FFFFFF;
 }
 
+/* ---------- HAMBURGER ICON ---------- */
+
+.nav-button{
+    display: none;
+    padding: 12px;
+    margin-left: 30px;
+    position: relative;
+}
+.hamburger-icon {
+    width: 20px;
+    height: 2px; 
+    background-color: #2D2F30;
+    position: absolute;
+    top: 11px;
+    left: 0px;
+    transition: background-color 0.25s;
+}
+.hamburger-icon::before,
+.hamburger-icon::after{
+    content: "";
+    width: 20px;
+    height: 2px; 
+    background-color: #2D2F30;
+    position: absolute;
+    transition: 0.25s;
+}
+.hamburger-icon::before{
+    top: -7px;
+    transform-origin: left top;
+    transform: rotateZ(0deg);
+}
+.hamburger-icon::after{
+    bottom: -7px;
+    transform-origin: left bottom;
+    transform: rotateZ(0deg);
+}
+#hamburger:checked ~ .hamburger-icon::before{
+    transform: rotateZ(45deg);
+}
+#hamburger:checked ~ .hamburger-icon::after{
+    transform: rotateZ(-45deg);
+}
+#hamburger:checked ~ .hamburger-icon{
+    background-color: rgba(255, 255, 255, 0);
+}
+#hamburger{
+    display: none;
+}
+
 /* ---------- NAVIGATION ---------- */
 
 nav {
@@ -117,13 +166,13 @@ nav {
 }
 .nav-container {
     display: flex;
+    align-items: center;
     flex-grow:1;
     flex-basis:0;
 }
 .nav-tabs {
     width: 100%;
     display: flex;
-    align-items: center;
     justify-content: left;
     padding-left: 30px;
     gap: 20px;
@@ -144,18 +193,16 @@ nav {
     width: 100%;
     padding-top: 4px;
     display: flex;
-    align-items: center;
     justify-content: center;
 }
 .nav-social {
     width: 100%;
     display: flex;
-    align-items: center;
     justify-content: right;
     padding-right: 30px;
     gap: 10px;
 }
-.nav-social svg {
+.nav-social img {
     width: 32px;
     height: 32px;
     fill: #2D2F30;
@@ -242,10 +289,13 @@ nav {
     height: 120px;
     top: -160px;
     left: -120px;
+}
 
-    margin-left: auto;
-    margin-right: auto;
+/* ---------- CONTACT ---------- */
 
+.contact-container {
+    min-height: calc(100vh - 60px);
+    background-color: #ffd600;
 }
 
 /* ---------- FOOTER ---------- */
@@ -319,11 +369,34 @@ footer {
 /* ---------- BRAKEPOINT 960 ---------- */
 
 @media only screen and (max-width: 960px){
+    h1{
+        font-size: 16px;
+    }
+    nav{
+        height: 60px;
+    }
+    .nav-button{
+        display: block;
+    }
+    .nav-tabs {
+        display: none;
+    }
+    .nav-social img {
+        width: 24px;
+        height: 24px;
+    }
+    .projects-grid {
+        padding-top: 60px;
+    }
+    .details-container {
+        padding-top: 60px;
+    }
     .details-body{
         padding-left: 60px;
         padding-right: 60px;
     }
     .about-container {
+        padding-top: 80px;
         margin-left: 60px;
         margin-right: 60px;
     }
@@ -368,7 +441,7 @@ footer {
         line-height: 32px;
     }
     .about-container {
-        padding-top: 80px;
+        padding-top: 60px;
         margin-left: 0px;
         margin-right: 0px;
     }
@@ -379,5 +452,9 @@ footer {
     .about-text {
         padding-left: 30px;
         padding-right: 30px;
+    }
+    .about-text img{
+        margin-left: auto;
+        margin-right: auto;
     }
 }
