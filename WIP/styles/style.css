@@ -104,50 +104,32 @@ a {
 
 /* ---------- HAMBURGER ICON ---------- */
 
-.nav-button{
-    display: none;
-    padding: 12px;
-    margin-left: 30px;
-    position: relative;
+.nav-button {
+    display:none;
+    flex-direction:column;
+    margin-left: 20px;
+    cursor:pointer;
 }
-.hamburger-icon {
-    width: 20px;
-    height: 2px; 
+.nav-button span{
+    width:23px;
     background-color: #2D2F30;
-    position: absolute;
-    top: 11px;
-    left: 0px;
-    transition: background-color 0.25s;
+    border-radius:2px;
+    height:2px;
+    margin: 3px 0;
+    transition: all 0.25s;
 }
-.hamburger-icon::before,
-.hamburger-icon::after{
-    content: "";
-    width: 20px;
-    height: 2px; 
-    background-color: #2D2F30;
-    position: absolute;
-    transition: 0.25s;
-}
-.hamburger-icon::before{
-    top: -7px;
+#hamburger:checked ~ span:nth-of-type(1){
     transform-origin: left top;
-    transform: rotateZ(0deg);
-}
-.hamburger-icon::after{
-    bottom: -7px;
-    transform-origin: left bottom;
-    transform: rotateZ(0deg);
-}
-#hamburger:checked ~ .hamburger-icon::before{
     transform: rotateZ(45deg);
 }
-#hamburger:checked ~ .hamburger-icon::after{
-    transform: rotateZ(-45deg);
-}
-#hamburger:checked ~ .hamburger-icon{
+#hamburger:checked ~ span:nth-of-type(2){
     background-color: rgba(255, 255, 255, 0);
 }
-#hamburger{
+#hamburger:checked ~ span:nth-of-type(3){
+    transform-origin: left bottom;
+    transform: rotateZ(-45deg);
+}
+#hamburger {
     display: none;
 }
 
@@ -376,10 +358,13 @@ footer {
         height: 60px;
     }
     .nav-button{
-        display: block;
+        display:flex;
     }
     .nav-tabs {
         display: none;
+    }
+    .nav-social {
+        padding-right: 20px;
     }
     .nav-social img {
         width: 24px;
