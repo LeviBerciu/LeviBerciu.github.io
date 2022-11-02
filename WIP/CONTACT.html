@@ -40,7 +40,37 @@
 
     <div class="contact-container">
         <div class="contact-background" style="background-image: url('assets/Image\ 2.png');">
-
+            <!-- https://github.com/dwyl/learn-to-send-email-via-google-script-html-no-server/blob/master/README.md -->
+            <form class="gform contact-form" method="POST" data-email="example@email.net"
+            action="https://script.google.com/macros/s/AKfycbwvqaFvROELhomQ5V6-GjW0hXAvGxVd-yw51mbn/exec">
+                <!-- change the form action to your script url -->
+                <div class="form-elements">
+                    <fieldset class="nameInput">
+                        <h5 class="inputlabel">Name *</h5>
+                        <input class="textBox" type="text" id="name" name="name" placeholder="Your Name ..." required />
+                    </fieldset >
+                    <fieldset  class="emailInput">
+                        <h5 class="inputlabel">Email Address *</h5>
+                        <input class="textBox" type="email" id="email" name="email" value="" placeholder="Your Email Address ..." required />
+                    </fieldset >
+                    <fieldset   class="messageInput">
+                        <h5 class="inputlabel">Message *</h5>
+                        <textarea class="textBox textArea" id="message" name="message" placeholder="Your Message ..." required></textarea>
+                    </fieldset >
+                    <div class="toggle">
+                        <input type="checkbox" id="consent" class="toggleButton">
+                        <label for="consent">I consent to having this website store my personal data so they can respond to my message.</label>
+                    </div>
+                    <button id="sendButton" class="fill sendButton" disabled>send message</button>
+                </div>
+                <div class="thankyou_message" style="display:none;">
+                    <h2>Thank you for contacting us, we will get back to you as soon as possible.</h2>
+                </div>
+            </form>
+            <!-- Submit the Form to Google Using "AJAX" -->
+            <script data-cfasync="false" type="text/javascript"
+            src="../libraries/async_html_mail/form-submission-handler.js"></script>
+            <!-- END --> 
         </div>
     </div>
 
@@ -49,6 +79,7 @@
     </footer>
 </body>
 
-<script src="scripts/navbar.js"></script>
+<script src="scripts/navigation.js"></script>
+<script src="scripts/contact.js"></script>
 
 </html>

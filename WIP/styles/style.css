@@ -282,12 +282,19 @@ nav {
     padding-top: 80px;
 }
 .contact-background {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     min-height: calc(100vh - 140px);
     width: 100%;
     background-size: cover;
     background-color: #2D2F30;
 }
-
+.contact-form {
+    background-color: #FFFFFF;
+    width: 100%;
+    max-width: 800px;
+}
 /* ---------- FOOTER ---------- */
 
 footer {
