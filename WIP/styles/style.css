@@ -141,7 +141,6 @@ nav {
     background-color: rgba(255, 255, 255, 0.75);
     box-shadow: 0px 1px 0px 0px #E1E6E9;
     z-index: 1;
-    transition: top 0.25s;
 }
 .nav-container {
     display: flex;
@@ -149,19 +148,26 @@ nav {
     flex-grow:1;
     flex-basis:0;
 }
-.nav-tabs {
+#nav-tabs {
     width: 100%;
     display: flex;
+    position: static;
     justify-content: left;
     padding-left: 30px;
     gap: 20px;
 }
-.nav-tabs a {
+.nav-closed{
+    left: -100%;
+}
+.nav-open{
+    left: 0px;
+}
+#nav-tabs a {
     padding-top: 34px;
     height: 80px;
     transition: box-shadow 0.25s;
 }
-.nav-tabs a:hover {
+#nav-tabs a:hover {
     box-shadow: 0px 1px 0px 0px #2D2F30;
 }
 .active-tab {
@@ -273,9 +279,13 @@ nav {
 /* ---------- CONTACT ---------- */
 
 .contact-container {
-    min-height: calc(100vh - 60px);
-    background-color: #ffd600;
+    padding-top: 80px;
+}
+.contact-background {
+    min-height: calc(100vh - 140px);
+    width: 100%;
     background-size: cover;
+    background-color: #2D2F30;
 }
 
 /* ---------- FOOTER ---------- */
@@ -358,8 +368,16 @@ footer {
     .nav-button{
         display:flex;
     }
-    .nav-tabs {
-        display: none;
+    #nav-tabs {
+        position: absolute;
+        flex-direction: column;
+        gap: 0px;
+        height: 100vh;
+        top: 0px;
+        background-color: #FFFFFF;
+        padding-top: 80px;
+        z-index: -1;
+        transition: 0.25s;
     }
     .nav-social {
         padding-right: 20px;
@@ -395,6 +413,12 @@ footer {
         float: left;
         padding-left: 0px;
         padding-right: 0px;
+    }
+    .contact-container {
+        padding-top: 60px;
+    }
+    .contact-background {
+        min-height: calc(100vh - 120px);
     }
 }
 

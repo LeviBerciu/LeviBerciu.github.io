@@ -16,12 +16,12 @@
     <nav id="navbar">
         <div class="nav-container">
             <label class="nav-button" for="hamburger">
-                <input type="checkbox" id="hamburger">
+                <input type="checkbox" id="hamburger" onclick="showHideTabs()">
                 <span></span>
                 <span></span>
                 <span></span>
             </label>
-            <ul class="nav-tabs">
+            <ul id="nav-tabs" class="nav-closed">
                 <li><a href="index.html" class="button">PROJECTS</a></li>
                 <li><a href="ABOUT.html" class="button">ABOUT</a></li>
                 <li><a href="CONTACT.html" class="button">CONTACT</a></li>
@@ -66,5 +66,7 @@
         <p>© 2022 leviberciu.com</p>
     </footer>
 </body>
+
+<script src="scripts/navbar.js"></script>
 
 </html>
