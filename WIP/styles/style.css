@@ -43,6 +43,7 @@ h2 {
     font-weight: 700;
     font-size: 32px;
     line-height: 40px;
+    text-transform: uppercase;
 }
 h3,label {
     font-family: 'Josefin Sans', sans-serif;
@@ -313,9 +314,6 @@ nav {
     border-radius: 2px;
     overflow: hidden;
 }
-.form-elements {
-    margin-top: 12px;
-}
 .form-elements fieldset {
     margin-top: 20px;
 }
@@ -366,16 +364,15 @@ nav {
     margin-top: 24px;
     margin-bottom: 4px;
     font-size: 12px;
-    display: block;
+    display: flex;
     position: relative;
     padding-top: 4px;
-    padding-left: 34px;
+    padding-left: 40px;
     cursor: pointer;
 }
 .consent-input input {
     position: absolute;
     opacity: 0;
-    cursor: pointer;
     height: 0;
     width: 0;
 }
