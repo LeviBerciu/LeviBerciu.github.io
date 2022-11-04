@@ -5,16 +5,22 @@ html {
     color: #2D2F30;
 }
 *, *:before, *:after {
-    box-sizing: inherit;
-}
-body, h1, h2, h3, h4, h5, h6, p, ol, ul {
+    box-sizing: border-box;
     margin: 0;
+    border: 0;
     padding: 0;
-    font-weight: normal;
+    background: none;
+    font-size: 1em;
+    line-height:1;
 }
-ol, ul {
+body {
+ min-width: 380px;
+}
+h1, h2, h3, h4, h5, h6, p, ol, ul {
+    font-weight: normal;
     list-style: none;
 }
+
 img {
     display: block;
     max-width: 100%;
@@ -38,7 +44,7 @@ h2 {
     font-size: 32px;
     line-height: 40px;
 }
-h3 {
+h3,label {
     font-family: 'Josefin Sans', sans-serif;
     font-weight: 400;
     font-size: 16px;
@@ -60,7 +66,6 @@ a {
 .light-text {
     color: #FFFFFF;
 }
-
 /* ---------- BUTTONS ---------- */
 
 .button{
@@ -68,19 +73,23 @@ a {
     font-family: 'Josefin Sans', sans-serif;
     font-weight: 400;
     font-size: 16px;
-    letter-spacing: 0.125em;
+    letter-spacing: 0.125em; 
     text-align: center;
+    cursor: pointer;
 }
 .outline-button {
     height: 40px;
+    line-height: 42px;
     margin-top: 20px;
+    padding-left: 40px;
+    padding-right: 40px;
     background-color: transparent;
-    padding: 12px 40px 0px 40px;
     border: 1px solid;
     border-color: inherit;
     border-radius: 2px;
     color: inherit;
-    transition: color 0.25s, background-color 0.25s;;
+    transition: color 0.25s, background-color 0.25s;
+    overflow: hidden;
 }
 .dark-button {
     color: #2D2F30;
@@ -98,36 +107,11 @@ a {
     color: #2D2F30;
     background-color: #FFFFFF;
 }
-
-/* ---------- HAMBURGER ICON ---------- */
-
-.nav-button {
-    display:none;
-    flex-direction:column;
-    margin-left: 20px;
-    cursor:pointer;
-}
-.nav-button span{
-    width:23px;
-    background-color: #2D2F30;
-    border-radius:2px;
-    height:2px;
-    margin: 3px 0;
-    transition: all 0.25s;
-}
-#hamburger:checked ~ span:nth-of-type(1){
-    transform-origin: left top;
-    transform: rotateZ(45deg);
-}
-#hamburger:checked ~ span:nth-of-type(2){
-    background-color: rgba(255, 255, 255, 0);
-}
-#hamburger:checked ~ span:nth-of-type(3){
-    transform-origin: left bottom;
-    transform: rotateZ(-45deg);
-}
-#hamburger {
-    display: none;
+.dark-button:disabled {
+    color: #BBC1C5;
+    background-color: #E1E6E9;
+    border-color: #E1E6E9;
+    cursor: auto;
 }
 
 /* ---------- NAVIGATION ---------- */
@@ -194,6 +178,37 @@ nav {
     border-radius: 2px;
 }
 
+/* ---------- HAMBURGER ICON ---------- */
+
+.nav-button {
+    display:none;
+    flex-direction:column;
+    margin-left: 20px;
+    cursor:pointer;
+}
+.nav-button span{
+    width:23px;
+    background-color: #2D2F30;
+    border-radius:2px;
+    height:2px;
+    margin: 3px 0;
+    transition: all 0.25s;
+}
+#hamburger:checked ~ span:nth-of-type(1){
+    transform-origin: left top;
+    transform: rotateZ(45deg);
+}
+#hamburger:checked ~ span:nth-of-type(2){
+    background-color: rgba(255, 255, 255, 0);
+}
+#hamburger:checked ~ span:nth-of-type(3){
+    transform-origin: left bottom;
+    transform: rotateZ(-45deg);
+}
+#hamburger {
+    display: none;
+}
+
 /* ---------- RORJECTS GRID ---------- */
 
 .projects-grid {
@@ -217,7 +232,7 @@ nav {
     position: absolute;
     bottom: 0px;
     left: 0;
-    padding: 60px;
+    padding: 80px;
 }
 
 /* ---------- DETAILS ---------- */
@@ -294,7 +309,108 @@ nav {
     background-color: #FFFFFF;
     width: 100%;
     max-width: 800px;
+    padding: 60px  80px 60px 80px;
+    border-radius: 2px;
+    overflow: hidden;
 }
+.form-elements {
+    margin-top: 12px;
+}
+.form-elements fieldset {
+    margin-top: 20px;
+}
+.name-input{
+    float: left;
+    width: 50%;
+    padding-right: 20px;
+}
+.email-input{
+    float: left;
+    width: 50%;
+    padding-left: 20px;
+}
+.message-input{
+    width: 100%;
+    float: left;
+}
+.text-box {
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 20px;
+    width: 100%;
+    margin-top: 8px;
+    padding: 12px 16px 8px 16px;
+    border: 1px solid #BBC1C5;
+    border-radius: 2px;
+    background-color: #F8FAFB;
+    resize: none;
+    outline: none;
+}
+.text-box::placeholder {
+    color: #BBC1C5;
+}
+.text-box:focus {
+    border-color: #2D2F30;
+}
+.area-text{
+    min-height: 140px;
+}
+
+/* ---------- CONSENT CHECKBOX ---------- */
+
+.consent-input{
+    min-height: 24px;
+    width: 100%;
+    float: left;
+    margin-top: 24px;
+    margin-bottom: 4px;
+    font-size: 12px;
+    display: block;
+    position: relative;
+    padding-top: 4px;
+    padding-left: 34px;
+    cursor: pointer;
+}
+.consent-input input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 24px;
+    width: 24px;
+    border: 1px solid #BBC1C5;
+    border-radius: 2px;
+    background-color: #F8FAFB;
+}
+.consent-input input:checked ~ .checkmark {
+    background-color: #2D2F30;
+    border-color: #2D2F30;
+}
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+.consent-input input:checked ~ .checkmark:after {
+    display: block;
+}
+.consent-input .checkmark:after {
+    left: 8px;
+    top: 4px;
+    width: 6px;
+    height: 12px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    transform: rotate(45deg);
+}
+
 /* ---------- FOOTER ---------- */
 
 footer {
@@ -303,7 +419,7 @@ footer {
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0px -1px 0px 0px #E1E6E9;
+    border-top: 1px solid #E1E6E9;
 }
 
 /* ---------- BRAKEPOINT 1440---------- */
@@ -404,7 +520,7 @@ footer {
         padding-right: 60px;
     }
     .about-container {
-        padding-top: 80px;
+        padding-top: 100px;
         margin-left: 60px;
         margin-right: 60px;
     }
@@ -412,8 +528,8 @@ footer {
         width: 240px;
     }
     .about-container {
-        margin-left: 30px;
-        margin-right: 30px;
+        margin-left: 60px;
+        margin-right: 60px;
     }
     .about-details {
         width: 100%;
@@ -426,6 +542,14 @@ footer {
     }
     .contact-background {
         min-height: calc(100vh - 120px);
+        align-items:flex-start;
+    }
+    .contact-form {
+        min-height: calc(100vh - 120px);
+        max-width: 100%;
+        border-radius: 0px;
+        padding-left: 120px;
+        padding-right: 120px;
     }
 }
 
@@ -433,14 +557,21 @@ footer {
 
 @media only screen and (max-width: 720px){
     .card-content {
-        padding: 30px;
+        padding: 60px;
     }
-    .details-body{
-        padding-left: 30px;
-        padding-right: 30px;
+    .contact-form {
+        padding: 40px  60px 40px 60px;
     }
-
+    .name-input{
+        width: 100%;
+        padding-right: 0px;
+    }
+    .email-input{
+        width: 100%;
+        padding-left: 0px;
+    }
 }
+
 
 /* ---------- BRAKEPOINT 480 ---------- */
 
@@ -453,6 +584,13 @@ footer {
         font-weight: 700;
         font-size: 24px;
         line-height: 32px;
+    }
+    .card-content {
+        padding: 30px;
+    }
+    .details-body {
+        padding-left: 30px;
+        padding-right: 30px;
     }
     .about-container {
         padding-top: 60px;
@@ -470,5 +608,9 @@ footer {
     .about-text img{
         margin-left: auto;
         margin-right: auto;
+    }
+    .contact-form {
+        padding-left: 30px;
+        padding-right: 30px;
     }
 }
