@@ -21,18 +21,16 @@ h1, h2, h3, h4, h5, h6, p, ol, ul {
     list-style: none;
 }
 
-img, video {
+img {
     display: block;
     width: 100%;
     height: auto;
-    
 }
-
-video{
-    /* clip-path: inset(1px 1px); */
-    outline: none;
+video, iframe  {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
 }
-
 ::selection {
     background: #ffd600
 }
