@@ -293,7 +293,7 @@ nav {
     position: absolute;
     width: 240px;
     height: 120px;
-    top: -140px;
+    top: -140px; 
     left: -120px;
 }
 
@@ -487,6 +487,14 @@ footer {
     h1{
         font-size: 16px;
     }
+    .dark-button:hover {
+        color: #2D2F30;
+        border-color: #2D2F30;
+    }
+    .light-button:hover {
+        color: #FFFFFF;
+        border-color: #FFFFFF;
+    }
     nav{
         height: 60px;
     }
@@ -503,6 +511,9 @@ footer {
         padding-top: 80px;
         z-index: -1;
         transition: 0.25s;
+    }
+    #nav-tabs a:hover {
+        box-shadow: none;
     }
     .nav-social {
         padding-right: 20px;
