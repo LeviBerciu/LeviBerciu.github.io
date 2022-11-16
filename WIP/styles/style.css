@@ -490,10 +490,12 @@ footer {
     .dark-button:hover {
         color: #2D2F30;
         border-color: #2D2F30;
+        background: none;
     }
     .light-button:hover {
         color: #FFFFFF;
         border-color: #FFFFFF;
+        background: none;
     }
     nav{
         height: 60px;
