@@ -1,0 +1,56 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+
+
+.sections{
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    width: 100%;
+    min-height: 100vh;
+}
+
+.section-a{
+
+}
+
+.section-a--light{
+    background-color: #F0F0F0;
+}
+
+.section-a--dark{
+    background-color: #242424;
+}
+
+.section-b{
+
+}
+
+.section-b--light{
+    background-color: #FFFFFF;
+}
+
+.section-b--dark{
+    background-color: #101010;
+}
+
+.render-canvas{
+    float: left;
+    width: 100%;
+    max-height: 100vh;
+    outline: none;
+}
+
+.controls{
+    float: left;
+    padding: 20px;
+}
+
+@media screen and (orientation:portrait) {
+    .sections{
+        grid-template-columns: 1fr;
+        min-height: auto;
+    }
+  }

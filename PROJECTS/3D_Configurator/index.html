@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/style.css">
+    <title>Document</title>
+    <script src="https://cdn.babylonjs.com/babylon.js"></script>
+    <script src="https://cdn.babylonjs.com/loaders/babylonjs.loaders.min.js"></script>
+</head>
+<body>
+
+    <div class="sections">
+
+        <section class="section-a section-a--light">
+            <canvas class="render-canvas" id="renderCanvas" touch-action="none"></canvas>
+        </section>
+        
+        <section class="section-b section-b--light">
+            <div class="controls">
+                <input type="checkbox" name="caseToggle" id="caseToggle">
+                <label for="caseToggle">Show Case</label>
+                <br>
+                <br>
+                <button id="captureButton">Capture Image</button>
+            </div>
+        </section>
+
+    </div>
+
+    <script src="scripts/scene_manager.js"></script>
+</body>
+</html>
