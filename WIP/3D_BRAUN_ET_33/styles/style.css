@@ -1,6 +1,87 @@
+:root[data-theme="light"]{
+    --UI-01: #FFFFFF;
+    --UI-02: #ECEFF1;
+    --UI-03: #CFD8DC;
+    --UI-04: #B0BEC5;
+    --UI-05: #90A4AE;
+    --UI-06: #78909C;
+    --UI-07: #607D8B;
+    --UI-08: #546E7A;
+    --UI-09: #455A64;
+    --UI-10: #37474F;
+    --UI-11: #263238;
+    --PART-1: url( '../assets/part_tabs/body_light.svg');
+    --PART-2: url( '../assets/part_tabs/buttons_one_light.svg');
+    --PART-3: url( '../assets/part_tabs/buttons_two_light.svg');
+    --PART-4: url( '../assets/part_tabs/buttons_three_light.svg');
+    --PART-5: url( '../assets/part_tabs/buttons_four_light.svg');
+    --PART-6: url( '../assets/part_tabs/screen_two_light.svg');
+    --PART-7: url( '../assets/part_tabs/back_light.svg');
+    --PART-8: url( '../assets/part_tabs/case_light.svg');
+    --DISPLAY-DARK: hidden;
+    --DISPLAY-LIGHT: visible;
+    --SWITCH-CIRCLE-POS: 0px; 
+}
+
+:root[data-theme="dark"]{
+    --UI-01: #263238;
+    --UI-02: #37474F;
+    --UI-03: #455A64;
+    --UI-04: #546E7A;
+    --UI-05: #607D8B;
+    --UI-06: #78909C;
+    --UI-07: #90A4AE;
+    --UI-08: #B0BEC5;
+    --UI-09: #CFD8DC;
+    --UI-10: #ECEFF1;
+    --UI-11: #FFFFFF;
+    --PART-1: url( '../assets/part_tabs/body_dark.svg');
+    --PART-2: url( '../assets/part_tabs/buttons_one_dark.svg');
+    --PART-3: url( '../assets/part_tabs/buttons_two_dark.svg');
+    --PART-4: url( '../assets/part_tabs/buttons_three_dark.svg');
+    --PART-5: url( '../assets/part_tabs/buttons_four_dark.svg');
+    --PART-6: url( '../assets/part_tabs/screen_two_dark.svg');
+    --PART-7: url( '../assets/part_tabs/back_dark.svg');
+    --PART-8: url( '../assets/part_tabs/case_dark.svg');
+    --DISPLAY-DARK: visible;
+    --DISPLAY-LIGHT: hidden;
+    --SWITCH-CIRCLE-POS: 40px; 
+}
+
 *{
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    outline: none;
+    border: none;
+}
+
+body{
+    background-color: var(--UI-02);
+}
+
+img{
+    display: block;
+    width: 100%;
+}
+
+button{
+    width: max-content;
+    line-height: 48px;
+    padding: 0px 24px 0px 24px;
+    font-size: 12px;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 2px;
+    color: var(--UI-01);
+    background-color: var(--UI-09);
+    border-radius: 24px;
+}
+
+button:hover{
+    cursor:pointer;
 }
 
 .sections{
@@ -10,41 +91,168 @@
     min-height: 100vh;
 }
 
-.section-a{
-
+.sectionA{
+    position: relative;
 }
 
-.section-a--light{
-    background-color: #F0F0F0;
+#themeSwitcher{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    background-color: var(--UI-03);
+    right: 32px;
+    top: 32px;
+    border-radius: 20px;
+    cursor: pointer;
+    padding: 4px;
 }
 
-.section-a--dark{
-    background-color: #242424;
+#themeSwitcher::before{
+    content: '';
+    position: absolute;
+    width: 32px;
+    height: 32px;
+    background-color: var(--UI-09);
+    border-radius: 16px;
+    z-index: 0;
+    transform: translateY(var(--SWITCH-CIRCLE-POS));
 }
 
-.section-b{
-
+#themeSwitcher svg{
+    z-index: 1;
 }
 
-.section-b--light{
-    background-color: #FFFFFF;
+#sunIcon{
+    fill: var(--UI-01)
 }
 
-.section-b--dark{
-    background-color: #101010;
+#moonIcon{
+    fill: var(--UI-01)
 }
 
-.render-canvas{
+.displayText{
+    position: absolute;
+    height: 100%;
+    width: max-content;
+    pointer-events: none;
+    user-select: none;
+    z-index: -1;
+    opacity: 0.5;
+}
+
+.displayTextLeft{
+    left: 0px;
+}
+
+.displayTextRight{
+    right: 0px;
+}
+
+.displayTextLight{
+    visibility: var(--DISPLAY-LIGHT);
+}
+
+.displayTextDark{
+    visibility: var(--DISPLAY-DARK);
+}
+
+#renderCanvas{
     float: left;
     width: 100%;
     max-height: 100vh;
     aspect-ratio: 1/1;
-    outline: none;
 }
 
-.controls{
-    float: left;
-    padding: 20px;
+.sectionB{
+    background-color: var(--UI-01);
+    color: var(--UI-09);
+}
+
+.controlPanel{
+    max-height: 100vh;
+    overflow-y: auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 32px;
+    padding: 32px;
+}
+
+.controlTabsContainer{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    width: 100%;
+}
+
+.controlTab{
+    border-radius: 4px;
+    box-shadow: 0px 0px 0px 1px var(--UI-02);
+    cursor: pointer;
+}
+
+.controlTab.active{
+    box-shadow: 0px 0px 0px 0px;
+    background-color: var(--UI-03);
+}
+
+.controlTab:hover{
+    background-color: var(--UI-02);
+}
+
+.controlTab.active:hover{
+    background-color: var(--UI-03);
+}
+
+.calculatorPart{
+    width: 60px;
+    height: 80px;
+}
+
+.calculatorBody{
+    background-image: var(--PART-1)
+}
+
+.calculatorButtonsOne{
+    background-image: var(--PART-2)
+}
+
+.calculatorButtonsTwo{
+    background-image: var(--PART-3)
+}
+
+.calculatorButtonsThree{
+    background-image: var(--PART-4)
+}
+
+.calculatorButtonsFour{
+    background-image: var(--PART-5)
+}
+
+.calculatorScreenTwo{
+    background-image: var(--PART-6)
+}
+
+.calculatorBack{
+    background-image: var(--PART-7)
+}
+
+.calculatorCase{
+    background-image: var(--PART-8)
+}
+
+.colorGroupTab{
+    font-weight: 400;
+    line-height: 24px;
+    padding: 8px;
+}
+
+.colorGroup{
+    display: none;
+}
+
+.colorSwatch{
+    width: 60px;
 }
 
 @media screen and (orientation:portrait) {
@@ -52,4 +260,4 @@
         grid-template-columns: 1fr;
         min-height: auto;
     }
-  }
+}
