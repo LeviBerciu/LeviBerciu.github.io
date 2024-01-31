@@ -2,7 +2,6 @@ const canvas = document.getElementById("renderCanvas");
 const engine = new BABYLON.Engine(canvas, true);
 engine.setHardwareScalingLevel(0.5)
 
-const caseToggle = document.getElementById("caseToggle");
 const captureButton = document.getElementById("captureButton");
 
 function createScene(){
@@ -148,13 +147,13 @@ function createScene(){
     };
 
     function selectPart(partIndex){
-      selectedPartIndex = partIndex;
+  selectedPartIndex = partIndex;
       colorGroupTabs[colorConfig[partIndex][0]].click();
       colorGroups.item(colorConfig[partIndex][0]).children.item(colorConfig[partIndex][1]).click();
       if(partIndex == 6){
-        camera.spinTo("alpha", BABYLON.Tools.ToRadians(-90), cameraSnapBackSpeed);
+        camera.spinTo("alpha", BABYLON.Tools.ToRadians((Math.floor((BABYLON.Tools.ToDegrees(camera.alpha) / 360)) * 360) -90), cameraSnapBackSpeed);
       }else{
-        camera.spinTo("alpha", BABYLON.Tools.ToRadians(90), cameraSnapBackSpeed);
+        camera.spinTo("alpha", BABYLON.Tools.ToRadians((Math.floor((BABYLON.Tools.ToDegrees(camera.alpha) / 360)) * 360) +90), cameraSnapBackSpeed);
       }
       camera.spinTo("beta", BABYLON.Tools.ToRadians(90), cameraSnapBackSpeed);
       if(partIndex == 7){
