@@ -6,6 +6,17 @@
     <link rel="stylesheet" href="styles/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <title>Document</title>
+    <script>
+        // Check local storage
+        let localS = localStorage.getItem("theme");
+        let themeToSet = localS;
+        // If local storage is not set, we check OS prferences
+        if (!localS){
+            themeToSet = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"
+        };
+        // Set the correct theme
+        document.documentElement.setAttribute("data-theme", themeToSet);
+    </script>
     <script src="https://cdn.babylonjs.com/babylon.js"></script>
     <script src="https://cdn.babylonjs.com/loaders/babylonjs.loaders.min.js"></script>
 </head>
@@ -31,7 +42,7 @@
         <section class="sectionB">
             <div class="controlPanel">
                 <div class="controlTabsContainer">
-                    <div class="controlTab calculatorPart calculatorBody"></div>
+                    <div class="controlTab calculatorPart calculatorBody active"></div>
                     <div class="controlTab calculatorPart calculatorButtonsOne"></div>
                     <div class="controlTab calculatorPart calculatorButtonsTwo"></div>
                     <div class="controlTab calculatorPart calculatorButtonsThree"></div>
@@ -41,7 +52,7 @@
                     <div class="controlTab calculatorPart calculatorCase"></div>
                 </div>
                 <div class="controlTabsContainer">
-                    <div class="controlTab colorGroupTab">Gray</div>
+                    <div class="controlTab colorGroupTab active">Gray</div>
                     <div class="controlTab colorGroupTab">Cyan Blue</div>
                     <div class="controlTab colorGroupTab">Grass Green</div>
                     <div class="controlTab colorGroupTab">Lemon Chrome</div>
@@ -49,8 +60,8 @@
                     <div class="controlTab colorGroupTab">Hot Pink</div>
                     <div class="controlTab colorGroupTab">Bright Violet</div>
                 </div>
-                <div class="controlTabsContainer colorGroup" >
-                    <img class="controlTab colorSwatch" src="assets/color_tabs/gray_12.svg" color="#101010" decal="white" group="0" element="0">
+                <div class="controlTabsContainer colorGroup">
+                    <img class="controlTab colorSwatch active" src="assets/color_tabs/gray_12.svg" color="#101010" decal="white" group="0" element="0">
                     <img class="controlTab colorSwatch" src="assets/color_tabs/gray_11.svg" color="#242424" decal="white" group="0" element="1">
                     <img class="controlTab colorSwatch" src="assets/color_tabs/gray_10.svg" color="#393939" decal="white" group="0" element="2">
                     <img class="controlTab colorSwatch" src="assets/color_tabs/gray_09.svg" color="#4D4D4D" decal="white" group="0" element="3">
@@ -63,7 +74,7 @@
                     <img class="controlTab colorSwatch" src="assets/color_tabs/gray_02.svg" color="#DCDCDC" decal="black" group="0" element="10">
                     <img class="controlTab colorSwatch" src="assets/color_tabs/gray_01.svg" color="#F0F0F0" decal="black" group="0" element="11">
                 </div>
-                <div class="controlTabsContainer colorGroup">
+                <div class="controlTabsContainer colorGroup" style="display: none">
                     <img class="controlTab colorSwatch" src="assets/color_tabs/cyan_blue_12.svg" color="#02181D" decal="white" group="1" element="0">
                     <img class="controlTab colorSwatch" src="assets/color_tabs/cyan_blue_11.svg" color="#063642" decal="white" group="1" element="1">
                     <img class="controlTab colorSwatch" src="assets/color_tabs/cyan_blue_10.svg" color="#0A5567" decal="white" group="1" element="2">
@@ -77,7 +88,7 @@
                     <img class="controlTab colorSwatch" src="assets/color_tabs/cyan_blue_02.svg" color="#BFEDF8" decal="black" group="1" element="10">
                     <img class="controlTab colorSwatch" src="assets/color_tabs/cyan_blue_01.svg" color="#E5F7FC" decal="black" group="1" element="11">
                 </div>
-                <div class="controlTabsContainer colorGroup">
+                <div class="controlTabsContainer colorGroup" style="display: none">
                     <img class="controlTab colorSwatch" src="assets/color_tabs/grass_green_12.svg" color="#0D150A" decal="white" group="2" element="0">
                     <img class="controlTab colorSwatch" src="assets/color_tabs/grass_green_11.svg" color="#1E3018" decal="white" group="2" element="1">
                     <img class="controlTab colorSwatch" src="assets/color_tabs/grass_green_10.svg" color="#2F4B26" decal="white" group="2" element="2">
@@ -91,7 +102,7 @@
                     <img class="controlTab colorSwatch" src="assets/color_tabs/grass_green_02.svg" color="#D6E7D0" decal="black" group="2" element="10">
                     <img class="controlTab colorSwatch" src="assets/color_tabs/grass_green_01.svg" color="#EEF5EC" decal="black" group="2" element="11">
                 </div>
-                <div class="controlTabsContainer colorGroup">
+                <div class="controlTabsContainer colorGroup" style="display: none">
                     <img class="controlTab colorSwatch" src="assets/color_tabs/lemon_chrome_12.svg" color="#201900" decal="white" group="3" element="0">
                     <img class="controlTab colorSwatch" src="assets/color_tabs/lemon_chrome_11.svg" color="#493900" decal="white" group="3" element="1">
                     <img class="controlTab colorSwatch" src="assets/color_tabs/lemon_chrome_10.svg" color="#725800" decal="white" group="3" element="2">
@@ -105,7 +116,7 @@
                     <img class="controlTab colorSwatch" src="assets/color_tabs/lemon_chrome_02.svg" color="#FEEFB9" decal="black" group="3" element="10">
                     <img class="controlTab colorSwatch" src="assets/color_tabs/lemon_chrome_01.svg" color="#FEF8E2" decal="black" group="3" element="11">
                 </div>
-                <div class="controlTabsContainer colorGroup">
+                <div class="controlTabsContainer colorGroup" style="display: none">
                     <img class="controlTab colorSwatch" src="assets/color_tabs/vermillion_orange_12.svg" color="#200700" decal="white" group="4" element="0">
                     <img class="controlTab colorSwatch" src="assets/color_tabs/vermillion_orange_11.svg" color="#481101" decal="white" group="4" element="1">
                     <img class="controlTab colorSwatch" src="assets/color_tabs/vermillion_orange_10.svg" color="#701A01" decal="white" group="4" element="2">
@@ -119,7 +130,7 @@
                     <img class="controlTab colorSwatch" src="assets/color_tabs/vermillion_orange_02.svg" color="#FDC9BA" decal="black" group="4" element="10">
                     <img class="controlTab colorSwatch" src="assets/color_tabs/vermillion_orange_01.svg" color="#FEE9E2" decal="black" group="4" element="11">
                 </div>
-                <div class="controlTabsContainer colorGroup">
+                <div class="controlTabsContainer colorGroup" style="display: none">
                     <img class="controlTab colorSwatch" src="assets/color_tabs/hot_pink_12.svg" color="#1C040B" decal="white" group="5" element="0">
                     <img class="controlTab colorSwatch" src="assets/color_tabs/hot_pink_11.svg" color="#3F0919" decal="white" group="5" element="1">
                     <img class="controlTab colorSwatch" src="assets/color_tabs/hot_pink_10.svg" color="#620F27" decal="white" group="5" element="2">
@@ -133,7 +144,7 @@
                     <img class="controlTab colorSwatch" src="assets/color_tabs/hot_pink_02.svg" color="#F5C3D1" decal="black" group="5" element="10">
                     <img class="controlTab colorSwatch" src="assets/color_tabs/hot_pink_01.svg" color="#FBE6EC" decal="black" group="5" element="11">
                 </div>
-                <div class="controlTabsContainer colorGroup">
+                <div class="controlTabsContainer colorGroup" style="display: none">
                     <img class="controlTab colorSwatch" src="assets/color_tabs/bright_violet_12.svg" color="#130A15" decal="white" group="6" element="0">
                     <img class="controlTab colorSwatch" src="assets/color_tabs/bright_violet_11.svg" color="#2C1830" decal="white" group="6" element="1">
                     <img class="controlTab colorSwatch" src="assets/color_tabs/bright_violet_10.svg" color="#44264B" decal="white" group="6" element="2">

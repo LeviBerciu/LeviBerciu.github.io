@@ -1,8 +1,10 @@
-const canvas = document.getElementById("renderCanvas");
-const engine = new BABYLON.Engine(canvas, true);
+const renderCanvas = document.getElementById("renderCanvas");
+const engine = new BABYLON.Engine(renderCanvas, true);
 engine.setHardwareScalingLevel(0.5)
 
 const captureButton = document.getElementById("captureButton");
+
+BABYLON.SceneLoader.ShowLoadingScreen = false ; // Removes the default loading screen
 
 function createScene(){
   let scene = new BABYLON.Scene(engine)
@@ -25,10 +27,10 @@ function createScene(){
   scene.clearColor = new BABYLON.Color4(0,0,0,0);
 
   const cameraRadius = 2.2;
-  const cameraSnapBackSpeed = 200;
+  const cameraSnapBackSpeed = 120;
   
-  const camera = new BABYLON.ArcRotateCamera("Camera",  BABYLON.Tools.ToRadians(90), BABYLON.Tools.ToRadians(90), cameraRadius, new BABYLON.Vector3(0, 0, 0), scene);
-  camera.attachControl(canvas, true);
+  const camera = new BABYLON.ArcRotateCamera("Camera",  BABYLON.Tools.ToRadians(270), BABYLON.Tools.ToRadians(90), cameraRadius, new BABYLON.Vector3(0, 0, 0), scene);
+  camera.attachControl(renderCanvas, true);
   camera.panningSensibility = 0;
   camera.lowerRadiusLimit = cameraRadius;
   camera.upperRadiusLimit = cameraRadius;
@@ -39,6 +41,11 @@ function createScene(){
   };
 
   BABYLON.SceneLoader.Append("assets/", "model.glb", scene, function(scene){
+
+    scene.executeWhenReady( ()=> {
+      renderCanvas.style.opacity = "1";
+      camera.spinTo("alpha", BABYLON.Tools.ToRadians(90), 100);
+    });
 
     const bodyMesh = scene.getMeshByName("calculator_primitive0");
     const buttonsOneMesh = scene.getMeshByName("calculator_primitive5");
@@ -65,8 +72,7 @@ function createScene(){
       newMaterial.clearCoat.isEnabled = clearCoat;
       return newMaterial;
     }
-
-    
+  
     bodyMesh.material = setMaterial("#101010", decalsWhiteTexture, calculatorAmbientTexture, null, null, 1, 0, 0.2, false);
     buttonsOneMesh.material = setMaterial("#2F4B26", decalsWhiteTexture, calculatorAmbientTexture, null, null, 1, 0, 0, true);
     buttonsTwoMesh.material = setMaterial("#725800", decalsWhiteTexture, calculatorAmbientTexture, null, null, 1, 0, 0, true);
@@ -81,8 +87,6 @@ function createScene(){
     captureButton.addEventListener("click", function(){
       BABYLON.Tools.CreateScreenshotUsingRenderTarget(engine, camera, 1920);
     });
-
-
 
     const editableParts = [bodyMesh, buttonsOneMesh, buttonsTwoMesh, buttonsThreeMesh, buttonsFourMesh, screenTwoMesh, backMesh, caseMesh]
     let colorConfig = [[0, 0], [2, 2], [3, 2], [0, 0], [3, 5], [0, 4], [0, 0], [0, 0]]
@@ -132,7 +136,7 @@ function createScene(){
 
     // ----------
 
-    calculatorParts[selectedPartIndex].click(); // only show controls after this
+    calculatorParts[selectedPartIndex].click();
 
     function setColor(partIndex, color, decal, group, element){
       editableParts[partIndex].material.albedoColor = new BABYLON.Color3.FromHexString(color).toLinearSpace();
@@ -147,7 +151,7 @@ function createScene(){
     };
 
     function selectPart(partIndex){
-  selectedPartIndex = partIndex;
+      selectedPartIndex = partIndex;
       colorGroupTabs[colorConfig[partIndex][0]].click();
       colorGroups.item(colorConfig[partIndex][0]).children.item(colorConfig[partIndex][1]).click();
       if(partIndex == 6){
@@ -164,7 +168,15 @@ function createScene(){
     };
 
     function setCaseVisibility(state){
-      caseMesh.setEnabled(state);
+      const easingFunction = new BABYLON.CubicEase();
+      easingFunction.setEasingMode(BABYLON.EasingFunction.EASINGMODE_EASEOUT);
+      if (state){
+        BABYLON.Animation.CreateAndStartAnimation('move', caseMesh, "position.y", 120, 120, caseMesh.position.y, 0, 0, easingFunction);
+        BABYLON.Animation.CreateAndStartAnimation('hide', caseMesh, "visibility", 120, 120, caseMesh.visibility, 1, 0, easingFunction);
+      } else {
+        BABYLON.Animation.CreateAndStartAnimation('move', caseMesh, "position.y", 120, 120, caseMesh.position.y, -2, 0, easingFunction);
+        BABYLON.Animation.CreateAndStartAnimation('hide', caseMesh, "visibility", 120, 120, caseMesh.visibility, 0, 0, easingFunction);
+      }
     };
 
   });
@@ -182,16 +194,13 @@ window.addEventListener("resize", function(){
   engine.resize();
 });
 
-// Theme Switcher
-
 const switchTheme = () => {
   const rootElement = document.documentElement;
-  if(rootElement.getAttribute("data-theme") === "light"){
-    rootElement.setAttribute("data-theme","dark");
-  }else{
-    rootElement.setAttribute("data-theme","light");
-  }
-}
+  let dataTheme = rootElement.getAttribute("data-theme");
+  let newTheme = (dataTheme === "light") ? "dark" : "light";
+  rootElement.setAttribute("data-theme", newTheme);
+  localStorage.setItem("theme", newTheme)
+};
 
 document.getElementById("themeSwitcher").addEventListener("click", switchTheme)
 
