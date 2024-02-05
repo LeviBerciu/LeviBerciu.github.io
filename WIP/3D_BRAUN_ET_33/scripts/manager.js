@@ -2,7 +2,7 @@ const renderCanvas = document.getElementById("renderCanvas");
 const engine = new BABYLON.Engine(renderCanvas, true);
 engine.setHardwareScalingLevel(0.5)
 
-const captureButton = document.getElementById("captureButton");
+// const captureButton = document.getElementById("captureButton");
 
 BABYLON.SceneLoader.ShowLoadingScreen = false ; // Removes the default loading screen
 
@@ -75,21 +75,23 @@ function createScene(){
   
     bodyMesh.material = setMaterial("#101010", decalsWhiteTexture, calculatorAmbientTexture, null, null, 1, 0, 0.2, false);
     buttonsOneMesh.material = setMaterial("#2F4B26", decalsWhiteTexture, calculatorAmbientTexture, null, null, 1, 0, 0, true);
-    buttonsTwoMesh.material = setMaterial("#725800", decalsWhiteTexture, calculatorAmbientTexture, null, null, 1, 0, 0, true);
+    buttonsTwoMesh.material = setMaterial("#493900", decalsWhiteTexture, calculatorAmbientTexture, null, null, 1, 0, 0, true);
     buttonsThreeMesh.material = setMaterial("#101010", decalsWhiteTexture, calculatorAmbientTexture, null, null, 1, 0, 0, true);
-    buttonsFourMesh.material = setMaterial("#ECB700", decalsBlackTexture, calculatorAmbientTexture, null, null, 1, 0, 0, true);
+    buttonsFourMesh.material = setMaterial("#C39800", decalsBlackTexture, calculatorAmbientTexture, null, null, 1, 0, 0, true);
     screenOneMesh.material = setMaterial("#101010", null, null, null, null, 1, 0, 0, false);
     screenTwoMesh.material = setMaterial("#616161", null, null, null, null, 1, 0, 0.1, false);
     screenThreeMesh.material = setMaterial("#101010", null, null, null, reflectionTexture, 0, 0, 0, true);
     backMesh.material = setMaterial("#101010", decalsWhiteTexture, calculatorAmbientTexture, null, null, 1, 0, 0, true);
     caseMesh.material = setMaterial("#101010", decalsWhiteTexture, caseAmbientTexture, caseBumpTexture, null, 1, 0, 0.3, false);
+
+    caseMesh.position.y = -2;
     
     captureButton.addEventListener("click", function(){
       BABYLON.Tools.CreateScreenshotUsingRenderTarget(engine, camera, 1920);
     });
 
     const editableParts = [bodyMesh, buttonsOneMesh, buttonsTwoMesh, buttonsThreeMesh, buttonsFourMesh, screenTwoMesh, backMesh, caseMesh]
-    let colorConfig = [[0, 0], [2, 2], [3, 2], [0, 0], [3, 5], [0, 4], [0, 0], [0, 0]]
+    let colorConfig = [[0, 0], [2, 2], [3, 1], [0, 0], [3, 4], [0, 4], [0, 0], [0, 0]]
     let selectedPartIndex = 0;
 
     const calculatorParts = document.getElementsByClassName("calculatorPart");
@@ -155,7 +157,7 @@ function createScene(){
       colorGroupTabs[colorConfig[partIndex][0]].click();
       colorGroups.item(colorConfig[partIndex][0]).children.item(colorConfig[partIndex][1]).click();
       if(partIndex == 6){
-        camera.spinTo("alpha", BABYLON.Tools.ToRadians((Math.floor((BABYLON.Tools.ToDegrees(camera.alpha) / 360)) * 360) -90), cameraSnapBackSpeed);
+        camera.spinTo("alpha", BABYLON.Tools.ToRadians((Math.floor((BABYLON.Tools.ToDegrees(camera.alpha) / 360)) * 360) +270), cameraSnapBackSpeed);
       }else{
         camera.spinTo("alpha", BABYLON.Tools.ToRadians((Math.floor((BABYLON.Tools.ToDegrees(camera.alpha) / 360)) * 360) +90), cameraSnapBackSpeed);
       }
@@ -171,13 +173,16 @@ function createScene(){
       const easingFunction = new BABYLON.CubicEase();
       easingFunction.setEasingMode(BABYLON.EasingFunction.EASINGMODE_EASEOUT);
       if (state){
-        BABYLON.Animation.CreateAndStartAnimation('move', caseMesh, "position.y", 120, 120, caseMesh.position.y, 0, 0, easingFunction);
-        BABYLON.Animation.CreateAndStartAnimation('hide', caseMesh, "visibility", 120, 120, caseMesh.visibility, 1, 0, easingFunction);
-      } else {
-        BABYLON.Animation.CreateAndStartAnimation('move', caseMesh, "position.y", 120, 120, caseMesh.position.y, -2, 0, easingFunction);
-        BABYLON.Animation.CreateAndStartAnimation('hide', caseMesh, "visibility", 120, 120, caseMesh.visibility, 0, 0, easingFunction);
-      }
+        BABYLON.Animation.CreateAndStartAnimation('moveCaseUp', caseMesh, "position.y", 120, 120, caseMesh.position.y, 0, 0, easingFunction, () => {
+          console.log("doneUP")
+        });
+      }else{
+        BABYLON.Animation.CreateAndStartAnimation('moveCaseDown', caseMesh, "position.y", 120, 120, caseMesh.position.y, -2, 0, easingFunction, () => {
+          console.log("doneDOWN")
+        });
+      };
     };
+
 
   });
 

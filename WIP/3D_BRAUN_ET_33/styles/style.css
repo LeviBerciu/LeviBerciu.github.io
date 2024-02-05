@@ -60,6 +60,7 @@
     font-size: 16px;
     outline: none;
     border: none;
+    -webkit-tap-highlight-color: transparent;
 }
 
 body{
@@ -111,6 +112,7 @@ button:hover{
     top: 32px;
     border-radius: 20px;
     cursor: pointer;
+    user-select: none;
     padding: 4px;
 }
 
@@ -143,9 +145,23 @@ button:hover{
     height: 100%;
     width: max-content;
     pointer-events: none;
-    user-select: none;
     z-index: -1;
     opacity: 0.5;
+}
+
+#captureButton{
+    position: absolute;
+    display: flex;
+    background-color: var(--UI-03);
+    right: 32px;
+    top: 128px;
+    border-radius: 20px;
+    cursor: pointer;
+    padding: 4px;
+}
+
+#captureIcon{
+    fill: var(--UI-09);
 }
 
 .displayTextLeft{
@@ -284,6 +300,11 @@ button:hover{
     #themeSwitcher{
         right: 24px;
         top: 24px;
+    }
+
+    #captureButton{
+        right: 24px;
+        top: 120px;
     }
 
     .controlPanel{
