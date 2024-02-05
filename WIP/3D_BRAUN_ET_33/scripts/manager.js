@@ -27,7 +27,7 @@ function createScene(){
   scene.clearColor = new BABYLON.Color4(0,0,0,0);
 
   const cameraRadius = 2.2;
-  const cameraSnapBackSpeed = 120;
+  const cameraSnapBackSpeed = 60;
   
   const camera = new BABYLON.ArcRotateCamera("Camera",  BABYLON.Tools.ToRadians(270), BABYLON.Tools.ToRadians(90), cameraRadius, new BABYLON.Vector3(0, 0, 0), scene);
   camera.attachControl(renderCanvas, true);
@@ -37,7 +37,7 @@ function createScene(){
   camera.spinTo = function (whichprop, targetval, speed) {
     const easingFunction = new BABYLON.CubicEase();
     easingFunction.setEasingMode(BABYLON.EasingFunction.EASINGMODE_EASEOUT);
-    BABYLON.Animation.CreateAndStartAnimation('CameraSnapBack', this, whichprop, speed, 120, this[whichprop], targetval, 0, easingFunction);
+    BABYLON.Animation.CreateAndStartAnimation('CameraSnapBack', this, whichprop, speed, 60, this[whichprop], targetval, 0, easingFunction);
   };
 
   BABYLON.SceneLoader.Append("assets/", "model.glb", scene, function(scene){
@@ -84,8 +84,6 @@ function createScene(){
     backMesh.material = setMaterial("#101010", decalsWhiteTexture, calculatorAmbientTexture, null, null, 1, 0, 0, true);
     caseMesh.material = setMaterial("#101010", decalsWhiteTexture, caseAmbientTexture, caseBumpTexture, null, 1, 0, 0.3, false);
 
-    caseMesh.position.y = -2;
-    
     captureButton.addEventListener("click", function(){
       BABYLON.Tools.CreateScreenshotUsingRenderTarget(engine, camera, 1920);
     });
@@ -163,23 +161,63 @@ function createScene(){
       }
       camera.spinTo("beta", BABYLON.Tools.ToRadians(90), cameraSnapBackSpeed);
       if(partIndex == 7){
-        setCaseVisibility(true);
+        setcaseVisibility(true);
       }else{
-        setCaseVisibility(false);
+        setcaseVisibility(false);
       }
     };
 
-    function setCaseVisibility(state){
-      const easingFunction = new BABYLON.CubicEase();
-      easingFunction.setEasingMode(BABYLON.EasingFunction.EASINGMODE_EASEOUT);
+    caseMesh.position.y = -2;
+    caseMesh.visibility = 0;
+
+    const frameRate = 60;
+    const easingFunction = new BABYLON.CubicEase();
+    easingFunction.setEasingMode(BABYLON.EasingFunction.EASINGMODE_EASEINOUT);
+
+    const casePosY = new BABYLON.Animation("casePosY", "position.y", frameRate, BABYLON.Animation.ANIMATIONTYPE_FLOAT, BABYLON.Animation.ANIMATIONLOOPMODE_CONSTANT);
+    casePosY.setEasingFunction(easingFunction);
+    const casePosYKeys = [];
+    casePosYKeys.push({
+      frame: 0,
+      value: 0,
+    });
+    casePosYKeys.push({
+      frame: 60,
+      value: -2,
+    });
+    casePosY.setKeys(casePosYKeys);
+    caseMesh.animations.push(casePosY);
+
+    const caseVis = new BABYLON.Animation("caseVis", "visibility", frameRate, BABYLON.Animation.ANIMATIONTYPE_FLOAT, BABYLON.Animation.ANIMATIONLOOPMODE_CONSTANT);
+    caseVis.setEasingFunction(easingFunction);
+    const caseVisKeys = [];
+    caseVisKeys.push({
+      frame: 0,
+      value: 1,
+    });
+    caseVisKeys.push({
+      frame: 40,
+      value: 1,
+    });
+    caseVisKeys.push({
+      frame: 60,
+      value: 0,
+    });
+    caseVis.setKeys(caseVisKeys);
+    caseMesh.animations.push(caseVis);
+
+    caseIsVisible = false;
+    function setcaseVisibility(state){
       if (state){
-        BABYLON.Animation.CreateAndStartAnimation('moveCaseUp', caseMesh, "position.y", 120, 120, caseMesh.position.y, 0, 0, easingFunction, () => {
-          console.log("doneUP")
-        });
+        if(!caseIsVisible){
+          scene.beginAnimation(caseMesh, 60, 0, false);
+          caseIsVisible = true;
+        };
       }else{
-        BABYLON.Animation.CreateAndStartAnimation('moveCaseDown', caseMesh, "position.y", 120, 120, caseMesh.position.y, -2, 0, easingFunction, () => {
-          console.log("doneDOWN")
-        });
+        if(caseIsVisible){
+          scene.beginAnimation(caseMesh, 0, 60, false);
+          caseIsVisible = false;
+        };
       };
     };
 
