@@ -277,9 +277,14 @@ img{
 }
 
 @media screen and (orientation: portrait){
+
     .sections{
         grid-template-columns: 1fr;
         min-height: auto;
+    }
+
+    .controlPanel{
+        max-height: 100%;
     }
 
     @media only screen and (hover: none) and (pointer: coarse){
@@ -292,6 +297,7 @@ img{
 
 
 @media screen and (max-width: 960px){
+
     #themeSwitcher{
         right: 24px;
         top: 24px;
@@ -313,6 +319,7 @@ img{
 
 
 @media screen and (max-width: 480px){
+    
     button{
         width: 100%;
     }
