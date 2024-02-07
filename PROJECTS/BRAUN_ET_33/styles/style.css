@@ -58,6 +58,8 @@
     box-sizing: border-box;
     font-family: 'Inter', sans-serif;
     font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
     outline: none;
     border: none;
     -webkit-tap-highlight-color: transparent;
@@ -70,23 +72,6 @@ body{
 img{
     display: block;
     width: 100%;
-}
-
-button{
-    width: max-content;
-    line-height: 48px;
-    padding: 0px 24px 0px 24px;
-    font-size: 12px;
-    text-transform: uppercase;
-    font-weight: 600;
-    letter-spacing: 2px;
-    color: var(--UI-01);
-    background-color: var(--UI-09);
-    border-radius: 24px;
-}
-
-button:hover{
-    cursor:pointer;
 }
 
 .sections{
@@ -217,7 +202,6 @@ button:hover{
     border-radius: 4px;
     cursor: pointer;
     border: 1px solid var(--UI-02);
-    box-sizing: border-box;
 }
 
 .controlTab.active{
@@ -281,10 +265,26 @@ button:hover{
     width: 60px;
 }
 
+.projectDescription{
+    margin: 16px 0px 0px 0px;
+    padding: 32px 0px 32px 0px;
+    color: var(--UI-07);
+    border-top: 1px solid var(--UI-02);
+}
+
+.projectDescription a{
+    color: var(--UI-07);
+}
+
 @media screen and (orientation: portrait){
+
     .sections{
         grid-template-columns: 1fr;
         min-height: auto;
+    }
+
+    .controlPanel{
+        max-height: 100%;
     }
 
     @media only screen and (hover: none) and (pointer: coarse){
@@ -297,6 +297,7 @@ button:hover{
 
 
 @media screen and (max-width: 960px){
+
     #themeSwitcher{
         right: 24px;
         top: 24px;
@@ -318,6 +319,7 @@ button:hover{
 
 
 @media screen and (max-width: 480px){
+    
     button{
         width: 100%;
     }

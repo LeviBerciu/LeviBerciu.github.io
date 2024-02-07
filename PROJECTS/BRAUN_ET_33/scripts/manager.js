@@ -58,6 +58,8 @@ function createScene(){
     const backMesh = scene.getMeshByName("calculator_primitive1");
     const caseMesh = scene.getMeshByName("case");
 
+    let caseIsVisible = false;
+
     function setMaterial(albedoColor, albedoTexture, ambientTexture, bumpTexture, reflectionTexture, alpha, metallic, roughness, clearCoat){
       let newMaterial = new BABYLON.PBRMaterial("newMaterial", scene);
       newMaterial.albedoColor = new BABYLON.Color3.FromHexString(albedoColor).toLinearSpace();
@@ -206,7 +208,6 @@ function createScene(){
     caseVis.setKeys(caseVisKeys);
     caseMesh.animations.push(caseVis);
 
-    caseIsVisible = false;
     function setcaseVisibility(state){
       if (state){
         if(!caseIsVisible){
