@@ -8,7 +8,7 @@ let createScene = function() {
   const groundDiffuseTexture = new BABYLON.Texture("assets/ground_diffuse_texture.png",scene, false, false);
   const litterboxAmbientTexture = new BABYLON.Texture("assets/litterbox_ambient_texture.png",scene, false, false);
   const maskAmbientTexture = new BABYLON.Texture("assets/mask_ambient_texture.png",scene, false, false);
-  const studioEnvironment = new BABYLON.CubeTexture("assets/studio2.env");
+  const studioEnvironment = new BABYLON.CubeTexture("assets/studio.env");
 
   // Environment
   scene.environmentTexture = studioEnvironment;
