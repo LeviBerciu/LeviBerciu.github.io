@@ -18,10 +18,27 @@
         <section class="sectionA">
 
             <canvas id="renderCanvas" touch-action="none"></canvas>
+            
 
         </section>
 
         <section class="sectionB">
+
+            <fieldset class="partSelector">
+                <legend>Select the parts that you want to color:</legend>
+                <div>
+                    <input type="radio" id="allRadio" name="parts" value="all" checked />
+                    <label for="allRadio">All</label>
+                </div>
+                <div>
+                    <input type="radio" id="exteriorRadio" name="parts" value="exterior" />
+                    <label for="exteriorRadio">Exterior</label>
+                </div>
+                <div>
+                    <input type="radio" id="interiorRadio" name="parts" value="interior" />
+                    <label for="interiorRadio">Interior</label>
+                </div>
+            </fieldset>
 
             <div class="colorSwatches">
 

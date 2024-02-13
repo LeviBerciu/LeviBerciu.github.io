@@ -8,8 +8,7 @@ let createScene = function() {
   const groundDiffuseTexture = new BABYLON.Texture("assets/ground_diffuse_texture.png",scene, false, false);
   const litterboxAmbientTexture = new BABYLON.Texture("assets/litterbox_ambient_texture.png",scene, false, false);
   const maskAmbientTexture = new BABYLON.Texture("assets/mask_ambient_texture.png",scene, false, false);
-  const studioEnvironment = new BABYLON.CubeTexture("assets/studio.env");
-  //studioEnvironment.rotationY = 135;
+  const studioEnvironment = new BABYLON.CubeTexture("assets/studio2.env");
 
   // Environment
   scene.environmentTexture = studioEnvironment;
@@ -46,7 +45,7 @@ let createScene = function() {
     const litterboxTopMaterial = new BABYLON.PBRMaterial("litterboxTopMaterial", scene);
     litterboxTopMaterial.albedoColor = new BABYLON.Color3.FromHexString("#ffffff").toLinearSpace();
     litterboxTopMaterial.metallic = 0;
-    litterboxTopMaterial.roughness = 0.125;
+    litterboxTopMaterial.roughness = 0.25;
     litterboxTopMaterial.ambientTexture = litterboxAmbientTexture;
     litterboxTopMesh.material = litterboxTopMaterial;
 
@@ -55,7 +54,7 @@ let createScene = function() {
     const litterboxBottomMaterial = new BABYLON.PBRMaterial("litterboxBottomMaterial", scene);
     litterboxBottomMaterial.albedoColor = new BABYLON.Color3.FromHexString("#78909C").toLinearSpace();
     litterboxBottomMaterial.metallic = 0;
-    litterboxBottomMaterial.roughness = 0.125;
+    litterboxBottomMaterial.roughness = 0.25;
     litterboxBottomMaterial.ambientTexture = litterboxAmbientTexture;
     litterboxBottomMesh.material = litterboxBottomMaterial;
 
@@ -63,7 +62,7 @@ let createScene = function() {
     const maskExteriorMesh = scene.getMeshByName("mask_exterior");
     const maskExteriorMaterial = new BABYLON.PBRMaterial("maskExteriorMaterial", scene);
     maskExteriorMaterial.metallic = 0;
-    maskExteriorMaterial.roughness = 0.125;
+    maskExteriorMaterial.roughness = 0.25;
     maskExteriorMaterial.ambientTexture = maskAmbientTexture;
     maskExteriorMesh.material = maskExteriorMaterial;
 
@@ -71,24 +70,29 @@ let createScene = function() {
     const maskInteriorMesh = scene.getMeshByName("mask_interior");
     const maskInteriorMaterial = new BABYLON.PBRMaterial("maskInteriorMaterial", scene);
     maskInteriorMaterial.metallic = 0;
-    maskInteriorMaterial.roughness = 0.125;
+    maskInteriorMaterial.roughness = 0.25;
     maskInteriorMaterial.ambientTexture = maskAmbientTexture;
     maskInteriorMesh.material = maskInteriorMaterial;
 
+    // Parts Radios
+    let allRadio = document.getElementById("allRadio");
+    let exteriorRadio = document.getElementById("exteriorRadio");
+    let interiorRadio = document.getElementById("interiorRadio");
+
     // Swatches
     const swatches = document.getElementsByClassName("swatch");
-
     for(var i = 0; i < swatches.length; i++){
       (function(index) {
         swatches[index].addEventListener("click", function(){
-          console.log(rgb2hex(swatches[index].style.backgroundColor))
-          maskExteriorMaterial.albedoColor = new BABYLON.Color3.FromHexString(rgb2hex(swatches[index].style.backgroundColor)).toLinearSpace();
-          maskInteriorMaterial.albedoColor = new BABYLON.Color3.FromHexString(rgb2hex(swatches[index].style.backgroundColor)).toLinearSpace();
+          if (exteriorRadio.checked || allRadio.checked){
+            maskExteriorMaterial.albedoColor = new BABYLON.Color3.FromHexString(rgb2hex(swatches[index].style.backgroundColor)).toLinearSpace();
+          }
+          if (interiorRadio.checked || allRadio.checked){
+            maskInteriorMaterial.albedoColor = new BABYLON.Color3.FromHexString(rgb2hex(swatches[index].style.backgroundColor)).toLinearSpace();
+          }
         });
       })(i);
     };
-
-
 
   })
 

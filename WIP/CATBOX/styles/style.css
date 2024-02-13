@@ -41,13 +41,19 @@ img {
   aspect-ratio: 1/1;
   /* opacity: 0; */
   /* transition: opacity 1s ease-in-out; */
-  background-image: linear-gradient(#ECEFF1, #B0BEC5);
+  background-image: linear-gradient(#FFFFFF, #B0BEC5);
 }
 
+.partSelector{
+  max-height: 10vh;
+  height: 100%;
+  display: flex;
+}
 
 .colorSwatches{
-  max-height: 100vh;
+  max-height: 90vh;
   width: 100%;
+  height: 100%;
   overflow-y: auto;
   display: grid;
   grid-template-columns: repeat(6, 1fr);
@@ -59,6 +65,10 @@ img {
   border-radius: 4px;
   padding: 16px;
   color: white;
+}
+
+.swatch:hover{
+  cursor: pointer;
 }
 
 .swatch.dark{
