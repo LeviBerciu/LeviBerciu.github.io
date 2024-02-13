@@ -45,9 +45,11 @@ img {
 }
 
 .partSelector{
+  padding: 32px 8px 32px 8px;
   max-height: 10vh;
   height: 100%;
   display: flex;
+  gap: 8px;
 }
 
 .colorSwatches{
