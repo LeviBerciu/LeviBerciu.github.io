@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz@9..40&display=swap" rel="stylesheet">
+    <script src="https://cdn.babylonjs.com/babylon.js"></script>
+    <script src="https://cdn.babylonjs.com/loaders/babylonjs.loaders.min.js"></script>
+</head>
+<body>
+
+    <div class="sections">
+
+        <section class="sectionA">
+
+            <img class="logo" src="assets/logo.svg" alt="">
+
+            <canvas id="renderCanvas" touch-action="none"></canvas>
+
+        </section>
+
+        <section class="sectionB">
+
+            <div class="controlGroup">
+                <div class="controlGroupTitle">Descriere</div>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium inventore dolor necessitatibus at enim dolore hic. Saepe, culpa et. Numquam, nostrum odit est ad autem architecto recusandae? Fugit, veniam sunt.</p>
+            </div>
+
+            <div class="controlGroup">
+                <div class="controlGroupTitle">Culori</div>
+                <div class="colorPickers">
+                    <div id="exteriorPicker" class="swatch" data-name="Exterior">
+                        <div class="swatchTarget">Exterior</div>
+                        <div class="swatchName">Name</div>
+                        <div class="swatchCode">RAL</div>
+                    </div>
+
+                    <div id="interiorPicker" class="swatch" data-name="Interior">
+                        <div class="swatchTarget">Interior</div>
+                        <div class="swatchName">Name</div>
+                        <div class="swatchCode">RAL</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="controlGroup">
+                <div class="controlGroupTitle">Vopsit</div>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium inventore dolor necessitatibus at enim dolore hic. Saepe, culpa et. Numquam, nostrum odit est ad autem architecto recusandae? Fugit, veniam sunt.</p>
+            </div>
+
+
+            <div class="controlGroup">
+                <div class="controlGroupTitle">Specificatii</div>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium inventore dolor necessitatibus at enim dolore hic. Saepe, culpa et. Numquam, nostrum odit est ad autem architecto recusandae? Fugit, veniam sunt.</p>
+            </div>
+
+            <div id="colorPanel" class="hidden">
+
+                <div class="colorPanelHeader">
+                    <img id="colorPanelHeaderClose" src="assets/close.svg" alt="">
+                    <div id="colorPanelHeaderName">Lorem ipsum dolor sit amet consectetur adipisicing elit.</div>
+                </div>
+
+                <div class="colorSwatches">
+                    <div class="colorSwatch swatch" data-contrast="dark" data-color="#C5BB8A" data-brightness="181.345">
+                        <div class="swatchName">Green beige</div>
+                        <div class="swatchCode">RAL 1000</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="dark" data-color="#C6B286" data-brightness="181.356">
+                        <div class="swatchName">Beige</div>
+                        <div class="swatchCode">RAL 1001</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="dark" data-color="#C7AE72" data-brightness="170.236">
+                        <div class="swatchName">Sand yellow</div>
+                        <div class="swatchCode">RAL 1002</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="dark" data-color="#E6B019" data-brightness="175.372">
+                        <div class="swatchName">Signal yellow</div>
+                        <div class="swatchCode">RAL 1003</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="dark" data-color="#D2A40E" data-brightness="158.892">
+                        <div class="swatchName">Golden yellow</div>
+                        <div class="swatchCode">RAL 1004</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="dark" data-color="#BC9611" data-brightness="142.092">
+                        <div class="swatchName">Honey yellow</div>
+                        <div class="swatchCode">RAL 1005</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="dark" data-color="#CF9804" data-brightness="144.716">
+                        <div class="swatchName">Maize yellow</div>
+                        <div class="swatchCode">RAL 1006</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="dark" data-color="#D49300" data-brightness="149.356">
+                        <div class="swatchName">Daffodil yellow</div>
+                        <div class="swatchCode">RAL 1007</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="dark" data-color="#A38454" data-brightness="136.988">
+                        <div class="swatchName">Brown beige</div>
+                        <div class="swatchCode">RAL 1011</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="dark" data-color="#CFB539" data-brightness="170.412">
+                        <div class="swatchName">Lemon yellow</div>
+                        <div class="swatchCode">RAL 1012</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="dark" data-color="#DFDBC7" data-brightness="214.716">
+                        <div class="swatchName">Oyster white</div>
+                        <div class="swatchCode">RAL 1013</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="dark" data-color="#D4C79C" data-brightness="197.98">
+                        <div class="swatchName">Ivory</div>
+                        <div class="swatchCode">RAL 1014</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="dark" data-color="#DED3B6" data-brightness="212.412">
+                        <div class="swatchName">Light ivory</div>
+                        <div class="swatchCode">RAL 1015</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="dark" data-color="#E8E253" data-brightness="212.764">
+                        <div class="swatchName">Sulfur yellow</div>
+                        <div class="swatchCode">RAL 1016</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="dark" data-color="#E4AF56" data-brightness="175.196">
+                        <div class="swatchName">Saffron yellow</div>
+                        <div class="swatchCode">RAL 1017</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="dark" data-color="#EBD346" data-brightness="201.068">
+                        <div class="swatchName">Zinc yellow</div>
+                        <div class="swatchCode">RAL 1018</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="dark" data-color="#9C917B" data-brightness="146.492">
+                        <div class="swatchName">Grey beige</div>
+                        <div class="swatchCode">RAL 1019</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="dark" data-color="#999167" data-brightness="143.889">  
+                        <div class="swatchName">Olive yellow</div>
+                        <div class="swatchCode">RAL 1020</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="dark" data-color="#E5C000" data-brightness="182.172">
+                        <div class="swatchName">Colza yellow</div>
+                        <div class="swatchCode">RAL 1021</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="dark" data-color="#E6BE05" data-brightness="171.307">
+                        <div class="swatchName">Traffic yellow</div>
+                        <div class="swatchCode">RAL 1023</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="dark" data-color="#AD9451" data-brightness="146.668">
+                        <div class="swatchName">Ochre yellow</div>
+                        <div class="swatchCode">RAL 1024</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="dark" data-color="#FFFF00" data-brightness="213.216">
+                        <div class="swatchName">Luminous yellow</div>
+                        <div class="swatchCode">RAL 1026</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="light" data-color="#998420" data-brightness="125.281">
+                        <div class="swatchName">Curry</div>
+                        <div class="swatchCode">RAL 1027</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="dark" data-color="#F2A500" data-brightness="168.316">
+                        <div class="swatchName">Melon yellow</div>
+                        <div class="swatchCode">RAL 1028</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="dark" data-color="#CFA81E" data-brightness="156.412">
+                        <div class="swatchName">Broom yellow</div>
+                        <div class="swatchCode">RAL 1032</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="dark" data-color="#E4A02D" data-brightness="168.284">
+                        <div class="swatchName">Dahlia yellow</div>
+                        <div class="swatchCode">RAL 1033</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="dark" data-color="#D9A156" data-brightness="170.412">
+                        <div class="swatchName">Pastel yellow</div>
+                        <div class="swatchCode">RAL 1034</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="dark" data-color="#898271" data-brightness="132.316">
+                        <div class="swatchName">Pearl beige</div>
+                        <div class="swatchCode">RAL 1035</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="light" data-color="#746341" data-brightness="101.836">
+                        <div class="swatchName">Pearl gold</div>
+                        <div class="swatchCode">RAL 1036</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="dark" data-color="#DB9A17" data-brightness="151.804">
+                        <div class="swatchName">Sun yellow</div>
+                        <div class="swatchCode">RAL 1037</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="light" data-color="#C7750F" data-brightness="125.932">
+                        <div class="swatchName">Yellow orange</div>
+                        <div class="swatchCode">RAL 2000</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="light" data-color="#A74D23" data-brightness="92.796">
+                        <div class="swatchName">Red orange</div>
+                        <div class="swatchCode">RAL 2001</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="light" data-color="#AC3721" data-brightness="83.404">
+                        <div class="swatchName">Vermilion</div>
+                        <div class="swatchCode">RAL 2002</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="dark" data-color="#E17C30" data-brightness="142.412">
+                        <div class="swatchName">Pastel orange</div>
+                        <div class="swatchCode">RAL 2003</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="light" data-color="#CC5608" data-brightness="106.849">
+                        <div class="swatchName">Pure orange</div>
+                        <div class="swatchCode">RAL 2004</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="light" data-color="#FF4612" data-brightness="114.113">
+                        <div class="swatchName">Luminous orange</div>
+                        <div class="swatchCode">RAL 2005</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="dark" data-color="#FFAD19" data-brightness="170.465">
+                        <div class="swatchName">Luminous bright orange</div>
+                        <div class="swatchCode">RAL 2007</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="light" data-color="#D66C21" data-brightness="125.932">
+                        <div class="swatchName">Bright red orange</div>
+                        <div class="swatchCode">RAL 2008</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="light" data-color="#C9560D" data-brightness="107.148">
+                        <div class="swatchName">Traffic orange</div>
+                        <div class="swatchCode">RAL 2009</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="light" data-color="#BC602D" data-brightness="116.364">
+                        <div class="swatchName">Signal orange</div>
+                        <div class="swatchCode">RAL 2010</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="dark" data-color="#CF7421" data-brightness="130.54">
+                        <div class="swatchName">Deep orange</div>
+                        <div class="swatchCode">RAL 2011</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="light" data-color="#C2674F" data-brightness="125.756">
+                        <div class="swatchName">Salmon orange</div>
+                        <div class="swatchCode">RAL 2012</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="light" data-color="#824128" data-brightness="82.508">
+                        <div class="swatchName">Pearl orange</div>
+                        <div class="swatchCode">RAL 2013</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="light" data-color="#DC5B00" data-brightness="111.788">
+                        <div class="swatchName">RAL orange</div>
+                        <div class="swatchCode">RAL 2017</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="light" data-color="#962A27" data-brightness="69.228">
+                        <div class="swatchName">Flame red</div>
+                        <div class="swatchCode">RAL 3000</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="light" data-color="#8F1E24" data-brightness="55.052">
+                        <div class="swatchName">Signal red</div>
+                        <div class="swatchCode">RAL 3001</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="light" data-color="#8D1F24" data-brightness="55.052">
+                        <div class="swatchName">Carmine red</div>
+                        <div class="swatchCode">RAL 3002</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="light" data-color="#7C0D24" data-brightness="40.876">
+                        <div class="swatchName">Ruby red</div>
+                        <div class="swatchCode">RAL 3003</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="light" data-color="#651927" data-brightness="45.484">
+                        <div class="swatchName">Purple red</div>
+                        <div class="swatchCode">RAL 3004</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="light" data-color="#561E27" data-brightness="40.7">
+                        <div class="swatchName">Wine red</div>
+                        <div class="swatchCode">RAL 3005</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="light" data-color="#3D2326" data-brightness="38.763">
+                        <div class="swatchName">Black red</div>
+                        <div class="swatchCode">RAL 3007</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="light" data-color="#643730" data-brightness="66.572">
+                        <div class="swatchName">Oxide red</div>
+                        <div class="swatchCode">RAL 3009</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="light" data-color="#6E2124" data-brightness="54.876">
+                        <div class="swatchName">Brown red</div>
+                        <div class="swatchCode">RAL 3011</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="dark" data-color="#B7856E" data-brightness="144.364">
+                        <div class="swatchName">Beige red</div>
+                        <div class="swatchCode">RAL 3012</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="light" data-color="#8A2F28" data-brightness="63.724">
+                        <div class="swatchName">Tomato red</div>
+                        <div class="swatchCode">RAL 3013</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="light" data-color="#BC6F72" data-brightness="127.884">
+                        <div class="swatchName">Antique pink</div>
+                        <div class="swatchCode">RAL 3014</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="dark" data-color="#CC9EA4" data-brightness="167.457">
+                        <div class="swatchName">Light pink</div>
+                        <div class="swatchCode">RAL 3015</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="light" data-color="#963D2F" data-brightness="78.62">
+                        <div class="swatchName">Coral red</div>
+                        <div class="swatchCode">RAL 3016</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="light" data-color="#B9535B" data-brightness="113.164">
+                        <div class="swatchName">Rose</div>
+                        <div class="swatchCode">RAL 3017</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="light" data-color="#B63C49" data-brightness="92.796">
+                        <div class="swatchName">Strawberry red</div>
+                        <div class="swatchCode">RAL 3018</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="light" data-color="#AB1519" data-brightness="62.316">
+                        <div class="swatchName">Traffic red</div>
+                        <div class="swatchCode">RAL 3020</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="light" data-color="#BE6954" data-brightness="123.276">
+                        <div class="swatchName">Salmon pink</div>
+                        <div class="swatchCode">RAL 3022</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="light" data-color="#EE1729" data-brightness="83.457">
+                        <div class="swatchName">Luminous red</div>
+                        <div class="swatchCode">RAL 3024</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="light" data-color="#F71027" data-brightness="87.964">
+                        <div class="swatchName">Luminous bright red</div>
+                        <div class="swatchCode">RAL 3026</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="light" data-color="#9E1B3C" data-brightness="62.14">
+                        <div class="swatchName">Raspberry red</div>
+                        <div class="swatchCode">RAL 3027</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="light" data-color="#B92726" data-brightness="78.796">
+                        <div class="swatchName">Pure red</div>
+                        <div class="swatchCode">RAL 3028</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="light" data-color="#973238" data-brightness="80.924">
+                        <div class="swatchName">Orient red</div>
+                        <div class="swatchCode">RAL 3031</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="light" data-color="#661925" data-brightness="45.185">
+                        <div class="swatchName">Pearl ruby red</div>
+                        <div class="swatchCode">RAL 3032</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="light" data-color="#94352D" data-brightness="78.62">
+                        <div class="swatchName">Pearl pink</div>
+                        <div class="swatchCode">RAL 3033</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="light" data-color="#7C5B80" data-brightness="101.66">
+                        <div class="swatchName">Red lilac</div>
+                        <div class="swatchCode">RAL 4001</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="light" data-color="#823A4B" data-brightness="78.444">
+                        <div class="swatchName">Red violet</div>
+                        <div class="swatchCode">RAL 4002</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="light" data-color="#B65A88" data-brightness="120.652">
+                        <div class="swatchName">Heather violet</div>
+                        <div class="swatchCode">RAL 4003</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="light" data-color="#5F1837" data-brightness="43.004">
+                        <div class="swatchName">Claret violet</div>
+                        <div class="swatchCode">RAL 4004</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="light" data-color="#746395" data-brightness="113.356">
+                        <div class="swatchName">Blue lilac</div>
+                        <div class="swatchCode">RAL 4005</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="light" data-color="#852E6F" data-brightness="73.66">
+                        <div class="swatchName">Traffic purple</div>
+                        <div class="swatchCode">RAL 4006</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="light" data-color="#44263C" data-brightness="47.313">
+                        <div class="swatchName">Purple violet</div>
+                        <div class="swatchCode">RAL 4007</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="light" data-color="#7C477D" data-brightness="88.203">
+                        <div class="swatchName">Signal violet</div>
+                        <div class="swatchCode">RAL 4008</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="dark" data-color="#95838F" data-brightness="139.404">
+                        <div class="swatchName">Pastel violet</div>
+                        <div class="swatchCode">RAL 4009</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="light" data-color="#AC3B71" data-brightness="94.924">
+                        <div class="swatchName">Telemagenta</div>
+                        <div class="swatchCode">RAL 4010</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="light" data-color="#685C80" data-brightness="96.876">
+                        <div class="swatchName">Pearl violet</div>
+                        <div class="swatchCode">RAL 4011</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="light" data-color="#67657A" data-brightness="103.964">
+                        <div class="swatchName">Pearl blackberry</div>
+                        <div class="swatchCode">RAL 4012</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="light" data-color="#35496B" data-brightness="68.524">
+                        <div class="swatchName">Violet blue</div>
+                        <div class="swatchCode">RAL 5000</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="light" data-color="#294763" data-brightness="63.74">
+                        <div class="swatchName">Green blue</div>
+                        <div class="swatchCode">RAL 5001</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="light" data-color="#193278" data-brightness="51.868">
+                        <div class="swatchName">Ultramarine blue</div>
+                        <div class="swatchCode">RAL 5002</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="light" data-color="#203151" data-brightness="51.756">
+                        <div class="swatchName">Sapphire blue</div>
+                        <div class="swatchCode">RAL 5003</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="light" data-color="#1E222C" data-brightness="30.369">
+                        <div class="swatchName">Black blue</div>
+                        <div class="swatchCode">RAL 5004</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="light" data-color="#134A85" data-brightness="63.564">
+                        <div class="swatchName">Signal blue</div>
+                        <div class="swatchCode">RAL 5005</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="light" data-color="#466589" data-brightness="96.7">
+                        <div class="swatchName">Brillant blue</div>
+                        <div class="swatchCode">RAL 5007</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="light" data-color="#2F3A44" data-brightness="49.596">
+                        <div class="swatchName">Grey blue</div>
+                        <div class="swatchCode">RAL 5008</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="light" data-color="#365875" data-brightness="79.788">
+                        <div class="swatchName">Azure blue</div>
+                        <div class="swatchCode">RAL 5009</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="light" data-color="#0E457A" data-brightness="56.476">
+                        <div class="swatchName">Gentian blue</div>
+                        <div class="swatchCode">RAL 5010</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="light" data-color="#222C3E" data-brightness="37.745">
+                        <div class="swatchName">Steel blue</div>
+                        <div class="swatchCode">RAL 5011</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="light" data-color="#457FB3" data-brightness="113.004">
+                        <div class="swatchName">Light blue</div>
+                        <div class="swatchCode">RAL 5012</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="light" data-color="#212F51" data-brightness="42.076">
+                        <div class="swatchName">Cobalt blue</div>
+                        <div class="swatchCode">RAL 5013</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="light" data-color="#667691" data-brightness="115.904">
+                        <div class="swatchName">Pigeon blue</div>
+                        <div class="swatchCode">RAL 5014</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="light" data-color="#3172AD" data-brightness="105.916">
+                        <div class="swatchName">Sky blue</div>
+                        <div class="swatchCode">RAL 5015</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="light" data-color="#0F518A" data-brightness="68.172">
+                        <div class="swatchName">Traffic blue</div>
+                        <div class="swatchCode">RAL 5017</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="light" data-color="#47848D" data-brightness="113.723">
+                        <div class="swatchName">Turquoise blue</div>
+                        <div class="swatchCode">RAL 5018</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="light" data-color="#265682" data-brightness="75.846">
+                        <div class="swatchName">Capri blue</div>
+                        <div class="swatchCode">RAL 5019</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="light" data-color="#113E4D" data-brightness="44.657">
+                        <div class="swatchName">Ocean blue</div>
+                        <div class="swatchCode">RAL 5020</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="light" data-color="#216D76" data-brightness="84.396">
+                        <div class="swatchName">Water blue</div>
+                        <div class="swatchCode">RAL 5021</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="light" data-color="#282C58" data-brightness="42.076">
+                        <div class="swatchName">Night blue</div>
+                        <div class="swatchCode">RAL 5022</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="light" data-color="#4D648A" data-brightness="94.939">
+                        <div class="swatchName">Distant blue</div>
+                        <div class="swatchCode">RAL 5023</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="light" data-color="#6C8DAA" data-brightness="129.516">
+                        <div class="swatchName">Pastel blue</div>
+                        <div class="swatchCode">RAL 5024</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="light" data-color="#3C6379" data-brightness="87.851">
+                        <div class="swatchName">Pearl gentian blue</div>
+                        <div class="swatchCode">RAL 5025</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="light" data-color="#1B2B4D" data-brightness="34.39">
+                        <div class="swatchName">Pearl night blue</div>
+                        <div class="swatchCode">RAL 5026</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="light" data-color="#4A7363" data-brightness="101.196">
+                        <div class="swatchName">Patina green</div>
+                        <div class="swatchCode">RAL 6000</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="light" data-color="#40693A" data-brightness="85.18">
+                        <div class="swatchName">Emerald green</div>
+                        <div class="swatchCode">RAL 6001</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="light" data-color="#3B5B2F" data-brightness="67.526">
+                        <div class="swatchName">Leaf green</div>
+                        <div class="swatchCode">RAL 6002</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="light" data-color="#4F553E" data-brightness="75.201">
+                        <div class="swatchName">Olive green</div>
+                        <div class="swatchCode">RAL 6003</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="light" data-color="#214245" data-brightness="57.371">
+                        <div class="swatchName">Blue green</div>
+                        <div class="swatchCode">RAL 6004</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="light" data-color="#234235" data-brightness="55.067">
+                        <div class="swatchName">Moss green</div>
+                        <div class="swatchCode">RAL 6005</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="light" data-color="#3C3D32" data-brightness="52.22">
+                        <div class="swatchName">Grey olive</div>
+                        <div class="swatchCode">RAL 6006</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="light" data-color="#2E3526" data-brightness="45.132">
+                        <div class="swatchName">Bottle green</div>
+                        <div class="swatchCode">RAL 6007</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="light" data-color="#333327" data-brightness="47.856">
+                        <div class="swatchName">Brown green</div>
+                        <div class="swatchCode">RAL 6008</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="light" data-color="#2A372C" data-brightness="45.132">
+                        <div class="swatchName">Fir green</div>
+                        <div class="swatchCode">RAL 6009</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="light" data-color="#4E6E39" data-brightness="84.006">
+                        <div class="swatchName">Grass green</div>
+                        <div class="swatchCode">RAL 6010</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="light" data-color="#6A7C5B" data-brightness="108.748">
+                        <div class="swatchName">Reseda green</div>
+                        <div class="swatchCode">RAL 6011</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="light" data-color="#2F3B39" data-brightness="47.436">
+                        <div class="swatchName">Black green</div>
+                        <div class="swatchCode">RAL 6012</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="light" data-color="#777659" data-brightness="113.233">
+                        <div class="swatchName">Reed green</div>
+                        <div class="swatchCode">RAL 6013</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="light" data-color="#454339" data-brightness="66.396">
+                        <div class="swatchName">Yellow olive</div>
+                        <div class="swatchCode">RAL 6014</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="light" data-color="#3C3F38" data-brightness="52.22">
+                        <div class="swatchName">Black olive</div>
+                        <div class="swatchCode">RAL 6015</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="light" data-color="#256753" data-brightness="80.22">
+                        <div class="swatchName">Turquoise green</div>
+                        <div class="swatchCode">RAL 6016</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="light" data-color="#5C8144" data-brightness="110.908">
+                        <div class="swatchName">May green</div>
+                        <div class="swatchCode">RAL 6017</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="light" data-color="#689A45" data-brightness="125.228">
+                        <div class="swatchName">Yellow green</div>
+                        <div class="swatchCode">RAL 6018</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="dark" data-color="#B8CFAD" data-brightness="191.148">
+                        <div class="swatchName">Pastel green</div>
+                        <div class="swatchCode">RAL 6019</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="light" data-color="#3B4634" data-brightness="61.18">
+                        <div class="swatchName">Chrome green</div>
+                        <div class="swatchCode">RAL 6020</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="dark" data-color="#899B79" data-brightness="141.132">
+                        <div class="swatchName">Pale green</div>
+                        <div class="swatchCode">RAL 6021</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="light" data-color="#3B382E" data-brightness="49.916">
+                        <div class="swatchName">Olive drab</div>
+                        <div class="swatchCode">RAL 6022</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="light" data-color="#3A8258" data-brightness="103.356">
+                        <div class="swatchName">Traffic green</div>
+                        <div class="swatchCode">RAL 6024</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="light" data-color="#5D703E" data-brightness="99.356">
+                        <div class="swatchName">Fern green</div>
+                        <div class="swatchCode">RAL 6025</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="light" data-color="#0D5951" data-brightness="61.26">
+                        <div class="swatchName">Opal green</div>
+                        <div class="swatchCode">RAL 6026</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="dark" data-color="#88B5B3" data-brightness="169.409">
+                        <div class="swatchName">Light green</div>
+                        <div class="swatchCode">RAL 6027</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="light" data-color="#3D5547" data-brightness="72.721">
+                        <div class="swatchName">Pine green</div>
+                        <div class="swatchCode">RAL 6028</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="light" data-color="#226C45" data-brightness="77.617">
+                        <div class="swatchName">Mint green</div>
+                        <div class="swatchCode">RAL 6029</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="light" data-color="#417E57" data-brightness="98.748">
+                        <div class="swatchName">Signal green</div>
+                        <div class="swatchCode">RAL 6032</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="light" data-color="#568480" data-brightness="120.268">
+                        <div class="swatchName">Mint turquoise</div>
+                        <div class="swatchCode">RAL 6033</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="dark" data-color="#86A9AD" data-brightness="158.012">
+                        <div class="swatchName">Pastel turquoise</div>
+                        <div class="swatchCode">RAL 6034</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="light" data-color="#2E4F31" data-brightness="56.828">
+                        <div class="swatchName">Pearl green</div>
+                        <div class="swatchCode">RAL 6035</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="light" data-color="#27514A" data-brightness="68.524">
+                        <div class="swatchName">Pearl opal green</div>
+                        <div class="swatchCode">RAL 6036</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="light" data-color="#3F8C3D" data-brightness="99.18">
+                        <div class="swatchName">Pure green</div>
+                        <div class="swatchCode">RAL 6037</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="light" data-color="#20A339" data-brightness="113.18">
+                        <div class="swatchName">Luminous green </div>
+                        <div class="swatchCode">RAL 6038</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="dark" data-color="#ABC251" data-brightness="174.844">
+                        <div class="swatchName">Fibrous green</div>
+                        <div class="swatchCode">RAL 6039</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="light" data-color="#7B858D" data-brightness="129.836">
+                        <div class="swatchName">Squirrel grey</div>
+                        <div class="swatchCode">RAL 7000</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="dark" data-color="#8B949B" data-brightness="145.74">
+                        <div class="swatchName">Silver grey</div>
+                        <div class="swatchCode">RAL 7001</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="light" data-color="#7D7965" data-brightness="115.836">
+                        <div class="swatchName">Olive grey</div>
+                        <div class="swatchCode">RAL 7002</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="light" data-color="#76776A" data-brightness="114.075">
+                        <div class="swatchName">Moss grey</div>
+                        <div class="swatchCode">RAL 7003</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="dark" data-color="#969799" data-brightness="150.38">
+                        <div class="swatchName">Signal grey</div>
+                        <div class="swatchCode">RAL 7004</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="light" data-color="#696D6B" data-brightness="101.66">
+                        <div class="swatchName">Mouse grey</div>
+                        <div class="swatchCode">RAL 7005</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="light" data-color="#716C60" data-brightness="106.444">
+                        <div class="swatchName">Beige grey</div>
+                        <div class="swatchCode">RAL 7006</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="light" data-color="#6C6040" data-brightness="96.764">
+                        <div class="swatchName">Khaki grey</div>
+                        <div class="swatchCode">RAL 7008</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="light" data-color="#5B6058" data-brightness="94.572">
+                        <div class="swatchName">Green grey</div>
+                        <div class="swatchCode">RAL 7009</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="light" data-color="#575B57" data-brightness="84.604">
+                        <div class="swatchName">Tarpaulin grey</div>
+                        <div class="swatchCode">RAL 7010</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="light" data-color="#535A5E" data-brightness="85.18">
+                        <div class="swatchName">Iron grey</div>
+                        <div class="swatchCode">RAL 7011</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="light" data-color="#595E60" data-brightness="87.484">
+                        <div class="swatchName">Basalt grey</div>
+                        <div class="swatchCode">RAL 7012</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="light" data-color="#545146" data-brightness="82.876">
+                        <div class="swatchName">Brown grey</div>
+                        <div class="swatchCode">RAL 7013</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="light" data-color="#51535A" data-brightness="85.18">
+                        <div class="swatchName">Slate grey</div>
+                        <div class="swatchCode">RAL 7015</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="light" data-color="#3B4044" data-brightness="63.484">
+                        <div class="swatchName">Anthracite grey</div>
+                        <div class="swatchCode">RAL 7016</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="light" data-color="#323537" data-brightness="52.22">
+                        <div class="swatchName">Black grey</div>
+                        <div class="swatchCode">RAL 7021</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="light" data-color="#4C4C47" data-brightness="67.526">
+                        <div class="swatchName">Umbra grey</div>
+                        <div class="swatchCode">RAL 7022</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="light" data-color="#7D7F76" data-brightness="118.14">
+                        <div class="swatchName">Concrete grey</div>
+                        <div class="swatchCode">RAL 7023</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="light" data-color="#45494E" data-brightness="68.7">
+                        <div class="swatchName">Graphite grey</div>
+                        <div class="swatchCode">RAL 7024</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="light" data-color="#394345" data-brightness="62.155">
+                        <div class="swatchName">Granite grey</div>
+                        <div class="swatchCode">RAL 7026</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="dark" data-color="#8C8C83" data-brightness="133.446">
+                        <div class="swatchName">Stone grey</div>
+                        <div class="swatchCode">RAL 7030</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="light" data-color="#5D676D" data-brightness="96.3">
+                        <div class="swatchName">Blue grey</div>
+                        <div class="swatchCode">RAL 7031</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="dark" data-color="#B1B1A1" data-brightness="180.006">
+                        <div class="swatchName">Pebble grey</div>
+                        <div class="swatchCode">RAL 7032</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="light" data-color="#7C8273" data-brightness="127.532">
+                        <div class="swatchName">Cement grey</div>
+                        <div class="swatchCode">RAL 7033</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="dark" data-color="#8C8870" data-brightness="130.555">
+                        <div class="swatchName">Yellow grey</div>
+                        <div class="swatchCode">RAL 7034</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="dark" data-color="#C2C6C3" data-brightness="200.54">
+                        <div class="swatchName">Light grey</div>
+                        <div class="swatchCode">RAL 7035</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="dark" data-color="#949292" data-brightness="150.812">
+                        <div class="swatchName">Platinum grey</div>
+                        <div class="swatchCode">RAL 7036</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="light" data-color="#797B7B" data-brightness="117.852">
+                        <div class="swatchName">Dusty grey</div>
+                        <div class="swatchCode">RAL 7037</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="dark" data-color="#ADB0A9" data-brightness="176.972">
+                        <div class="swatchName">Agate grey</div>
+                        <div class="swatchCode">RAL 7038</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="light" data-color="#68675F" data-brightness="99.356">
+                        <div class="swatchName">Quartz grey</div>
+                        <div class="swatchCode">RAL 7039</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="dark" data-color="#969CA1" data-brightness="153.404">
+                        <div class="swatchName">Window grey</div>
+                        <div class="swatchCode">RAL 7040</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="dark" data-color="#8C9190" data-brightness="146.316">
+                        <div class="swatchName">Traffic grey A</div>
+                        <div class="swatchCode">RAL 7042</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="light" data-color="#4F5352" data-brightness="80.396">
+                        <div class="swatchName">Traffic grey B</div>
+                        <div class="swatchCode">RAL 7043</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="dark" data-color="#B3B2A9" data-brightness="181.756">
+                        <div class="swatchName">Silk grey</div>
+                        <div class="swatchCode">RAL 7044</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="dark" data-color="#8C9094" data-brightness="146.316">
+                        <div class="swatchName">Telegrey 1</div>
+                        <div class="swatchCode">RAL 7045</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="light" data-color="#7C8287" data-brightness="129.116">
+                        <div class="swatchName">Telegrey 2</div>
+                        <div class="swatchCode">RAL 7046</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="dark" data-color="#C5C5C5" data-brightness="198.79">
+                        <div class="swatchName">Telegrey 4</div>
+                        <div class="swatchCode">RAL 7047</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="light" data-color="#7A7871" data-brightness="118.14">
+                        <div class="swatchName">Pearl mouse grey</div>
+                        <div class="swatchCode">RAL 7048</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="light" data-color="#816D44" data-brightness="106.476">
+                        <div class="swatchName">Green brown</div>
+                        <div class="swatchCode">RAL 8000</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="light" data-color="#8F6833" data-brightness="102.411">
+                        <div class="swatchName">Ochre brown</div>
+                        <div class="swatchCode">RAL 8001</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="light" data-color="#704F40" data-brightness="82.476">
+                        <div class="swatchName">Signal brown</div>
+                        <div class="swatchCode">RAL 8002</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="light" data-color="#74502F" data-brightness="87.836">
+                        <div class="swatchName">Clay brown</div>
+                        <div class="swatchCode">RAL 8003</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="light" data-color="#814D37" data-brightness="85.532">
+                        <div class="swatchName">Copper brown</div>
+                        <div class="swatchCode">RAL 8004</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="light" data-color="#67492F" data-brightness="73.66">
+                        <div class="swatchName">Fawn brown</div>
+                        <div class="swatchCode">RAL 8007</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="light" data-color="#694F2B" data-brightness="73.66">
+                        <div class="swatchName">Olive brown</div>
+                        <div class="swatchCode">RAL 8008</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="light" data-color="#533A29" data-brightness="59.484">
+                        <div class="swatchName">Nut brown</div>
+                        <div class="swatchCode">RAL 8011</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="light" data-color="#5C3128" data-brightness="59.484">
+                        <div class="swatchName">Red brown</div>
+                        <div class="swatchCode">RAL 8012</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="light" data-color="#453729" data-brightness="54.7">
+                        <div class="swatchName">Sepia brown</div>
+                        <div class="swatchCode">RAL 8014</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="light" data-color="#57332B" data-brightness="58.897">
+                        <div class="swatchName">Chestnut brown</div>
+                        <div class="swatchCode">RAL 8015</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="light" data-color="#483026" data-brightness="54.7">
+                        <div class="swatchName">Mahogany brown</div>
+                        <div class="swatchCode">RAL 8016</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="light" data-color="#42332E" data-brightness="54.113">
+                        <div class="swatchName">Chocolate brown</div>
+                        <div class="swatchCode">RAL 8017</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="light" data-color="#3B3736" data-brightness="52.22">
+                        <div class="swatchName">Grey brown</div>
+                        <div class="swatchCode">RAL 8019</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="light" data-color="#201F20" data-brightness="25.772">
+                        <div class="swatchName">Black brown</div>
+                        <div class="swatchCode">RAL 8022</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="light" data-color="#965D33" data-brightness="99.564">
+                        <div class="swatchName">Orange brown</div>
+                        <div class="swatchCode">RAL 8023</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="light" data-color="#6F543C" data-brightness="85.356">
+                        <div class="swatchName">Beige brown</div>
+                        <div class="swatchCode">RAL 8024</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="light" data-color="#6E5B4B" data-brightness="87.372">
+                        <div class="swatchName">Pale brown</div>
+                        <div class="swatchCode">RAL 8025</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="light" data-color="#4C3E30" data-brightness="57.004">
+                        <div class="swatchName">Terra brown</div>
+                        <div class="swatchCode">RAL 8028</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="light" data-color="#764537" data-brightness="80.028">
+                        <div class="swatchName">Pearl copper</div>
+                        <div class="swatchCode">RAL 8029</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="dark" data-color="#E5E1D4" data-brightness="231.196">
+                        <div class="swatchName">Cream</div>
+                        <div class="swatchCode">RAL 9001</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="dark" data-color="#D4D5CD" data-brightness="213.996">
+                        <div class="swatchName">Grey white</div>
+                        <div class="swatchCode">RAL 9002</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="dark" data-color="#EBECEA" data-brightness="233.5">
+                        <div class="swatchName">Signal white</div>
+                        <div class="swatchCode">RAL 9003</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="light" data-color="#2F3133" data-brightness="47.004">
+                        <div class="swatchName">Signal black</div>
+                        <div class="swatchCode">RAL 9004</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="light" data-color="#131516" data-brightness="19.26">
+                        <div class="swatchName">Jet black</div>
+                        <div class="swatchCode">RAL 9005</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="dark" data-color="#9A9D9D" data-brightness="150.812">
+                        <div class="swatchName">White aluminium</div>
+                        <div class="swatchCode">RAL 9006</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="dark" data-color="#828280" data-brightness="133.446">
+                        <div class="swatchName">Grey aluminium</div>
+                        <div class="swatchCode">RAL 9007</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="dark" data-color="#EFEEE5" data-brightness="231.739">
+                        <div class="swatchName">Pure white</div>
+                        <div class="swatchCode">RAL 9010</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="light" data-color="#25282A" data-brightness="35.74">
+                        <div class="swatchName">Graphite black</div>
+                        <div class="swatchCode">RAL 9011</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="dark" data-color="#F2F1E1" data-brightness="247.388">
+                        <div class="swatchName">Cleanroom White</div>
+                        <div class="swatchCode">RAL 9012</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="dark" data-color="#EFF0EB" data-brightness="242.892">
+                        <div class="swatchName">Traffic white</div>
+                        <div class="swatchCode">RAL 9016</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="light" data-color="#262625" data-brightness="34.566">
+                        <div class="swatchName">Traffic black</div>
+                        <div class="swatchCode">RAL 9017</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="dark" data-color="#C6CBC6" data-brightness="199.964">
+                        <div class="swatchName">Papyrus white</div>
+                        <div class="swatchCode">RAL 9018</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="dark" data-color="#818382" data-brightness="134.62">
+                        <div class="swatchName">Pearl light grey</div>
+                        <div class="swatchCode">RAL 9022</div>
+                    </div>
+                    <div class="colorSwatch swatch" data-contrast="light" data-color="#767779" data-brightness="116.379">
+                        <div class="swatchName">Pearl dark grey</div>
+                        <div class="swatchCode">RAL 9023</div>
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+
+    </div>
+
+    <script src="scripts/manager.js"></script>
+        
+</body>
+</html>

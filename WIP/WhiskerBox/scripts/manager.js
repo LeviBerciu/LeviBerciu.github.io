@@ -14,6 +14,7 @@ let createScene = function() {
   // Environment
   scene.environmentTexture = studioEnvironment;
   scene.clearColor = new BABYLON.Color4(0,0,0,0);
+  // scene.environmentIntensity = 0.5;
 
   // Camera
   const defaultCameraAlpha = 45;
@@ -27,6 +28,10 @@ let createScene = function() {
   camera.lowerRadiusLimit = 0.6;
   camera.upperRadiusLimit = 1.8;
   camera.upperBetaLimit = BABYLON.Tools.ToRadians(90);
+
+  // var light = new BABYLON.HemisphericLight("hemiLight", new BABYLON.Vector3(0, 1, 0), scene);
+  // light.intensity = 0.5;
+
 
   // Model
   BABYLON.SceneLoader.Append("assets/", "model.glb", scene, function(scene) {
@@ -63,7 +68,7 @@ let createScene = function() {
     const maskExteriorMesh = scene.getMeshByName("mask_exterior");
     const maskExteriorMaterial = new BABYLON.PBRMaterial("maskExteriorMaterial", scene);
     maskExteriorMaterial.metallic = 0;
-    maskExteriorMaterial.roughness = 0.25;
+    maskExteriorMaterial.roughness = 0.35;
     maskExteriorMaterial.ambientTexture = maskAmbientTexture;
     maskExteriorMesh.material = maskExteriorMaterial;
 
@@ -71,29 +76,69 @@ let createScene = function() {
     const maskInteriorMesh = scene.getMeshByName("mask_interior");
     const maskInteriorMaterial = new BABYLON.PBRMaterial("maskInteriorMaterial", scene);
     maskInteriorMaterial.metallic = 0;
-    maskInteriorMaterial.roughness = 0.25;
+    maskInteriorMaterial.roughness = 0.35;
     maskInteriorMaterial.ambientTexture = maskAmbientTexture;
     maskInteriorMesh.material = maskInteriorMaterial;
 
-    // Parts Radios
-    let allRadio = document.getElementById("allRadio");
-    let exteriorRadio = document.getElementById("exteriorRadio");
-    let interiorRadio = document.getElementById("interiorRadio");
+    // Selector
+    let selectedMaterial
+    let selectedPicker
 
-    // Swatches
-    const swatches = document.getElementsByClassName("swatch");
+    const exteriorPicker = document.getElementById("exteriorPicker");
+    exteriorPicker.addEventListener("click", function(event){
+      setSelected(maskExteriorMaterial, exteriorPicker);
+    });
+    
+    const interiorPicker = document.getElementById("interiorPicker");
+    interiorPicker.addEventListener("click", function(event){
+      setSelected(maskInteriorMaterial, interiorPicker);
+    });
+
+    const colorPanel = document.getElementById("colorPanel");
+
+    const colorPanelHeaderClose = document.getElementById("colorPanelHeaderClose");
+    colorPanelHeaderClose.addEventListener("click", function(event){
+      colorPanel.setAttribute('class', 'hidden');
+    });
+
+    const colorPanelHeaderName = document.getElementById("colorPanelHeaderName");
+
+    function setSelected(material, picker){
+      colorPanel.setAttribute('class', 'visible');
+      selectedMaterial = material;
+      selectedPicker = picker;
+      colorPanelHeaderName.innerHTML = selectedPicker.dataset.name;
+    }
+
+    const allSwatches = [];
+    
+    const swatches = document.getElementsByClassName("colorSwatch");
     for(var i = 0; i < swatches.length; i++){
       (function(index) {
+        allSwatches.push(swatches[index]);
+        swatches[index].style.backgroundColor = swatches[index].dataset.color;
         swatches[index].addEventListener("click", function(){
-          if (exteriorRadio.checked || allRadio.checked){
-            maskExteriorMaterial.albedoColor = new BABYLON.Color3.FromHexString(rgb2hex(swatches[index].style.backgroundColor)).toLinearSpace();
-          }
-          if (interiorRadio.checked || allRadio.checked){
-            maskInteriorMaterial.albedoColor = new BABYLON.Color3.FromHexString(rgb2hex(swatches[index].style.backgroundColor)).toLinearSpace();
-          }
+          selectedMaterial.albedoColor = new BABYLON.Color3.FromHexString(swatches[index].dataset.color).toLinearSpace();
+          selectedPicker.style.backgroundColor = swatches[index].dataset.color;
+          selectedPicker.dataset.contrast = swatches[index].dataset.contrast;
+          selectedPicker.querySelector(".swatchName").innerHTML = swatches[index].querySelector(".swatchName").innerHTML
+          selectedPicker.querySelector(".swatchCode").innerHTML = swatches[index].querySelector(".swatchCode").innerHTML
         });
       })(i);
     };
+
+    // Random 
+    let randomSwatch
+    
+    randomSwatch = allSwatches[Math.floor(Math.random()*allSwatches.length)];
+    selectedMaterial = maskExteriorMaterial;
+    selectedPicker = exteriorPicker;
+    randomSwatch.click() ;
+    
+    randomSwatch = allSwatches[Math.floor(Math.random()*allSwatches.length)];
+    selectedMaterial = maskInteriorMaterial;
+    selectedPicker = interiorPicker;
+    randomSwatch.click() ;
 
   })
 
@@ -111,11 +156,3 @@ engine.runRenderLoop(function() {
 window.addEventListener("resize", function() {
   engine.resize();
 });
-
-
-
-// Helper functions
-function rgb2hex(rgb){
-  rgb = rgb.match(/^rgba?[\s+]?\([\s+]?(\d+)[\s+]?,[\s+]?(\d+)[\s+]?,[\s+]?(\d+)[\s+]?/i);
-  return (rgb && rgb.length === 4) ? "#" + ("0" + parseInt(rgb[1],10).toString(16)).slice(-2) + ("0" + parseInt(rgb[2],10).toString(16)).slice(-2) + ("0" + parseInt(rgb[3],10).toString(16)).slice(-2) : '';
-}
