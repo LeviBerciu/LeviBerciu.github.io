@@ -16,7 +16,6 @@ let createScene = function() {
 
   // Environment
   scene.environmentTexture = studioEnvironment;
-  //scene.environmentIntensity = 1.1;
   scene.clearColor = new BABYLON.Color4(0,0,0,0);
 
   // Camera
@@ -27,8 +26,6 @@ let createScene = function() {
   camera.attachControl(canvas, true);
   camera.wheelPrecision = 100;
   camera.pinchPrecision = 500;
-  // camera.wheelDeltaPercentage = 0.025;
-  // camera.pinchDeltaPercentage = 0.025;
   camera.panningSensibility = 0;
   camera.minZ = 0;
   camera.lowerRadiusLimit = 0.6;
@@ -111,6 +108,12 @@ let createScene = function() {
     
     let randomSwatch = allSwatches[Math.floor(Math.random()*allSwatches.length)];
     //randomSwatch.click() ;
+
+    // Capture Image
+    const captureImageButton = document.getElementById("captureImageButton");
+    captureImageButton.addEventListener("click", function(event){
+      BABYLON.Tools.CreateScreenshotUsingRenderTarget(engine, camera, 1440);
+    });
 
   })
 
