@@ -25,9 +25,10 @@ let createScene = function() {
   const defaultCameraRadius = 1.2;
   const camera = new BABYLON.ArcRotateCamera("camera", BABYLON.Tools.ToRadians(defaultCameraAlpha), BABYLON.Tools.ToRadians(defaultCameraBeta), defaultCameraRadius, new BABYLON.Vector3(0, 0.25, 0));
   camera.attachControl(canvas, true);
-  //camera.wheelPrecision = 100;
-  camera.wheelDeltaPercentage = 0.025;
-  camera.pinchDeltaPercentage = 0.025;
+  camera.wheelPrecision = 100;
+  camera.pinchPrecision = 100;
+  // camera.wheelDeltaPercentage = 0.025;
+  // camera.pinchDeltaPercentage = 0.025;
   camera.panningSensibility = 0;
   camera.minZ = 0;
   camera.lowerRadiusLimit = 0.6;
