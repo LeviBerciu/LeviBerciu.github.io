@@ -110,12 +110,13 @@ body{
 }
 
 .colorSwatches{
-  height: calc(100% - 64px);
+  height: calc(100vh - 96px);
   overflow-y: auto;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 8px;
   padding: 16px 16px 16px 16px;
+
 }
 
 .swatch{
@@ -199,7 +200,7 @@ body{
 .controlPanel{
   background-color: var(--surface-container);
   max-width: 360px;
-  margin: 40px;
+  margin: 40px auto 40px auto;
   border-radius: 28px;
 }
 
@@ -269,19 +270,21 @@ body{
     .colorSwatches{
       grid-template-columns: repeat(2, 1fr);
     }
+
   }
 
-  @media screen and (max-width: 1200px){
+  @media screen and (max-width: 1280px){
 
     .colorSwatches{
       grid-template-columns: repeat(1, 1fr);
     }
-    
+
     .controlPanel{
       max-width: 100%;
       margin: 0px;
       border-radius: 0px;
     }
+
   }
 
 }
@@ -306,12 +309,16 @@ body{
   }
 
   .controlPanel{
-    max-width: 100%;
-    margin: 0px;
-    border-radius: 0px;
+    max-width: 480px;
   }
 
-  @media screen and (max-width: 460px){
+  @media screen and (max-width: 540px){
+
+    .controlPanel{
+      max-width: 100%;
+      margin: 0px;
+      border-radius: 0px;
+    }
 
     .colorSwatches{
       grid-template-columns: repeat(2, 1fr);
