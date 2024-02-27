@@ -8,9 +8,12 @@ let createScene = function() {
   // Textures
   const groundDiffuseTexture = new BABYLON.Texture("assets/ground_diffuse_texture.png",scene, false, false);
   const litterboxAmbientTexture = new BABYLON.Texture("assets/litterbox_ambient_texture.png",scene, false, false);
+  
   const litterboxMaskAmbientTexture = new BABYLON.Texture("assets/litterbox_mask_ambient_texture.png",scene, false, false);
-  const litterboxMaskAlbedoTexture = new BABYLON.Texture("assets/litterbox_mask_albedo_texture.png",scene, false, false);
   litterboxMaskAmbientTexture.coordinatesIndex = 1;
+
+  const litterboxMaskAlbedoTexture = new BABYLON.Texture("assets/litterbox_mask_albedo_texture.png",scene, false, false);
+
   const emptyTexture = new BABYLON.Texture("assets/empty_texture.png",scene);
   const studioEnvironment = new BABYLON.CubeTexture("assets/studio.env");
 
@@ -73,7 +76,6 @@ let createScene = function() {
     litterboxMaskMesh.material = litterboxMaskMaterial;
 
     // Colors
-
     const colorPicker = document.getElementById("colorPicker");
     colorPicker.addEventListener("click", function(event){
       colorPanel.setAttribute('class', 'visible');
@@ -87,6 +89,8 @@ let createScene = function() {
     });
 
     const allSwatches = [];
+
+    let currentSwatch;
     
     const swatches = document.getElementsByClassName("colorSwatch");
     for(var i = 0; i < swatches.length; i++){
@@ -94,7 +98,7 @@ let createScene = function() {
         allSwatches.push(swatches[index]);
         swatches[index].style.backgroundColor = swatches[index].dataset.color;
         swatches[index].addEventListener("click", function(){
-          litterboxMaskMaterial.albedoTexture = emptyTexture;
+          currentSwatch = swatches[index];
           litterboxMaskMaterial.albedoColor = new BABYLON.Color3.FromHexString(swatches[index].dataset.color).toLinearSpace();
           colorPicker.style.backgroundColor = swatches[index].dataset.color;
           colorPicker.dataset.contrast = swatches[index].dataset.contrast;
@@ -104,10 +108,41 @@ let createScene = function() {
       })(i);
     };
 
-    // Random Color Assigner
-    
-    let randomSwatch = allSwatches[Math.floor(Math.random()*allSwatches.length)];
-    //randomSwatch.click() ;
+    // Finishes
+    const configTabButtons = document.getElementsByClassName("configTabButton");
+    const allConfigTabButtons = [];
+
+    for(var i = 0; i < configTabButtons.length; i++){
+      (function(index) {
+        allConfigTabButtons.push(configTabButtons[index]);
+        configTabButtons[index].addEventListener("click", function(){
+          for (i = 0; i < allConfigTabButtons.length; i++) {
+            allConfigTabButtons[i].className = allConfigTabButtons[i].className.replace(" active", "");
+          }
+          allConfigTabButtons[index].className += " active";
+          setFinish(index)
+        });
+      })(i);
+    };
+
+    allConfigTabButtons[0].click();
+
+    function setFinish(index){
+      if (index == 0){
+        litterboxMaskMaterial.albedoColor = new BABYLON.Color3.FromHexString("#FFFFFF").toLinearSpace();
+        litterboxMaskMaterial.albedoTexture = litterboxMaskAlbedoTexture;
+        colorPicker.style.display = "none";
+      }
+      if (index == 1){
+        litterboxMaskMaterial.albedoTexture = emptyTexture;
+        colorPicker.style.display = "block";
+        if(currentSwatch){
+          currentSwatch.click() ;
+        } else {
+          allSwatches[Math.floor(Math.random()*allSwatches.length)].click();
+        }
+      }
+    }
 
     // Capture Image
     const captureImageButton = document.getElementById("captureImageButton");
@@ -131,3 +166,4 @@ engine.runRenderLoop(function() {
 window.addEventListener("resize", function() {
   engine.resize();
 });
+

@@ -1,10 +1,27 @@
-:root{
+:root[data-theme="dark"]{
   --surface: #141218;
-  --surface-container: #2B2930;
+  --surface-container: #211F26;
   --outline-variant: #49454F;
   --outline: #938F99;
   --on-surface-variant: #CAC4D0;
   --on-surface: #E6E0E9;
+  --secondary-container: #4A4458;
+  --on-secondary-container: #E8DEF8;
+  --primary: #D0BCFF;
+  --on-primary: #381E72;
+}
+
+:root[data-theme="light"]{
+  --surface: #FEF7FF;
+  --surface-container: #F3EDF7;
+  --outline-variant: #CAC4D0;
+  --outline: #79747E;
+  --on-surface-variant: #49454F;
+  --on-surface: #1D1B20;
+  --secondary-container: #E8DEF8;
+  --on-secondary-container: #1D192B;
+  --primary: #6750A4;
+  --on-primary: #FFFFFF;
 }
 
 html {
@@ -156,14 +173,13 @@ body{
 
 .sections{
   display: grid;
-  /* max-height: 100vh; */
   grid-template-columns: 2fr 1fr;
 }
 
 .sectionA{
   position: relative;
   max-height: 100vh;
-  background-image: linear-gradient(var(--surface-container), var(--surface));
+  background-image: linear-gradient(var(--surface), var(--surface-container));
   z-index: -0;
 }
 
@@ -178,23 +194,16 @@ body{
 }
 
 #renderCanvas{
-  /* position: absolute; */
   float: left;
   width: 100%;
   height: 100%;
   aspect-ratio: 1/1;
-  /* opacity: 0; */
-  /* transition: opacity 1s ease-in-out; */
-  /* z-index: 1; */
 }
 
 .sectionB{
-  /* position: relative; */
   max-height: 100vh;
   overflow: auto;
   background-color: var(--surface);
- 
-  /* display: flex; */
 }
 
 .controlPanel{
@@ -203,12 +212,6 @@ body{
   margin: 40px auto 40px auto;
   border-radius: 28px;
 }
-
-/* .controlPanelHeader{
-  margin: 0px 24px 0px 24px;
-  line-height: 64px;
-  border-bottom: 1px solid var(--outline);
-} */
 
 .controlGroups{
   padding: 32px 24px 0px 24px;
@@ -232,34 +235,34 @@ body{
 .configTabButton{
   background: none;
   border: 1px solid var(--outline);
-  color: #E6E0E9;
+  color: var(--on-surface);
   margin-right: -1px;
 }
 
 .configTabButton.active{
-  background-color: #4A4458;
-  color: #E8DEF8;
+  background-color: var(--secondary-container);
+  color: var(--on-secondary-container);
 }
 
 .configTabButton:first-child {
   border-radius: 4px 0px 0px 4px;
-  /* border-width: 2px 1px 2px 2px; */
 }
 
 .configTabButton:last-child {
   border-radius: 0px 4px 4px 0px;
-  /* border-left: none; */
-  /* border-width: 2px 2px 2px 1px; */
 }
 
+/* #colorPicker{
+  border: 1px solid var(--outline);
+} */
 
 .callToAction{
   padding: 0px 24px 32px 24px;
 }
 
 .ctaButton{
-  background-color: #D0BCFF;
-  color: #381E72;
+  background-color: var(--primary);
+  color: var(--on-primary);
   border-radius: 20px;
 }
 
