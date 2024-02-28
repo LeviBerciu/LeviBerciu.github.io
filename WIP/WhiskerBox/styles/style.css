@@ -240,6 +240,7 @@ body{
 
 #controlTabsContainer{
   display: flex;
+  white-space: nowrap;
   gap: 24px;
   overflow: scroll;
   padding: 0px 24px 0px 24px;
