@@ -195,6 +195,22 @@ body{
   z-index: -1;
 }
 
+#captureButton{
+  position: absolute;
+  display: flex;
+  background-color:var(--surface);
+  right: 24px;
+  bottom: 24px;
+  border-radius: 20px;
+  cursor: pointer;
+  padding: 4px;
+  fill: var(--on-surface-variant);
+}
+
+#captureButton svg{
+  fill: var(--on-surface-variant);
+}
+
 #renderCanvas{
   float: left;
   width: 100%;
@@ -222,6 +238,10 @@ body{
   overflow: scroll;
   padding: 0px 24px 0px 24px;
   outline: 1px solid var(--outline-variant);
+}
+
+#controlTabsContainer::-webkit-scrollbar {
+  display: none;
 }
 
 .controlTab{
@@ -254,7 +274,7 @@ body{
 
 .configTabs{
   display: flex;
-  padding-bottom: 24px;
+  padding-bottom: 16px;
 }
 
 .configTab{
@@ -275,6 +295,10 @@ body{
 
 .configTab:last-child {
   border-radius: 0px 4px 4px 0px;
+}
+
+.specsImage{
+  padding: 32px 32px 8px 32px;
 }
 
 /* #colorPicker{

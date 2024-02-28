@@ -145,7 +145,7 @@ let createScene = function() {
     }
 
     // Capture Image
-    const captureImageButton = document.getElementById("captureImageButton");
+    const captureImageButton = document.getElementById("captureButton");
     captureImageButton.addEventListener("click", function(event){
       BABYLON.Tools.CreateScreenshotUsingRenderTarget(engine, camera, 1440);
     });
