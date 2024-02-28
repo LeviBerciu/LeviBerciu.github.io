@@ -104,6 +104,7 @@ let createScene = function() {
           colorPicker.dataset.contrast = swatches[index].dataset.contrast;
           colorPicker.querySelector(".swatchName").innerHTML = swatches[index].querySelector(".swatchName").innerHTML
           colorPicker.querySelector(".swatchCode").innerHTML = swatches[index].querySelector(".swatchCode").innerHTML
+          colorPanel.setAttribute('class', 'hidden');
         });
       })(i);
     };
