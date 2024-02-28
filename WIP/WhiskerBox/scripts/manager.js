@@ -109,23 +109,23 @@ let createScene = function() {
     };
 
     // Finishes
-    const configTabButtons = document.getElementsByClassName("configTabButton");
-    const allConfigTabButtons = [];
+    const controlTabCollection = document.getElementsByClassName("configTab");
+    const configTabs = [];
 
-    for(var i = 0; i < configTabButtons.length; i++){
+    for(var i = 0; i < controlTabCollection.length; i++){
       (function(index) {
-        allConfigTabButtons.push(configTabButtons[index]);
-        configTabButtons[index].addEventListener("click", function(){
-          for (i = 0; i < allConfigTabButtons.length; i++) {
-            allConfigTabButtons[i].className = allConfigTabButtons[i].className.replace(" active", "");
+        configTabs.push(controlTabCollection[index]);
+        controlTabCollection[index].addEventListener("click", function(){
+          for (i = 0; i < configTabs.length; i++) {
+            configTabs[i].className = configTabs[i].className.replace(" active", "");
           }
-          allConfigTabButtons[index].className += " active";
+          configTabs[index].className += " active";
           setFinish(index)
         });
       })(i);
     };
 
-    allConfigTabButtons[0].click();
+    configTabs[0].click();
 
     function setFinish(index){
       if (index == 0){
@@ -166,4 +166,79 @@ engine.runRenderLoop(function() {
 window.addEventListener("resize", function() {
   engine.resize();
 });
+
+
+
+// ---------- NOT 3D REALATED
+
+const controlGroupCollection = document.getElementsByClassName("controlGroup");
+const controlGroups = [];
+
+for(var i = 0; i < controlGroupCollection.length; i++){
+  (function(index) {
+    controlGroups.push(controlGroupCollection[index]);
+  })(i);
+};
+
+const controlTabsContainer = document.getElementById("controlTabsContainer");
+const controlTabCollection = document.getElementsByClassName("controlTab");
+const controlTabs = [];
+
+for(var i = 0; i < controlTabCollection.length; i++){
+  (function(index) {
+    controlTabs.push(controlTabCollection[index]);
+    controlTabCollection[index].addEventListener("click", function(){
+      for (i = 0; i < controlTabs.length; i++) {
+        controlTabs[i].className = controlTabs[i].className.replace(" active", "");
+      }
+      controlTabs[index].className += " active";
+      for (i = 0; i < controlTabs.length; i++) {
+        controlGroups[i].style.display = "none";
+      }
+      controlGroups[index].style.display = "block";
+    });
+  })(i);
+};
+
+const controlGroupTitleCollection = document.getElementsByClassName("controlGroupTitle");
+const controlGroupTitles = [];
+
+for(var i = 0; i < controlGroupTitleCollection.length; i++){
+  (function(index) {
+    controlGroupTitles.push(controlGroupTitleCollection[index]);
+  })(i);
+};
+
+function orientationSetup(x) {
+  if (x.matches) { // If media query matches
+    console.log("landscape");
+    controlTabsContainer.style.display = "none";
+    for (i = 0; i < controlGroupTitles.length; i++) {
+      controlGroupTitles[i].style.display = "block";
+    }
+    for (i = 0; i < controlTabs.length; i++) {
+      controlGroups[i].style.display = "block";
+    }
+  } else {
+    console.log("portrait");
+    controlTabsContainer.style.display = "flex";
+    for (i = 0; i < controlGroupTitles.length; i++) {
+      controlGroupTitles[i].style.display = "none";
+    }
+    controlTabs[1].click();
+  }
+}
+
+// Create a MediaQueryList object
+var x = window.matchMedia("(orientation: landscape)")
+
+// Call listener function at run time
+orientationSetup(x);
+
+// Attach listener function on state changes
+x.addEventListener("change", function() {
+  orientationSetup(x);
+});
+
+
 

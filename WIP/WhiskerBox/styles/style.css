@@ -50,8 +50,11 @@ img {
   height: auto;
 }
 
-
 /* ----------- */
+
+body{
+  background-color: var(--surface-container);
+}
 
 button{
   font-size: 14px;
@@ -133,7 +136,6 @@ body{
   grid-template-columns: repeat(3, 1fr);
   gap: 8px;
   padding: 16px 16px 16px 16px;
-
 }
 
 .swatch{
@@ -211,6 +213,29 @@ body{
   max-width: 360px;
   margin: 40px auto 40px auto;
   border-radius: 28px;
+  overflow: hidden;
+}
+
+#controlTabsContainer{
+  display: flex;
+  gap: 24px;
+  overflow: scroll;
+  padding: 0px 24px 0px 24px;
+  outline: 1px solid var(--outline-variant);
+}
+
+.controlTab{
+  height: 48px;
+  line-height: 44px;
+  padding: 2px 0px 2px 0cqi;
+  color: var(--on-surface-variant);
+  background-color: transparent;
+}
+
+.controlTab.active{
+  padding: 2px 0px 0px 0px;
+  color: var(--on-surface);
+  border-bottom: 2px solid #6750A4;
 }
 
 .controlGroups{
@@ -232,23 +257,23 @@ body{
   padding-bottom: 24px;
 }
 
-.configTabButton{
+.configTab{
   background: none;
   border: 1px solid var(--outline);
   color: var(--on-surface);
   margin-right: -1px;
 }
 
-.configTabButton.active{
+.configTab.active{
   background-color: var(--secondary-container);
   color: var(--on-secondary-container);
 }
 
-.configTabButton:first-child {
+.configTab:first-child {
   border-radius: 4px 0px 0px 4px;
 }
 
-.configTabButton:last-child {
+.configTab:last-child {
   border-radius: 0px 4px 4px 0px;
 }
 
@@ -317,14 +342,14 @@ body{
 
   @media screen and (max-width: 540px){
 
+    .colorSwatches{
+      grid-template-columns: repeat(2, 1fr);
+    }
+
     .controlPanel{
       max-width: 100%;
       margin: 0px;
       border-radius: 0px;
-    }
-
-    .colorSwatches{
-      grid-template-columns: repeat(2, 1fr);
     }
   }
 }
