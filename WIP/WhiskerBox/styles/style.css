@@ -9,6 +9,9 @@
   --on-secondary-container: #E8DEF8;
   --primary: #D0BCFF;
   --on-primary: #381E72;
+  .specsLight{
+    display: none;
+  }
 }
 
 :root[data-theme="light"]{
@@ -22,6 +25,9 @@
   --on-secondary-container: #1D192B;
   --primary: #6750A4;
   --on-primary: #FFFFFF;
+  .specsDark{
+    display: none;
+  }
 }
 
 html {

@@ -129,11 +129,6 @@ let createScene = function() {
 
     function setFinish(index){
       if (index == 0){
-        litterboxMaskMaterial.albedoColor = new BABYLON.Color3.FromHexString("#FFFFFF").toLinearSpace();
-        litterboxMaskMaterial.albedoTexture = litterboxMaskAlbedoTexture;
-        colorPicker.style.display = "none";
-      }
-      if (index == 1){
         litterboxMaskMaterial.albedoTexture = emptyTexture;
         colorPicker.style.display = "block";
         if(currentSwatch){
@@ -141,6 +136,11 @@ let createScene = function() {
         } else {
           allSwatches[Math.floor(Math.random()*allSwatches.length)].click();
         }
+      }
+      if (index == 1){
+        litterboxMaskMaterial.albedoColor = new BABYLON.Color3.FromHexString("#FFFFFF").toLinearSpace();
+        litterboxMaskMaterial.albedoTexture = litterboxMaskAlbedoTexture;
+        colorPicker.style.display = "none";
       }
     }
 
