@@ -261,7 +261,7 @@ body{
 .controlTab.active{
   padding: 2px 0px 0px 0px;
   color: var(--on-surface);
-  border-bottom: 2px solid #6750A4;
+  border-bottom: 2px solid var(--primary);
 }
 
 .controlGroups{
