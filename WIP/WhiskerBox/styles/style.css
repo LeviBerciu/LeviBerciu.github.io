@@ -91,6 +91,54 @@ body{
   overflow: hidden;
 }
 
+nav{
+  position: fixed;
+  display: flex;
+  align-items:center;
+  width: 100%;
+  height: 48px;
+  z-index: 1;
+  background-color: var(--surface);
+  outline: 1px solid var(--outline-variant);
+}
+
+#themeSwitcher{
+  width: max-content;
+  display: flex;
+  gap: 8px;
+  background-color: var(--surface);
+  right: 24px;
+  top: 24px;
+  border-radius: 20px;
+  cursor: pointer;
+  user-select: none;
+  padding: 4px;
+}
+
+#themeSwitcher::before{
+  content: '';
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  background-color: var(--primary);
+  border-radius: 16px;
+  z-index: 0;
+  transform: translateY(var(--SWITCH-CIRCLE-POS));
+  transition: var(--DEFAULT-TRANSITION);
+}
+
+#themeSwitcher svg{
+  z-index: 1;
+}
+
+#sunIcon{
+  fill: var(--on-primary)
+}
+
+#moonIcon{
+  fill: var(--outline-variant)
+}
+
 #colorPanel{
   position: fixed;
   width: calc(100%/3);
@@ -99,6 +147,7 @@ body{
   right: 0;
   background-color: var(--surface-container);
   z-index: 2;
+  /* box-shadow: 0px 0px 24px 0px rgba(0, 0, 0, 0.15); */
 }
 
 #colorPanel.visible{
@@ -119,7 +168,7 @@ body{
   gap: 12px;
   height: 64px;
   align-items:center;
-  border-bottom: 1px solid  var(--outline-variant);
+  /* border-bottom: 1px solid var(--outline-variant); */
 }
 
 #colorPanelHeaderClose{
@@ -136,12 +185,12 @@ body{
 }
 
 .colorSwatches{
-  height: calc(100vh - 96px);
+  height: calc(100vh - 80px);
   overflow-y: auto;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 8px;
-  padding: 16px 16px 16px 16px;
+  padding: 0px 16px 16px 16px;
 }
 
 .swatch{
@@ -180,13 +229,14 @@ body{
 }
 
 .sections{
+  padding-top: 48px;
   display: grid;
   grid-template-columns: 2fr 1fr;
 }
 
 .sectionA{
   position: relative;
-  max-height: 100vh;
+  max-height: calc(100vh - 48px);
   background-image: linear-gradient(var(--surface), var(--surface-container));
   z-index: -0;
 }
@@ -225,7 +275,7 @@ body{
 }
 
 .sectionB{
-  max-height: 100vh;
+  max-height: calc(100vh - 48px);
   overflow: auto;
   background-color: var(--surface);
 }

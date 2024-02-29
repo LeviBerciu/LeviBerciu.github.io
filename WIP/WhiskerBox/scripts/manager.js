@@ -60,7 +60,7 @@ let createScene = function() {
   // Litterbox bottom
     const litterboxBottomMesh = scene.getMeshByName("litterbox_bottom");
     const litterboxBottomMaterial = new BABYLON.PBRMaterial("litterboxBottomMaterial", scene);
-    litterboxBottomMaterial.albedoColor = new BABYLON.Color3.FromHexString("#78909C").toLinearSpace();
+    litterboxBottomMaterial.albedoColor = new BABYLON.Color3.FromHexString("#BCBCBC").toLinearSpace();
     litterboxBottomMaterial.metallic = 0;
     litterboxBottomMaterial.roughness = 0.2;
     litterboxBottomMaterial.ambientTexture = litterboxAmbientTexture;
