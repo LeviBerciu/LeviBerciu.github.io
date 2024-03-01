@@ -92,7 +92,6 @@ button{
   letter-spacing: 0.1px;
   font-weight: 600;
   width: 100%;
-  height: 40px;
   cursor: pointer;
 }
 
@@ -132,8 +131,24 @@ nav{
 }
 
 .navControls{
+  height: 32px;
   margin-left: auto;
   padding-right: 12px;
+  display: flex;
+  gap: 8px;
+}
+
+#menuButton{
+  padding: 4px;
+  fill: var(--primary);
+}
+
+#languageButton{
+  line-height: 32px;
+  padding: 0px 12px 0px 12px;
+  background-color: var(--surface-container);
+  border-radius: 16px;
+  color: var(--primary);
 }
 
 #themeSwitcher{
@@ -141,11 +156,8 @@ nav{
   display: flex;
   gap: 4px;
   background-color: var(--surface-container);
-  right: 24px;
-  top: 24px;
-  border-radius: 20px;
+  border-radius: 16px;
   cursor: pointer;
-  user-select: none;
   padding: 4px;
 }
 
@@ -276,7 +288,7 @@ nav{
   z-index: -1;
 }
 
-#captureButton{
+/* #captureButton{
   position: absolute;
   display: flex;
   background-color:var(--surface);
@@ -286,7 +298,7 @@ nav{
   cursor: pointer;
   padding: 4px;
   fill: var(--on-surface-variant);
-}
+} */
 
 #captureButton svg{
   fill: var(--on-surface-variant);
@@ -355,6 +367,7 @@ nav{
 }
 
 .configTabs{
+  height: 40px;
   display: flex;
   padding-bottom: 16px;
 }
@@ -406,6 +419,7 @@ nav{
 }
 
 .ctaButton{
+  height: 40px;
   background-color: var(--primary);
   color: var(--on-primary);
   border-radius: 20px;
