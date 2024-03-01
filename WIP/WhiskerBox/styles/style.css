@@ -2,6 +2,30 @@
   --default-transition: transform .25s;
 }
 
+:root[data-theme="light"]{
+  --surface: #FEF7FF;
+  --surface-container: #F3EDF7;
+  --outline-variant: #CAC4D0;
+  --outline: #79747E;
+  --on-surface-variant: #49454F;
+  --on-surface: #1D1B20;
+  --secondary-container: #E8DEF8;
+  --on-secondary-container: #1D192B;
+  --primary: #6750A4;
+  --on-primary: #FFFFFF;
+  --display-dark: visible;
+  --display-light: hidden;
+  --switch-circle-pos: 28px; 
+  .specsDark{
+    display: none;
+  }
+  #sunIcon{
+    fill: var(--on-primary)
+  }
+  #moonIcon{
+    fill: var(--outline-variant)
+  }
+}
 
 :root[data-theme="dark"]{
   --surface: #141218;
@@ -27,31 +51,6 @@
   }
   #moonIcon{
     fill: var(--on-primary)
-  }
-}
-
-:root[data-theme="light"]{
-  --surface: #FEF7FF;
-  --surface-container: #F3EDF7;
-  --outline-variant: #CAC4D0;
-  --outline: #79747E;
-  --on-surface-variant: #49454F;
-  --on-surface: #1D1B20;
-  --secondary-container: #E8DEF8;
-  --on-secondary-container: #1D192B;
-  --primary: #6750A4;
-  --on-primary: #FFFFFF;
-  --display-dark: visible;
-  --display-light: hidden;
-  --switch-circle-pos: 28px; 
-  .specsDark{
-    display: none;
-  }
-  #sunIcon{
-    fill: var(--on-primary)
-  }
-  #moonIcon{
-    fill: var(--outline-variant)
   }
 }
 
@@ -84,7 +83,7 @@ img {
 /* ----------- */
 
 body{
-  background-color: var(--secondary-container);
+  background-color: var(--surface-container);
 }
 
 button{
@@ -312,15 +311,16 @@ nav{
 }
 
 .sectionB{
-  max-height: calc(100vh - 48px);
+  max-height: calc(100vh - 112px);
   overflow: auto;
   background-color: var(--surface);
+  padding: 32px;
 }
 
 .controlPanel{
   background-color: var(--surface-container);
-  max-width: 360px;
-  margin: 40px auto 40px auto;
+  max-width: 480px;
+  margin: auto;
   border-radius: 28px;
   overflow: hidden;
 }
@@ -422,7 +422,6 @@ nav{
 
 .callToAction{
   padding: 24px 16px 32px 16px;
-  background-color: var(--secondary-container);
   outline: 1px solid var(--outline-variant);
 }
 
@@ -440,7 +439,6 @@ nav{
     .colorSwatches{
       grid-template-columns: repeat(2, 1fr);
     }
-
   }
 
   @media screen and (max-width: 1280px){
@@ -449,14 +447,15 @@ nav{
       grid-template-columns: repeat(1, 1fr);
     }
 
-    .controlPanel{
-      max-width: 100%;
-      margin: 0px;
-      border-radius: 0px;
+    .sectionB{
+      max-height: calc(100vh - 48px);
+      padding: 0;
     }
 
+    .controlPanel{
+      border-radius: 0px;
+    }
   }
-
 }
 
 @media screen and (orientation: portrait){
@@ -493,9 +492,12 @@ nav{
       grid-template-columns: repeat(2, 1fr);
     }
 
+    .sectionB{
+      max-height: calc(100vh - 48px);
+      padding: 0;
+    }
+
     .controlPanel{
-      max-width: 100%;
-      margin: 0px;
       border-radius: 0px;
     }
   }
