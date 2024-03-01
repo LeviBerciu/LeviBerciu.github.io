@@ -127,6 +127,15 @@ nav{
   outline: 1px solid var(--outline-variant);
 }
 
+.companyLogo{
+  padding-left: 16px;
+}
+
+.navControls{
+  margin-left: auto;
+  padding-right: 12px;
+}
+
 #themeSwitcher{
   width: max-content;
   display: flex;
@@ -372,6 +381,20 @@ nav{
 
 .specsImage{
   padding: 32px 32px 8px 32px;
+}
+
+.mediaGallery{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  padding-top: 16px;
+}
+
+.galleryEntry{
+  background-color: var(--outline-variant);
+  aspect-ratio: 1/1;
+  border-radius: 4px;
+  cursor: pointer;
 }
 
 /* #colorPicker{
