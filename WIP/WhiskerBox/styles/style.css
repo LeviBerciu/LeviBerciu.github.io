@@ -84,7 +84,7 @@ img {
 /* ----------- */
 
 body{
-  background-color: var(--surface-container);
+  background-color: var(--secondary-container);
 }
 
 button{
@@ -328,9 +328,9 @@ nav{
 #controlTabsContainer{
   display: flex;
   white-space: nowrap;
-  gap: 24px;
+  gap: 16px;
   overflow: scroll;
-  padding: 0px 24px 0px 24px;
+  padding: 0px 16px 0px 16px;
   outline: 1px solid var(--outline-variant);
 }
 
@@ -341,7 +341,7 @@ nav{
 .controlTab{
   height: 48px;
   line-height: 44px;
-  padding: 2px 0px 2px 0cqi;
+  padding: 2px 0px 2px 0px;
   color: var(--on-surface-variant);
   background-color: transparent;
 }
@@ -353,7 +353,7 @@ nav{
 }
 
 .controlGroups{
-  padding: 24px 24px 0px 24px;
+  padding: 24px 16px 0px 16px;
 }
 
 .controlGroup{
@@ -361,6 +361,12 @@ nav{
   margin-bottom: 24px;
   border-bottom: 1px solid var(--outline-variant);
 }
+
+.controlGroup:last-child{
+  margin-bottom: 0;
+  border-bottom: none;
+}
+
 
 .controlGroupTitle{
   padding: 0px 0px 16px 0px;
@@ -384,11 +390,11 @@ nav{
   color: var(--on-secondary-container);
 }
 
-.configTab:first-child {
+.configTab:first-child{
   border-radius: 4px 0px 0px 4px;
 }
 
-.configTab:last-child {
+.configTab:last-child{
   border-radius: 0px 4px 4px 0px;
 }
 
@@ -415,7 +421,9 @@ nav{
 } */
 
 .callToAction{
-  padding: 0px 24px 32px 24px;
+  padding: 24px 16px 32px 16px;
+  background-color: var(--secondary-container);
+  outline: 1px solid var(--outline-variant);
 }
 
 .ctaButton{
@@ -472,6 +480,11 @@ nav{
 
   .controlPanel{
     max-width: 480px;
+  }
+
+  .controlGroup{
+    margin-bottom: 0;
+    border-bottom: none;
   }
 
   @media screen and (max-width: 540px){
