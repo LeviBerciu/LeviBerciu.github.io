@@ -75,7 +75,7 @@ let createScene = function() {
     litterboxMaskMaterial.ambientTexture = litterboxMaskAmbientTexture;
     litterboxMaskMesh.material = litterboxMaskMaterial;
 
-    // Colors
+    // Color
     const colorPicker = document.getElementById("colorPicker");
     colorPicker.addEventListener("click", function(event){
       colorPanel.setAttribute('class', 'visible');
@@ -109,6 +109,9 @@ let createScene = function() {
       })(i);
     };
 
+    // Varnish
+    const varnishPicker = document.getElementById("varnishPicker")
+
     // Finishes
     const controlTabCollection = document.getElementsByClassName("configTab");
     const configTabs = [];
@@ -132,6 +135,7 @@ let createScene = function() {
       if (index == 0){
         litterboxMaskMaterial.albedoTexture = emptyTexture;
         colorPicker.style.display = "block";
+        varnishPicker.style.display = "none"
         if(currentSwatch){
           currentSwatch.click() ;
         } else {
@@ -142,6 +146,7 @@ let createScene = function() {
         litterboxMaskMaterial.albedoColor = new BABYLON.Color3.FromHexString("#FFFFFF").toLinearSpace();
         litterboxMaskMaterial.albedoTexture = litterboxMaskAlbedoTexture;
         colorPicker.style.display = "none";
+        varnishPicker.style.display = "block"
       }
     }
 
