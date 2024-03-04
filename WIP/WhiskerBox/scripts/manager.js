@@ -7,6 +7,7 @@ let createScene = function() {
 
   // Textures
   const groundDiffuseTexture = new BABYLON.Texture("assets/ground_diffuse_texture.png",scene, false, false);
+
   const litterboxAmbientTexture = new BABYLON.Texture("assets/litterbox_ambient_texture.png",scene, false, false);
   
   const litterboxMaskAmbientTexture = new BABYLON.Texture("assets/litterbox_mask_ambient_texture.png",scene, false, false);
@@ -14,7 +15,10 @@ let createScene = function() {
 
   const litterboxMaskAlbedoTexture = new BABYLON.Texture("assets/litterbox_mask_albedo_texture.png",scene, false, false);
 
+  const litterboxMaskBumpTexture = new BABYLON.Texture("assets/litterbox_mask_bump_texture.png", scene, false, false);
+
   const emptyTexture = new BABYLON.Texture("assets/empty_texture.png",scene);
+
   const studioEnvironment = new BABYLON.CubeTexture("assets/studio.env");
 
   // Environment
@@ -66,12 +70,13 @@ let createScene = function() {
     litterboxBottomMaterial.ambientTexture = litterboxAmbientTexture;
     litterboxBottomMesh.material = litterboxBottomMaterial;
 
-    // Mask interior
+    // Mask
     const litterboxMaskMesh = scene.getMeshByName("litterbox_mask");
     const litterboxMaskMaterial = new BABYLON.PBRMaterial("litterboxMaskMaterial", scene);
     litterboxMaskMaterial.albedoTexture = litterboxMaskAlbedoTexture;
     litterboxMaskMaterial.metallic = 0;
     litterboxMaskMaterial.roughness = 0.4;
+    litterboxMaskMaterial.bumpTexture = litterboxMaskBumpTexture;
     litterboxMaskMaterial.ambientTexture = litterboxMaskAmbientTexture;
     litterboxMaskMesh.material = litterboxMaskMaterial;
 
@@ -134,6 +139,7 @@ let createScene = function() {
     function setFinish(index){
       if (index == 0){
         litterboxMaskMaterial.albedoTexture = emptyTexture;
+        litterboxMaskMaterial.bumpTexture = null;
         colorPicker.style.display = "block";
         varnishPicker.style.display = "none"
         if(currentSwatch){
@@ -145,6 +151,7 @@ let createScene = function() {
       if (index == 1){
         litterboxMaskMaterial.albedoColor = new BABYLON.Color3.FromHexString("#FFFFFF").toLinearSpace();
         litterboxMaskMaterial.albedoTexture = litterboxMaskAlbedoTexture;
+        litterboxMaskMaterial.bumpTexture = litterboxMaskBumpTexture;
         colorPicker.style.display = "none";
         varnishPicker.style.display = "block"
       }
