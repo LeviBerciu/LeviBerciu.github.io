@@ -173,7 +173,7 @@ nav{
   z-index: 1;
 }
 
-#colorPanel{
+.sidePanel{
   position: fixed;
   width: calc(100%/3);
   height: 100vh;
@@ -181,21 +181,18 @@ nav{
   right: 0;
   background-color: var(--surface-container);
   z-index: 2;
-}
-
-#colorPanel.visible{
-  transition-timing-function: ease-in;
-  transition: 0.5s;
-  transform: translateX(0);
-}
-
-#colorPanel.hidden{
   transition-timing-function: ease-out;
   transition: 0.5s;
   transform: translateX(100%);
 }
 
-.colorPanelHeader{
+.sidePanel.active{
+  transition-timing-function: ease-in;
+  transition: 0.5s;
+  transform: translateX(0);
+}
+
+.sidePanelHeader{
   margin: 0px 16px 0px 16px;
   display: flex;
   gap: 12px;
@@ -204,21 +201,23 @@ nav{
   /* border-bottom: 1px solid var(--outline-variant); */
 }
 
-#colorPanelHeaderClose{
+.closeButton{
   width: 24px;
   fill: var(--on-surface);
 }
 
-#colorPanelHeaderClose:hover{
+.closeButton:hover{
   cursor: pointer;
 }
 
-.colorPanelHeaderName{
+.sidePanelTitle{
   color: var(--on-surface);
 }
 
-.colorSwatches{
-  height: calc(100vh - 80px);
+.swatches{
+  
+  height: max-content;
+  max-height: calc(100vh - 80px);
   overflow-y: auto;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -229,6 +228,7 @@ nav{
 .swatch{
   border-radius: 4px;
   padding: 6px 16px;
+  background-size: cover;
 }
 
 .swatch:hover{
@@ -436,14 +436,14 @@ nav{
 
   @media screen and (max-width: 1440px){
 
-    .colorSwatches{
+    .swatches{
       grid-template-columns: repeat(2, 1fr);
     }
   }
 
   @media screen and (max-width: 1280px){
 
-    .colorSwatches{
+    .swatches{
       grid-template-columns: repeat(1, 1fr);
     }
 
@@ -465,7 +465,7 @@ nav{
     overflow-x: hidden;
   }
 
-  #colorPanel{
+  .sidePanel{
     width: 100%;
   }
 
@@ -488,7 +488,7 @@ nav{
 
   @media screen and (max-width: 540px){
 
-    .colorSwatches{
+    .swatches{
       grid-template-columns: repeat(2, 1fr);
     }
 

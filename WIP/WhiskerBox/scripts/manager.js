@@ -4,25 +4,12 @@ engine.setHardwareScalingLevel(0.5)
 
 let createScene = function() {
   let scene = new BABYLON.Scene(engine);
-
-  // Textures
-  const groundDiffuseTexture = new BABYLON.Texture("assets/ground_diffuse_texture.png",scene, false, false);
-
-  const litterboxAmbientTexture = new BABYLON.Texture("assets/litterbox_ambient_texture.png",scene, false, false);
   
-  const litterboxMaskAmbientTexture = new BABYLON.Texture("assets/litterbox_mask_ambient_texture.png",scene, false, false);
-  litterboxMaskAmbientTexture.coordinatesIndex = 1;
-
-  const litterboxMaskAlbedoTexture = new BABYLON.Texture("assets/litterbox_mask_albedo_texture.png",scene, false, false);
-
-  const litterboxMaskBumpTexture = new BABYLON.Texture("assets/litterbox_mask_bump_texture.png", scene, false, false);
-
-  const emptyTexture = new BABYLON.Texture("assets/empty_texture.png",scene);
-
+  // Environment
   const studioEnvironment = new BABYLON.CubeTexture("assets/studio.env");
 
-  // Environment
   scene.environmentTexture = studioEnvironment;
+  scene.environmentIntensity = 1;
   scene.clearColor = new BABYLON.Color4(0,0,0,0);
 
   // Camera
@@ -39,6 +26,17 @@ let createScene = function() {
   camera.upperRadiusLimit = 1.8;
   camera.upperBetaLimit = BABYLON.Tools.ToRadians(90);
 
+  const light = new BABYLON.HemisphericLight("HemiLight", new BABYLON.Vector3(0, 1, 0), scene);
+  light.intensity = 0.25;
+
+  // Textures
+  const groundDiffuseTexture = new BABYLON.Texture("assets/textures/ground_diffuse_texture.png",scene, false, false);
+  const litterboxAmbientTexture = new BABYLON.Texture("assets/textures/litterbox_ambient_texture.png",scene, false, false);
+  const litterboxMaskAmbientTexture = new BABYLON.Texture("assets/textures/litterbox_mask_ambient_texture.png",scene, false, false);
+  litterboxMaskAmbientTexture.coordinatesIndex = 1;
+  //const litterboxMaskBumpTexture = new BABYLON.Texture("assets/textures/litterbox_mask_bump_texture.png", scene, false, false);
+  const emptyTexture = new BABYLON.Texture("assets/textures/empty_texture.png",scene);
+
   // Model
   BABYLON.SceneLoader.Append("assets/", "model.glb", scene, function(scene) {
     console.log(scene) // TBD
@@ -50,6 +48,7 @@ let createScene = function() {
     groundMaterial.diffuseTexture.hasAlpha = true;
     groundMaterial.useAlphaFromDiffuseTexture = true;
     groundMaterial.alpha = 0.5;
+    groundMaterial.disableLighting = true;
     groundMesh.material = groundMaterial;
 
     // Litterbox top
@@ -57,7 +56,7 @@ let createScene = function() {
     const litterboxTopMaterial = new BABYLON.PBRMaterial("litterboxTopMaterial", scene);
     litterboxTopMaterial.albedoColor = new BABYLON.Color3.FromHexString("#ffffff").toLinearSpace();
     litterboxTopMaterial.metallic = 0;
-    litterboxTopMaterial.roughness = 0.2;
+    litterboxTopMaterial.roughness = 0.25;
     litterboxTopMaterial.ambientTexture = litterboxAmbientTexture;
     litterboxTopMesh.material = litterboxTopMaterial;
 
@@ -66,56 +65,90 @@ let createScene = function() {
     const litterboxBottomMaterial = new BABYLON.PBRMaterial("litterboxBottomMaterial", scene);
     litterboxBottomMaterial.albedoColor = new BABYLON.Color3.FromHexString("#BCBCBC").toLinearSpace();
     litterboxBottomMaterial.metallic = 0;
-    litterboxBottomMaterial.roughness = 0.2;
+    litterboxBottomMaterial.roughness = 0.25;
     litterboxBottomMaterial.ambientTexture = litterboxAmbientTexture;
     litterboxBottomMesh.material = litterboxBottomMaterial;
 
     // Mask
     const litterboxMaskMesh = scene.getMeshByName("litterbox_mask");
     const litterboxMaskMaterial = new BABYLON.PBRMaterial("litterboxMaskMaterial", scene);
-    litterboxMaskMaterial.albedoTexture = litterboxMaskAlbedoTexture;
     litterboxMaskMaterial.metallic = 0;
-    litterboxMaskMaterial.roughness = 0.4;
-    litterboxMaskMaterial.bumpTexture = litterboxMaskBumpTexture;
+    //litterboxMaskMaterial.roughness = 0.4;
+    litterboxMaskMaterial.clearCoat.isEnabled = true;
+    litterboxMaskMaterial.clearCoat.intensity = 0.2; 
+    litterboxMaskMaterial.clearCoat.roughness = 0.3;
+
+    //litterboxMaskMaterial.bumpTexture = litterboxMaskBumpTexture;
     litterboxMaskMaterial.ambientTexture = litterboxMaskAmbientTexture;
     litterboxMaskMesh.material = litterboxMaskMaterial;
 
     // Color
     const colorPicker = document.getElementById("colorPicker");
-    colorPicker.addEventListener("click", function(event){
-      colorPanel.setAttribute('class', 'visible');
-    });
-
     const colorPanel = document.getElementById("colorPanel");
+    const colorSwatches = document.getElementsByClassName("colorSwatch");
 
-    const colorPanelHeaderClose = document.getElementById("colorPanelHeaderClose");
-    colorPanelHeaderClose.addEventListener("click", function(event){
-      colorPanel.setAttribute('class', 'hidden');
+    colorPicker.addEventListener("click", function(event){
+      colorPanel.className += " active";
     });
 
-    const allSwatches = [];
+    const colorPanelClose = document.getElementById("colorPanelClose");
+    colorPanelClose.addEventListener("click", function(event){
+      colorPanel.className = colorPanel.className.replace(" active", "");
+    });
 
-    let currentSwatch;
+    const allColorSwatches = [];
+    let currentColorSwatch;
     
-    const swatches = document.getElementsByClassName("colorSwatch");
-    for(var i = 0; i < swatches.length; i++){
+    for(var i = 0; i < colorSwatches.length; i++){
       (function(index) {
-        allSwatches.push(swatches[index]);
-        swatches[index].style.backgroundColor = swatches[index].dataset.color;
-        swatches[index].addEventListener("click", function(){
-          currentSwatch = swatches[index];
-          litterboxMaskMaterial.albedoColor = new BABYLON.Color3.FromHexString(swatches[index].dataset.color).toLinearSpace();
-          colorPicker.style.backgroundColor = swatches[index].dataset.color;
-          colorPicker.dataset.contrast = swatches[index].dataset.contrast;
-          colorPicker.querySelector(".swatchName").innerHTML = swatches[index].querySelector(".swatchName").innerHTML
-          colorPicker.querySelector(".swatchCode").innerHTML = swatches[index].querySelector(".swatchCode").innerHTML
-          colorPanel.setAttribute('class', 'hidden');
+        allColorSwatches.push(colorSwatches[index]);
+        colorSwatches[index].style.backgroundColor = colorSwatches[index].dataset.color;
+        colorSwatches[index].addEventListener("click", function(){
+          currentColorSwatch = colorSwatches[index];
+          litterboxMaskMaterial.albedoColor = new BABYLON.Color3.FromHexString(colorSwatches[index].dataset.color).toLinearSpace();
+          colorPicker.style.backgroundColor = colorSwatches[index].dataset.color;
+          colorPicker.dataset.contrast = colorSwatches[index].dataset.contrast;
+          colorPicker.querySelector(".swatchName").innerHTML = colorSwatches[index].querySelector(".swatchName").innerHTML
+          colorPicker.querySelector(".swatchCode").innerHTML = colorSwatches[index].querySelector(".swatchCode").innerHTML
+          colorPanel.className = colorPanel.className.replace(" active", "");
         });
       })(i);
     };
 
-    // Varnish
-    const varnishPicker = document.getElementById("varnishPicker")
+    // Stain
+    const stainPicker = document.getElementById("stainPicker")
+    const stainPanel = document.getElementById("stainPanel");
+    const stainSwatches = document.getElementsByClassName("stainSwatch");
+
+    stainPicker.addEventListener("click", function(event){
+      stainPanel.className += " active";
+    });
+
+    const stainPanelClose = document.getElementById("stainPanelClose");
+    stainPanelClose.addEventListener("click", function(event){
+      stainPanel.className = stainPanel.className.replace(" active", "");
+    });
+
+    const allStainSwatches = [];
+    let currentStainSwatch;
+
+    for(var i = 0; i < stainSwatches.length; i++){
+      (function(index) {
+        allStainSwatches.push(stainSwatches[index]);
+        stainSwatches[index].style.backgroundImage = "url('" + stainSwatches[index].dataset.image + "')";
+        stainSwatches[index].addEventListener("click", function(){
+          currentStainSwatch = new BABYLON.Texture(stainSwatches[index].dataset.texture ,scene, false, false);
+          litterboxMaskMaterial.albedoColor = new BABYLON.Color3.FromHexString("#FFFFFF").toLinearSpace();
+          litterboxMaskMaterial.albedoTexture = new BABYLON.Texture(stainSwatches[index].dataset.texture ,scene, false, false);
+          stainPicker.style.backgroundImage = "url('" + stainSwatches[index].dataset.image + "')";
+          stainPicker.dataset.contrast = stainSwatches[index].dataset.contrast;
+          stainPicker.querySelector(".swatchName").innerHTML = stainSwatches[index].querySelector(".swatchName").innerHTML
+          stainPicker.querySelector(".swatchCode").innerHTML = stainSwatches[index].querySelector(".swatchCode").innerHTML
+          stainPanel.className = stainPanel.className.replace(" active", "");
+        });
+      })(i);
+    };
+
 
     // Finishes
     const controlTabCollection = document.getElementsByClassName("configTab");
@@ -139,21 +172,26 @@ let createScene = function() {
     function setFinish(index){
       if (index == 0){
         litterboxMaskMaterial.albedoTexture = emptyTexture;
-        litterboxMaskMaterial.bumpTexture = null;
+        //litterboxMaskMaterial.bumpTexture = null;
         colorPicker.style.display = "block";
-        varnishPicker.style.display = "none"
-        if(currentSwatch){
-          currentSwatch.click() ;
+        stainPicker.style.display = "none"
+        if(currentColorSwatch){
+          currentColorSwatch.click() ;
         } else {
-          allSwatches[Math.floor(Math.random()*allSwatches.length)].click();
+          allColorSwatches[Math.floor(Math.random()*allColorSwatches.length)].click();
         }
       }
       if (index == 1){
         litterboxMaskMaterial.albedoColor = new BABYLON.Color3.FromHexString("#FFFFFF").toLinearSpace();
-        litterboxMaskMaterial.albedoTexture = litterboxMaskAlbedoTexture;
-        litterboxMaskMaterial.bumpTexture = litterboxMaskBumpTexture;
+        litterboxMaskMaterial.albedoTexture = currentStainSwatch;
+        //litterboxMaskMaterial.bumpTexture = litterboxMaskBumpTexture;
         colorPicker.style.display = "none";
-        varnishPicker.style.display = "block"
+        stainPicker.style.display = "block"
+        if(currentStainSwatch){
+          currentStainSwatch.click() ;
+        } else {
+          allStainSwatches[Math.floor(Math.random()*allStainSwatches.length)].click();
+        }
       }
     }
 
