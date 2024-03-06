@@ -215,7 +215,6 @@ nav{
 }
 
 .swatches{
-  
   height: max-content;
   max-height: calc(100vh - 80px);
   overflow-y: auto;
@@ -226,6 +225,7 @@ nav{
 }
 
 .swatch{
+  position: relative;
   border-radius: 4px;
   padding: 6px 16px;
   background-size: cover;
@@ -238,8 +238,17 @@ nav{
 .swatch[data-contrast="dark"]{
   color: black;
 }
+
+.swatch[data-contrast="dark"] svg{
+  fill: black;
+}
+
 .swatch[data-contrast="light"]{
   color: white;
+}
+
+.swatch[data-contrast="light"] svg{
+  fill: white;
 }
 
 .swatchTarget{
@@ -260,6 +269,15 @@ nav{
   line-height: 20px;
   opacity: 0.5;
 }
+
+.swatchIcon{
+  position: absolute;
+  right: 16px;
+  top: 0;
+  align-items: center;
+  height: 100%;
+}
+
 
 .sections{
   padding-top: 48px;
