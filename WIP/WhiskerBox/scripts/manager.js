@@ -27,7 +27,7 @@ let createScene = function() {
   camera.upperBetaLimit = BABYLON.Tools.ToRadians(90);
 
   const light = new BABYLON.HemisphericLight("HemiLight", new BABYLON.Vector3(0, 1, 0), scene);
-  light.intensity = 0.25;
+  light.intensity = 0.2;
 
   // Textures
   const groundDiffuseTexture = new BABYLON.Texture("assets/textures/ground_diffuse_texture.png",scene, false, false);
