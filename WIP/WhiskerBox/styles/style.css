@@ -93,6 +93,7 @@ body{
 button{
   font-size: 14px;
   letter-spacing: 0.1px;
+  background-color: transparent;
   font-weight: 600;
   width: 100%;
   cursor: pointer;
@@ -103,6 +104,10 @@ p{
   font-size: 16px;
   line-height: 22px;
   letter-spacing: 0.2px;
+}
+
+b{
+  color: var(--on-surface-variant);
 }
 
 h2{
@@ -123,7 +128,7 @@ nav{
 }
 
 .companyLogo{
-  padding-left: 16px;
+  padding-left: 12px;
 }
 
 .navControls{
@@ -135,7 +140,7 @@ nav{
 }
 
 #menuButton{
-  padding: 4px;
+  padding-left: 12px;
   fill: var(--primary);
 }
 
@@ -304,22 +309,6 @@ nav{
   z-index: -1;
 }
 
-/* #captureButton{
-  position: absolute;
-  display: flex;
-  background-color:var(--surface);
-  right: 24px;
-  bottom: 24px;
-  border-radius: 20px;
-  cursor: pointer;
-  padding: 4px;
-  fill: var(--on-surface-variant);
-} */
-
-#captureButton svg{
-  fill: var(--on-surface-variant);
-}
-
 #renderCanvas{
   float: left;
   width: 100%;
@@ -417,6 +406,7 @@ nav{
 
 .specsImage{
   padding: 0px auto 0px auto;
+  margin-top: 24px;
   max-height: 280px;
   width: 100%;
 }
