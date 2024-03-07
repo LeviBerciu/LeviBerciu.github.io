@@ -34,12 +34,19 @@ let createScene = function() {
   const litterboxAmbientTexture = new BABYLON.Texture("assets/textures/litterbox_ambient_texture.png",scene, false, false);
   const litterboxMaskAmbientTexture = new BABYLON.Texture("assets/textures/litterbox_mask_ambient_texture.png",scene, false, false);
   litterboxMaskAmbientTexture.coordinatesIndex = 1;
-  //const litterboxMaskBumpTexture = new BABYLON.Texture("assets/textures/litterbox_mask_bump_texture.png", scene, false, false);
+  const litterboxMaskAlbedoTextures = [
+    new BABYLON.Texture("assets/textures/litterbox_mask_albedo_texture_0.png", scene, false, false),
+    new BABYLON.Texture("assets/textures/litterbox_mask_albedo_texture_1.png", scene, false, false),
+    new BABYLON.Texture("assets/textures/litterbox_mask_albedo_texture_2.png", scene, false, false),
+    new BABYLON.Texture("assets/textures/litterbox_mask_albedo_texture_3.png", scene, false, false),
+    new BABYLON.Texture("assets/textures/litterbox_mask_albedo_texture_4.png", scene, false, false),
+    new BABYLON.Texture("assets/textures/litterbox_mask_albedo_texture_5.png", scene, false, false),
+    new BABYLON.Texture("assets/textures/litterbox_mask_albedo_texture_6.png", scene, false, false)
+  ]
   const emptyTexture = new BABYLON.Texture("assets/textures/empty_texture.png",scene);
 
   // Model
   BABYLON.SceneLoader.Append("assets/", "model.glb", scene, function(scene) {
-    console.log(scene) // TBD
 
     // Ground
     const groundMesh = scene.getMeshByName("ground")
@@ -73,12 +80,9 @@ let createScene = function() {
     const litterboxMaskMesh = scene.getMeshByName("litterbox_mask");
     const litterboxMaskMaterial = new BABYLON.PBRMaterial("litterboxMaskMaterial", scene);
     litterboxMaskMaterial.metallic = 0;
-    //litterboxMaskMaterial.roughness = 0.4;
     litterboxMaskMaterial.clearCoat.isEnabled = true;
     litterboxMaskMaterial.clearCoat.intensity = 0.2; 
     litterboxMaskMaterial.clearCoat.roughness = 0.3;
-
-    //litterboxMaskMaterial.bumpTexture = litterboxMaskBumpTexture;
     litterboxMaskMaterial.ambientTexture = litterboxMaskAmbientTexture;
     litterboxMaskMesh.material = litterboxMaskMaterial;
 
@@ -137,9 +141,9 @@ let createScene = function() {
         allStainSwatches.push(stainSwatches[index]);
         stainSwatches[index].style.backgroundImage = "url('" + stainSwatches[index].dataset.image + "')";
         stainSwatches[index].addEventListener("click", function(){
-          currentStainSwatch = new BABYLON.Texture(stainSwatches[index].dataset.texture ,scene, false, false);
+          currentStainSwatch = stainSwatches[index];
           litterboxMaskMaterial.albedoColor = new BABYLON.Color3.FromHexString("#FFFFFF").toLinearSpace();
-          litterboxMaskMaterial.albedoTexture = new BABYLON.Texture(stainSwatches[index].dataset.texture ,scene, false, false);
+          litterboxMaskMaterial.albedoTexture = litterboxMaskAlbedoTextures[index];
           stainPicker.style.backgroundImage = "url('" + stainSwatches[index].dataset.image + "')";
           stainPicker.dataset.contrast = stainSwatches[index].dataset.contrast;
           stainPicker.querySelector(".swatchName").innerHTML = stainSwatches[index].querySelector(".swatchName").innerHTML
@@ -172,11 +176,10 @@ let createScene = function() {
     function setFinish(index){
       if (index == 0){
         litterboxMaskMaterial.albedoTexture = emptyTexture;
-        //litterboxMaskMaterial.bumpTexture = null;
         colorPicker.style.display = "block";
         stainPicker.style.display = "none"
         if(currentColorSwatch){
-          currentColorSwatch.click() ;
+          currentColorSwatch.click();
         } else {
           allColorSwatches[Math.floor(Math.random()*allColorSwatches.length)].click();
         }
@@ -184,23 +187,15 @@ let createScene = function() {
       if (index == 1){
         litterboxMaskMaterial.albedoColor = new BABYLON.Color3.FromHexString("#FFFFFF").toLinearSpace();
         litterboxMaskMaterial.albedoTexture = currentStainSwatch;
-        //litterboxMaskMaterial.bumpTexture = litterboxMaskBumpTexture;
         colorPicker.style.display = "none";
         stainPicker.style.display = "block"
         if(currentStainSwatch){
-          currentStainSwatch.click() ;
+          currentStainSwatch.click();
         } else {
-          allStainSwatches[Math.floor(Math.random()*allStainSwatches.length)].click();
+          allStainSwatches[0].click();
         }
       }
     }
-
-    // Capture Image
-    // const captureImageButton = document.getElementById("captureButton");
-    // captureImageButton.addEventListener("click", function(event){
-    //   BABYLON.Tools.CreateScreenshotUsingRenderTarget(engine, camera, 1440);
-    // });
-
   })
 
   return scene;
@@ -217,8 +212,6 @@ engine.runRenderLoop(function() {
 window.addEventListener("resize", function() {
   engine.resize();
 });
-
-
 
 // ---------- NOT 3D REALATED
 
