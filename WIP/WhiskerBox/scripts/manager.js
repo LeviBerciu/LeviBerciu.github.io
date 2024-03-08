@@ -253,8 +253,10 @@ for(var i = 0; i < controlGroupTitleCollection.length; i++){
   })(i);
 };
 
+// Orientation
+
 function orientationSetup(x) {
-  if (x.matches) { // If media query matches
+  if (x.matches) {
     console.log("landscape");
     controlTabsContainer.style.display = "none";
     for (i = 0; i < controlGroupTitles.length; i++) {
@@ -273,18 +275,15 @@ function orientationSetup(x) {
   }
 }
 
-// Create a MediaQueryList object
 var x = window.matchMedia("(orientation: landscape)")
 
-// Call listener function at run time
 orientationSetup(x);
 
-// Attach listener function on state changes
 x.addEventListener("change", function() {
   orientationSetup(x);
 });
 
-
+// Theme
 
 const switchTheme = () => {
   const rootElement = document.documentElement;
@@ -296,5 +295,69 @@ const switchTheme = () => {
 
 document.getElementById("themeSwitcher").addEventListener("click", switchTheme)
 
+// Gallery
 
+let currentImageIndex = 0;
+const images = [
+  "assets/gallery/PXL_20240224_122445465.jpg",
+  "assets/gallery/PXL_20240224_122452820.jpg",
+  "assets/gallery/PXL_20240224_122445465.jpg",
+  "assets/gallery/PXL_20240224_122452820.jpg",
+  "assets/gallery/PXL_20240224_122445465.jpg",
+  "assets/gallery/PXL_20240224_122452820.jpg",
+];
 
+const galleryPanel = document.getElementById("galleryPanel");
+const galleryPanelClose = document.getElementById("galleryPanelClose");
+galleryPanelClose.addEventListener("click", function(event){
+  galleryPanel.style.display = "none";
+});
+
+const galleryEntryCollection = document.getElementsByClassName("galleryEntry");
+for(var i = 0; i < galleryEntryCollection.length; i++){
+  (function(index) {
+    galleryEntryCollection[index].addEventListener("click", function(){
+      galleryPanel.style.display = "block";
+      currentImageIndex = index;
+      showImage(index)
+    });
+  })(i);
+};
+
+function showImage(index) {
+  const img = document.querySelector(".carouselImage");
+  img.src = images[index];
+  updateIndicator(index);
+}
+
+function nextImage() {
+  currentImageIndex++;
+  if (currentImageIndex >= images.length) {
+    currentImageIndex = 0;
+  }
+  showImage(currentImageIndex);
+}
+
+function prevImage() {
+  currentImageIndex--;
+  if (currentImageIndex < 0) {
+    currentImageIndex = images.length - 1;
+  }
+  showImage(currentImageIndex);
+}
+
+function updateIndicator(index) {
+  const dots = document.querySelectorAll('.dot');
+  dots.forEach(dot => dot.classList.remove('active'));
+  dots[index].classList.add('active');
+}
+
+const indicator = document.querySelector('.indicator');
+images.forEach((_, index) => {
+  const dot = document.createElement('span');
+  dot.classList.add('dot');
+  dot.addEventListener('click', () => showImage(index));
+  indicator.appendChild(dot);
+});
+
+showImage(currentImageIndex);

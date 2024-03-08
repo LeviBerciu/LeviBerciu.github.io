@@ -13,6 +13,7 @@
   --on-secondary-container: #1D192B;
   --primary: #6750A4;
   --on-primary: #FFFFFF;
+  --popup-overlay: rgba(255, 255, 255, 0.75);
   --display-dark: visible;
   --display-light: hidden;
   --switch-circle-pos: 28px; 
@@ -38,11 +39,10 @@
   --on-secondary-container: #E8DEF8;
   --primary: #D0BCFF;
   --on-primary: #381E72;
-
+  --popup-overlay: rgba(0, 0, 0, 0.75);
   --display-dark: hidden;
   --display-light: visible;
   --switch-circle-pos: 0px; 
-
   .specsLight{
     display: none;
   }
@@ -197,7 +197,7 @@ nav{
   transform: translateX(0);
 }
 
-.sidePanelHeader{
+.panelHeader{
   margin: 0px 16px 0px 16px;
   display: flex;
   gap: 12px;
@@ -207,6 +207,7 @@ nav{
 }
 
 .closeButton{
+  margin-left: auto;
   width: 24px;
   fill: var(--on-surface);
 }
@@ -215,7 +216,7 @@ nav{
   cursor: pointer;
 }
 
-.sidePanelTitle{
+.panelTitle{
   color: var(--on-surface);
 }
 
@@ -411,7 +412,7 @@ nav{
   width: 100%;
 }
 
-.mediaGallery{
+.gallery{
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 8px;
@@ -429,6 +430,71 @@ nav{
   height: 100%;
   object-fit: cover;
 }
+
+#galleryPanel{
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1;
+  background-color: var(--popup-overlay);
+  display: none;
+}
+
+/* ---------- */
+
+.carousel {
+  position: relative;
+  max-width: 600px;
+  margin: auto;
+}
+
+.carouselImage {
+  width: 100%;
+  height: auto;
+}
+
+.prev,
+.next {
+  width: 20px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  z-index: 1;
+}
+
+.prev {
+  left: 0;
+}
+
+.next {
+  right: 0;
+}
+
+.indicator {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.dot {
+  height: 10px;
+  width: 10px;
+  margin: 0 5px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.3s ease;
+}
+
+.dot.active {
+  background-color: #717171;
+}
+
+/* ---------- */
 
 .callToAction{
   padding: 24px 16px 32px 16px;
