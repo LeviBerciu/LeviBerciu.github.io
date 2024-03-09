@@ -48,10 +48,12 @@
             <svg id="galleryPanelClose" class="closeButton" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg>
         </div>
         <div class="carousel">
-            <button class="prev" onclick="prevImage()">&#10094;</button>
-            <img class="carouselImage">
-            <button class="next" onclick="nextImage()">&#10095;</button>
-            <div class="indicator"></div>
+            <svg class="carouselPrev" onclick="prevImage()" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M560-240 320-480l240-240 56 56-184 184 184 184-56 56Z"/></svg>
+            <div>
+                <img class="carouselImage">
+                <div class="carouselIndicator"></div>
+            </div>
+            <svg class="carouselNext" onclick="nextImage()" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z"/></svg>
         </div>
     </div>
 

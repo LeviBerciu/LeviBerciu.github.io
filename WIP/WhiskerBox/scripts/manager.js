@@ -347,15 +347,15 @@ function prevImage() {
 }
 
 function updateIndicator(index) {
-  const dots = document.querySelectorAll('.dot');
+  const dots = document.querySelectorAll('.indicatorDot');
   dots.forEach(dot => dot.classList.remove('active'));
   dots[index].classList.add('active');
 }
 
-const indicator = document.querySelector('.indicator');
+const indicator = document.querySelector('.carouselIndicator');
 images.forEach((_, index) => {
   const dot = document.createElement('span');
-  dot.classList.add('dot');
+  dot.classList.add('indicatorDot');
   dot.addEventListener('click', () => showImage(index));
   indicator.appendChild(dot);
 });
