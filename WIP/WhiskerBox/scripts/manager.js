@@ -26,13 +26,14 @@ let createScene = function() {
   camera.upperRadiusLimit = 1.8;
   camera.upperBetaLimit = BABYLON.Tools.ToRadians(90);
 
+
+  //Reset View
   camera.spinTo = function (whichprop, targetval, speed) {
     const easingFunction = new BABYLON.CubicEase();
     easingFunction.setEasingMode(BABYLON.EasingFunction.EASINGMODE_EASEOUT);
     BABYLON.Animation.CreateAndStartAnimation('CameraSnapBack', this, whichprop, speed, 60, this[whichprop], targetval, 0, easingFunction);
   };
 
-  //Reset View
   function resetView(){
     camera.spinTo("alpha", BABYLON.Tools.ToRadians((Math.floor((BABYLON.Tools.ToDegrees(camera.alpha) / 360)) * 360) +defaultCameraAlpha), 100);
     camera.spinTo("beta", BABYLON.Tools.ToRadians(defaultCameraBeta), 100);
@@ -45,7 +46,7 @@ let createScene = function() {
     let date = new Date();
     let time = date.getTime();
     const time_between_taps = 200;
-    if (time - lastClick < time_between_taps) {
+    if (time - lastClick < time_between_taps && event.touches.length == 1) {
       resetView();
     }
     lastClick = time;
