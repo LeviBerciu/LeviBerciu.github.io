@@ -5,6 +5,7 @@
 :root[data-theme="light"]{
   --surface: #FEF7FF;
   --surface-container: #F3EDF7;
+  --outline-variant-transparent: rgba(202, 196, 208, 0.5);
   --outline-variant: #CAC4D0;
   --outline: #79747E;
   --on-surface-variant: #49454F;
@@ -32,6 +33,7 @@
 :root[data-theme="dark"]{
   --surface: #141218;
   --surface-container: #211F26;
+  --outline-variant-transparent: rgba(73, 69, 79, 0.5);
   --outline-variant: #49454F;
   --outline: #938F99;
   --on-surface-variant: #CAC4D0;
@@ -130,7 +132,7 @@ nav{
 }
 
 .companyLogo{
-  padding-left: 12px;
+  padding-left: 16px;
 }
 
 .navControls{
@@ -141,18 +143,18 @@ nav{
   gap: 8px;
 }
 
-#menuButton{
+/* #menuButton{
   padding-left: 12px;
   fill: var(--primary);
-}
+} */
 
-#languageButton{
+/* #languageButton{
   line-height: 32px;
   padding: 0px 12px 0px 12px;
   background-color: var(--surface-container);
   border-radius: 16px;
   color: var(--primary);
-}
+} */
 
 #themeSwitcher{
   width: max-content;
@@ -288,7 +290,6 @@ nav{
   opacity: 0.5;
 }
 
-
 .sections{
   padding-top: 48px;
   display: grid;
@@ -308,7 +309,7 @@ nav{
   width: calc(45%);
   position: absolute;
   z-index: 0;
-  fill: var(--outline-variant);
+  fill: var(--outline-variant-transparent);
   z-index: -1;
 }
 
@@ -368,7 +369,7 @@ nav{
 .controlGroup{
   padding-bottom: 24px;
   margin-bottom: 24px;
-  border-bottom: 1px solid var(--outline-variant);
+  border-bottom: 1px solid var(--outline-variant-transparent);
 }
 
 .controlGroup:last-child{
