@@ -377,7 +377,6 @@ nav{
   border-bottom: none;
 }
 
-
 .controlGroupTitle{
   padding: 0px 0px 16px 0px;
 }
@@ -529,6 +528,28 @@ nav{
   display: none;
 }
 
+.captures{
+  height: max-content;
+  max-height: calc(100vh - 80px);
+  overflow-y: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  padding: 0px 16px 16px 16px;
+}
+
+.previewCapture{
+  background-color: var(--surface-container);
+  border-radius: 4px;
+  overflow: hidden;
+  aspect-ratio: 1/1;
+}
+
+.previewCapture.large{
+  grid-column: span 2;
+}
+
+
 @media screen and (orientation: landscape){
 
   @media screen and (max-width: 1440px){
@@ -599,6 +620,10 @@ nav{
   @media screen and (max-width: 540px){
 
     .swatches{
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .captures{
       grid-template-columns: repeat(2, 1fr);
     }
 
