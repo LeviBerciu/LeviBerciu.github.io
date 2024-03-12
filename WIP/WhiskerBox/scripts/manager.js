@@ -7,12 +7,11 @@ let createScene = function() {
   
   // Environment
   const studioEnvironment = new BABYLON.CubeTexture("assets/studio.env");
-
   scene.environmentTexture = studioEnvironment;
   scene.environmentIntensity = 1;
   scene.clearColor = new BABYLON.Color4(0,0,0,0);
 
-  // Camera
+  // Arc Rotate Camera
   const defaultCameraAlpha = 45;
   const defaultCameraBeta = 67.5;
   const defaultCameraRadius = 1.2;
@@ -25,7 +24,6 @@ let createScene = function() {
   camera.lowerRadiusLimit = 0.6;
   camera.upperRadiusLimit = 1.8;
   camera.upperBetaLimit = BABYLON.Tools.ToRadians(90);
-
 
   //Reset View
   camera.spinTo = function (whichprop, targetval, speed) {
@@ -55,8 +53,7 @@ let createScene = function() {
   canvas.addEventListener("dblclick", function(event) {
     resetView();
   });
-
-  // Light
+  // Hemispheric Light
   const light = new BABYLON.HemisphericLight("HemiLight", new BABYLON.Vector3(0, 1, 0), scene);
   light.intensity = 0.2;
 
@@ -186,7 +183,6 @@ let createScene = function() {
       })(i);
     };
 
-
     // Finishes
     const controlTabCollection = document.getElementsByClassName("configTab");
     const configTabs = [];
@@ -230,6 +226,23 @@ let createScene = function() {
       }
     }
   })
+
+  // Preview
+  console.log(scene)
+  
+  const previewPanel = document.getElementById("previewPanel");
+  const previewPanelClose = document.getElementById("previewPanelClose");
+  previewPanelClose.addEventListener("click", function(event){
+    previewPanel.style.display = "none";
+  });
+
+  const captureImageButton = document.getElementById("previewButton");
+  captureImageButton.addEventListener("click", function(event){
+    previewPanel.style.display = "block";
+    BABYLON.Tools.CreateScreenshotUsingRenderTarget(engine, scene.cameras[1], { width: 800, height: 450 }, function (data) {
+      document.getElementById("previewCam1").innerHTML = '<img src="' + data + '" style="width:100%;">';
+    });
+  });
 
   return scene;
 };
@@ -332,12 +345,12 @@ document.getElementById("themeSwitcher").addEventListener("click", switchTheme)
 
 let currentImageIndex = 0;
 const images = [
-  "assets/gallery/PXL_20240224_122445465.jpg",
-  "assets/gallery/PXL_20240224_122452820.jpg",
-  "assets/gallery/PXL_20240224_122445465.jpg",
-  "assets/gallery/PXL_20240224_122452820.jpg",
-  "assets/gallery/PXL_20240224_122445465.jpg",
-  "assets/gallery/PXL_20240224_122452820.jpg",
+  "assets/gallery/01.png",
+  "assets/gallery/02.png",
+  "assets/gallery/03.png",
+  "assets/gallery/04.png",
+  "assets/gallery/05.png",
+  "assets/gallery/06.png",
 ];
 
 const galleryPanel = document.getElementById("galleryPanel");
