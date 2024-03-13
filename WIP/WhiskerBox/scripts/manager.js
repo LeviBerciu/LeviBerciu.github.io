@@ -184,6 +184,7 @@ let createScene = function() {
     };
 
     // Finishes
+
     const controlTabCollection = document.getElementsByClassName("configTab");
     const configTabs = [];
 
@@ -228,7 +229,13 @@ let createScene = function() {
   })
 
   // Preview
-  console.log(scene)
+  
+  const previewCam1 = document.getElementById("previewCam1");
+  const previewCam2 = document.getElementById("previewCam2");
+  const previewCam3 = document.getElementById("previewCam3");
+  const previewCam4 = document.getElementById("previewCam4");
+  const previewCam5 = document.getElementById("previewCam5");
+  const previewCam6 = document.getElementById("previewCam6");
 
   const summaryPanel = document.getElementById("summaryPanel");
   const summaryPanelClose = document.getElementById("summaryPanelClose");
@@ -239,33 +246,35 @@ let createScene = function() {
   const captureImageButton = document.getElementById("previewButton");
   captureImageButton.addEventListener("click", function(event){
     createScreenshots();
+    previewCam1.innerHTML = '';
+    previewCam2.innerHTML = '';
+    previewCam3.innerHTML = '';
+    previewCam4.innerHTML = '';
+    previewCam5.innerHTML = '';
+    previewCam6.innerHTML = '';
     summaryPanel.style.display = "block";
   });
 
-  console.log(scene)
-
   function createScreenshots(){
     BABYLON.Tools.CreateScreenshotUsingRenderTarget(engine, scene.cameras[5], { width: 1440, height: 1440 }, function (data) {
-      document.getElementById("previewCam1").innerHTML = '<img src="' + data + '">';
+      previewCam1.innerHTML = '<img src="' + data + '">';
     });
     BABYLON.Tools.CreateScreenshotUsingRenderTarget(engine, scene.cameras[4], { width: 1440, height: 1440 }, function (data) {
-      document.getElementById("previewCam2").innerHTML = '<img src="' + data + '">';
+      previewCam2.innerHTML = '<img src="' + data + '">';
     });
     BABYLON.Tools.CreateScreenshotUsingRenderTarget(engine, scene.cameras[1], { width: 1440, height: 1440 }, function (data) {
-      document.getElementById("previewCam3").innerHTML = '<img src="' + data + '">';
+      previewCam3.innerHTML = '<img src="' + data + '">';
     });
     BABYLON.Tools.CreateScreenshotUsingRenderTarget(engine, scene.cameras[6], { width: 1440, height: 1440 }, function (data) {
-      document.getElementById("previewCam4").innerHTML = '<img src="' + data + '">';
+      previewCam4.innerHTML = '<img src="' + data + '">';
     });
     BABYLON.Tools.CreateScreenshotUsingRenderTarget(engine, scene.cameras[3], { width: 1440, height: 1440 }, function (data) {
-      document.getElementById("previewCam5").innerHTML = '<img src="' + data + '">';
+      previewCam5.innerHTML = '<img src="' + data + '">';
     });
     BABYLON.Tools.CreateScreenshotUsingRenderTarget(engine, scene.cameras[2], { width: 1440, height: 1440 }, function (data) {
-      document.getElementById("previewCam6").innerHTML = '<img src="' + data + '">';
+      previewCam6.innerHTML = '<img src="' + data + '">';
     });
   }
-
-
 
   return scene;
 };

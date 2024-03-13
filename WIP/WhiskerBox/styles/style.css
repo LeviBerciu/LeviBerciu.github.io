@@ -120,6 +120,15 @@ h2{
   letter-spacing: 0.3px;
 }
 
+.disclaimer{
+  background-color: var(--surface);
+  color: var(--outline);
+  font-size: 14px;
+  font-style: italic;
+  padding: 16px;
+  border-radius: 4px;
+}
+
 nav{
   position: fixed;
   display: flex;
@@ -132,7 +141,7 @@ nav{
 }
 
 .companyLogo{
-  height: 32px;
+  height: 28px;
   padding-left: 16px;
   fill: var(--on-surface-variant);
 }
@@ -368,6 +377,11 @@ nav{
   border-bottom: 2px solid var(--primary);
 }
 
+.picker{
+  display: none;
+  margin-bottom: 16px;
+}
+
 .controlGroups{
   padding: 24px 16px 0px 16px;
 }
@@ -548,8 +562,9 @@ nav{
   width: 100vw;
   height: 100vh;
   z-index: 1;
-  background-color: var(--surface);
+  background-color: var(--surface-container);
   display: none;
+  backdrop-filter: blur(8px);
 }
 
 .summary{
@@ -559,27 +574,23 @@ nav{
   padding: 0px 16px 0px 16px;
 }
 
-.summaryDisclaimer{
-  padding-bottom: 16px;
-}
-
 .captures{
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(3, 1fr);
   gap: 8px;
-  padding-bottom: 16px;
+  padding: 8px 0px 16px 0px;
 }
 
 .previewCapture{
-  background-color: var(--surface-container);
+  background-color: var(--surface);
   border-radius: 4px;
   overflow: hidden;
   aspect-ratio: 1/1;
 }
-
+/* 
 .previewCapture.large{
   grid-column: span 2;
-}
+} */
 
 
 @media screen and (orientation: landscape){
@@ -648,6 +659,15 @@ nav{
   .carouselNext {
     right: 8px;
   }
+
+  .captures{
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .previewCapture.large{
+    grid-column: span 2;
+  }
+  
   
   @media screen and (max-width: 540px){
 
