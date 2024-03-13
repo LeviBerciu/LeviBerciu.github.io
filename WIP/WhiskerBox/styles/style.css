@@ -132,7 +132,13 @@ nav{
 }
 
 .companyLogo{
+  height: 32px;
   padding-left: 16px;
+  fill: var(--on-surface-variant);
+}
+
+.companyLogoBG{
+  fill: var(--on-surface);
 }
 
 .navControls{
@@ -388,16 +394,34 @@ nav{
 }
 
 .configTab{
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background: none;
   border: 1px solid var(--outline);
   color: var(--on-surface);
   margin-right: -1px;
 }
 
+.configTab svg{
+  display: none;
+  fill: var(--on-secondary-container);
+  margin-left: -4px;
+}
+
+.configTab span{
+  padding: 0px 4px 0px 4px;
+}
+
 .configTab.active{
   background-color: var(--secondary-container);
   color: var(--on-secondary-container);
 }
+
+.configTab.active svg{
+  display: block;
+}
+
 
 .configTab:first-child{
   border-radius: 4px 0px 0px 4px;
@@ -519,7 +543,7 @@ nav{
   border-radius: 20px;
 }
 
-#previewPanel{
+#summaryPanel{
   position: fixed;
   width: 100vw;
   height: 100vh;
@@ -528,14 +552,22 @@ nav{
   display: none;
 }
 
-.captures{
+.summary{
   height: max-content;
-  max-height: calc(100vh - 80px);
+  max-height: calc(100vh - 64px);
   overflow-y: auto;
+  padding: 0px 16px 0px 16px;
+}
+
+.summaryDisclaimer{
+  padding-bottom: 16px;
+}
+
+.captures{
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 8px;
-  padding: 0px 16px 16px 16px;
+  padding-bottom: 16px;
 }
 
 .previewCapture{
@@ -620,10 +652,6 @@ nav{
   @media screen and (max-width: 540px){
 
     .swatches{
-      grid-template-columns: repeat(2, 1fr);
-    }
-
-    .captures{
       grid-template-columns: repeat(2, 1fr);
     }
 
