@@ -184,7 +184,6 @@ let createScene = function() {
     };
 
     // Finishes
-
     const controlTabCollection = document.getElementsByClassName("configTab");
     const configTabs = [];
 
@@ -229,7 +228,6 @@ let createScene = function() {
   })
 
   // Preview
-  
   const previewCam1 = document.getElementById("previewCam1");
   const previewCam2 = document.getElementById("previewCam2");
   const previewCam3 = document.getElementById("previewCam3");
@@ -332,7 +330,6 @@ for(var i = 0; i < controlGroupTitleCollection.length; i++){
 };
 
 // Orientation
-
 function orientationSetup(x) {
   if (x.matches) {
     console.log("landscape");
@@ -362,7 +359,6 @@ x.addEventListener("change", function() {
 });
 
 // Theme
-
 const switchTheme = () => {
   const rootElement = document.documentElement;
   let dataTheme = rootElement.getAttribute("data-theme");
@@ -374,7 +370,6 @@ const switchTheme = () => {
 document.getElementById("themeSwitcher").addEventListener("click", switchTheme)
 
 // Gallery
-
 let currentImageIndex = 0;
 const images = [
   "assets/gallery/01.png",
