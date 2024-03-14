@@ -1,0 +1,1102 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <script src="https://cdn.babylonjs.com/babylon.js"></script>
+    <script src="https://cdn.babylonjs.com/loaders/babylonjs.loaders.min.js"></script>
+    <script>
+        // Check local storage
+        let localS = localStorage.getItem("theme");
+        let themeToSet = localS;
+        // If local storage is not set, we check OS prferences
+        if (!localS){
+            themeToSet = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"
+        };
+        // Set the correct theme
+        document.documentElement.setAttribute("data-theme", themeToSet);
+    </script>
+</head>
+<body>
+
+    <nav>
+        <svg class="companyLogo" id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 479.3 78.89">
+            <g id="Layer_1-2" data-name="Layer 1">
+              <path class="cls-1" d="M11.47,25.55c4.12-.61,8.26-.52,12.38,.37,.3,.07,.82-.32,1.06-.64,.9-1.2,1.63-2.55,2.61-3.67,2.05-2.32,3.77-2.01,4.7,.97,.75,2.39,1.04,4.93,1.61,7.39,.44,1.89,.88,3.8,1.51,5.64,.49,1.44,1.26,2.78,3.09,2.9,1.88,.12,2.92-1.04,3.78-2.47,1.25-2.09,2.29-4.33,3.76-6.26,3.67-4.83,8.56-7.34,14.73-6.97,1.12,.07,2.22,.42,3.51,.68-1.76-3.4-4.08-6.12-7.19-8.12-6.79-4.37-14.15-4.84-21.74-2.79-2.4,.65-4.61,2.01-6.93,2.97-2.2,.91-4.37,1.97-6.66,2.51-2.36,.56-4.64-.12-6.09-2.29-1.4-2.1-.97-4.25,.21-6.28,1.43-2.46,3.57-4.13,6.09-5.38,22.65-11.23,50.05,1.67,55.85,26.3,5.26,22.32-9.61,44.42-32.28,47.98C23.3,81.91,2.49,65.81,.21,43.42c-.69-6.81,.3-13.38,3.07-19.62,.74-1.66,1.88-3.2,3.1-4.58,1.06-1.2,2.17-.99,2.85,.48,.85,1.83,1.46,3.78,2.24,5.84Zm14.1,11.16c0-1.34-1.12-2.44-2.45-2.42-1.29,.02-2.33,1.07-2.36,2.36-.03,1.38,1,2.45,2.37,2.47,1.36,.02,2.44-1.04,2.44-2.4Zm-12.93-.16c.03-1.28-1.02-2.38-2.33-2.43-1.3-.06-2.5,1.09-2.52,2.4-.02,1.26,1.08,2.4,2.35,2.44,1.35,.04,2.47-1.03,2.5-2.4Z"/>
+              <path class="companyLogoBG" d="M21.91,4.13c-3.5,1.73-7.07,4.91-7.17,9.07,.04,2.71,2.82,5.23,5.41,5.07,4.33-.44,8.25-2.86,12.2-4.56,4.53-2.02,9.68-2.65,14.58-2.08,3.97,.52,7.81,2.06,11.08,4.42,.7,.52,1.37,1.07,1.99,1.67,.8,.77,1.53,1.61,2.21,2.52,.39,.52,.76,1.07,1.1,1.63,.32,.53,.63,1.07,.92,1.62-1.85-.44-3.64-.86-5.52-.7,0,0,0,0,0,0-15.51,.74-14.43,17.85-21.24,15.49-.93-.36-1.53-1.22-1.89-2.11-.88-2.31-1.39-4.73-1.93-7.14-.82-2.5-.79-11.14-5.17-8.33,0,0,0,0,0,0-1.83,1.31-2.47,3.73-4.19,5.1-.94,.25-1.98-.33-2.95-.34h0c-1.01-.14-2.03-.23-3.04-.28,0,0,0,0,0,0-1.6-.08-3.2-.03-4.79,.11,0,0,0,0,0,0-.68,.07-1.36,.14-2.03,.24-.5-1.32-.93-2.6-1.4-3.83-2.32-8.34-6.87,1.88-8.03,5.25-2.71,7.85-2.68,16.55-.17,24.44,14.14,40.82,72.06,34.38,76.8-8.56,.1-1.16,.15-2.32,.14-3.48,.28-28.72-31.3-48.3-56.91-35.23Zm-3.78,11.14c-1.15-1.23-1.72-2.06-.35-4.62,.66-1.14,1.53-2.12,2.67-2.98-.12,2.28-.98,4.93-2.32,7.6Zm2.02,.74s-.02,0-.03,0c2.07-3.39,3.79-6.97,5.29-10.64,1.17-1.3,3.4-1.37,5.01-1.97-3,3.87-5.52,7.72-7.72,12.04-.83,.27-1.7,.57-2.55,.57Zm9.74-3.64c-.92,.45-1.77,.85-2.66,1.22,2.11-3.71,4.56-7.2,7.3-10.48,.83-.93,2.08-.65,3.18-.73-2.92,3.22-5.52,6.37-7.82,9.99Zm4.81-1.96c-.08,.02-.16,.05-.24,.07,1.87-2.74,4.04-5.3,6.32-7.73,1.08-.87,2.77-.02,4.06-.02-1.97,2.28-3.82,4.44-5.69,6.75-1.46,.21-2.94,.52-4.44,.93Zm10.62-1.2c-.89-.06-1.79-.07-2.68-.04,1.18-1.62,2.42-3.22,3.68-4.78,.7-1.62,1.97-.97,3.19-.63-.87,1.9-3,3.59-4.19,5.45Zm2.68,.3s.03-.05,.05-.08c1.17-1.67,2.32-3.5,3.73-4.95,.66,.24,1.32,.49,1.97,.76,.17,.42-.53,.74-.75,1.16-2.79,5.05,1.9,1.9,3.64,.2,.56,.29,1.12,.6,1.66,.92-1.21,1.36-2.88,2.51-4.34,3.68-1.92-.8-3.91-1.37-5.96-1.7Zm8.06,2.7c1.35-.93,2.87-2.84,4.31-3.36,.45,.31,.89,.62,1.33,.95,.01,.12-.06,.24-.23,.4-1.1,1.08-2.21,2.15-3.35,3.2-.68-.43-1.36-.83-2.06-1.19Zm5.63,4.02c-.61-.6-1.26-1.16-1.95-1.69,1.31-.97,2.45-2.51,3.87-3.2,.46,.39,.91,.8,1.35,1.21,.17,1.17-2.47,2.69-3.28,3.68Zm-3.09,8.85c-4.69,3.33-9.24,6.85-13.59,10.62,2.61-5.43,7.46-10.33,13.59-10.62Zm-33.4,2.81c2.21-1.14,2.79-3.86,4.58-5.32,.01,.02,.02,.05,.04,.08-1.85,3.16-3.51,6.49-4.08,10.17-.65-.43-1.41-.7-2.23-.77,.55-1.39,1.12-2.78,1.69-4.15Zm.36,8.82c.11,2.35-3.24,3.27-4.42,1.34-.06-.09-.11-.19-.16-.29-1.52-3.58,4.4-4.96,4.58-1.05Zm-9.51-9.27c.45-.01,.89-.02,1.33,0-.96,2.44-1.89,4.89-2.83,7.34-.26-.63-.65-1.19-1.14-1.65,.97-1.85,2-3.69,2.63-5.69Zm-7.84-4.19c.14,.39,.29,.79,.43,1.2,.25,.67,.48,1.41,.79,2.1-2,1.76-4.08,3.14-6.07,3.9,1.13-4.02,1.04-5.1,4.85-7.2Zm-5.34,11.33c3.04-1.95,5.82-4.22,8.34-6.78,.9,.04,1.8-.22,2.69-.25-1.25,1.38-2.33,2.89-3.55,4.3-2.66-.1-5.01,2.29-4.83,4.97-1,.7-2.08,1.84-3.27,2.04,.2-1.37-.28-3.2,.61-4.27Zm7.19,4.36c-4.62-.8-1.21-7.22,2.03-3.93,.06,.07,.11,.15,.16,.23,1.07,1.58-.31,3.89-2.2,3.7Zm-5.38,13.64c-.59-1.56-1.08-3.16-1.46-4.79,2.22-1.97,3.94-4.35,5.53-6.82,1.07,.38,2.38,.3,3.39-.17-1.92,4.13-3.91,8.86-7.46,11.79Zm2.52,5.31c-.42-.73-.81-1.47-1.18-2.23,7.51-7.62,10.18-18.47,14.39-28.01,.49,.06,.97,.13,1.45,.21-4.44,9.12-7.06,23.39-14.67,30.04Zm3.22,4.71c-.6-.75-1.17-1.52-1.71-2.31,5.35-5.66,8.71-12.73,11.52-19.93,3,2.57,8.07-.06,7.58-4.03,1.72-.23,3.33-.92,4.86-1.68,.29,.97,.59,2.04,1.05,2.94-3.81,2.94-7.52,5.99-10.96,9.38-4.85,4.63-8.79,10.02-12.35,15.63Zm1.97,2.26c6.77-9.18,14.35-17.7,23.13-25.06,.78,.58,1.71,.9,2.77,.97,.34,.02,.7,.02,1.04-.02-9.03,7.97-17.33,16.74-25.72,25.34-.42-.4-.82-.81-1.22-1.23Zm21.02,11.27c4.35-4.01,8.24-8.26,11.77-12.98,.46-.77,1.89-2.31,1.57-3.14-1.44,.06-2.69,1.83-3.8,2.7-3.86,3.71-7.41,7.7-10.57,12.03-.89,1.66-1.85,.66-3.14,.45,3.33-5.63,8.53-10.63,13.3-15.22,2.55-2.81,14.43-11.39,9.05-1.38-3.95,6.49-9.39,11.85-14.8,17.1-1.02,1.09-2.16,.6-3.37,.45Zm6.01,.5c-.12,0-.25,0-.37,0-.62-.27,3.35-3.44,3.72-4.16,2.3-2.72,23.61-25.08,15.3-25.97-10.15,2.62-24.28,19.89-31.59,27.76-.65-.24-1.29-.51-1.92-.79,7.26-9.54,15.71-18.15,25.17-25.51,3.56-2.6,7.21-5.49,11.59-6.49,6.1-.67,2.9,6.95,1.08,9.78-5.39,9.23-12.63,17.19-20.04,24.83-.75,.82-1.95,.44-2.93,.55Zm36.49-30.21c-1.03,6.01-7.7,11.93-11.24,17.03-3.57,3.74-6.15,9.05-11.44,10.48,8.16-9.12,15.65-18.8,22.88-28.66-.06,.39-.13,.77-.2,1.15Zm.42-6.92c-7.31,11.83-15.71,22.98-24.92,33.4-1.66,2.52-3.46,2.93-6.3,3.29,9.65-11.07,27.33-28.77,30.95-42.82,.17,1.99,.89,4.25,.28,6.13Zm-.73-8.39c-12.16-6.14-45.37,32.04-53.52,41.16-.51-.27-1.02-.56-1.52-.86,14.7-17.09,32.08-36.84,53.79-44.57,.5,1.39,.92,2.81,1.25,4.27Zm-2.66-7.65c-21.42,10.99-39.61,27.73-54.7,46.46-.54-.38-1.08-.77-1.6-1.18,13.33-16.35,28.43-31.73,46.27-43.2,1.6,.69,3.73-.26,3.56-2.19,1.63-.79,3.3-2.26,5.03-2.6,.51,.88,.99,1.78,1.43,2.71Zm-3.33-5.63c-1.17,1.15-3.03,1.82-4.4,2.84-.38-.62-.78-1.21-1.19-1.77,1.39-.89,2.64-2.35,4.08-3.02,.53,.63,1.03,1.28,1.51,1.95Z"/>
+              <path d="M147.3,22.19c-.53,.04-1.17,.07-1.91,.11-.74,.04-1.47,.05-2.18,.05-1.2,0-2.33-.02-3.37-.05-1.04-.03-2.24-.07-3.58-.11v1.06c1.42,.04,2.53,.45,3.34,1.25,.81,.8,1.24,2.11,1.27,3.93,.04,1.82-.44,4.31-1.43,7.46l-4.09,13.09-7-21.26c-.42-1.24-.59-2.17-.5-2.79,.09-.62,.43-1.04,1.04-1.27,.6-.23,1.45-.36,2.55-.4v-1.06c-.89,.04-2.06,.07-3.53,.11-1.47,.04-3.04,.05-4.7,.05s-3.31-.02-4.94-.05c-1.63-.03-3.04-.07-4.25-.11v1.06c.6,.04,1.13,.23,1.59,.58,.46,.35,.83,.99,1.11,1.91l3.61,11.01-4.66,12.63-7.7-21.67c-.18-.53-.31-1.12-.4-1.78-.09-.65-.04-1.24,.16-1.75,.19-.51,.59-.82,1.19-.93v-1.06c-.74,.04-1.72,.07-2.92,.11-1.2,.04-2.58,.05-4.14,.05s-3.19-.02-4.91-.05c-1.72-.03-3.21-.07-4.49-.11v1.06c.5,.04,1.03,.3,1.59,.8,.57,.5,1.08,1.36,1.54,2.6l12.32,33.13c.42-.03,.88-.06,1.35-.08,.48-.02,.95-.03,1.41-.03,.49,0,.98,0,1.46,.03,.48,.02,.93,.04,1.35,.08l7.47-21.1,6.91,21.1c.42-.03,.88-.06,1.35-.08,.48-.02,.95-.03,1.41-.03,.49,0,.98,0,1.46,.03,.48,.02,.93,.04,1.35,.08l8.92-29.09c.71-2.3,1.5-4.02,2.39-5.15,.88-1.13,1.73-1.89,2.55-2.28v-1.06Z"/>
+              <path d="M174.75,54.84v-14.39c0-1.8-.12-3.24-.37-4.3-.25-1.06-.64-1.91-1.17-2.55-.5-.6-1.21-1.11-2.15-1.51-.94-.41-2.22-.61-3.85-.61-1.91,0-3.58,.31-5.02,.93-1.43,.62-2.57,1.64-3.42,3.05V18.27c-1.31,.25-2.73,.43-4.27,.56-1.54,.12-3.19,.19-4.96,.19-1.06,0-2.16-.05-3.29-.16v1.11c1.13,0,1.91,.38,2.34,1.14,.43,.76,.64,1.94,.64,3.53v30.21c0,1.49-.22,2.5-.66,3.03-.44,.53-1.21,.8-2.31,.8v1.11c.78-.03,1.93-.08,3.45-.13,1.52-.05,3.03-.08,4.51-.08,1.38,0,2.72,.03,4.03,.08,1.31,.05,2.3,.1,2.97,.13v-1.11c-.89,0-1.51-.27-1.88-.8-.37-.53-.56-1.54-.56-3.03v-16.78c0-.74,.19-1.41,.56-1.99,.37-.58,.85-1.04,1.43-1.35,.58-.32,1.19-.48,1.83-.48s1.14,.12,1.51,.37c.37,.25,.65,.62,.82,1.11,.18,.5,.27,1.11,.27,1.86v17.25c0,1.49-.18,2.5-.53,3.03-.35,.53-.99,.8-1.91,.8v1.11c.71-.03,1.77-.08,3.18-.13,1.42-.05,2.87-.08,4.35-.08,1.38,0,2.79,.03,4.22,.08,1.43,.05,2.5,.1,3.21,.13v-1.11c-1.1,0-1.87-.27-2.31-.8-.44-.53-.66-1.54-.66-3.03Z"/>
+              <path d="M191.95,54.84V31.64c-1.31,.25-2.73,.43-4.27,.56-1.54,.12-3.19,.19-4.96,.19-1.06,0-2.16-.05-3.29-.16v1.11c1.13,0,1.91,.38,2.34,1.14,.43,.76,.64,1.94,.64,3.53v16.83c0,1.49-.22,2.5-.66,3.03-.44,.53-1.21,.8-2.31,.8v1.11c.78-.03,1.93-.08,3.45-.13,1.52-.05,3.03-.08,4.51-.08s2.94,.03,4.35,.08c1.42,.05,2.48,.1,3.19,.13v-1.11c-1.1,0-1.87-.27-2.31-.8-.44-.53-.66-1.54-.66-3.03Z"/>
+              <path d="M182.58,26.26c1.01,.76,2.43,1.14,4.27,1.14s3.26-.38,4.27-1.14c1.01-.76,1.51-1.9,1.51-3.42s-.5-2.66-1.51-3.42c-1.01-.76-2.43-1.14-4.27-1.14s-3.26,.38-4.27,1.14c-1.01,.76-1.51,1.9-1.51,3.42s.5,2.66,1.51,3.42Z"/>
+              <path d="M216.47,45.98c-.85-.85-1.82-1.72-2.92-2.6-.99-.85-1.98-1.65-2.97-2.42-.99-.76-1.81-1.56-2.44-2.39-.64-.83-.96-1.78-.96-2.84,0-.92,.3-1.65,.9-2.18,.6-.53,1.34-.8,2.23-.8,1.45,0,2.63,.42,3.53,1.27,.9,.85,1.59,1.91,2.07,3.19s.79,2.57,.93,3.88h1.06c0-2.41,.02-4.34,.05-5.81,.04-1.47,.09-2.72,.16-3.74h-1.06c-.28,1.66-1.04,2.12-2.28,1.38-.53-.28-1.39-.59-2.57-.93-1.19-.34-2.56-.5-4.11-.5-1.73,0-3.36,.31-4.88,.93-1.52,.62-2.75,1.5-3.69,2.63-.94,1.13-1.41,2.49-1.41,4.09,0,1.38,.3,2.63,.9,3.74,.6,1.11,1.37,2.14,2.31,3.08,.94,.94,1.94,1.9,3,2.89,1.42,1.27,2.59,2.44,3.53,3.5,.94,1.06,1.41,2.37,1.41,3.93,0,.67-.14,1.22-.42,1.65-.28,.42-.66,.74-1.11,.96-.46,.21-.97,.32-1.54,.32-1.27,0-2.4-.42-3.37-1.25-.97-.83-1.77-1.97-2.39-3.42-.62-1.45-1.03-3.11-1.25-4.99h-1.06c0,2.69-.02,4.85-.05,6.48-.04,1.63-.09,3.01-.16,4.14h1.06c.14-.49,.34-.93,.58-1.3,.25-.37,.55-.56,.9-.56,.39,0,.79,.08,1.19,.24,.41,.16,.89,.38,1.46,.66,.57,.35,1.31,.66,2.23,.93,.92,.27,2,.4,3.24,.4,1.98,0,3.78-.35,5.39-1.04,1.61-.69,2.9-1.65,3.88-2.89,.97-1.24,1.46-2.65,1.46-4.25,0-1.38-.26-2.57-.77-3.58-.51-1.01-1.19-1.94-2.04-2.79Z"/>
+              <path d="M252.09,57.47c-.32-.51-.62-1.04-.9-1.57l-8.44-16.04,1.38-1.38c1.34-1.34,2.67-2.46,3.98-3.34,1.31-.88,2.6-1.5,3.87-1.86v-1.06c-.46,.04-1.12,.06-1.99,.08-.87,.02-1.78,.04-2.73,.05-.96,.02-1.8,.03-2.55,.03-.85,0-1.87-.02-3.05-.05-1.19-.03-2.29-.07-3.32-.11v1.06c1.27,.11,2.31,.5,3.11,1.17,.8,.67,1.19,1.51,1.17,2.52-.02,1.01-.65,2.08-1.88,3.21l-4.09,3.82c-.35,.35-.74,.58-1.17,.66-.35,.07-.72,.11-1.11,.12V18.27c-1.31,.25-2.73,.43-4.27,.56-1.54,.12-3.19,.19-4.96,.19-1.06,0-2.16-.05-3.29-.16v1.11c1.13,0,1.91,.38,2.34,1.14,.43,.76,.64,1.94,.64,3.53v30.21c0,1.49-.22,2.5-.66,3.03-.44,.53-1.21,.8-2.31,.8v1.11c.78-.03,1.93-.08,3.45-.13,1.52-.05,3.03-.08,4.51-.08s2.94,.03,4.35,.08c1.42,.05,2.48,.1,3.19,.13v-1.11c-1.1,0-1.87-.27-2.31-.8-.44-.53-.66-1.54-.66-3.03v-9c.31,.02,.6,.08,.85,.19,.32,.14,.6,.46,.85,.96l4.67,9.87c.28,.57,.31,1.01,.08,1.33-.23,.32-.7,.48-1.41,.48v1.11c.71-.03,1.78-.08,3.21-.13,1.43-.05,2.86-.08,4.27-.08,1.24,0,2.47,.03,3.69,.08,1.22,.05,2.13,.1,2.73,.13v-1.11c-.5-.28-.9-.68-1.22-1.19Z"/>
+              <path d="M263.76,43.38h13.71c0-4.28-.89-7.33-2.68-9.16-1.79-1.82-4.24-2.73-7.35-2.73-2.55,0-4.86,.5-6.93,1.51-2.07,1.01-3.71,2.58-4.91,4.72-1.2,2.14-1.8,4.91-1.8,8.31,0,3.57,.55,6.42,1.65,8.55,1.1,2.12,2.57,3.65,4.43,4.57s3.92,1.38,6.18,1.38c2.12,0,3.93-.45,5.42-1.35,1.49-.9,2.7-2.05,3.64-3.45,.94-1.4,1.62-2.8,2.04-4.22l-.9-.32c-.78,1.06-1.58,1.85-2.39,2.36-.81,.51-1.57,.84-2.26,.98-.69,.14-1.28,.21-1.78,.21-.96,0-1.9-.27-2.84-.8-.94-.53-1.72-1.49-2.34-2.87-.62-1.38-.93-3.31-.93-5.79v-1.11c0-.27,.02-.53,.04-.8Zm-.18-1.01c.18-3.47,.57-5.95,1.15-7.41,.6-1.5,1.38-2.26,2.34-2.26,.67,0,1.2,.44,1.59,1.33,.39,.89,.67,2.06,.85,3.53,.18,1.47,.25,3.07,.21,4.8h-6.14Z"/>
+              <path d="M301.78,32.31c-.71-.55-1.7-.82-2.97-.82-1.03,0-1.97,.14-2.84,.42-.87,.28-1.64,.72-2.31,1.3-.67,.58-1.24,1.34-1.7,2.26v-3.82c-1.31,.25-2.73,.43-4.27,.56-1.54,.12-3.19,.19-4.96,.19-1.06,0-2.16-.05-3.29-.16v1.11c1.13,0,1.91,.38,2.34,1.14,.43,.76,.64,1.94,.64,3.53v16.83c0,1.49-.22,2.5-.66,3.03-.44,.53-1.21,.8-2.31,.8v1.11c.81-.03,2.03-.08,3.66-.13,1.63-.05,3.24-.08,4.83-.08,1.7,0,3.35,.03,4.96,.08,1.61,.05,2.82,.1,3.64,.13v-1.11c-1.63,0-2.8-.3-3.5-.9-.71-.6-1.06-1.75-1.06-3.45v-15.93c0-.53,.08-1.04,.24-1.54,.16-.5,.38-.95,.66-1.35,.28-.41,.62-.77,1.01-1.09,.39-.32,.8-.57,1.22-.74,.49-.25,1.06-.37,1.7-.37-.78,.53-1.42,1.19-1.94,1.96-.51,.78-.77,1.77-.77,2.97,0,1.13,.4,2.05,1.2,2.76,.8,.71,1.97,1.06,3.53,1.06,1.45,0,2.63-.47,3.53-1.41,.9-.94,1.35-2.2,1.35-3.8,0-.81-.14-1.64-.43-2.47-.28-.83-.78-1.52-1.49-2.07Z"/>
+              <path d="M366.49,23.26v-1.06c-.53,.04-1.17,.07-1.91,.11-.74,.04-1.47,.05-2.18,.05-1.2,0-2.33-.02-3.37-.05-1.04-.03-2.24-.07-3.58-.11v1.06c1.42,.04,2.53,.45,3.34,1.25,.81,.8,1.24,2.11,1.27,3.93,.04,1.82-.44,4.31-1.43,7.46l-4.09,13.09-7-21.26c-.42-1.24-.59-2.17-.5-2.79,.09-.62,.43-1.04,1.04-1.27,.6-.23,1.45-.36,2.55-.4v-1.06c-.89,.04-2.06,.07-3.53,.11-1.47,.04-3.03,.05-4.7,.05s-3.31-.02-4.94-.05c-1.63-.03-3.04-.07-4.25-.11v1.06c.6,.04,1.13,.23,1.59,.58,.46,.35,.83,.99,1.11,1.91l3.61,11.01-4.66,12.63-7.7-21.67c-.18-.53-.31-1.12-.4-1.78-.09-.65-.04-1.24,.16-1.75,.19-.51,.59-.82,1.19-.93v-1.06c-.74,.04-1.72,.07-2.92,.11-1.2,.04-2.58,.05-4.14,.05s-3.19-.02-4.91-.05c-1.72-.03-3.21-.07-4.49-.11v1.06c.5,.04,1.03,.3,1.59,.8,.57,.5,1.08,1.36,1.54,2.6l12.32,33.13c.43-.03,.88-.06,1.35-.08,.48-.02,.95-.03,1.41-.03,.49,0,.98,0,1.46,.03,.48,.02,.93,.04,1.35,.08l7.47-21.1,6.91,21.1c.43-.03,.88-.06,1.35-.08,.48-.02,.95-.03,1.41-.03,.49,0,.98,0,1.46,.03,.48,.02,.93,.04,1.35,.08l8.92-29.09c.71-2.3,1.5-4.02,2.39-5.15,.88-1.13,1.73-1.89,2.55-2.28Z"/>
+              <path d="M384.83,32.89c-2.04-.94-4.43-1.41-7.19-1.41s-5.11,.47-7.17,1.41c-2.05,.94-3.65,2.47-4.78,4.59-1.13,2.12-1.7,4.97-1.7,8.55s.57,6.42,1.7,8.55c1.13,2.12,2.72,3.65,4.78,4.57,2.05,.92,4.44,1.38,7.17,1.38s5.16-.46,7.19-1.38c2.03-.92,3.62-2.44,4.75-4.57,1.13-2.12,1.7-4.97,1.7-8.55s-.57-6.42-1.7-8.55c-1.13-2.12-2.72-3.65-4.75-4.59Zm-4.54,23.41c-.71,2.11-1.59,3.16-2.66,3.16s-1.95-1.05-2.65-3.16c-.71-2.11-1.06-5.53-1.06-10.27s.35-8.18,1.06-10.3c.71-2.12,1.59-3.19,2.65-3.19s1.95,1.06,2.66,3.19c.71,2.12,1.06,5.56,1.06,10.3s-.35,8.17-1.06,10.27Z"/>
+              <path d="M415.41,32.89c-2.04-.94-4.43-1.41-7.19-1.41s-5.11,.47-7.17,1.41c-2.05,.94-3.65,2.47-4.78,4.59-1.13,2.12-1.7,4.97-1.7,8.55s.57,6.42,1.7,8.55c1.13,2.12,2.72,3.65,4.78,4.57,2.05,.92,4.44,1.38,7.17,1.38s5.16-.46,7.19-1.38c2.03-.92,3.62-2.44,4.75-4.57,1.13-2.12,1.7-4.97,1.7-8.55s-.57-6.42-1.7-8.55c-1.13-2.12-2.72-3.65-4.75-4.59Zm-4.54,23.41c-.71,2.11-1.59,3.16-2.66,3.16s-1.95-1.05-2.65-3.16c-.71-2.11-1.06-5.53-1.06-10.27s.35-8.18,1.06-10.3c.71-2.12,1.59-3.19,2.65-3.19s1.95,1.06,2.66,3.19c.71,2.12,1.06,5.56,1.06,10.3s-.35,8.17-1.06,10.27Z"/>
+              <path d="M452.68,57.47c-.44-.76-.66-1.94-.66-3.53V18.27c-1.31,.25-2.73,.43-4.27,.56-1.54,.12-3.19,.19-4.96,.19-1.06,0-2.16-.05-3.29-.16v1.11c1.13,0,1.91,.38,2.34,1.14,.43,.76,.64,1.94,.64,3.53v8.2c-.5-.32-1.03-.59-1.59-.79-1.06-.37-2.37-.56-3.93-.56-2.37,0-4.44,.53-6.21,1.59-1.77,1.06-3.14,2.65-4.11,4.75-.97,2.11-1.46,4.77-1.46,7.99,0,3.47,.48,6.28,1.43,8.44,.96,2.16,2.26,3.74,3.9,4.75,1.65,1.01,3.48,1.51,5.49,1.51,1.56,0,2.85-.33,3.88-.98,1.03-.65,1.89-1.65,2.6-3v3.77c1.34-.28,2.78-.48,4.3-.58,1.52-.11,3.17-.16,4.94-.16,1.1,0,2.19,.05,3.29,.16v-1.11c-1.1,0-1.87-.38-2.31-1.14Zm-10.22-3.53c0,1.1-.39,2.01-1.17,2.73-.78,.73-1.66,1.09-2.66,1.09-.64,0-1.23-.33-1.78-.98-.55-.65-.98-1.84-1.3-3.56-.32-1.72-.48-4.13-.48-7.25,0-4.32,.41-7.52,1.22-9.61,.81-2.09,2.04-3.13,3.66-3.13,.49,0,1.03,.1,1.59,.29,.32,.11,.62,.26,.9,.43v19.98Z"/>
+              <path d="M478.53,48.76c-.51-1.01-1.2-1.94-2.04-2.79-.85-.85-1.82-1.72-2.92-2.6-.99-.85-1.98-1.65-2.97-2.42-.99-.76-1.81-1.56-2.44-2.39-.64-.83-.96-1.78-.96-2.84,0-.92,.3-1.65,.9-2.18,.6-.53,1.34-.8,2.23-.8,1.45,0,2.63,.42,3.53,1.27,.9,.85,1.59,1.91,2.07,3.19,.48,1.27,.79,2.57,.93,3.88h1.06c0-2.41,.02-4.34,.05-5.81,.04-1.47,.09-2.72,.16-3.74h-1.06c-.28,1.66-1.04,2.12-2.28,1.38-.53-.28-1.39-.59-2.57-.93-1.19-.34-2.56-.5-4.11-.5-1.73,0-3.36,.31-4.88,.93-1.52,.62-2.75,1.5-3.69,2.63-.94,1.13-1.41,2.49-1.41,4.09,0,1.38,.3,2.63,.9,3.74,.6,1.11,1.37,2.14,2.31,3.08,.94,.94,1.94,1.9,3,2.89,1.42,1.27,2.59,2.44,3.53,3.5,.94,1.06,1.41,2.37,1.41,3.93,0,.67-.14,1.22-.42,1.65-.28,.42-.66,.74-1.11,.96-.46,.21-.97,.32-1.54,.32-1.27,0-2.4-.42-3.37-1.25-.97-.83-1.77-1.97-2.39-3.42-.62-1.45-1.03-3.11-1.25-4.99h-1.06c0,2.69-.02,4.85-.05,6.48-.04,1.63-.09,3.01-.16,4.14h1.06c.14-.49,.34-.93,.58-1.3,.25-.37,.55-.56,.9-.56,.39,0,.79,.08,1.19,.24,.41,.16,.89,.38,1.46,.66,.57,.35,1.31,.66,2.23,.93,.92,.27,2,.4,3.24,.4,1.98,0,3.78-.35,5.39-1.04,1.61-.69,2.9-1.65,3.88-2.89,.97-1.24,1.46-2.65,1.46-4.25,0-1.38-.26-2.57-.77-3.58Z"/>
+            </g>
+          </svg>
+        <div class="navControls">
+            <!-- <button id="languageButton">EN</button> -->
+            <div id="themeSwitcher">
+                <svg id="moonIcon" width="24" height="24" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M16 25.0004C13.4833 25.0004 11.3542 24.1296 9.6125 22.3879C7.87083 20.6463 7 18.5171 7 16.0004C7 13.7004 7.75 11.7046 9.25 10.0129C10.75 8.32128 12.6667 7.33378 15 7.05044C15.2167 7.01711 15.4083 7.04628 15.575 7.13794C15.7417 7.22961 15.875 7.35044 15.975 7.50044C16.075 7.65044 16.1292 7.82544 16.1375 8.02544C16.1458 8.22544 16.0833 8.41711 15.95 8.60044C15.6667 9.03378 15.4542 9.49211 15.3125 9.97544C15.1708 10.4588 15.1 10.9671 15.1 11.5004C15.1 13.0004 15.625 14.2754 16.675 15.3254C17.725 16.3754 19 16.9004 20.5 16.9004C21.0167 16.9004 21.5292 16.8254 22.0375 16.6754C22.5458 16.5254 23 16.3171 23.4 16.0504C23.5833 15.9338 23.7708 15.8796 23.9625 15.8879C24.1542 15.8963 24.325 15.9421 24.475 16.0254C24.6417 16.1088 24.7708 16.2338 24.8625 16.4004C24.9542 16.5671 24.9833 16.7671 24.95 17.0004C24.7167 19.3004 23.7375 21.2088 22.0125 22.7254C20.2875 24.2421 18.2833 25.0004 16 25.0004Z"/>
+                </svg> 
+                <svg id="sunIcon" width="24" height="24" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M16 21C14.6167 21 13.4375 20.5125 12.4625 19.5375C11.4875 18.5625 11 17.3833 11 16C11 14.6167 11.4875 13.4375 12.4625 12.4625C13.4375 11.4875 14.6167 11 16 11C17.3833 11 18.5625 11.4875 19.5375 12.4625C20.5125 13.4375 21 14.6167 21 16C21 17.3833 20.5125 18.5625 19.5375 19.5375C18.5625 20.5125 17.3833 21 16 21ZM6 17C5.71667 17 5.47917 16.9042 5.2875 16.7125C5.09583 16.5208 5 16.2833 5 16C5 15.7167 5.09583 15.4792 5.2875 15.2875C5.47917 15.0958 5.71667 15 6 15H8C8.28333 15 8.52083 15.0958 8.7125 15.2875C8.90417 15.4792 9 15.7167 9 16C9 16.2833 8.90417 16.5208 8.7125 16.7125C8.52083 16.9042 8.28333 17 8 17H6ZM24 17C23.7167 17 23.4792 16.9042 23.2875 16.7125C23.0958 16.5208 23 16.2833 23 16C23 15.7167 23.0958 15.4792 23.2875 15.2875C23.4792 15.0958 23.7167 15 24 15H26C26.2833 15 26.5208 15.0958 26.7125 15.2875C26.9042 15.4792 27 15.7167 27 16C27 16.2833 26.9042 16.5208 26.7125 16.7125C26.5208 16.9042 26.2833 17 26 17H24ZM16 9C15.7167 9 15.4792 8.90417 15.2875 8.7125C15.0958 8.52083 15 8.28333 15 8V6C15 5.71667 15.0958 5.47917 15.2875 5.2875C15.4792 5.09583 15.7167 5 16 5C16.2833 5 16.5208 5.09583 16.7125 5.2875C16.9042 5.47917 17 5.71667 17 6V8C17 8.28333 16.9042 8.52083 16.7125 8.7125C16.5208 8.90417 16.2833 9 16 9ZM16 27C15.7167 27 15.4792 26.9042 15.2875 26.7125C15.0958 26.5208 15 26.2833 15 26V24C15 23.7167 15.0958 23.4792 15.2875 23.2875C15.4792 23.0958 15.7167 23 16 23C16.2833 23 16.5208 23.0958 16.7125 23.2875C16.9042 23.4792 17 23.7167 17 24V26C17 26.2833 16.9042 26.5208 16.7125 26.7125C16.5208 26.9042 16.2833 27 16 27ZM9.65 11.05L8.575 10C8.375 9.81667 8.27917 9.58333 8.2875 9.3C8.29583 9.01667 8.39167 8.775 8.575 8.575C8.775 8.375 9.01667 8.275 9.3 8.275C9.58333 8.275 9.81667 8.375 10 8.575L11.05 9.65C11.2333 9.85 11.325 10.0833 11.325 10.35C11.325 10.6167 11.2333 10.85 11.05 11.05C10.8667 11.25 10.6375 11.3458 10.3625 11.3375C10.0875 11.3292 9.85 11.2333 9.65 11.05ZM22 23.425L20.95 22.35C20.7667 22.15 20.675 21.9125 20.675 21.6375C20.675 21.3625 20.7667 21.1333 20.95 20.95C21.1333 20.75 21.3625 20.6542 21.6375 20.6625C21.9125 20.6708 22.15 20.7667 22.35 20.95L23.425 22C23.625 22.1833 23.7208 22.4167 23.7125 22.7C23.7042 22.9833 23.6083 23.225 23.425 23.425C23.225 23.625 22.9833 23.725 22.7 23.725C22.4167 23.725 22.1833 23.625 22 23.425ZM20.95 11.05C20.75 10.8667 20.6542 10.6375 20.6625 10.3625C20.6708 10.0875 20.7667 9.85 20.95 9.65L22 8.575C22.1833 8.375 22.4167 8.27917 22.7 8.2875C22.9833 8.29583 23.225 8.39167 23.425 8.575C23.625 8.775 23.725 9.01667 23.725 9.3C23.725 9.58333 23.625 9.81667 23.425 10L22.35 11.05C22.15 11.2333 21.9167 11.325 21.65 11.325C21.3833 11.325 21.15 11.2333 20.95 11.05ZM8.575 23.425C8.375 23.225 8.275 22.9833 8.275 22.7C8.275 22.4167 8.375 22.1833 8.575 22L9.65 20.95C9.85 20.7667 10.0875 20.675 10.3625 20.675C10.6375 20.675 10.8667 20.7667 11.05 20.95C11.25 21.1333 11.3458 21.3625 11.3375 21.6375C11.3292 21.9125 11.2333 22.15 11.05 22.35L10 23.425C9.81667 23.625 9.58333 23.7208 9.3 23.7125C9.01667 23.7042 8.775 23.6083 8.575 23.425Z"/>
+                </svg>
+            </div>
+        </div>
+    </nav>
+
+    <div id="galleryPanel">
+        <div class="panelHeader">
+            <svg id="galleryPanelClose" class="closeButton" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg>
+        </div>
+        <div class="carousel">
+            <svg class="carouselPrev" onclick="prevImage()" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M560-240 320-480l240-240 56 56-184 184 184 184-56 56Z"/></svg>
+            <div>
+                <img class="carouselImage">
+                <div class="carouselIndicator"></div>
+            </div>
+            <svg class="carouselNext" onclick="nextImage()" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z"/></svg>
+        </div>
+    </div>
+
+    <div id="summaryPanel">
+        <div class="panelHeader">
+            <h2 class="panelTitle">Summery</h2>
+            <svg id="summaryPanelClose" class="closeButton" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg>
+        </div>
+        <div class="summary">
+            <div class="disclaimer">This website is a work in progress, and the feature allowing users to request offers will be included soon.</div>
+            <div class="captures">
+                <div id="previewCam1" class="previewCapture"></div>
+                <div id="previewCam2" class="previewCapture"></div>
+                <div id="previewCam3" class="previewCapture large"></div>
+                <div id="previewCam4" class="previewCapture"></div>
+                <div id="previewCam5" class="previewCapture"></div>
+                <div id="previewCam6" class="previewCapture large"></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="colorPanel" class="sidePanel">
+        <div class="panelHeader">
+            <h2 class="panelTitle">Pick a color</h2>
+            <svg id="colorPanelClose" class="closeButton" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg>
+        </div>
+        <div class="swatches">
+            <div class="colorSwatch swatch" data-contrast="dark" data-metallic="0" data-color="#C5BB8A">
+                <div class="swatchName">Green beige</div>
+                <div class="swatchCode">RAL 1000</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="dark" data-metallic="0" data-color="#C6B286">
+                <div class="swatchName">Beige</div>
+                <div class="swatchCode">RAL 1001</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="dark" data-metallic="0" data-color="#C7AE72">
+                <div class="swatchName">Sand yellow</div>
+                <div class="swatchCode">RAL 1002</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="dark" data-metallic="0" data-color="#E6B019">
+                <div class="swatchName">Signal yellow</div>
+                <div class="swatchCode">RAL 1003</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="dark" data-metallic="0" data-color="#D2A40E">
+                <div class="swatchName">Golden yellow</div>
+                <div class="swatchCode">RAL 1004</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="dark" data-metallic="0" data-color="#BC9611">
+                <div class="swatchName">Honey yellow</div>
+                <div class="swatchCode">RAL 1005</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="dark" data-metallic="0" data-color="#CF9804">
+                <div class="swatchName">Maize yellow</div>
+                <div class="swatchCode">RAL 1006</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="dark" data-metallic="0" data-color="#D49300">
+                <div class="swatchName">Daffodil yellow</div>
+                <div class="swatchCode">RAL 1007</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="dark" data-metallic="0" data-color="#A38454">
+                <div class="swatchName">Brown beige</div>
+                <div class="swatchCode">RAL 1011</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="dark" data-metallic="0" data-color="#CFB539">
+                <div class="swatchName">Lemon yellow</div>
+                <div class="swatchCode">RAL 1012</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="dark" data-metallic="0" data-color="#DFDBC7">
+                <div class="swatchName">Oyster white</div>
+                <div class="swatchCode">RAL 1013</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="dark" data-metallic="0" data-color="#D4C79C">
+                <div class="swatchName">Ivory</div>
+                <div class="swatchCode">RAL 1014</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="dark" data-metallic="0" data-color="#DED3B6">
+                <div class="swatchName">Light ivory</div>
+                <div class="swatchCode">RAL 1015</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="dark" data-metallic="0" data-color="#E8E253">
+                <div class="swatchName">Sulfur yellow</div>
+                <div class="swatchCode">RAL 1016</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="dark" data-metallic="0" data-color="#E4AF56">
+                <div class="swatchName">Saffron yellow</div>
+                <div class="swatchCode">RAL 1017</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="dark" data-metallic="0" data-color="#EBD346">
+                <div class="swatchName">Zinc yellow</div>
+                <div class="swatchCode">RAL 1018</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="dark" data-metallic="0" data-color="#9C917B">
+                <div class="swatchName">Grey beige</div>
+                <div class="swatchCode">RAL 1019</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="dark" data-metallic="0" data-color="#999167">  
+                <div class="swatchName">Olive yellow</div>
+                <div class="swatchCode">RAL 1020</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="dark" data-metallic="0" data-color="#E5C000">
+                <div class="swatchName">Colza yellow</div>
+                <div class="swatchCode">RAL 1021</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="dark" data-metallic="0" data-color="#E6BE05">
+                <div class="swatchName">Traffic yellow</div>
+                <div class="swatchCode">RAL 1023</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="dark" data-metallic="0" data-color="#AD9451">
+                <div class="swatchName">Ochre yellow</div>
+                <div class="swatchCode">RAL 1024</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="dark" data-metallic="0" data-color="#FFFF00">
+                <div class="swatchName">Luminous yellow</div>
+                <div class="swatchCode">RAL 1026</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="light" data-metallic="0" data-color="#998420">
+                <div class="swatchName">Curry</div>
+                <div class="swatchCode">RAL 1027</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="dark" data-metallic="0" data-color="#F2A500">
+                <div class="swatchName">Melon yellow</div>
+                <div class="swatchCode">RAL 1028</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="dark" data-metallic="0" data-color="#CFA81E">
+                <div class="swatchName">Broom yellow</div>
+                <div class="swatchCode">RAL 1032</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="dark" data-metallic="0" data-color="#E4A02D">
+                <div class="swatchName">Dahlia yellow</div>
+                <div class="swatchCode">RAL 1033</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="dark" data-metallic="0" data-color="#D9A156">
+                <div class="swatchName">Pastel yellow</div>
+                <div class="swatchCode">RAL 1034</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="dark" data-metallic="0" data-color="#898271">
+                <div class="swatchName">Pearl beige</div>
+                <div class="swatchCode">RAL 1035</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="light" data-metallic="0" data-color="#746341">
+                <div class="swatchName">Pearl gold</div>
+                <div class="swatchCode">RAL 1036</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="dark" data-metallic="0" data-color="#DB9A17">
+                <div class="swatchName">Sun yellow</div>
+                <div class="swatchCode">RAL 1037</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="light" data-metallic="0" data-color="#C7750F">
+                <div class="swatchName">Yellow orange</div>
+                <div class="swatchCode">RAL 2000</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="light" data-metallic="0" data-color="#A74D23">
+                <div class="swatchName">Red orange</div>
+                <div class="swatchCode">RAL 2001</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="light" data-metallic="0" data-color="#AC3721">
+                <div class="swatchName">Vermilion</div>
+                <div class="swatchCode">RAL 2002</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="dark" data-metallic="0" data-color="#E17C30">
+                <div class="swatchName">Pastel orange</div>
+                <div class="swatchCode">RAL 2003</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="light" data-metallic="0" data-color="#CC5608">
+                <div class="swatchName">Pure orange</div>
+                <div class="swatchCode">RAL 2004</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="light" data-metallic="0" data-color="#FF4612">
+                <div class="swatchName">Luminous orange</div>
+                <div class="swatchCode">RAL 2005</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="dark" data-metallic="0" data-color="#FFAD19">
+                <div class="swatchName">Luminous bright orange</div>
+                <div class="swatchCode">RAL 2007</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="light" data-metallic="0" data-color="#D66C21">
+                <div class="swatchName">Bright red orange</div>
+                <div class="swatchCode">RAL 2008</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="light" data-metallic="0" data-color="#C9560D">
+                <div class="swatchName">Traffic orange</div>
+                <div class="swatchCode">RAL 2009</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="light" data-metallic="0" data-color="#BC602D">
+                <div class="swatchName">Signal orange</div>
+                <div class="swatchCode">RAL 2010</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="dark" data-metallic="0" data-color="#CF7421">
+                <div class="swatchName">Deep orange</div>
+                <div class="swatchCode">RAL 2011</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="light" data-metallic="0" data-color="#C2674F">
+                <div class="swatchName">Salmon orange</div>
+                <div class="swatchCode">RAL 2012</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="light" data-metallic="0" data-color="#824128">
+                <div class="swatchName">Pearl orange</div>
+                <div class="swatchCode">RAL 2013</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="light" data-metallic="0" data-color="#DC5B00">
+                <div class="swatchName">RAL orange</div>
+                <div class="swatchCode">RAL 2017</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="light" data-metallic="0" data-color="#962A27">
+                <div class="swatchName">Flame red</div>
+                <div class="swatchCode">RAL 3000</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="light" data-metallic="0" data-color="#8F1E24">
+                <div class="swatchName">Signal red</div>
+                <div class="swatchCode">RAL 3001</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="light" data-metallic="0" data-color="#8D1F24">
+                <div class="swatchName">Carmine red</div>
+                <div class="swatchCode">RAL 3002</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="light" data-metallic="0" data-color="#7C0D24">
+                <div class="swatchName">Ruby red</div>
+                <div class="swatchCode">RAL 3003</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="light" data-metallic="0" data-color="#651927">
+                <div class="swatchName">Purple red</div>
+                <div class="swatchCode">RAL 3004</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="light" data-metallic="0" data-color="#561E27">
+                <div class="swatchName">Wine red</div>
+                <div class="swatchCode">RAL 3005</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="light" data-metallic="0" data-color="#3D2326">
+                <div class="swatchName">Black red</div>
+                <div class="swatchCode">RAL 3007</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="light" data-metallic="0" data-color="#643730">
+                <div class="swatchName">Oxide red</div>
+                <div class="swatchCode">RAL 3009</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="light" data-metallic="0" data-color="#6E2124">
+                <div class="swatchName">Brown red</div>
+                <div class="swatchCode">RAL 3011</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="dark" data-metallic="0" data-color="#B7856E">
+                <div class="swatchName">Beige red</div>
+                <div class="swatchCode">RAL 3012</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="light" data-metallic="0" data-color="#8A2F28">
+                <div class="swatchName">Tomato red</div>
+                <div class="swatchCode">RAL 3013</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="light" data-metallic="0" data-color="#BC6F72">
+                <div class="swatchName">Antique pink</div>
+                <div class="swatchCode">RAL 3014</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="dark" data-metallic="0" data-color="#CC9EA4">
+                <div class="swatchName">Light pink</div>
+                <div class="swatchCode">RAL 3015</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="light" data-metallic="0" data-color="#963D2F">
+                <div class="swatchName">Coral red</div>
+                <div class="swatchCode">RAL 3016</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="light" data-metallic="0" data-color="#B9535B">
+                <div class="swatchName">Rose</div>
+                <div class="swatchCode">RAL 3017</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="light" data-metallic="0" data-color="#B63C49">
+                <div class="swatchName">Strawberry red</div>
+                <div class="swatchCode">RAL 3018</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="light" data-metallic="0" data-color="#AB1519">
+                <div class="swatchName">Traffic red</div>
+                <div class="swatchCode">RAL 3020</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="light" data-metallic="0" data-color="#BE6954">
+                <div class="swatchName">Salmon pink</div>
+                <div class="swatchCode">RAL 3022</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="light" data-metallic="0" data-color="#EE1729">
+                <div class="swatchName">Luminous red</div>
+                <div class="swatchCode">RAL 3024</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="light" data-metallic="0" data-color="#F71027">
+                <div class="swatchName">Luminous bright red</div>
+                <div class="swatchCode">RAL 3026</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="light" data-metallic="0" data-color="#9E1B3C">
+                <div class="swatchName">Raspberry red</div>
+                <div class="swatchCode">RAL 3027</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="light" data-metallic="0" data-color="#B92726">
+                <div class="swatchName">Pure red</div>
+                <div class="swatchCode">RAL 3028</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="light" data-metallic="0" data-color="#973238">
+                <div class="swatchName">Orient red</div>
+                <div class="swatchCode">RAL 3031</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="light" data-metallic="0" data-color="#661925">
+                <div class="swatchName">Pearl ruby red</div>
+                <div class="swatchCode">RAL 3032</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="light" data-metallic="0" data-color="#94352D">
+                <div class="swatchName">Pearl pink</div>
+                <div class="swatchCode">RAL 3033</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="light" data-metallic="0" data-color="#7C5B80">
+                <div class="swatchName">Red lilac</div>
+                <div class="swatchCode">RAL 4001</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="light" data-metallic="0" data-color="#823A4B">
+                <div class="swatchName">Red violet</div>
+                <div class="swatchCode">RAL 4002</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="light" data-metallic="0" data-color="#B65A88">
+                <div class="swatchName">Heather violet</div>
+                <div class="swatchCode">RAL 4003</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="light" data-metallic="0" data-color="#5F1837">
+                <div class="swatchName">Claret violet</div>
+                <div class="swatchCode">RAL 4004</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="light" data-metallic="0" data-color="#746395">
+                <div class="swatchName">Blue lilac</div>
+                <div class="swatchCode">RAL 4005</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="light" data-metallic="0" data-color="#852E6F">
+                <div class="swatchName">Traffic purple</div>
+                <div class="swatchCode">RAL 4006</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="light" data-metallic="0" data-color="#44263C">
+                <div class="swatchName">Purple violet</div>
+                <div class="swatchCode">RAL 4007</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="light" data-metallic="0" data-color="#7C477D">
+                <div class="swatchName">Signal violet</div>
+                <div class="swatchCode">RAL 4008</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="dark" data-metallic="0" data-color="#95838F">
+                <div class="swatchName">Pastel violet</div>
+                <div class="swatchCode">RAL 4009</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="light" data-metallic="0" data-color="#AC3B71">
+                <div class="swatchName">Telemagenta</div>
+                <div class="swatchCode">RAL 4010</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="light" data-metallic="0" data-color="#685C80">
+                <div class="swatchName">Pearl violet</div>
+                <div class="swatchCode">RAL 4011</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="light" data-metallic="0" data-color="#67657A">
+                <div class="swatchName">Pearl blackberry</div>
+                <div class="swatchCode">RAL 4012</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="light" data-metallic="0" data-color="#35496B">
+                <div class="swatchName">Violet blue</div>
+                <div class="swatchCode">RAL 5000</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="light" data-metallic="0" data-color="#294763">
+                <div class="swatchName">Green blue</div>
+                <div class="swatchCode">RAL 5001</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="light" data-metallic="0" data-color="#193278">
+                <div class="swatchName">Ultramarine blue</div>
+                <div class="swatchCode">RAL 5002</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="light" data-metallic="0" data-color="#203151">
+                <div class="swatchName">Sapphire blue</div>
+                <div class="swatchCode">RAL 5003</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="light" data-metallic="0" data-color="#1E222C">
+                <div class="swatchName">Black blue</div>
+                <div class="swatchCode">RAL 5004</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="light" data-metallic="0" data-color="#134A85">
+                <div class="swatchName">Signal blue</div>
+                <div class="swatchCode">RAL 5005</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="light" data-metallic="0" data-color="#466589">
+                <div class="swatchName">Brillant blue</div>
+                <div class="swatchCode">RAL 5007</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="light" data-metallic="0" data-color="#2F3A44">
+                <div class="swatchName">Grey blue</div>
+                <div class="swatchCode">RAL 5008</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="light" data-metallic="0" data-color="#365875">
+                <div class="swatchName">Azure blue</div>
+                <div class="swatchCode">RAL 5009</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="light" data-metallic="0" data-color="#0E457A">
+                <div class="swatchName">Gentian blue</div>
+                <div class="swatchCode">RAL 5010</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="light" data-metallic="0" data-color="#222C3E">
+                <div class="swatchName">Steel blue</div>
+                <div class="swatchCode">RAL 5011</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="light" data-metallic="0" data-color="#457FB3">
+                <div class="swatchName">Light blue</div>
+                <div class="swatchCode">RAL 5012</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="light" data-metallic="0" data-color="#212F51">
+                <div class="swatchName">Cobalt blue</div>
+                <div class="swatchCode">RAL 5013</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="light" data-metallic="0" data-color="#667691">
+                <div class="swatchName">Pigeon blue</div>
+                <div class="swatchCode">RAL 5014</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="light" data-metallic="0" data-color="#3172AD">
+                <div class="swatchName">Sky blue</div>
+                <div class="swatchCode">RAL 5015</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="light" data-metallic="0" data-color="#0F518A">
+                <div class="swatchName">Traffic blue</div>
+                <div class="swatchCode">RAL 5017</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="light" data-metallic="0" data-color="#47848D">
+                <div class="swatchName">Turquoise blue</div>
+                <div class="swatchCode">RAL 5018</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="light" data-metallic="0" data-color="#265682">
+                <div class="swatchName">Capri blue</div>
+                <div class="swatchCode">RAL 5019</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="light" data-metallic="0" data-color="#113E4D">
+                <div class="swatchName">Ocean blue</div>
+                <div class="swatchCode">RAL 5020</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="light" data-metallic="0" data-color="#216D76">
+                <div class="swatchName">Water blue</div>
+                <div class="swatchCode">RAL 5021</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="light" data-metallic="0" data-color="#282C58">
+                <div class="swatchName">Night blue</div>
+                <div class="swatchCode">RAL 5022</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="light" data-metallic="0" data-color="#4D648A">
+                <div class="swatchName">Distant blue</div>
+                <div class="swatchCode">RAL 5023</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="light" data-metallic="0" data-color="#6C8DAA">
+                <div class="swatchName">Pastel blue</div>
+                <div class="swatchCode">RAL 5024</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="light" data-metallic="0" data-color="#3C6379">
+                <div class="swatchName">Pearl gentian blue</div>
+                <div class="swatchCode">RAL 5025</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="light" data-metallic="0" data-color="#1B2B4D">
+                <div class="swatchName">Pearl night blue</div>
+                <div class="swatchCode">RAL 5026</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="light" data-metallic="0" data-color="#4A7363">
+                <div class="swatchName">Patina green</div>
+                <div class="swatchCode">RAL 6000</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="light" data-metallic="0" data-color="#40693A">
+                <div class="swatchName">Emerald green</div>
+                <div class="swatchCode">RAL 6001</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="light" data-metallic="0" data-color="#3B5B2F">
+                <div class="swatchName">Leaf green</div>
+                <div class="swatchCode">RAL 6002</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="light" data-metallic="0" data-color="#4F553E">
+                <div class="swatchName">Olive green</div>
+                <div class="swatchCode">RAL 6003</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="light" data-metallic="0" data-color="#214245">
+                <div class="swatchName">Blue green</div>
+                <div class="swatchCode">RAL 6004</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="light" data-metallic="0" data-color="#234235">
+                <div class="swatchName">Moss green</div>
+                <div class="swatchCode">RAL 6005</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="light" data-metallic="0" data-color="#3C3D32">
+                <div class="swatchName">Grey olive</div>
+                <div class="swatchCode">RAL 6006</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="light" data-metallic="0" data-color="#2E3526">
+                <div class="swatchName">Bottle green</div>
+                <div class="swatchCode">RAL 6007</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="light" data-metallic="0" data-color="#333327">
+                <div class="swatchName">Brown green</div>
+                <div class="swatchCode">RAL 6008</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="light" data-metallic="0" data-color="#2A372C">
+                <div class="swatchName">Fir green</div>
+                <div class="swatchCode">RAL 6009</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="light" data-metallic="0" data-color="#4E6E39">
+                <div class="swatchName">Grass green</div>
+                <div class="swatchCode">RAL 6010</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="light" data-metallic="0" data-color="#6A7C5B">
+                <div class="swatchName">Reseda green</div>
+                <div class="swatchCode">RAL 6011</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="light" data-metallic="0" data-color="#2F3B39">
+                <div class="swatchName">Black green</div>
+                <div class="swatchCode">RAL 6012</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="light" data-metallic="0" data-color="#777659">
+                <div class="swatchName">Reed green</div>
+                <div class="swatchCode">RAL 6013</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="light" data-metallic="0" data-color="#454339">
+                <div class="swatchName">Yellow olive</div>
+                <div class="swatchCode">RAL 6014</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="light" data-metallic="0" data-color="#3C3F38">
+                <div class="swatchName">Black olive</div>
+                <div class="swatchCode">RAL 6015</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="light" data-metallic="0" data-color="#256753">
+                <div class="swatchName">Turquoise green</div>
+                <div class="swatchCode">RAL 6016</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="light" data-metallic="0" data-color="#5C8144">
+                <div class="swatchName">May green</div>
+                <div class="swatchCode">RAL 6017</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="light" data-metallic="0" data-color="#689A45">
+                <div class="swatchName">Yellow green</div>
+                <div class="swatchCode">RAL 6018</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="dark" data-metallic="0" data-color="#B8CFAD">
+                <div class="swatchName">Pastel green</div>
+                <div class="swatchCode">RAL 6019</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="light" data-metallic="0" data-color="#3B4634">
+                <div class="swatchName">Chrome green</div>
+                <div class="swatchCode">RAL 6020</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="dark" data-metallic="0" data-color="#899B79">
+                <div class="swatchName">Pale green</div>
+                <div class="swatchCode">RAL 6021</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="light" data-metallic="0" data-color="#3B382E">
+                <div class="swatchName">Olive drab</div>
+                <div class="swatchCode">RAL 6022</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="light" data-metallic="0" data-color="#3A8258">
+                <div class="swatchName">Traffic green</div>
+                <div class="swatchCode">RAL 6024</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="light" data-metallic="0" data-color="#5D703E">
+                <div class="swatchName">Fern green</div>
+                <div class="swatchCode">RAL 6025</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="light" data-metallic="0" data-color="#0D5951">
+                <div class="swatchName">Opal green</div>
+                <div class="swatchCode">RAL 6026</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="dark" data-metallic="0" data-color="#88B5B3">
+                <div class="swatchName">Light green</div>
+                <div class="swatchCode">RAL 6027</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="light" data-metallic="0" data-color="#3D5547">
+                <div class="swatchName">Pine green</div>
+                <div class="swatchCode">RAL 6028</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="light" data-metallic="0" data-color="#226C45">
+                <div class="swatchName">Mint green</div>
+                <div class="swatchCode">RAL 6029</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="light" data-metallic="0" data-color="#417E57">
+                <div class="swatchName">Signal green</div>
+                <div class="swatchCode">RAL 6032</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="light" data-metallic="0" data-color="#568480">
+                <div class="swatchName">Mint turquoise</div>
+                <div class="swatchCode">RAL 6033</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="dark" data-metallic="0" data-color="#86A9AD">
+                <div class="swatchName">Pastel turquoise</div>
+                <div class="swatchCode">RAL 6034</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="light" data-metallic="0" data-color="#2E4F31">
+                <div class="swatchName">Pearl green</div>
+                <div class="swatchCode">RAL 6035</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="light" data-metallic="0" data-color="#27514A">
+                <div class="swatchName">Pearl opal green</div>
+                <div class="swatchCode">RAL 6036</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="light" data-metallic="0" data-color="#3F8C3D">
+                <div class="swatchName">Pure green</div>
+                <div class="swatchCode">RAL 6037</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="light" data-metallic="0" data-color="#20A339">
+                <div class="swatchName">Luminous green </div>
+                <div class="swatchCode">RAL 6038</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="dark" data-metallic="0" data-color="#ABC251">
+                <div class="swatchName">Fibrous green</div>
+                <div class="swatchCode">RAL 6039</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="light" data-metallic="0" data-color="#7B858D">
+                <div class="swatchName">Squirrel grey</div>
+                <div class="swatchCode">RAL 7000</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="dark" data-metallic="0" data-color="#8B949B">
+                <div class="swatchName">Silver grey</div>
+                <div class="swatchCode">RAL 7001</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="light" data-metallic="0" data-color="#7D7965">
+                <div class="swatchName">Olive grey</div>
+                <div class="swatchCode">RAL 7002</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="light" data-metallic="0" data-color="#76776A">
+                <div class="swatchName">Moss grey</div>
+                <div class="swatchCode">RAL 7003</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="dark" data-metallic="0" data-color="#969799">
+                <div class="swatchName">Signal grey</div>
+                <div class="swatchCode">RAL 7004</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="light" data-metallic="0" data-color="#696D6B">
+                <div class="swatchName">Mouse grey</div>
+                <div class="swatchCode">RAL 7005</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="light" data-metallic="0" data-color="#716C60">
+                <div class="swatchName">Beige grey</div>
+                <div class="swatchCode">RAL 7006</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="light" data-metallic="0" data-color="#6C6040">
+                <div class="swatchName">Khaki grey</div>
+                <div class="swatchCode">RAL 7008</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="light" data-metallic="0" data-color="#5B6058">
+                <div class="swatchName">Green grey</div>
+                <div class="swatchCode">RAL 7009</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="light" data-metallic="0" data-color="#575B57">
+                <div class="swatchName">Tarpaulin grey</div>
+                <div class="swatchCode">RAL 7010</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="light" data-metallic="0" data-color="#535A5E">
+                <div class="swatchName">Iron grey</div>
+                <div class="swatchCode">RAL 7011</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="light" data-metallic="0" data-color="#595E60">
+                <div class="swatchName">Basalt grey</div>
+                <div class="swatchCode">RAL 7012</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="light" data-metallic="0" data-color="#545146">
+                <div class="swatchName">Brown grey</div>
+                <div class="swatchCode">RAL 7013</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="light" data-metallic="0" data-color="#51535A">
+                <div class="swatchName">Slate grey</div>
+                <div class="swatchCode">RAL 7015</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="light" data-metallic="0" data-color="#3B4044">
+                <div class="swatchName">Anthracite grey</div>
+                <div class="swatchCode">RAL 7016</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="light" data-metallic="0" data-color="#323537">
+                <div class="swatchName">Black grey</div>
+                <div class="swatchCode">RAL 7021</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="light" data-metallic="0" data-color="#4C4C47">
+                <div class="swatchName">Umbra grey</div>
+                <div class="swatchCode">RAL 7022</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="light" data-metallic="0" data-color="#7D7F76">
+                <div class="swatchName">Concrete grey</div>
+                <div class="swatchCode">RAL 7023</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="light" data-metallic="0" data-color="#45494E">
+                <div class="swatchName">Graphite grey</div>
+                <div class="swatchCode">RAL 7024</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="light" data-metallic="0" data-color="#394345">
+                <div class="swatchName">Granite grey</div>
+                <div class="swatchCode">RAL 7026</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="dark" data-metallic="0" data-color="#8C8C83">
+                <div class="swatchName">Stone grey</div>
+                <div class="swatchCode">RAL 7030</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="light" data-metallic="0" data-color="#5D676D">
+                <div class="swatchName">Blue grey</div>
+                <div class="swatchCode">RAL 7031</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="dark" data-metallic="0" data-color="#B1B1A1">
+                <div class="swatchName">Pebble grey</div>
+                <div class="swatchCode">RAL 7032</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="light" data-metallic="0" data-color="#7C8273">
+                <div class="swatchName">Cement grey</div>
+                <div class="swatchCode">RAL 7033</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="dark" data-metallic="0" data-color="#8C8870">
+                <div class="swatchName">Yellow grey</div>
+                <div class="swatchCode">RAL 7034</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="dark" data-metallic="0" data-color="#C2C6C3">
+                <div class="swatchName">Light grey</div>
+                <div class="swatchCode">RAL 7035</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="dark" data-metallic="0" data-color="#949292">
+                <div class="swatchName">Platinum grey</div>
+                <div class="swatchCode">RAL 7036</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="light" data-metallic="0" data-color="#797B7B">
+                <div class="swatchName">Dusty grey</div>
+                <div class="swatchCode">RAL 7037</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="dark" data-metallic="0" data-color="#ADB0A9">
+                <div class="swatchName">Agate grey</div>
+                <div class="swatchCode">RAL 7038</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="light" data-metallic="0" data-color="#68675F">
+                <div class="swatchName">Quartz grey</div>
+                <div class="swatchCode">RAL 7039</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="dark" data-metallic="0" data-color="#969CA1">
+                <div class="swatchName">Window grey</div>
+                <div class="swatchCode">RAL 7040</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="dark" data-metallic="0" data-color="#8C9190">
+                <div class="swatchName">Traffic grey A</div>
+                <div class="swatchCode">RAL 7042</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="light" data-metallic="0" data-color="#4F5352">
+                <div class="swatchName">Traffic grey B</div>
+                <div class="swatchCode">RAL 7043</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="dark" data-metallic="0" data-color="#B3B2A9">
+                <div class="swatchName">Silk grey</div>
+                <div class="swatchCode">RAL 7044</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="dark" data-metallic="0" data-color="#8C9094">
+                <div class="swatchName">Telegrey 1</div>
+                <div class="swatchCode">RAL 7045</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="light" data-metallic="0" data-color="#7C8287">
+                <div class="swatchName">Telegrey 2</div>
+                <div class="swatchCode">RAL 7046</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="dark" data-metallic="0" data-color="#C5C5C5">
+                <div class="swatchName">Telegrey 4</div>
+                <div class="swatchCode">RAL 7047</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="light" data-metallic="0" data-color="#7A7871">
+                <div class="swatchName">Pearl mouse grey</div>
+                <div class="swatchCode">RAL 7048</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="light" data-metallic="0" data-color="#816D44">
+                <div class="swatchName">Green brown</div>
+                <div class="swatchCode">RAL 8000</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="light" data-metallic="0" data-color="#8F6833">
+                <div class="swatchName">Ochre brown</div>
+                <div class="swatchCode">RAL 8001</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="light" data-metallic="0" data-color="#704F40">
+                <div class="swatchName">Signal brown</div>
+                <div class="swatchCode">RAL 8002</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="light" data-metallic="0" data-color="#74502F">
+                <div class="swatchName">Clay brown</div>
+                <div class="swatchCode">RAL 8003</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="light" data-metallic="0" data-color="#814D37">
+                <div class="swatchName">Copper brown</div>
+                <div class="swatchCode">RAL 8004</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="light" data-metallic="0" data-color="#67492F">
+                <div class="swatchName">Fawn brown</div>
+                <div class="swatchCode">RAL 8007</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="light" data-metallic="0" data-color="#694F2B">
+                <div class="swatchName">Olive brown</div>
+                <div class="swatchCode">RAL 8008</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="light" data-metallic="0" data-color="#533A29">
+                <div class="swatchName">Nut brown</div>
+                <div class="swatchCode">RAL 8011</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="light" data-metallic="0" data-color="#5C3128">
+                <div class="swatchName">Red brown</div>
+                <div class="swatchCode">RAL 8012</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="light" data-metallic="0" data-color="#453729">
+                <div class="swatchName">Sepia brown</div>
+                <div class="swatchCode">RAL 8014</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="light" data-metallic="0" data-color="#57332B">
+                <div class="swatchName">Chestnut brown</div>
+                <div class="swatchCode">RAL 8015</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="light" data-metallic="0" data-color="#483026">
+                <div class="swatchName">Mahogany brown</div>
+                <div class="swatchCode">RAL 8016</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="light" data-metallic="0" data-color="#42332E">
+                <div class="swatchName">Chocolate brown</div>
+                <div class="swatchCode">RAL 8017</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="light" data-metallic="0" data-color="#3B3736">
+                <div class="swatchName">Grey brown</div>
+                <div class="swatchCode">RAL 8019</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="light" data-metallic="0" data-color="#201F20">
+                <div class="swatchName">Black brown</div>
+                <div class="swatchCode">RAL 8022</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="light" data-metallic="0" data-color="#965D33">
+                <div class="swatchName">Orange brown</div>
+                <div class="swatchCode">RAL 8023</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="light" data-metallic="0" data-color="#6F543C">
+                <div class="swatchName">Beige brown</div>
+                <div class="swatchCode">RAL 8024</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="light" data-metallic="0" data-color="#6E5B4B">
+                <div class="swatchName">Pale brown</div>
+                <div class="swatchCode">RAL 8025</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="light" data-metallic="0" data-color="#4C3E30">
+                <div class="swatchName">Terra brown</div>
+                <div class="swatchCode">RAL 8028</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="light" data-metallic="0" data-color="#764537">
+                <div class="swatchName">Pearl copper</div>
+                <div class="swatchCode">RAL 8029</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="dark" data-metallic="0" data-color="#E5E1D4">
+                <div class="swatchName">Cream</div>
+                <div class="swatchCode">RAL 9001</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="dark" data-metallic="0" data-color="#D4D5CD">
+                <div class="swatchName">Grey white</div>
+                <div class="swatchCode">RAL 9002</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="dark" data-metallic="0" data-color="#EBECEA">
+                <div class="swatchName">Signal white</div>
+                <div class="swatchCode">RAL 9003</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="light" data-metallic="0" data-color="#2F3133">
+                <div class="swatchName">Signal black</div>
+                <div class="swatchCode">RAL 9004</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="light" data-metallic="0" data-color="#131516">
+                <div class="swatchName">Jet black</div>
+                <div class="swatchCode">RAL 9005</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="dark" data-metallic="1" data-color="#9A9D9D">
+                <div class="swatchName">White aluminium</div>
+                <div class="swatchCode">RAL 9006</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="dark" data-metallic="1" data-color="#828280">
+                <div class="swatchName">Grey aluminium</div>
+                <div class="swatchCode">RAL 9007</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="dark" data-metallic="0" data-color="#EFEEE5">
+                <div class="swatchName">Pure white</div>
+                <div class="swatchCode">RAL 9010</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="light" data-metallic="0" data-color="#25282A">
+                <div class="swatchName">Graphite black</div>
+                <div class="swatchCode">RAL 9011</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="dark" data-metallic="0" data-color="#F2F1E1">
+                <div class="swatchName">Cleanroom White</div>
+                <div class="swatchCode">RAL 9012</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="dark" data-metallic="0" data-color="#EFF0EB">
+                <div class="swatchName">Traffic white</div>
+                <div class="swatchCode">RAL 9016</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="light" data-metallic="0" data-color="#262625">
+                <div class="swatchName">Traffic black</div>
+                <div class="swatchCode">RAL 9017</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="dark" data-metallic="0" data-color="#C6CBC6">
+                <div class="swatchName">Papyrus white</div>
+                <div class="swatchCode">RAL 9018</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="dark" data-metallic="0" data-color="#818382">
+                <div class="swatchName">Pearl light grey</div>
+                <div class="swatchCode">RAL 9022</div>
+            </div>
+            <div class="colorSwatch swatch" data-contrast="light" data-metallic="0" data-color="#767779">
+                <div class="swatchName">Pearl dark grey</div>
+                <div class="swatchCode">RAL 9023</div>
+            </div>
+        </div>
+    </div>
+
+    <div id="stainPanel" class="sidePanel">
+        <div class="panelHeader">
+            <h2 class="panelTitle">Pick a stain</h2>
+            <svg id="stainPanelClose" class="closeButton" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg>
+        </div>
+        <div class="swatches">
+            <div class="stainSwatch swatch" data-contrast="dark" data-image="assets/stain_swatches/stain_swatch_0.png">
+                <div class="swatchName">No stain</div>
+                <div class="swatchCode">-</div>
+            </div>
+            <div class="stainSwatch swatch" data-contrast="dark" data-image="assets/stain_swatches/stain_swatch_1.png">
+                <div class="swatchName">Simply white</div>
+                <div class="swatchCode">Minwax 275</div>
+            </div>
+            <div class="stainSwatch swatch" data-contrast="dark" data-image="assets/stain_swatches/stain_swatch_2.png">
+                <div class="swatchName">Pickled oak</div>
+                <div class="swatchCode">Minwax 260</div>
+            </div>
+            <div class="stainSwatch swatch" data-contrast="dark" data-image="assets/stain_swatches/stain_swatch_3.png">
+                <div class="swatchName">Golden pecan</div>
+                <div class="swatchCode">Minwax 245</div>
+            </div>
+            <div class="stainSwatch swatch" data-contrast="light" data-image="assets/stain_swatches/stain_swatch_4.png">
+                <div class="swatchName">Golden oak</div>
+                <div class="swatchCode">Minwax 210B</div>
+            </div>
+            <div class="stainSwatch swatch" data-contrast="light" data-image="assets/stain_swatches/stain_swatch_5.png">
+                <div class="swatchName">Dark walnut</div>
+                <div class="swatchCode">Minwax 2716</div>
+            </div>
+            <div class="stainSwatch swatch" data-contrast="light" data-image="assets/stain_swatches/stain_swatch_6.png">
+                <div class="swatchName">Jacobean</div>
+                <div class="swatchCode">Minwax 2750</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="sections">
+        <section class="sectionA">
+            <svg class="logo" id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 47.75 17.81">
+                <g id="Layer_1-2" data-name="Layer 1">
+                    <path d="M11.28,2.81c.16-.52,.34-.9,.54-1.16s.4-.43,.58-.52v-.24h-.03c-.12-.01-.26,.01-.43,.01-.17,.01-.33,.01-.49,.01-.27,0-.52-.01-.76-.01s-.51-.02-.81-.02v.24c.32,.01,.58,.1,.76,.28,.19,.18,.29,.48,.29,.89,.01,.42-.1,.98-.32,1.69l-.92,2.96-1.58-4.8c-.09-.28-.13-.49-.11-.63s.09-.24,.23-.29,.33-.09,.58-.09v-.24c-.2,0-.47,.02-.8,.02-.33,.01-.68,.01-1.06,.01s-.75-.01-1.12-.01-.69-.02-.96-.02v.24c.14,.01,.26,.05,.36,.13,.1,.08,.19,.22,.25,.43l.81,2.49-1.05,2.86L3.5,2.14c-.04-.12-.07-.25-.09-.4-.02-.15,0-.28,.04-.4,.04-.12,.13-.19,.27-.21v-.24c-.17,0-.39,.02-.66,.02-.28,.01-.59,.01-.94,.01s-.72-.01-1.11-.01-.72-.02-1.01-.02v.24c.11,.01,.23,.07,.36,.18,.13,.11,.25,.31,.35,.59l2.76,7.49s.09,0,.14,0c.18,.01,.33,.04,.43,.08,.13,.05,.21,.15,.25,.29,.04,.14,.06,.35,.06,.65v5.95c0,.29-.02,.5-.06,.65-.04,.15-.12,.24-.24,.29-.12,.05-.3,.08-.55,.1v.24c.23-.02,.54-.03,.92-.03h1.17c.52,0,.97,0,1.34,.02,.38,.02,.66,.02,.85,.02,.75,0,1.39-.09,1.93-.25,.54-.16,.95-.42,1.24-.76,.29-.34,.43-.78,.43-1.32,0-.32-.12-.64-.34-.95-.22-.31-.58-.57-1.08-.79-.5-.21-1.16-.34-1.98-.38v-.02c.63-.08,1.15-.23,1.56-.46,.41-.23,.71-.49,.91-.79,.2-.3,.3-.59,.3-.87,0-.56-.26-1.01-.8-1.36-.19-.12-.43-.22-.69-.3,0,0,0,0,0,0l2.02-6.58Zm-2.86,11.03c.29,.34,.44,.81,.44,1.43,0,.67-.11,1.19-.31,1.55-.21,.37-.53,.55-.98,.55-.21,0-.38-.02-.49-.07-.11-.05-.19-.15-.23-.29-.04-.15-.06-.36-.06-.64v-3.03h.17c.68,0,1.17,.16,1.46,.5Zm-.24-1.69c-.07,.3-.18,.54-.35,.72-.17,.18-.41,.27-.72,.27h-.32v-2.72c0-.42,.04-.69,.12-.83,.08-.13,.26-.2,.53-.2,.29,0,.51,.15,.64,.45s.2,.75,.2,1.34c0,.35-.04,.67-.1,.97Zm-.68-2.99c-.15,0-.41,.01-.78,.01-.37,0-.76,0-1.15,0-.26,0-.5,0-.75,0l1.62-4.55,1.49,4.56c-.14,0-.27-.02-.42-.02Z"/>
+                    <path d="M12.83,1.44v6.84c0,.33-.05,.56-.15,.68s-.27,.18-.52,.18v.25c.18-.01,.44-.02,.78-.03,.34-.02,.68-.02,1.02-.02,.31,0,.61,.01,.91,.02,.29,0,.52,.03,.67,.03v-.25c-.2,0-.35-.06-.43-.18-.09-.12-.13-.34-.13-.68v-3.79c0-.17,.05-.32,.13-.45,.08-.14,.19-.24,.32-.31,.13-.07,.27-.11,.41-.11s.26,.02,.34,.08c.09,.05,.15,.14,.19,.25s.06,.25,.06,.42v3.9c0,.33-.04,.56-.12,.68s-.22,.18-.43,.18v.25c.16-.01,.4-.02,.72-.03,.32-.02,.64-.02,.98-.02,.31,0,.63,.01,.95,.02,.33,0,.57,.03,.73,.03v-.25c-.25,0-.42-.06-.52-.18s-.15-.34-.15-.68v-3.25c0-.41-.02-.73-.08-.97-.05-.24-.14-.44-.26-.58-.12-.13-.28-.25-.49-.34-.21-.09-.5-.14-.87-.14-.43,0-.81,.07-1.13,.21s-.58,.37-.77,.69V0c-.3,.06-.62,.1-.97,.13-.35,.03-.72,.04-1.12,.04-.24,0-.48-.02-.74-.04V.38c.26,0,.43,.09,.53,.26,.09,.17,.14,.44,.14,.8Z"/>
+                    <path d="M21.34,2.06c.42,0,.74-.09,.97-.26,.23-.17,.34-.43,.34-.77s-.11-.6-.34-.77-.55-.26-.97-.26-.74,.09-.97,.26-.34,.43-.34,.77,.11,.6,.34,.77c.23,.17,.55,.26,.97,.26Z"/>
+                    <path d="M21.46,9.32c.33,0,.66,.01,.98,.02s.56,.03,.72,.03v-.25c-.25,0-.42-.06-.52-.18-.1-.12-.15-.34-.15-.68V3.02c-.3,.06-.62,.1-.97,.13-.35,.03-.72,.04-1.12,.04-.24,0-.48-.02-.74-.04v.25c.26,0,.43,.09,.53,.26,.09,.17,.14,.44,.14,.8v3.8c0,.33-.05,.56-.15,.68s-.27,.18-.52,.18v.25c.18,0,.44-.02,.78-.03,.34-.02,.69-.02,1.02-.02Z"/>
+                    <path d="M28.04,6.26c-.19-.19-.41-.39-.66-.59-.22-.2-.45-.38-.67-.55-.22-.17-.4-.35-.55-.54-.15-.19-.22-.4-.22-.64,0-.21,.06-.37,.2-.49,.13-.12,.3-.18,.5-.18,.33,0,.6,.1,.8,.29,.21,.19,.36,.43,.47,.72,.11,.29,.18,.58,.21,.88h.24c0-.54,0-.97,.01-1.31,.01-.34,.02-.62,.04-.85h-.24c-.07,.37-.24,.48-.52,.31-.12-.06-.31-.13-.58-.21-.27-.07-.58-.11-.93-.11h0c-.39,0-.76,.06-1.1,.2-.34,.14-.62,.33-.83,.59-.21,.25-.32,.56-.32,.92,0,.32,.06,.6,.2,.85,.13,.26,.31,.49,.52,.7s.44,.43,.68,.65c.32,.29,.59,.55,.8,.79,.21,.24,.32,.54,.32,.89,0,.15-.04,.27-.1,.37s-.15,.17-.25,.22c-.11,.05-.22,.07-.35,.07-.29,0-.54-.09-.76-.28-.22-.18-.4-.44-.54-.77-.14-.33-.23-.71-.28-1.13h-.24c0,.6-.01,1.09-.01,1.46-.01,.37-.02,.68-.04,.94h.24c.03-.11,.07-.21,.13-.29,.05-.09,.12-.13,.2-.13,.09,0,.18,0,.27,.05,.09,.04,.2,.09,.33,.15,.12,.08,.29,.15,.5,.21,.21,.06,.45,.09,.73,.09,.45,0,.86-.07,1.22-.23,.37-.15,.66-.37,.88-.65,.22-.28,.33-.6,.33-.96,0-.31-.05-.58-.17-.81-.11-.23-.27-.44-.46-.63Z"/>
+                    <path d="M35.87,8.51l-1.9-3.62,.31-.31c.3-.31,.6-.56,.9-.76s.59-.34,.88-.42v-.24h-.01c-.1,.01-.25,.01-.45,.01-.2,0-.4,0-.62,0h-.58c-.19,0-.42,0-.69,0s-.52-.02-.75-.02v.24c.29,.02,.52,.11,.7,.26,.18,.15,.26,.34,.26,.57-.01,.23-.15,.47-.43,.73l-.92,.86c-.08,.08-.16,.13-.26,.15-.07,.01-.15,.02-.23,.02V0c-.3,.06-.62,.1-.97,.13-.35,.03-.72,.04-1.12,.04-.24,0-.48-.02-.74-.04V.38c.26,0,.43,.09,.53,.26,.09,.17,.14,.44,.14,.8v6.83c0,.33-.05,.56-.15,.68-.1,.12-.27,.18-.52,.18v.25c.18-.01,.44-.02,.78-.03,.34-.02,.69-.02,1.02-.02s.66,.01,.98,.02c.32,0,.56,.03,.72,.03v-.25c-.25,0-.42-.06-.52-.18-.1-.12-.15-.34-.15-.68v-2.03c.06,0,.12,.01,.17,.03,.07,.04,.13,.11,.19,.22l1.06,2.23c.07,.13,.07,.23,.02,.3-.05,.07-.16,.11-.32,.11v.25c.16-.01,.41-.02,.73-.03,.33-.02,.65-.02,.97-.02,.28,0,.55,.01,.83,.02,.28,0,.48,.03,.62,.03v-.25c-.12-.06-.21-.15-.28-.27-.07-.11-.14-.23-.2-.35Z"/>
+                    <path d="M38.73,5.68h3.09c0-.97-.21-1.66-.61-2.07-.4-.41-.96-.62-1.66-.62h.02c-.58,.01-1.1,.12-1.57,.35-.47,.23-.84,.58-1.11,1.07-.27,.49-.41,1.07-.41,1.88s.12,1.45,.37,1.93c.25,.48,.58,.82,1,1.03,.42,.21,.89,.31,1.4,.31,.48,0,.88-.11,1.22-.31,.33-.2,.61-.47,.82-.78,.21-.31,.36-.63,.46-.95l-.2-.07c-.18,.24-.36,.41-.54,.53-.18,.11-.35,.19-.51,.22-.15,.03-.29,.05-.4,.05-.21,0-.43-.06-.64-.18-.21-.12-.39-.34-.53-.65-.14-.31-.21-.75-.21-1.31v-.25c0-.06,0-.12,0-.18Zm.74-2.42c.15,0,.27,.1,.36,.3,.09,.2,.14,.46,.19,.8,.05,.34,.05,.7,.05,1.09h-1.39c.04-.79,.12-1.35,.26-1.68,.14-.34,.31-.51,.53-.51Z"/>
+                    <path d="M47.65,3.65c-.07-.19-.18-.35-.34-.47-.16-.13-.38-.19-.67-.19v.03c-.24,0-.45,.04-.65,.1-.19,.06-.37,.16-.52,.29-.15,.13-.28,.3-.38,.51v-.86c-.3,.06-.62,.1-.97,.13-.35,.03-.72,.04-1.12,.04-.24,0-.48-.02-.74-.04v.25c.26,0,.43,.09,.53,.26,.09,.17,.14,.44,.14,.8v3.8c0,.33-.05,.56-.15,.68-.1,.12-.27,.18-.52,.18v.25c.19-.01,.46-.02,.83-.03,.37-.02,.73-.02,1.09-.02,.38,0,.76,.01,1.12,.02s.64,.03,.82,.03v-.25c-.37,0-.63-.06-.79-.2-.16-.14-.24-.4-.24-.78v-3.6c0-.12,.01-.24,.05-.35,.04-.12,.09-.22,.15-.31,.07-.1,.14-.18,.23-.25,.09-.07,.18-.13,.28-.17,.11-.05,.24-.08,.38-.08-.18,.12-.32,.26-.44,.44-.11,.17-.17,.4-.17,.67,0,.25,.09,.46,.27,.62,.18,.16,.45,.24,.8,.24,.33,0,.6-.11,.8-.32,.21-.21,.31-.5,.31-.86,0-.19-.04-.37-.1-.56Z"/>
+                    <path d="M16.7,11.57c-.46-.21-1.01-.32-1.63-.32s-1.16,.11-1.62,.32c-.46,.21-.83,.56-1.08,1.04-.25,.48-.38,1.12-.38,1.93s.12,1.45,.38,1.93c.26,.48,.62,.82,1.08,1.03,.46,.21,.99,.31,1.62,.31s1.17-.1,1.63-.31c.46-.21,.81-.55,1.07-1.03,.25-.48,.38-1.12,.38-1.93s-.12-1.45-.38-1.93c-.25-.48-.61-.83-1.07-1.04Zm-1.03,5.29c-.16,.47-.36,.71-.6,.71s-.44-.23-.6-.71c-.16-.47-.24-1.25-.24-2.32s.08-1.85,.24-2.33c.16-.48,.36-.72,.6-.72s.44,.24,.6,.72c.16,.48,.24,1.26,.24,2.33s-.08,1.84-.24,2.32Z"/>
+                    <path d="M24.32,16.8l-1.96-2.96,1.04-1.2c.2-.24,.39-.44,.58-.61,.19-.17,.37-.29,.55-.37v-.24h0c-.11-.01-.22,0-.35,0-.13,.01-.28,.01-.46,.01-.21,0-.47-.01-.77-.01s-.58-.02-.83-.02v.24c.28,.03,.5,.12,.62,.29s.17,.38,.12,.64-.19,.53-.43,.83l-.2,.24-1.04-1.57c-.08-.13-.09-.23-.03-.3s.17-.11,.33-.11v-.25h-.01c-.14,0-.34,.02-.6,.03-.27,.02-.54,.02-.82,.02-.34,0-.69-.01-1.03-.02-.34-.01-.6-.03-.78-.03v.25c.12,.03,.23,.09,.32,.19,.1,.1,.2,.23,.31,.41l1.85,2.78-1.2,1.38c-.2,.24-.39,.43-.56,.59-.17,.16-.36,.29-.57,.39v.24c.11-.02,.23-.03,.35-.03h1.03c.24,.01,.49,.01,.75,.01,.25,.01,.46,.02,.62,.02v-.24c-.28-.03-.5-.14-.66-.34-.16-.2-.22-.45-.19-.76,.03-.31,.18-.63,.44-.97l.09-.12,1.18,1.77c.08,.13,.09,.23,.03,.3-.06,.07-.17,.11-.33,.11v.25c.16-.01,.4-.02,.71-.03,.31-.02,.63-.02,.95-.02,.3,0,.6,0,.9,.02,.29,.01,.52,.03,.67,.03v-.25c-.12-.02-.24-.1-.35-.24-.11-.14-.2-.26-.27-.36Zm-3.5-1.89h.02s-.01,.03-.01,.03c0,0,0-.02,0-.03Z"/>
+                </g>
+            </svg>
+            <canvas id="renderCanvas" touch-action="none"></canvas>
+        </section>
+
+        <section class="sectionB">
+            <div class="controlPanel">
+                <div id="controlTabsContainer">
+                    <button class="controlTab">Description</button>
+                    <button class="controlTab">Personalization</button>
+                    <button class="controlTab">Specifications</button>
+                    <button class="controlTab">Gallery</button>
+                </div>
+                <div class="controlGroups">
+                    <div class="controlGroup">
+                        <h2 class="controlGroupTitle">Description</h2>
+                        <p><b>WHISKER BOX</b> – a sleek and stylish cover designed to conceal your cat's litter box. With customizable finishes, it seamlessly integrates into your home decor. Featuring a convenient shelf to store supplies and accessories, it enhances your space while providing your feline friend with the privacy it needs.</p>
+                    </div>
+                    <div class="controlGroup">
+                        <h2 class="controlGroupTitle">Personalization</h2>
+                        <div class="configTabs">
+                            <button class="configTab">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z"/></svg>
+                                <span>Painted MDF</span>
+                            </button>
+                            <button class="configTab">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z"/></svg>
+                                <span>Coated Plywood</span>
+                            </button>
+                        </div> 
+                        <div id="colorPicker" class="picker swatch">
+                            <div class="swatchTarget">Color</div>
+                            <div class="swatchName">Name</div>
+                            <div class="swatchCode">Code</div>
+                            <svg class="swatchIcon" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="m321-80-71-71 329-329-329-329 71-71 400 400L321-80Z"/></svg>
+                        </div>
+                        <div id="stainPicker" class="picker swatch">
+                            <div class="swatchTarget">Stain</div>
+                            <div class="swatchName">Name</div>
+                            <div class="swatchCode">Code</div>
+                            <svg class="swatchIcon" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="m321-80-71-71 329-329-329-329 71-71 400 400L321-80Z"/></svg>
+                        </div>
+                        <div class="disclaimer">The visualization is for reference only and the final product may vary slightly.</div>
+                    </div>
+                    <div class="controlGroup">
+                        <h2 class="controlGroupTitle">Specifications</h2>
+                        <p>The package includes a meticulously crafted cover fashioned from premium materials, accompanied by a durable plastic litter box.</p>
+                        <img class="specsImage specsLight" src="assets/specs_light.svg" alt="">
+                        <img class="specsImage specsDark" src="assets/specs_dark.svg" alt="">
+                    </div>
+                    <div class="controlGroup">
+                        <h2 class="controlGroupTitle">Gallery</h2>
+                        <p>This section showcases sample photos of our product in action.</p>
+                        <div class="gallery">
+                            <div class="galleryEntry">
+                                <img src="assets/gallery/01.png" alt="">
+                            </div>
+                            <div class="galleryEntry">
+                                <img src="assets/gallery/02.png" alt="">
+                            </div>
+                            <div class="galleryEntry">
+                                <img src="assets/gallery/03.png" alt="">
+                            </div>
+                            <div class="galleryEntry">
+                                <img src="assets/gallery/04.png" alt="">
+                            </div>
+                            <div class="galleryEntry">
+                                <img src="assets/gallery/05.png" alt="">
+                            </div>
+                            <div class="galleryEntry">
+                                <img src="assets/gallery/06.png" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="callToAction">
+                    <!-- <button class="ctaButton">Request Offer</button> -->
+                    <button id="previewButton" class="ctaButton">Request Offer</button>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script src="scripts/manager.js"></script>    
+      
+</body>
+</html>
