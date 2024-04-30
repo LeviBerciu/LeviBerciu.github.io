@@ -1,327 +1,184 @@
-:root{
-    --DEFAULT-TRANSITION: transform .25s;
+html {
+    box-sizing: border-box;
+    font-size: 16px;
 }
 
-:root[data-theme="light"]{
-    --UI-01: #FFFFFF;
-    --UI-02: #ECEFF1;
-    --UI-03: #CFD8DC;
-    --UI-04: #B0BEC5;
-    --UI-05: #90A4AE;
-    --UI-06: #78909C;
-    --UI-07: #607D8B;
-    --UI-08: #546E7A;
-    --UI-09: #455A64;
-    --UI-10: #37474F;
-    --UI-11: #263238;
-    --PART-1: url( '../assets/part_tabs/body_light.svg');
-    --PART-2: url( '../assets/part_tabs/buttons_one_light.svg');
-    --PART-3: url( '../assets/part_tabs/buttons_two_light.svg');
-    --PART-4: url( '../assets/part_tabs/buttons_three_light.svg');
-    --PART-5: url( '../assets/part_tabs/buttons_four_light.svg');
-    --PART-6: url( '../assets/part_tabs/screen_two_light.svg');
-    --PART-7: url( '../assets/part_tabs/back_light.svg');
-    --PART-8: url( '../assets/part_tabs/case_light.svg');
-    --DISPLAY-DARK: hidden;
-    --DISPLAY-LIGHT: visible;
-    --SWITCH-CIRCLE-POS: 0px; 
+*, *:before, *:after {
+    box-sizing: inherit;
 }
 
-:root[data-theme="dark"]{
-    --UI-01: #263238;
-    --UI-02: #37474F;
-    --UI-03: #455A64;
-    --UI-04: #546E7A;
-    --UI-05: #607D8B;
-    --UI-06: #78909C;
-    --UI-07: #90A4AE;
-    --UI-08: #B0BEC5;
-    --UI-09: #CFD8DC;
-    --UI-10: #ECEFF1;
-    --UI-11: #FFFFFF;
-    --PART-1: url( '../assets/part_tabs/body_dark.svg');
-    --PART-2: url( '../assets/part_tabs/buttons_one_dark.svg');
-    --PART-3: url( '../assets/part_tabs/buttons_two_dark.svg');
-    --PART-4: url( '../assets/part_tabs/buttons_three_dark.svg');
-    --PART-5: url( '../assets/part_tabs/buttons_four_dark.svg');
-    --PART-6: url( '../assets/part_tabs/screen_two_dark.svg');
-    --PART-7: url( '../assets/part_tabs/back_dark.svg');
-    --PART-8: url( '../assets/part_tabs/case_dark.svg');
-    --DISPLAY-DARK: visible;
-    --DISPLAY-LIGHT: hidden;
-    --SWITCH-CIRCLE-POS: 40px; 
-}
-
-*{
+body, h1, h2, h3, h4, h5, h6, p, ol, ul {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-    font-family: 'Inter', sans-serif;
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 24px;
-    outline: none;
-    border: none;
-    -webkit-tap-highlight-color: transparent;
+    font-weight: normal;
+}
+
+h1{
+    font-size: 32px;
+    font-weight: 600;
+    line-height: 48px;
+}
+
+h2{
+    font-size: 24px;
+    line-height: 36px;
+}
+
+p{
+    line-height: 1.5;
+}
+
+ol, ul {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
 }
 
 body{
-    background-color: var(--UI-01);
-}
-
-img{
-    display: block;
-    width: 100%;
-}
-
-.sections{
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    width: 100%;
-    min-height: 100vh;
-}
-
-.sectionA{
-    position: relative;
-    background-color: var(--UI-02);
-    z-index: 0;
-}
-
-#themeSwitcher{
-    position: absolute;
     display: flex;
-    flex-direction: column;
-    gap: 8px;
-    background-color: var(--UI-03);
-    right: 32px;
-    top: 32px;
-    border-radius: 20px;
-    cursor: pointer;
-    user-select: none;
-    padding: 4px;
+    height: 100vh;
+    color: #1D1B20;
+    font-family: Helvetica, Arial, Sans-Serif;
 }
 
-#themeSwitcher::before{
-    content: '';
-    position: absolute;
-    width: 32px;
-    height: 32px;
-    background-color: var(--UI-09);
-    border-radius: 16px;
-    z-index: 0;
-    transform: translateY(var(--SWITCH-CIRCLE-POS));
-    transition: var(--DEFAULT-TRANSITION);
+button{
+    border: none;
+    margin: 0;
+    padding: 0;
 }
 
-#themeSwitcher svg{
-    z-index: 1;
-}
+/* LEFT SECTION ---------------------------------------- */
 
-#sunIcon{
-    fill: var(--UI-01)
-}
-
-#moonIcon{
-    fill: var(--UI-01)
-}
-
-.displayText{
-    position: absolute;
-    height: 100%;
-    width: max-content;
-    pointer-events: none;
-    z-index: -1;
-    opacity: 0.5;
-}
-
-#captureButton{
-    position: absolute;
+.canvasContainer{
     display: flex;
-    background-color: var(--UI-03);
-    right: 32px;
-    top: 128px;
-    border-radius: 20px;
-    cursor: pointer;
-    padding: 4px;
-}
-
-#captureIcon{
-    fill: var(--UI-09);
-}
-
-.displayTextLeft{
-    left: 0px;
-}
-
-.displayTextRight{
-    right: 0px;
-}
-
-.displayTextLight{
-    visibility: var(--DISPLAY-LIGHT);
-}
-
-.displayTextDark{
-    visibility: var(--DISPLAY-DARK);
+    aspect-ratio: 3 / 4;
 }
 
 #renderCanvas{
-    float: left;
-    width: 100%;
     height: 100%;
-    max-height: 100vh;
-    aspect-ratio: 1/1;
-    opacity: 0;
-    transition: opacity 1s ease-in-out;
-}
-
-.sectionB{
-    background-color: var(--UI-01);
-    color: var(--UI-09);
-}
-
-.controlPanel{
-    max-height: 100vh;
-    max-width: 100dvw;
-    overflow-y: auto;
-    display: flex;
-    flex-wrap: wrap;
-    padding: 16px 32px 16px 32px;
-}
-
-.controlTabsContainer{
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
     width: 100%;
-    padding-top: 16px;
+}
+
+/* RIGHT SECTION ---------------------------------------- */
+
+.settingsContainer{
+    width: 100%;
+    padding: 32px;
+    background-color: #FEF7FF;
+}
+.titleArea{
     padding-bottom: 16px;
 }
+.controlLabel{
+    margin: 24px 0px 12px 0px;
+    font-size: 16px;
+    font-weight: 600;
+}
 
-.controlTab{
+/* Search Input ---------------------------------------- */
+
+.citiesSearch{
+    width: 400px;
+}
+#citiesInput{
+    border: none;
+    outline: none;
+    width: 100%;
+    height: 44px;
+    padding: 0px 0px 0px 12px;
+    background-color: #FFFFFF;
+    border: 1px solid #CAC4D0;
+    font-size: 16px;
     border-radius: 4px;
-    cursor: pointer;
-    border: 1px solid var(--UI-02);
+    transition: all 250ms;
+}
+#citiesInput::placeholder{
+    color: #1D1B20;
+}
+#citiesInput:focus{
+    border-color: #6750A4;
+}
+/* Search List ----------------------------------------*/
+
+#citiesList{
+    position: absolute;
+    list-style: none;
+    background-color: #FFFFFF;
+    border-radius: 4px;
+    z-index: 1;
+    width: 400px;
+    max-height: 600px;
+    box-shadow: 0px 12px 24px 0px rgba(0,0,0,0.1);
+    overflow: auto;
+}
+#citiesList li{
+    line-height: 24px;
+    padding-left: 12px;
+    padding-right: 12px;
+}
+#citiesList li:first-child{
+    margin-top: 4px;
+}
+#citiesList li:last-child{
+    margin-bottom: 4px;
+}
+#citiesList li:hover{
+    background-color: #E8DEF8;
 }
 
-.controlTab.active{
-    border-color: var(--UI-03);
-    background-color: var(--UI-03);
+/* Toggles ----------------------------------------*/
+
+.toggle{
+    display: flex;
+    height: 36px;
+    line-height: 34px;
+}
+.toggle input{
+display: none;
+}
+.toggle label{
+    padding: 0px 16px 0px 16px;
+    display: block;
+    margin: 0px;
+    background-color: #E8DEF8;
+    color: #1D1B20;
+    transition: all 250ms;
+    text-align: center;
+    border: 1px solid #6750A4;
+    box-sizing: border-box;
+}
+.toggle label:first-of-type{
+    border-radius: 4px 0px 0px 4px;
+}
+.toggle label:last-of-type{
+    border-radius: 0px 4px 4px 0px;
+}
+.toggle input:checked + label{
+    background-color: #6750A4;
+    color: #FFFFFF;
 }
 
-.controlTab:hover{
-    background-color: var(--UI-02);
+/* Call To Action ----------------------------------------*/
+
+.ctaButton{
+    font-size: 16px;
+    text-transform: uppercase;
+    background-color: #21005D;
+    margin-top: 40px;
+    height: 44px;
+    color: #FFFFFF;
+    width: 400px;
+    border-radius: 4px;
 }
 
-.controlTab.active:hover{
-    background-color: var(--UI-03);
+/* Dosclaimer ----------------------------------------*/
+
+.disclaimer{
+    padding: 12px;
+    margin-top: 40px;
+    background-color: #E8DEF8;
+    border-radius: 4px;
 }
-
-.calculatorPart{
-    min-width: 60px;
-    height: 80px;
-}
-
-.calculatorBody{
-    background-image: var(--PART-1)
-}
-
-.calculatorButtonsOne{
-    background-image: var(--PART-2)
-}
-
-.calculatorButtonsTwo{
-    background-image: var(--PART-3)
-}
-
-.calculatorButtonsThree{
-    background-image: var(--PART-4)
-}
-
-.calculatorButtonsFour{
-    background-image: var(--PART-5)
-}
-
-.calculatorScreenTwo{
-    background-image: var(--PART-6)
-}
-
-.calculatorBack{
-    background-image: var(--PART-7)
-}
-
-.calculatorCase{
-    background-image: var(--PART-8)
-}
-
-.colorGroupTab{
-    font-weight: 400;
-    line-height: 40px;
-    white-space: nowrap;
-    padding: 0px 12px 0px 12px;
-}
-
-.colorSwatch{
-    width: 60px;
-}
-
-.projectDescription{
-    margin: 16px 0px 0px 0px;
-    padding: 32px 0px 32px 0px;
-    color: var(--UI-07);
-    border-top: 1px solid var(--UI-02);
-}
-
-.projectDescription a{
-    color: var(--UI-07);
-}
-
-@media screen and (orientation: portrait){
-
-    .sections{
-        grid-template-columns: 1fr;
-        min-height: auto;
-    }
-
-    .controlPanel{
-        max-height: 100%;
-    }
-
-    @media only screen and (hover: none) and (pointer: coarse){
-        .controlTabsContainer{
-            overflow: auto;
-            flex-wrap: nowrap;
-        }
-    }
-}
-
-
-@media screen and (max-width: 960px){
-
-    #themeSwitcher{
-        right: 24px;
-        top: 24px;
-    }
-
-    #captureButton{
-        right: 24px;
-        top: 120px;
-    }
-
-    .controlPanel{
-        padding: 8px 24px 8px 24px;
-    }
-
-    .controlTabsContainer{
-        padding: 16px 0px 16px 0px;
-    }
-}
-
-
-@media screen and (max-width: 480px){
-    
-    button{
-        width: 100%;
-    }
-}
-
