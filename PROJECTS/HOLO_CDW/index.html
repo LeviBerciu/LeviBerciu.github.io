@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Holo CDW</title>
+    <link rel="stylesheet" href="styles/style.css">
+    <script src="scripts/babylon.js"></script>
+    <script src="scripts/babylonjs.loaders.min.js"></script>
+    <script src="scripts/babylon.gui.js"></script>
+    <script src="scripts/babylonjs.materials.min.js"></script>
+    <script src="scripts/earcut.min.js"></script>
+
+    <script type="module">
+        import { LookingGlassWebXRPolyfill, LookingGlassConfig } from "./scripts/webxr.js"
+        const config = LookingGlassConfig
+        config.tileHeight = 512
+        config.numViews = 45
+        config.targetY = 0
+        config.targetZ = 0
+        config.targetDiam = 3
+        config.fovy = (14 * Math.PI) / 180
+        new LookingGlassWebXRPolyfill()
+    </script>
+</head>
+<body>
+    <div class="canvasContainer">
+        <canvas id="renderCanvas" touch-action="none"></canvas>
+    </div>
+    <div class="settingsContainer">
+        <div class="titleArea">
+            <h2>Looking Glass Display</h2>
+            <h1>Holographic Clock, Date & Weather</h1>
+        </div>
+        <div class="controlLabel">Selected City</div>
+        <div class="citiesSearch">
+            <input id="citiesInput" type="text" placeholder="...">
+            <ul id="citiesList"></ul>
+        </div>
+        <div class="controlLabel">Hour Format</div>
+        <div class="toggle">
+            <input type="radio" name="timeFormat" id="timeFormat24" value="24">
+            <label for="timeFormat24">24</label>
+            <input type="radio" name="timeFormat" id="timeFormat12" value="12">
+            <label for="timeFormat12">12</label>
+        </div>
+        <div class="controlLabel">Temperature Unit</div>
+        <div class="toggle">
+            <input type="radio" name="tempUnit" id="celsiusTempUnit" value="celsius">
+            <label for="celsiusTempUnit">°C</label>
+            <input type="radio" name="tempUnit" id="fahrenheitTempUnit" value="fahrenheit">
+            <label for="fahrenheitTempUnit">°F</label>
+        </div>
+        <button id="xrButton" class="ctaButton">Enter Looking Glass</button>
+        <div class="disclaimer">
+            <p>Just a heads-up, this project is a bit of an experiment, tailored specifically to work with the <a href="https://lookingglassfactory.com/looking-glass-portrait" target="_blank">Looking Glass Portrait</a> display.<p>
+            <p>The meteorological data is pulled from <a href="https://open-meteo.com/" target="_blank">Open-Meteo</a>, and <a href="https://www.babylonjs.com/" target="_blank">Babylon.js</a> is powering the 3D rendering.</p>
+        </div>
+        <div class="tutorialVideo">
+            <iframe src="https://www.youtube.com/embed/j28ue3HSTWQ?rel=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+    </div>
+</body>
+<script src="scripts/manager.js"></script>
+</html> 
