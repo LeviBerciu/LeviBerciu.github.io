@@ -1,0 +1,96 @@
+*, *:before, *:after {
+    outline: none;
+    border: none;
+    margin: 0;
+    padding: 0;
+    background-color: transparent;
+  }
+
+body{
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+img{
+    width: 100%;
+    height: auto;
+}
+
+audio{ /* TBD */
+    width: 100%;
+}
+
+.tourContainer{
+    width: 100%;
+    margin: auto;
+    height: 100vh;
+}
+
+.tourNav{
+    width: 100%;
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, .1);
+}
+
+.tourHeader{
+    display: flex;
+    width: 100%;
+}
+
+.backButton{
+    display: flex;
+    padding: 12px;
+}
+
+.backButton img{
+    width: 28px;
+}
+
+.tourTitle{
+    display: block;
+    font-size: 20px;
+    width: 100%;
+    line-height: 28px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    padding: 12px 12px 12px 0px;
+}
+
+.tourTabs{
+    display: flex;
+    padding: 0px 16px 0px 16px;
+    list-style: none;
+}
+
+.tourTabs li{
+    text-align: center;
+    line-height: 44px;
+    width: 100%;
+}
+
+.tourTabs li.active{
+    border-bottom: 4px solid blue;
+}
+
+.tourTabs a {
+    text-decoration: none;
+    color: black;
+}
+
+.tourTabContentContainer{
+    height: calc(100% - (100px + 100px));
+}
+
+.tourTabContent {
+    display: none;
+    padding: 16px;
+}
+
+.tourTabContent.active {
+    display: block;
+}
+
+.tourPlayer{
+    width: 100%;
+    height: 100px;
+    box-shadow: 0px -5px 5px rgba(0, 0, 0, .1);
+}
