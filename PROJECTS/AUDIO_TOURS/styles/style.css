@@ -22,7 +22,7 @@ audio{ /* TBD */
 .tourContainer{
     width: 100%;
     margin: auto;
-    height: 100vh;
+    height: 100dvh;
 }
 
 .tourNav{
