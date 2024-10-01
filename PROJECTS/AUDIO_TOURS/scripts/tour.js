@@ -28,3 +28,5 @@ const panzoom = Panzoom(elem, {
 
 // Enable mousewheel zoom
 elem.parentElement.addEventListener('wheel', panzoom.zoomWithWheel);
+
+
