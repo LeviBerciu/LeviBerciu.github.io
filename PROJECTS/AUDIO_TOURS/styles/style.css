@@ -24,7 +24,7 @@ p, h4{
     top: 0;
     width: 100%;
     background-color: white;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, .15);
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, .1);
     z-index: 1;
 }
 
@@ -60,19 +60,34 @@ p, h4{
 }
 
 .tourTabs li{
-    text-align: center;
+    display: flex;
+    height: 44px;
+    gap: 8px;
+    align-items: center;
+    justify-content: center;
     line-height: 44px;
     width: 100%;
+    border-bottom: 4px solid inherit;
 }
 
-.tourTabs li.active{
-    border-bottom: 4px solid blue;
+.tourTabs img {
+    width: 20px;
+    height: 20px;
 }
 
 .tourTabs a {
+    line-height: 20px;
     text-decoration: none;
     color: black;
 }
+
+.tourTabs li.active{
+    border-bottom: 4px solid orange;
+    color: black;
+    font-weight: bold;
+}
+
+
 
 .tourTabContentContainer{
     position: fixed;
@@ -107,7 +122,7 @@ p, h4{
     background-color: white;
     border-radius: 8px;
     overflow: hidden;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, .05);
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, .1);
 }
 
 .tourTrackCardGradient{
@@ -177,7 +192,7 @@ p, h4{
     height: 140px;
     padding: 16px;
     background-color: white;
-    box-shadow: 0px -4px 8px rgba(0, 0, 0, .15);
+    box-shadow: 0px -4px 8px rgba(0, 0, 0, .1);
     z-index: 1;
 }
 
