@@ -5,15 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tour</title>
     <link rel="stylesheet" href="styles/style.css">
+    <script src="scripts/panzoom.js"></script>
 </head>
 <body>
     
     <nav class="tourNav">
         <div class="tourHeader">
-            <a class="backButton" href="index.html">
-                <img src="assets/arrow_back_24dp_000000_FILL0_wght400_GRAD0_opsz24.svg" alt="">
-            </a>
-            <div class="tourTitle">Historic Cluj-Napoca: "The City" Walk Historic Cluj-Napoca: "The City" Walk</div>
+            <div class="tourHeaderButton"><a href="index.html"><img src="assets/back_icon.svg" alt=""></a></div>
+            <div class="tourHeaderTitle">Cluj-Napoca “Old Town” Walk</div>
+            <div class="tourHeaderButton"><img src="assets/download_icon.svg" alt=""></div>
         </div>
         <ul class="tourTabs">
             <li class="active"><img src="assets/tracks_icon.svg" alt=""><a href="#tourTracks">Tracks</a></li>
@@ -46,7 +46,9 @@
         </ul>
             
         <div id="tourMap" class="tourTabContent">
-            <!-- MAP -->
+
+            <img id="map-image" src="assets/map.svg" alt="Map">
+
         </div>
             
         <ul id="tourScript" class="tourTabContent">

@@ -17,3 +17,14 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
 });
+
+
+// Initialize Panzoom on the image
+const elem = document.getElementById('map-image');
+const panzoom = Panzoom(elem, {
+    maxScale: 5, // Maximum zoom level
+    contain: 'outside' // Restrict panning beyond the image
+});
+
+// Enable mousewheel zoom
+elem.parentElement.addEventListener('wheel', panzoom.zoomWithWheel);
