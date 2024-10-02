@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tour</title>
     <link rel="stylesheet" href="styles/style.css">
-    <script src="scripts/panzoom.js"></script>
+    <script src="scripts/svg-pan-zoom.js"></script>
 </head>
 <body>
     
@@ -16,15 +16,15 @@
             <div class="tourHeaderButton"><img src="assets/download_icon.svg" alt=""></div>
         </div>
         <ul class="tourTabs">
-            <li class="active"><img src="assets/tracks_icon.svg" alt=""><a href="#tourTracks">Tracks</a></li>
-            <li><img src="assets/map_icon.svg" alt=""><a href="#tourMap">Map</a></li>
+            <li><img src="assets/tracks_icon.svg" alt=""><a href="#tourTracks">Tracks</a></li>
+            <li class="active" ><img src="assets/map_icon.svg" alt=""><a href="#tourMap">Map</a></li>
             <li><img src="assets/script_icon.svg" alt=""><a href="#tourScript">Script</a></li>
         </ul>
     </nav>
 
     <div class="tourTabContentContainer">
 
-        <ul id="tourTracks" class="tourTabContent active">
+        <ul id="tourTracks" class="tourTabContent">
             <li class="tourTrackCard" style="background-image: url('assets/f943839c9149ffc03701c90ca4452664-1024x480.jpg'); background-size: cover;">
                 <div class="tourTrackCardGradient"></div>
                 <div class="tourTrackCardLabel">
@@ -44,13 +44,9 @@
                 </div>
             </li>
         </ul>
-            
-        <div id="tourMap" class="tourTabContent">
 
-            <img id="map-image" src="assets/map.svg" alt="Map">
+        <object id="tourMap" class="tourTabContent active" type="image/svg+xml" data="assets/westminster_map.svg">Your browser does not support SVG</object>
 
-        </div>
-            
         <ul id="tourScript" class="tourTabContent">
             <li class="tourScriptCard">
                 <h4>Lorem, ipsum dolor</h4><br>
@@ -63,7 +59,7 @@
 
     <div class="tourPlayer">
         <audio controls>
-            <source src="assets/london-historic-the-city-walk.mp3" type="audio/mpeg">
+            <source src="assets/london-westminster.mp3" type="audio/mpeg">
             Your browser does not support the audio tag.
         </audio>
     </div>

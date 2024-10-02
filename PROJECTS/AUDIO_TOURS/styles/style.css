@@ -172,12 +172,11 @@ p, h4{
 
 
 #tourMap{
+    width: 100dvw;
     height: calc(100dvh - 272px);
+    background-color: white;
 }
 
-#tourMap img{
-    /* object-fit: cover; */
-}
 
 
 
