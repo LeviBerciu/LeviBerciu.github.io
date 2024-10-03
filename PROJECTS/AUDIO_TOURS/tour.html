@@ -5,48 +5,104 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tour</title>
     <link rel="stylesheet" href="styles/style.css">
-    <script src="scripts/svg-pan-zoom.js"></script>
+    <script src="scripts/panzoom.js"></script>
 </head>
 <body>
     
     <nav class="tourNav">
         <div class="tourHeader">
             <div class="tourHeaderButton"><a href="index.html"><img src="assets/back_icon.svg" alt=""></a></div>
-            <div class="tourHeaderTitle">Cluj-Napoca “Old Town” Walk</div>
+            <div class="tourHeaderTitle">London: Westminster Walk</div>
             <div class="tourHeaderButton"><img src="assets/download_icon.svg" alt=""></div>
         </div>
         <ul class="tourTabs">
-            <li><img src="assets/tracks_icon.svg" alt=""><a href="#tourTracks">Tracks</a></li>
-            <li class="active" ><img src="assets/map_icon.svg" alt=""><a href="#tourMap">Map</a></li>
+            <li class="active"><img src="assets/tracks_icon.svg" alt=""><a href="#tourChapters">Chapters</a></li>
+            <li><img src="assets/map_icon.svg" alt=""><a href="#tourMap">Map</a></li>
             <li><img src="assets/script_icon.svg" alt=""><a href="#tourScript">Script</a></li>
         </ul>
     </nav>
 
     <div class="tourTabContentContainer">
 
-        <ul id="tourTracks" class="tourTabContent">
-            <li class="tourTrackCard" style="background-image: url('assets/f943839c9149ffc03701c90ca4452664-1024x480.jpg'); background-size: cover;">
-                <div class="tourTrackCardGradient"></div>
-                <div class="tourTrackCardLabel">
-                    <h3>1</h3><h4>Lorem, ipsum dolor sit amet.</h4>
+        <ul id="tourChapters" class="tourTabContent active">
+            <li class="tourChaptersCard" style="background-image: url('assets/test_tour/1.png'); background-size: cover;">
+                <div class="tourChaptersCardGradient"></div>
+                <div class="tourChaptersCardLabel">
+                    <h3 class="active">1</h3><h4>The Westminster Walk</h4>
                 </div>
             </li>
-            <li class="tourTrackCard" style="background-image: url('assets/f943839c9149ffc03701c90ca4452664-1024x480.jpg'); background-size: cover;">
-                <div class="tourTrackCardGradient"></div>
-                <div class="tourTrackCardLabel">
-                    <h3 class="active">2</h3><h4>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</h4>
+            <li class="tourChaptersCard" style="background-image: url('assets/test_tour/2.png'); background-size: cover;">
+                <div class="tourChaptersCardGradient"></div>
+                <div class="tourChaptersCardLabel">
+                    <h3>2</h3><h4>Tour Begins: Big Ben</h4>
                 </div>
             </li>
-            <li class="tourTrackCard" style="background-image: url('assets/f943839c9149ffc03701c90ca4452664-1024x480.jpg'); background-size: cover;">
-                <div class="tourTrackCardGradient"></div>
-                <div class="tourTrackCardLabel">
-                    <h3>99</h3><h4>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam earum vero commodi hic sapiente nostrum at. Nostrum rerum consequuntur architecto sapiente a vel earum cumque nam, quis atque laudantium totam?</h4>
+            <li class="tourChaptersCard" style="background-image: url('assets/test_tour/3.png'); background-size: cover;">
+                <div class="tourChaptersCardGradient"></div>
+                <div class="tourChaptersCardLabel">
+                    <h3>3</h3><h4>London Eye, River Themes</h4>
+                </div>
+            </li>
+            <li class="tourChaptersCard" style="background-image: url('assets/test_tour/4.png'); background-size: cover;">
+                <div class="tourChaptersCardGradient"></div>
+                <div class="tourChaptersCardLabel">
+                    <h3>4</h3><h4>Statue of Boadicea</h4>
+                </div>
+            </li>
+            <li class="tourChaptersCard" style="background-image: url('assets/test_tour/5.png'); background-size: cover;">
+                <div class="tourChaptersCardGradient"></div>
+                <div class="tourChaptersCardLabel">
+                    <h3>5</h3><h4>Parliament Square</h4>
+                </div>
+            </li>
+            <li class="tourChaptersCard" style="background-image: url('assets/test_tour/6.png'); background-size: cover;">
+                <div class="tourChaptersCardGradient"></div>
+                <div class="tourChaptersCardLabel">
+                    <h3>6</h3><h4>Walking Along Whitehall</h4>
+                </div>
+            </li>
+            <li class="tourChaptersCard" style="background-image: url('assets/test_tour/7.png'); background-size: cover;">
+                <div class="tourChaptersCardGradient"></div>
+                <div class="tourChaptersCardLabel">
+                    <h3>7</h3><h4>The Cenotaph</h4>
+                </div>
+            </li>
+            <li class="tourChaptersCard" style="background-image: url('assets/test_tour/8.png'); background-size: cover;">
+                <div class="tourChaptersCardGradient"></div>
+                <div class="tourChaptersCardLabel">
+                    <h3>8</h3><h4>#10 Downing Street</h4>
+                </div>
+            </li>
+            <li class="tourChaptersCard" style="background-image: url('assets/test_tour/9.png'); background-size: cover;">
+                <div class="tourChaptersCardGradient"></div>
+                <div class="tourChaptersCardLabel">
+                    <h3>9</h3><h4>The Banqueting House</h4>
+                </div>
+            </li>
+            <li class="tourChaptersCard" style="background-image: url('assets/test_tour/10.png'); background-size: cover;">
+                <div class="tourChaptersCardGradient"></div>
+                <div class="tourChaptersCardLabel">
+                    <h3>10</h3><h4>Horse Guard</h4>
+                </div>
+            </li>
+            <li class="tourChaptersCard" style="background-image: url('assets/test_tour/11.png'); background-size: cover;">
+                <div class="tourChaptersCardGradient"></div>
+                <div class="tourChaptersCardLabel">
+                    <h3>11</h3><h4>More of Whitehall</h4>
+                </div>
+            </li>
+            <li class="tourChaptersCard" style="background-image: url('assets/test_tour/12.png'); background-size: cover;">
+                <div class="tourChaptersCardGradient"></div>
+                <div class="tourChaptersCardLabel">
+                    <h3>12</h3><h4>Trafalgar Square</h4>
                 </div>
             </li>
         </ul>
-
-        <object id="tourMap" class="tourTabContent active" type="image/svg+xml" data="assets/westminster_map.svg">Your browser does not support SVG</object>
-
+            
+        <div id="tourMap" class="tourTabContent">
+            <img id="mapImage" src="assets/test_tour/westminster_map.svg" alt="Map">
+        </div>
+            
         <ul id="tourScript" class="tourTabContent">
             <li class="tourScriptCard">
                 <h4>Lorem, ipsum dolor</h4><br>
@@ -59,7 +115,7 @@
 
     <div class="tourPlayer">
         <audio controls>
-            <source src="assets/london-westminster.mp3" type="audio/mpeg">
+            <source src="assets/test_tour/london-westminster.mp3" type="audio/mpeg">
             Your browser does not support the audio tag.
         </audio>
     </div>
