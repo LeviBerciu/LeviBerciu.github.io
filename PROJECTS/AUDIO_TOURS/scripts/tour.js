@@ -22,7 +22,8 @@ document.addEventListener("DOMContentLoaded", function() {
 const elem = document.getElementById('mapImage');
 const panzoom = Panzoom(elem, {
     maxScale: 5, // Maximum zoom level
-    contain: 'outside' // Allow panning outside the initial container bounds
+    contain: 'outside', // Allow panning outside the initial container bounds
+    step: 1,
 });
 
 // Enable mousewheel zoom
