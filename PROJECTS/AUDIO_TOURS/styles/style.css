@@ -99,7 +99,7 @@ p, h4{
     position: fixed;
     top: 100px; /* payer height */
     width: 100%;
-    height: calc(100dvh - 272px); /* device height - (nav height + player height) */
+    height: calc(100dvh - 240px); /* device height - (nav height + player height) */
     background-color: white;
     overflow: auto;
     z-index: -1;
@@ -174,7 +174,7 @@ p, h4{
 
 
 #tourMap{
-    height: calc(100dvh - 272px);
+    height: inherit;
     background-color: white;
 }
 
@@ -189,8 +189,8 @@ p, h4{
 .tourScriptCard{
     width: 100%;
     background-color: white;
-    /* border-radius: 8px */;
-    /* padding: 16px; */
+    /* border-radius: 8px; */
+    padding: 16px;
 }
 
 
@@ -202,12 +202,11 @@ p, h4{
     bottom: 0;
     width: 100%;
     height: 140px;
-    padding: 16px;
     background-color: #FFC400;
     box-shadow: 0px 8px 16px rgba(0, 0, 0, .1);
     z-index: 1;
 }
 
 audio{ /* TBD */
-    width: calc(100% - 32px);
+    width: 100%;
 }
