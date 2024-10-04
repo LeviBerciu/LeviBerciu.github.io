@@ -36,30 +36,32 @@ elem.parentElement.addEventListener('wheel', panzoom.zoomWithWheel);
 
 // AUDIO PLAYER ----------
 
+// Retrieve DOM elements for the audio player, progress bar, and time display
 const tourAudio = document.getElementById('tourAudio');
 const tourChapterTitle = document.getElementById('tourChapterTitle');
 const tourProgressSlider = document.getElementById('tourProgressSlider');
 const tourCurrentTimeEl = document.getElementById('tourCurrentTimeEl');
 const tourTotalTimeEl = document.getElementById('tourTotalTimeEl');
 
+// Retrieve DOM elements for playback controls
 const tourPrevChapterButton = document.getElementById('tourPrevChapterButton');
 const tourBack10Button = document.getElementById('tourBack10Button');
 const tourPlayPauseButton = document.getElementById('tourPlayPauseButton');
 const tourForward10Button = document.getElementById('tourForward10Button');
 const tourNextChapterButton = document.getElementById('tourNextChapterButton');
 
-const playPauseIcon = tourPlayPauseButton.querySelector('img'); // Access the <img> tag
+// Access the <img> tag inside the play/pause button
+const playPauseIcon = tourPlayPauseButton.querySelector('img');
 
-// Set the path to your play and pause icons
+// Paths to play and pause icons
 const playIconSrc = 'assets/play_icon.svg';
 const pauseIconSrc = 'assets/pause_icon.svg';
-
 
 // Data for chapters (start times in seconds)
 const chapters = [
     { title: '1. The Westminster Walk', start: 0 },
     { title: '2. Tour Begins: Big Ben', start: 117 },
-    { title: '3. London Eye, River Themes', start: 335 },
+    { title: '3. London Eye, River Thames', start: 335 },
     { title: '4. Statue of Boadicea', start: 594 },
     { title: '5. Parliament Square', start: 813 },
     { title: '6. Walking Along Whitehall', start: 1015 },
@@ -71,89 +73,101 @@ const chapters = [
     { title: '12. Trafalgar Square', start: 2243 }
 ];
 
+// Track the current chapter index
 let currentChapter = 0;
 
+// Get all chapter card elements
 const chapterCards = document.querySelectorAll('.tourChaptersCard');
 
 // Add click event listeners to each chapter card
 chapterCards.forEach((card, index) => {
     card.addEventListener('click', () => {
-        loadChapter(index); // Load the corresponding chapter when a card is clicked
-        //tourAudio.play(); // Play the audio immediately after chapter selection
-        //playPauseIcon.src = pauseIconSrc; // Change play button to pause
+        loadChapter(index);  // Load the corresponding chapter on click
     });
 });
 
+// Toggle play/pause functionality
 tourPlayPauseButton.addEventListener('click', () => {
     if (tourAudio.paused) {
         tourAudio.play();
-        playPauseIcon.src = pauseIconSrc;
+        playPauseIcon.src = pauseIconSrc;  // Update icon to pause
     } else {
         tourAudio.pause();
-        playPauseIcon.src = playIconSrc;
+        playPauseIcon.src = playIconSrc;  // Update icon to play
     }
 });
 
-// Update chapter based on current time
+// Function to update chapter based on current audio time
 function updateChapter(currentTime) {
     for (let i = 0; i < chapters.length; i++) {
+        // Check if current time is within the range of a chapter
         if (currentTime >= chapters[i].start && (i === chapters.length - 1 || currentTime < chapters[i + 1].start)) {
             if (i !== currentChapter) {  // Only update if chapter changes
                 currentChapter = i;
-                tourChapterTitle.textContent = chapters[i].title;
+                tourChapterTitle.textContent = chapters[i].title;  // Update chapter title
+
+                // Reset all chapter icons to inactive
+                chapterCards.forEach((card) => {
+                    const chapterIcon = card.querySelector('img');
+                    chapterIcon.src = 'assets/chapter_inactive_icon.svg';  // Set to inactive icon
+                });
+
+                // Set the active icon for the current chapter
+                const activeIcon = chapterCards[i].querySelector('img');
+                activeIcon.src = 'assets/chapter_active_icon.svg';  // Set to active icon
+
+                // Scroll the active chapter card into view
+                chapterCards[i].scrollIntoView({ behavior: 'smooth', block: 'center' }); // Smooth scrolling
             }
             break;
         }
     }
 }
 
+// Update audio progress and chapter as the audio plays
 tourAudio.addEventListener('timeupdate', () => {
     const currentTime = tourAudio.currentTime;
     const duration = tourAudio.duration;
 
-    
-
-    // Update progress percentage
+    // Calculate and update the progress percentage
     const progressPercent = (currentTime / duration) * 100;
-  
-    // Update the passed time bar and slider thumb position
-    tourProgressSlider.style.setProperty('--progress', progressPercent + '%');
+    tourProgressSlider.style.setProperty('--progress', `${progressPercent}%`);
     tourProgressSlider.value = progressPercent;
-  
-    // Update time display
+
+    // Update current time and total duration display
     tourCurrentTimeEl.textContent = formatTime(currentTime);
     tourTotalTimeEl.textContent = formatTime(duration);
 
-    // Check if the chapter needs to be updated
+    // Update the active chapter
     updateChapter(currentTime);
 });
 
-
-// Format time in minutes:seconds
+// Function to format time as minutes:seconds
 function formatTime(time) {
     const minutes = Math.floor(time / 60);
     const seconds = Math.floor(time % 60);
     return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
 }
 
-// Handle slider input (seek)
+// Handle progress bar interaction (seeking)
 tourProgressSlider.addEventListener('input', () => {
     const duration = tourAudio.duration;
     const seekTime = (tourProgressSlider.value / 100) * duration;
-    tourAudio.currentTime = seekTime;
+    tourAudio.currentTime = seekTime;  // Seek to new time
 
-    // Check if the chapter needs to be updated when seeking
+    // Update chapter based on seek time
     updateChapter(seekTime);
 });
 
-// Next/Previous Chapter Buttons
+// Next Chapter Button functionality
 tourNextChapterButton.addEventListener('click', () => {
     if (currentChapter < chapters.length - 1) {
         currentChapter++;
         loadChapter(currentChapter);
     }
 });
-  
+
+// Previous Chapter Button functionality
 tourPrevChapterButton.addEventListener('click', () => {
     if (currentChapter > 0) {
         currentChapter--;
@@ -163,33 +177,39 @@ tourPrevChapterButton.addEventListener('click', () => {
 
 // Function to load a chapter by index
 function loadChapter(index) {
+    // Reset all chapter icons to inactive
     chapterCards.forEach((card) => {
-        const chapterIcon = card.querySelector('img');  // Find the img tag inside the card
-        chapterIcon.src = 'assets/chapter_inactive_icon.svg';  // Set the inactive icon
+        const chapterIcon = card.querySelector('img');
+        chapterIcon.src = 'assets/chapter_inactive_icon.svg';  // Set inactive icon
     });
 
-    // Set the active icon for the current chapter
-    const activeCard = chapterCards[index];  // Get the current chapter card
-    const activeIcon = activeCard.querySelector('img');  // Find the img tag inside the active card
-    activeIcon.src = 'assets/chapter_active_icon.svg';  // Set the active icon
+    // Set active icon for the selected chapter
+    const activeIcon = chapterCards[index].querySelector('img');
+    activeIcon.src = 'assets/chapter_active_icon.svg';  // Set active icon
 
+    // Set audio to start at the chapter's start time
     const chapter = chapters[index];
-    tourAudio.currentTime = chapter.start;  // Set the audio to start at the correct chapter time
-    tourChapterTitle.textContent = chapter.title;  // Update the chapter title display
-    currentChapter = index;  // Update the current chapter
+    tourAudio.currentTime = chapter.start;
+    tourChapterTitle.textContent = chapter.title;  // Update chapter title display
+    currentChapter = index;  // Update current chapter index
 
+    // Scroll the active chapter card into view
+    chapterCards[index].scrollIntoView({ behavior: 'smooth', block: 'center' }); // Smooth scrolling
 }
-loadChapter(0)
 
-// Skip Forward/Backward 10 Seconds
+// Load the first chapter by default
+loadChapter(0);
+
+// Skip Forward/Backward 10 Seconds functionality
 tourForward10Button.addEventListener('click', () => {
-    tourAudio.currentTime += 10;
-});
-  
-tourBack10Button.addEventListener('click', () => {
-    tourAudio.currentTime -= 10;
+    tourAudio.currentTime += 10;  // Skip forward 10 seconds
 });
 
+tourBack10Button.addEventListener('click', () => {
+    tourAudio.currentTime -= 10;  // Skip backward 10 seconds
+});
+
+// Event listener for when audio playback ends
 tourAudio.addEventListener('ended', () => {
-    playPauseIcon.src = playIconSrc; // Revert to play icon when the audio finishes
+    playPauseIcon.src = playIconSrc;  // Revert to play icon when audio finishes
 });
