@@ -135,10 +135,25 @@
 
 
     <div class="tourPlayer">
-        <audio controls>
+        <audio id="tourAudio" src="assets/test_tour/london-westminster.mp3" preload="metadata"></audio>
+        <p id="tourChapterTitle">Chapter 1: Introduction</p>
+        <input type="range" id="tourProgressSlider" min="0" max="100" value="0">
+        <div class="tourTimeInfo">
+            <span id="tourCurrentTimeEl">00:00</span>
+            <span id="tourTotalTimeEl">00:00</span>
+        </div>
+        <div class="tourControls">
+            <button id="tourPrevChapterButton"><img src="assets/previous_chapter_icon.svg" alt=""></button>
+            <button id="tourBack10Button"><img src="assets/back_10_icon.svg" alt=""></button>
+            <button id="tourPlayPauseButton"><img src="assets/play_icon.svg" alt=""></button>
+            <button id="tourForward10Button"><img src="assets/forward_10_icon.svg" alt=""></button>
+            <button id="tourNextChapterButton"><img src="assets/next_chapter_icon.svg" alt=""></button>
+        </div>
+        
+        <!-- <audio controls>
             <source src="assets/test_tour/london-westminster.mp3" type="audio/mpeg">
             Your browser does not support the audio tag.
-        </audio>
+        </audio> -->
     </div>
 
     <script src="scripts/tour.js"></script>

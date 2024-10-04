@@ -127,7 +127,7 @@ p, h4{
     background-color: white;
     border-radius: 8px;
     overflow: hidden;
-    box-shadow: 0px 8px 16px rgba(0, 0, 0, .1);
+    /* box-shadow: 0px 8px 16px rgba(0, 0, 0, .1); */
 }
 
 .tourChaptersCardGradient{
@@ -154,7 +154,6 @@ p, h4{
     text-align: center;
     border-radius: 20px;
     background-color: white;
-    
 }
 
 .tourChaptersCardLabel h3.active{
@@ -163,6 +162,7 @@ p, h4{
 
 
 .tourChaptersCardLabel h4{
+
     color: white;
     display: -webkit-box;
             -webkit-line-clamp: 2;
@@ -193,20 +193,113 @@ p, h4{
     padding: 16px;
 }
 
-
-
-
-
 .tourPlayer{
     position: fixed;
     bottom: 0;
-    width: 100%;
+    width: calc(100% - 32px);
     height: 140px;
     background-color: #FFC400;
-    box-shadow: 0px 8px 16px rgba(0, 0, 0, .1);
+    box-shadow: 0px -8px 16px rgba(0, 0, 0, .1);
+    z-index: 1;
+    padding: 0px 16px 0px 16px;
+}
+
+#tourChapterTitle{
+    width: 100%;
+    padding: 12px 0px 4px 0px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Styling the overall slider */
+#tourProgressSlider {
+    -webkit-appearance: none; /* Remove default styles */
+    width: 100%;
+    height: 4px; /* Height of the progress bar */
+    background: white; /* The unplayed portion */
+    outline: none; /* Remove default outline */
+    border-radius: 2px; /* Slight rounding of the edges */
+    position: relative;
+    margin: 8px 0; /* Space around the slider */
+}
+
+/* Time-passed bar */
+#tourProgressSlider::-webkit-slider-runnable-track {
+    background: white; /* The unplayed portion */
+    height: 4px;
+    border-radius: 2px;
+    position: relative;
+}
+
+/* Passed time (Played portion) */
+#tourProgressSlider::before {
+    content: '';
+    height: 4px;
+    width: var(--progress); /* Use the CSS variable to control width */
+    background: black; /* Time passed */
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 2px;
     z-index: 1;
 }
 
-audio{ /* TBD */
-    width: 100%;
+/* Dot (Slider knob) */
+#tourProgressSlider::-webkit-slider-thumb {
+    -webkit-appearance: none; /* Remove default styles */
+    width: 12px; /* Size of the knob */
+    height: 12px; 
+    background-color: black; /* The knob color */
+    border-radius: 50%; /* Make it a circle */
+    cursor: pointer; /* Pointer on hover */
+    position: relative;
+    top: -4px; /* Move the knob down by 4px to center it */
+    z-index: 2; /* Ensure it's on top of the track */
+
 }
+
+/* Handle appearance for Firefox */
+#tourProgressSlider::-moz-range-thumb {
+    width: 12px;
+    height: 12px;
+    background-color: black;
+    border-radius: 50%;
+    cursor: pointer;
+    top: -4px; /* Centering the knob for Firefox */
+}
+
+#tourProgressSlider::-moz-range-track {
+    background: white;
+    height: 4px;
+    border-radius: 2px;
+    position: relative;
+}
+
+#tourProgressSlider::-moz-range-progress {
+    background: black;
+    height: 4px;
+    border-radius: 2px;
+}
+
+.tourTimeInfo{
+    display: flex;
+    width: 100%;
+    height: 12px;
+    justify-content: space-between;
+}
+
+.tourTimeInfo span{
+    font-size: 12px;
+    line-height: 13px;
+}
+
+.tourControls{
+    display: flex;
+    gap: 12px;
+    width: 100%;
+    justify-content: center;
+}
+
+
+
