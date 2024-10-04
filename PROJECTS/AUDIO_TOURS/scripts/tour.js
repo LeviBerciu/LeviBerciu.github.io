@@ -73,6 +73,17 @@ const chapters = [
 
 let currentChapter = 0;
 
+const chapterCards = document.querySelectorAll('.tourChaptersCard');
+
+// Add click event listeners to each chapter card
+chapterCards.forEach((card, index) => {
+    card.addEventListener('click', () => {
+        loadChapter(index); // Load the corresponding chapter when a card is clicked
+        //tourAudio.play(); // Play the audio immediately after chapter selection
+        //playPauseIcon.src = pauseIconSrc; // Change play button to pause
+    });
+});
+
 tourPlayPauseButton.addEventListener('click', () => {
     if (tourAudio.paused) {
         tourAudio.play();
@@ -152,9 +163,21 @@ tourPrevChapterButton.addEventListener('click', () => {
 
 // Function to load a chapter by index
 function loadChapter(index) {
+    chapterCards.forEach((card) => {
+        const chapterIcon = card.querySelector('img');  // Find the img tag inside the card
+        chapterIcon.src = 'assets/chapter_inactive_icon.svg';  // Set the inactive icon
+    });
+
+    // Set the active icon for the current chapter
+    const activeCard = chapterCards[index];  // Get the current chapter card
+    const activeIcon = activeCard.querySelector('img');  // Find the img tag inside the active card
+    activeIcon.src = 'assets/chapter_active_icon.svg';  // Set the active icon
+
     const chapter = chapters[index];
-    tourAudio.currentTime = chapter.start;
-    tourChapterTitle.textContent = chapter.title;
+    tourAudio.currentTime = chapter.start;  // Set the audio to start at the correct chapter time
+    tourChapterTitle.textContent = chapter.title;  // Update the chapter title display
+    currentChapter = index;  // Update the current chapter
+
 }
 loadChapter(0)
 
