@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta http-equiv="ScreenOrientation" content="autoRotate:disabled">
     <title>Tour</title>
     <link rel="stylesheet" href="styles/style.css">
     <script src="scripts/panzoom.js"></script>
@@ -28,73 +29,73 @@
             <li class="tourChaptersCard" style="background-image: url('assets/test_tour/1.png'); background-size: cover;">
                 <div class="tourChaptersCardGradient"></div>
                 <div class="tourChaptersCardLabel">
-                    <h3 class="active">1</h3><h4>The Westminster Walk</h4>
+                    <h4>1. The Westminster Walk</h4>
                 </div>
             </li>
             <li class="tourChaptersCard" style="background-image: url('assets/test_tour/2.png'); background-size: cover;">
                 <div class="tourChaptersCardGradient"></div>
                 <div class="tourChaptersCardLabel">
-                    <h3>2</h3><h4>Tour Begins: Big Ben</h4>
+                    <h4>2. Tour Begins: Big Ben</h4>
                 </div>
             </li>
             <li class="tourChaptersCard" style="background-image: url('assets/test_tour/3.png'); background-size: cover;">
                 <div class="tourChaptersCardGradient"></div>
                 <div class="tourChaptersCardLabel">
-                    <h3>3</h3><h4>London Eye, River Themes</h4>
+                    <h4>3. London Eye, River Themes</h4>
                 </div>
             </li>
             <li class="tourChaptersCard" style="background-image: url('assets/test_tour/4.png'); background-size: cover;">
                 <div class="tourChaptersCardGradient"></div>
                 <div class="tourChaptersCardLabel">
-                    <h3>4</h3><h4>Statue of Boadicea</h4>
+                    <h4>4. Statue of Boadicea</h4>
                 </div>
             </li>
             <li class="tourChaptersCard" style="background-image: url('assets/test_tour/5.png'); background-size: cover;">
                 <div class="tourChaptersCardGradient"></div>
                 <div class="tourChaptersCardLabel">
-                    <h3>5</h3><h4>Parliament Square</h4>
+                    <h4>5. Parliament Square</h4>
                 </div>
             </li>
             <li class="tourChaptersCard" style="background-image: url('assets/test_tour/6.png'); background-size: cover;">
                 <div class="tourChaptersCardGradient"></div>
                 <div class="tourChaptersCardLabel">
-                    <h3>6</h3><h4>Walking Along Whitehall</h4>
+                    <h4>6. Walking Along Whitehall</h4>
                 </div>
             </li>
             <li class="tourChaptersCard" style="background-image: url('assets/test_tour/7.png'); background-size: cover;">
                 <div class="tourChaptersCardGradient"></div>
                 <div class="tourChaptersCardLabel">
-                    <h3>7</h3><h4>The Cenotaph</h4>
+                    <h4>7. The Cenotaph</h4>
                 </div>
             </li>
             <li class="tourChaptersCard" style="background-image: url('assets/test_tour/8.png'); background-size: cover;">
                 <div class="tourChaptersCardGradient"></div>
                 <div class="tourChaptersCardLabel">
-                    <h3>8</h3><h4>#10 Downing Street</h4>
+                    <h4>8. #10 Downing Street</h4>
                 </div>
             </li>
             <li class="tourChaptersCard" style="background-image: url('assets/test_tour/9.png'); background-size: cover;">
                 <div class="tourChaptersCardGradient"></div>
                 <div class="tourChaptersCardLabel">
-                    <h3>9</h3><h4>The Banqueting House</h4>
+                    <h4>9. The Banqueting House</h4>
                 </div>
             </li>
             <li class="tourChaptersCard" style="background-image: url('assets/test_tour/10.png'); background-size: cover;">
                 <div class="tourChaptersCardGradient"></div>
                 <div class="tourChaptersCardLabel">
-                    <h3>10</h3><h4>Horse Guard</h4>
+                    <h4>10. Horse Guard</h4>
                 </div>
             </li>
             <li class="tourChaptersCard" style="background-image: url('assets/test_tour/11.png'); background-size: cover;">
                 <div class="tourChaptersCardGradient"></div>
                 <div class="tourChaptersCardLabel">
-                    <h3>11</h3><h4>More of Whitehall</h4>
+                    <h4>11. More of Whitehall</h4>
                 </div>
             </li>
             <li class="tourChaptersCard" style="background-image: url('assets/test_tour/12.png'); background-size: cover;">
                 <div class="tourChaptersCardGradient"></div>
                 <div class="tourChaptersCardLabel">
-                    <h3>12</h3><h4>Trafalgar Square</h4>
+                    <h4>12. Trafalgar Square</h4>
                 </div>
             </li>
         </ul>
@@ -135,9 +136,10 @@
 
 
     <div class="tourPlayer">
+
         <audio id="tourAudio" src="assets/test_tour/london-westminster.mp3" preload="metadata"></audio>
         <p id="tourChapterTitle">Chapter 1: Introduction</p>
-        <input type="range" id="tourProgressSlider" min="0" max="100" value="0">
+        <input type="range" id="tourProgressSlider" min="0" max="100" value="0" step="0.1">
         <div class="tourTimeInfo">
             <span id="tourCurrentTimeEl">00:00</span>
             <span id="tourTotalTimeEl">00:00</span>
@@ -149,11 +151,7 @@
             <button id="tourForward10Button"><img src="assets/forward_10_icon.svg" alt=""></button>
             <button id="tourNextChapterButton"><img src="assets/next_chapter_icon.svg" alt=""></button>
         </div>
-        
-        <!-- <audio controls>
-            <source src="assets/test_tour/london-westminster.mp3" type="audio/mpeg">
-            Your browser does not support the audio tag.
-        </audio> -->
+    
     </div>
 
     <script src="scripts/tour.js"></script>

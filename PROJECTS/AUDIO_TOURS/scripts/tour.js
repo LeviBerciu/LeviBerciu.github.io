@@ -57,9 +57,18 @@ const pauseIconSrc = 'assets/pause_icon.svg';
 
 // Data for chapters (start times in seconds)
 const chapters = [
-    { title: 'Chapter 1: Introduction', start: 0 },
-    { title: 'Chapter 2: History', start: 60 },
-    { title: 'Chapter 3: Technology', start: 120 }
+    { title: '1. The Westminster Walk', start: 0 },
+    { title: '2. Tour Begins: Big Ben', start: 117 },
+    { title: '3. London Eye, River Themes', start: 335 },
+    { title: '4. Statue of Boadicea', start: 594 },
+    { title: '5. Parliament Square', start: 813 },
+    { title: '6. Walking Along Whitehall', start: 1015 },
+    { title: '7. The Cenotaph', start: 1124 },
+    { title: '8. #10 Downing Street', start: 1295 },
+    { title: '9. The Banqueting House', start: 1628 },
+    { title: '10. Horse Guard', start: 1830 },
+    { title: '11. More of Whitehall', start: 1950 },
+    { title: '12. Trafalgar Square', start: 2243 }
 ];
 
 let currentChapter = 0;
@@ -91,6 +100,8 @@ tourAudio.addEventListener('timeupdate', () => {
     const currentTime = tourAudio.currentTime;
     const duration = tourAudio.duration;
 
+    
+
     // Update progress percentage
     const progressPercent = (currentTime / duration) * 100;
   
@@ -105,6 +116,7 @@ tourAudio.addEventListener('timeupdate', () => {
     // Check if the chapter needs to be updated
     updateChapter(currentTime);
 });
+
 
 // Format time in minutes:seconds
 function formatTime(time) {
@@ -144,6 +156,7 @@ function loadChapter(index) {
     tourAudio.currentTime = chapter.start;
     tourChapterTitle.textContent = chapter.title;
 }
+loadChapter(0)
 
 // Skip Forward/Backward 10 Seconds
 tourForward10Button.addEventListener('click', () => {
