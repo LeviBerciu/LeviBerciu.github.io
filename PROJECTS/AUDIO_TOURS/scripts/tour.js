@@ -90,10 +90,8 @@ chapterCards.forEach((card, index) => {
 tourPlayPauseButton.addEventListener('click', () => {
     if (tourAudio.paused) {
         tourAudio.play();
-        playPauseIcon.src = pauseIconSrc;  // Update icon to pause
     } else {
         tourAudio.pause();
-        playPauseIcon.src = playIconSrc;  // Update icon to play
     }
 });
 
@@ -212,4 +210,14 @@ tourBack10Button.addEventListener('click', () => {
 // Event listener for when audio playback ends
 tourAudio.addEventListener('ended', () => {
     playPauseIcon.src = playIconSrc;  // Revert to play icon when audio finishes
+});
+
+// Listen for when the audio starts playing
+tourAudio.addEventListener('playing', () => {
+    playPauseIcon.src = pauseIconSrc;  // Update icon to pause when audio plays
+});
+
+// Listen for when the audio is paused (including external pause actions)
+tourAudio.addEventListener('pause', () => {
+    playPauseIcon.src = playIconSrc;  // Update icon to play when audio pauses
 });

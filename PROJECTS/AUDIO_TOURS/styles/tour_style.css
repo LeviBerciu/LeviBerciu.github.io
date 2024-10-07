@@ -1,71 +1,79 @@
+/* Global Styles */
 *, *:before, *:after {
     outline: none;
     border: none;
     margin: 0;
     padding: 0;
     background-color: transparent;
-  }
-
-body{
-    font-family: Arial, Helvetica, sans-serif;
 }
 
-img{
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: black;
+}
+
+img {
     width: 100%;
     height: auto;
 }
 
-p, h4{
+p, h4 {
     line-height: 20px;
 }
 
-.tourNav{
-    position: fixed;
+/* Tour Container */
+.tourContainer {
+    height: 100dvh;
+    max-width: 1280px;
+    position: relative;
+    overflow: hidden;
+    margin: auto;
+}
+
+/* Navigation Bar */
+.tourNav {
+    position: absolute;
     top: 0;
     width: 100%;
     background-color: white;
-    box-shadow: 0px 8px 16px rgba(0, 0, 0, .1);
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
     z-index: 1;
 }
 
-.tourHeader{
+/* Header */
+.tourHeader {
     display: flex;
     width: 100%;
     height: 52px;
 }
 
-.tourHeaderButton{
+.tourHeaderButton, .tourDownloadButton {
     display: flex;
     padding: 12px;
 }
 
-.tourHeaderButton img{
+.tourHeaderButton img, .tourDownloadButton img {
     width: 28px;
 }
 
-.tourDownloadButton{
-    display: flex;
-    width: 28px;
-    padding: 12px;
-}
-
-.tourHeaderTitle{
+.tourHeaderTitle {
     font-size: 20px;
     width: 100%;
     line-height: 28px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    padding: 12px 12px 12px 0px;
+    padding: 12px 12px 12px 0;
 }
 
-.tourTabs{
+/* Tabs */
+.tourTabs {
     display: flex;
-    padding: 0px 16px 0px 16px;
+    padding: 0 16px;
     list-style: none;
 }
 
-.tourTabs li{
+.tourTabs li {
     display: flex;
     height: 44px;
     gap: 8px;
@@ -74,6 +82,12 @@ p, h4{
     line-height: 44px;
     width: 100%;
     border-bottom: 4px solid inherit;
+}
+
+.tourTabs li.active {
+    border-bottom: 4px solid #FFC400;
+    color: black;
+    font-weight: bold;
 }
 
 .tourTabs img {
@@ -87,22 +101,14 @@ p, h4{
     color: black;
 }
 
-.tourTabs li.active{
-    border-bottom: 4px solid #FFC400;
-    color: black;
-    font-weight: bold;
-}
-
-
-
-.tourTabContentContainer{
-    position: fixed;
-    top: 100px; /* payer height */
+/* Tab Content */
+.tourTabContentContainer {
+    position: absolute;
+    top: 100px;
     width: 100%;
-    height: calc(100dvh - 240px); /* device height - (nav height + player height) */
+    height: calc(100dvh - 240px);
     background-color: white;
     overflow: auto;
-    z-index: -1;
 }
 
 .tourTabContent {
@@ -113,14 +119,15 @@ p, h4{
     display: flex;
 }
 
-#tourChapters{
+/* Chapter Cards */
+#tourChapters {
     flex-wrap: wrap;
     list-style: none;
     gap: 16px;
     padding: 16px;
 }
 
-.tourChaptersCard{
+.tourChaptersCard {
     position: relative;
     width: 100%;
     aspect-ratio: 16/9;
@@ -129,15 +136,15 @@ p, h4{
     overflow: hidden;
 }
 
-.tourChaptersCardGradient{
+.tourChaptersCardGradient {
     position: absolute;
     width: 100%;
     bottom: 0;
     aspect-ratio: 16/6;
-    background-image:linear-gradient(to bottom, rgba(0,0,0,0) 25%, 75%, rgba(0,0,0,1)); 
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 1) 75%);
 }
 
-.tourChaptersCardLabel{
+.tourChaptersCardLabel {
     display: flex;
     width: calc(100% - 32px);
     gap: 16px;
@@ -148,89 +155,83 @@ p, h4{
     justify-content: space-between;
 }
 
-.tourChaptersCardLabel img{
+.tourChaptersCardLabel img {
     width: 40px;
     height: 40px;
 }
 
-.tourChaptersCardLabel h4{
-
+.tourChaptersCardLabel h4 {
     color: white;
     display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
-
 }
 
-
-#tourMap{
+/* Map */
+#tourMap {
     height: inherit;
     background-color: white;
 }
 
-#tourScript{
+/* Script Cards */
+#tourScript {
     flex-wrap: wrap;
     list-style: none;
     gap: 16px;
     padding: 16px;
-
 }
 
-.tourScriptCard{
+.tourScriptCard {
     width: 100%;
-    background-color: white;
-    /* border-radius: 8px; */
+    background-color: #ECEFF1;
+    border-radius: 8px;
     padding: 16px;
 }
 
-.tourPlayer{
-    position: fixed;
+/* Player */
+.tourPlayer {
+    position: absolute;
     bottom: 0;
     width: calc(100% - 32px);
     height: 140px;
     background-color: #FFC400;
-    /* box-shadow: 0px -8px 16px rgba(0, 0, 0, .1); */
     z-index: 1;
-    padding: 0px 16px 0px 16px;
+    padding: 0 16px;
 }
 
-#tourChapterTitle{
+#tourChapterTitle {
     width: 100%;
-    padding: 12px 0px 4px 0px;
+    padding: 12px 0 4px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
 
-/* Styling the overall slider */
+/* Progress Slider */
 #tourProgressSlider {
-    -webkit-appearance: none; /* Remove default styles */
+    -webkit-appearance: none;
     width: 100%;
-    height: 4px; /* Height of the progress bar */
-    background: white; /* The unplayed portion */
-    outline: none; /* Remove default outline */
-    border-radius: 2px; /* Slight rounding of the edges */
-    position: relative;
-    margin: 8px 0; /* Space around the slider */
-    
-}
-
-/* Time-passed bar */
-#tourProgressSlider::-webkit-slider-runnable-track {
-    background: white; /* The unplayed portion */
     height: 4px;
+    background: white;
+    outline: none;
     border-radius: 2px;
     position: relative;
+    margin: 8px 0;
 }
 
-/* Passed time (Played portion) */
+#tourProgressSlider::-webkit-slider-runnable-track {
+    background: white;
+    height: 4px;
+    border-radius: 2px;
+}
+
 #tourProgressSlider::before {
     content: '';
     height: 4px;
-    width: var(--progress); /* Use the CSS variable to control width */
-    background: black; /* Time passed */
+    width: var(--progress);
+    background: black;
     position: absolute;
     top: 0;
     left: 0;
@@ -238,35 +239,34 @@ p, h4{
     z-index: 1;
 }
 
-/* Dot (Slider knob) */
+/* Slider Thumb (Knob) */
 #tourProgressSlider::-webkit-slider-thumb {
-    -webkit-appearance: none; /* Remove default styles */
-    width: 12px; /* Size of the knob */
-    height: 12px; 
-    background-color: black; /* The knob color */
-    border-radius: 50%; /* Make it a circle */
-    cursor: pointer; /* Pointer on hover */
+    -webkit-appearance: none;
+    width: 12px;
+    height: 12px;
+    background-color: black;
+    border-radius: 50%;
+    cursor: pointer;
     position: relative;
-    top: -4px; /* Move the knob down by 4px to center it */
-    z-index: 2; /* Ensure it's on top of the track */
+    top: -4px;
+    z-index: 2;
 
 }
 
-/* Handle appearance for Firefox */
+
 #tourProgressSlider::-moz-range-thumb {
     width: 12px;
     height: 12px;
     background-color: black;
     border-radius: 50%;
     cursor: pointer;
-    top: -4px; /* Centering the knob for Firefox */
+    top: -4px;
 }
 
 #tourProgressSlider::-moz-range-track {
     background: white;
     height: 4px;
     border-radius: 2px;
-    position: relative;
 }
 
 #tourProgressSlider::-moz-range-progress {
@@ -275,19 +275,21 @@ p, h4{
     border-radius: 2px;
 }
 
-.tourTimeInfo{
+/* Time Information */
+.tourTimeInfo {
     display: flex;
     width: 100%;
     height: 16px;
     justify-content: space-between;
 }
 
-.tourTimeInfo span{
-    font-size: 12px;
+.tourTimeInfo span {
+    font-size: 14px;
     line-height: 16px;
 }
 
-.tourControls{
+/* Playback Controls */
+.tourControls {
     display: flex;
     gap: 8px;
     width: 100%;
@@ -295,9 +297,14 @@ p, h4{
     justify-content: center;
 }
 
-#tourPlayPauseButton{
-    margin: 0px 4px 0px 4px;
+#tourPlayPauseButton {
+    margin: 0 4px;
 }
 
-
+/* Media Queries */
+@media only screen and (min-width: 640px) {
+    .tourChaptersCard {
+        width: calc(50% - 8px);
+    }
+}
 
