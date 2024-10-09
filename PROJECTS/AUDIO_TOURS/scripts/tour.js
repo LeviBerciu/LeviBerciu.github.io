@@ -177,13 +177,25 @@ tourNextChapterButton.addEventListener('click', () => {
     }
 });
 
+
 // Previous Chapter Button functionality
 tourPrevChapterButton.addEventListener('click', () => {
-    if (currentChapter > 0) {
-        currentChapter--;
-        loadChapter(currentChapter);
+    const currentTime = tourAudio.currentTime;
+    const currentChapterStart = chapters[currentChapter].start;
+
+    // Check if the current time is less than 5 seconds into the chapter
+    if (currentTime < currentChapterStart + 5) {
+        // Jump to the previous chapter if possible
+        if (currentChapter > 0) {
+            currentChapter--;
+            loadChapter(currentChapter);
+        }
+    } else {
+        // Otherwise, jump to the start of the current chapter
+        tourAudio.currentTime = currentChapterStart; // Set audio time to chapter start
     }
 });
+
 
 // Skip Forward/Backward 10 Seconds functionality
 tourForward10Button.addEventListener('click', () => {
