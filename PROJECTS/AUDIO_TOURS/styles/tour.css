@@ -28,6 +28,7 @@ p, h4 {
     position: relative;
     overflow: hidden;
     margin: auto;
+    background-color: white;
 }
 
 /* Navigation Bar */
@@ -107,7 +108,6 @@ p, h4 {
     top: 100px;
     width: 100%;
     height: calc(100dvh - 240px);
-    background-color: white;
     overflow: auto;
 }
 
@@ -120,7 +120,7 @@ p, h4 {
 }
 
 /* Chapter Cards */
-#tourChapters {
+#tourChaptersList {
     flex-wrap: wrap;
     list-style: none;
     gap: 16px;
@@ -131,7 +131,6 @@ p, h4 {
     position: relative;
     width: 100%;
     aspect-ratio: 16/9;
-    background-color: white;
     border-radius: 8px;
     overflow: hidden;
 
@@ -173,22 +172,11 @@ p, h4 {
 /* Map */
 #tourMap {
     height: inherit;
-    background-color: white;
 }
 
 /* Script Cards */
 #tourScript {
-    flex-wrap: wrap;
-    list-style: none;
-    gap: 16px;
-    padding: 16px;
-}
-
-.tourScriptCard {
-    width: 100%;
-    background-color: #ECEFF1;
-    border-radius: 8px;
-    padding: 16px;
+    padding: 32px;
 }
 
 /* Player */

@@ -6,6 +6,7 @@
     <title>London - Westminster Walk</title>
     <link rel="stylesheet" href="styles/tour.css">
     <script src="scripts/panzoom.js"></script>
+    <script src="scripts/mammoth.browser.js"></script>
 </head>
 <body>
 
@@ -17,7 +18,7 @@
                 <div class="tourHeaderButton"><img src="assets/download_icon.svg" alt=""></div>
             </div>
             <ul class="tourTabs">
-                <li class="active"><img src="assets/tracks_icon.svg" alt=""><a href="#tourChapters">Chapters</a></li>
+                <li class="active"><img src="assets/tracks_icon.svg" alt=""><a href="#tourChaptersList">Chapters</a></li>
                 <li><img src="assets/map_icon.svg" alt=""><a href="#tourMap">Map</a></li>
                 <li><img src="assets/script_icon.svg" alt=""><a href="#tourScript">Script</a></li>
             </ul>
@@ -25,7 +26,20 @@
     
         <div class="tourTabContentContainer">
     
-            <ul id="tourChapters" class="tourTabContent active">
+            <ul id="tourChaptersList" class="tourTabContent active" data-chapters='[
+                {"title": "1. The Westminster Walk", "start": 0},
+                {"title": "2. Tour Begins: Big Ben", "start": 117},
+                {"title": "3. London Eye, River Thames", "start": 335},
+                {"title": "4. Statue of Boadicea", "start": 594},
+                {"title": "5. Parliament Square", "start": 813},
+                {"title": "6. Walking Along Whitehall", "start": 1015},
+                {"title": "7. The Cenotaph", "start": 1124},
+                {"title": "8. #10 Downing Street", "start": 1295},
+                {"title": "9. The Banqueting House", "start": 1628},
+                {"title": "10. Horse Guard", "start": 1830},
+                {"title": "11. More of Whitehall", "start": 1950},
+                {"title": "12. Trafalgar Square", "start": 2243}
+            ]'>
                 <li class="tourChaptersCard" style="background-image: url('assets/London - Westminster Walk/1.png'); background-size: cover;">
                     <div class="tourChaptersCardGradient"></div>
                     <div class="tourChaptersCardLabel">
@@ -101,59 +115,18 @@
             </ul>
                 
             <div id="tourMap" class="tourTabContent">
-                <img id="mapImage" src="assets/London - Westminster Walk/westminster_map.svg" alt="Map">
+                <img id="mapContent" src="assets/London - Westminster Walk/London - Westminster Walk.svg" alt="Map">
             </div>
                 
-            <ul id="tourScript" class="tourTabContent">
-                <li class="tourScriptCard">
-                    <h4>1. The Westminster Walk</h4>
-                    <br>
-                    <p>London is the L.A., D.C., and N.Y.C. of Britain all rolled into one. This walk starts with London's "star" attraction, continues to its "Capitol," passes its answer to the "White House," and ends at its "Times Square."</p>
-                    <br>
-                    <p>Hi, I'm Rick Steves. Thanks for joining me on a walk through Westminster, from Big Ben to Trafalgar Square. As London's political center, the Westminster neighborhood is both historic and contemporary. We'll see the River Thames where London was born, pass statues and monuments from London's past, admire the Halls of Parliament where Britain is ruled today, and take a peek at #10 Downing Street, home of the Prime Minister. Allow about an hour for this walk, as we weave through modern traffic and big-city bustle to survey 2,000 years of fascinating history. Our walk ends at Trafalgar Square, where we stand at the very center of one of the world's great cities - London.</p>
-                    <br>
-                    <p>To help us along the way, I've invited a good friend and virtual travel buddy. Welcome, Lyssa!</p>
-                    <br>
-                    <p><i>Cheers, Rick.</i></p>
-                    <br>
-                    <p>Lyssa will give us helpful directions and sightseeing tips throughout the tour.</p>
-                    <br>
-                    <p><i>And my first tip is to be sure you get our tour updates. Just press the icon at the lower-right of your device. You'll find any updates and helpful instructions unique to this tour...</i></p>
-                    <br>
-                    <p>- like closures, opening hours, and reservation requirements.</p>
-                    <br>
-                    <p><i>There's also tips on how to use this audio tour, and even the full printed script.</i></p>
-                    <br>
-                    <p>Yes, pause for a moment right now to review our updates and special tips.</p>
-                    <br>
-                    <p><i>It's OK, we'll wait.</i></p>
-                    <br>
-                    <p>Now, let's go to... [BOTH]... Westminster.</p>
-                </li>
-                <li class="tourScriptCard">
-                    <h4>2. The Tour Begins - Big Ben and the Halls of Parliament</h4>
-                    <br>
-                    <p><i>Start on Westminster Bridge, which straddles the River Thames. Walk halfway across the bridge, where you have great views. The river flows from south to north, at this point. The London Eye Ferris wheel dominates the east bank. On the other side is the awe-inspiring sight of Big Ben and the Halls of Parliament.</i></p>
-                    <br>
-                    <p>"Ding dong ding dong. Ding ding ding dong." Yes, indeed, you are in London. Big Ben is actually "not the clock, not the tower, but the bell inside that tolls the hour." However, the 13-ton bell can't be seen from the street, so everybody calls the whole works Big Ben. The clock tower was built in 1859 and was likely named for a fat bureaucrat who installed the bell. Ben is scarcely older than my great- grandmother, but it's quickly become the city's symbol. The tower is 320 feet high, and the clock faces are 23 feet across. The minute hand is 13 feet long and sweeps the length of your body every five minutes. The bell chimes a short ditty every 15 minutes, then does its full song on the top of the hour.
-                    </p>
-                    <br>
-                    <p>Big Ben hangs out in the north tower of the Houses of Parliament, that stretches along the Thames. Britain is ruled from this building, which was originally a palace built on this spot in the 1090s. For five centuries it was the home of kings and queens. Then, as democracy was foisted on tyrants, a parliament of nobles was allowed to meet in some of the rooms. Soon, commoners were elected to office, and there went the neighborhood. The royalty packed up and moved to Buckingham Palace. A fire gutted the old Westminster Palace in 1834. Only the core part, Westminster Hall, survived. The rest was rebuilt with the faux-medieval look we see today. The prickly flamboyant spires epitomize the uniquely British style called Perpendicular Gothic, the fanciest and final stage of Gothic. (As this is from the 19th century, it's actually Neo- Perpendicular Gothic.)</p>
-                    <br>
-                    <p>Today, the House of Commons, which is more powerful than the queen and prime minister combined, meets in one end of the building. The rubber-stamp House of Lords grumbles and snoozes in the other end of this 1,000-room complex. The two houses are very much separate: Notice the riverside tea terraces with the color- coded awnings - royal red for lords, common green for commoners. Alluding to the traditional leanings of the two chambers, locals say, "Green for go...red for stop."</p>
-                    <br>
-                    <p>Britain is ruled by some six hundred-plus Members of Parliament (or "MPs") in the House of Commons. Their offices are across the street from Big Ben, in the modern Portcullis Building (the one with the tube-like chimneys). MPs commute to the Houses of Parliament by way of a tunnel beneath Bridge Street. Visitors are welcome to go inside the Halls of Parliament to watch Britain's government in action. The hours are variable, but you can tell if Parliament is open. Look toward the far south end of the Halls of Parliament: if a flag is flying from the Victoria Tower, Parliament is in session.</p>
-                    <br>
-                    <p><i>Now turn your attention to the north. That is, look downstream, from the center of Westminster Bridge.</i></p>
-                </li>
-            </ul>
+            <div id="tourScript" class="tourTabContent">
+                <div id="docxContent" data-docx="./assets/London - Westminster Walk/London - Westminster Walk.docx"></div>
+            </div>
     
         </div>
     
     
-        <div class="tourPlayer">
-    
-            <audio id="tourAudio" src="assets/London - Westminster Walk/london-westminster.mp3" preload="metadata"></audio>
+        <footer class="tourPlayer">
+            <audio id="tourAudio" src="assets/London - Westminster Walk/London - Westminster Walk.mp3" preload="metadata"></audio>
             <p id="tourChapterTitle">Chapter Title</p>
             <input type="range" id="tourProgressSlider" min="0" max="100" value="0" step="0.1">
             <div class="tourTimeInfo">
@@ -167,11 +140,10 @@
                 <button id="tourForward10Button"><img src="assets/forward_10_icon.svg" alt=""></button>
                 <button id="tourNextChapterButton"><img src="assets/next_chapter_icon.svg" alt=""></button>
             </div>
-        
-        </div>
+        </footer>
     </div>
 
-    <script src="scripts/London - Westminster Walk.js"></script>
+    <script src="scripts/tour.js"></script>
 
 </body>
 </html>
