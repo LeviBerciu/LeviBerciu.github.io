@@ -226,9 +226,6 @@ tourAudio.addEventListener('pause', () => {
 
 // -------------------------------------------------- MAP
 
-// focal: touch.touch,
-// animate: true
-
 // Initialize Panzoom on the image
 const elem = document.getElementById('mapContent');
 const panzoom = Panzoom(elem, {
@@ -236,49 +233,33 @@ const panzoom = Panzoom(elem, {
     minScale: 1,  // Minimum zoom level (to prevent zoom out beyond this)
     contain: 'outside', // Allow panning outside the initial container bounds
     step: 1,
-    zoomSpeed: 0.065, // Set a base zoom speed
 });
 
+// Enable mousewheel zoom
 elem.parentElement.addEventListener('wheel', panzoom.zoomWithWheel);
 
 let lastTap = 0;
 let isPinching = false; // Track if we are currently pinching
-let initialPinchDistance = 0;
-let lastScale = 1;
 
 elem.addEventListener('touchstart', function (event) {
+    // If there are two or more touches, set isPinching to true
     if (event.touches.length > 1) {
-        isPinching = true;
-        initialPinchDistance = getPinchDistance(event); // Get initial distance between fingers
-        lastScale = panzoom.getScale(); // Store the current scale when pinch starts
-    }
-});
-
-elem.addEventListener('touchmove', function (event) {
-    if (isPinching && event.touches.length === 2) {
-        const currentPinchDistance = getPinchDistance(event);
-        const pinchScale = currentPinchDistance / initialPinchDistance;
-        const newScale = lastScale * pinchScale;
-
-        // Adjust zoom sensitivity dynamically based on current zoom level
-        const sensitivityFactor = (panzoom.getScale() - panzoom.options.minScale) / (panzoom.options.maxScale - panzoom.options.minScale);
-        const adjustedScale = newScale * (1 + sensitivityFactor * 0.5); // Increase sensitivity as we zoom in
-
-        panzoom.zoom(adjustedScale, {
-            animate: false
-        });
+        isPinching = true; // We're in a pinch gesture
     }
 });
 
 elem.addEventListener('touchend', function (event) {
-    if (isPinching) {
-        isPinching = false; // Reset the pinch state after the gesture ends
-    }
     const currentTime = new Date().getTime();
     const tapLength = currentTime - lastTap;
 
+    // If we are pinching, prevent double-tap detection
+    if (isPinching) {
+        isPinching = false; // Reset the pinch state after the gesture ends
+        return; // Exit to prevent double-tap logic from executing
+    }
+
     // Detect double-tap (time between taps < 300ms)
-    if (tapLength < 300 && tapLength > 0 && event.touches.length === 0) {
+    if (tapLength < 300 && tapLength > 0) {
         const touch = event.changedTouches[0];
 
         // Get the current scale and calculate the new zoom level
@@ -294,15 +275,6 @@ elem.addEventListener('touchend', function (event) {
 
     lastTap = currentTime; // Update lastTap time
 });
-
-// Helper function to calculate the distance between two touches
-function getPinchDistance(event) {
-    const touch1 = event.touches[0];
-    const touch2 = event.touches[1];
-    const dx = touch2.clientX - touch1.clientX;
-    const dy = touch2.clientY - touch1.clientY;
-    return Math.sqrt(dx * dx + dy * dy);
-}
 
 // -------------------------------------------------- SCRIPT 
 
