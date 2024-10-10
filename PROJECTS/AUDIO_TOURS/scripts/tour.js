@@ -238,12 +238,27 @@ const panzoom = Panzoom(elem, {
 elem.parentElement.addEventListener('wheel', panzoom.zoomWithWheel);
 
 let lastTap = 0;
+let isPinching = false; // Track if we are currently pinching
+
+elem.addEventListener('touchstart', function (event) {
+    // If there are two or more touches, set isPinching to true
+    if (event.touches.length > 1) {
+        isPinching = true; // We're in a pinch gesture
+    }
+});
 
 elem.addEventListener('touchend', function (event) {
     const currentTime = new Date().getTime();
     const tapLength = currentTime - lastTap;
 
-    if (tapLength < 300 && tapLength > 0) { // Detect double-tap (time between taps < 300ms)
+    // If we are pinching, prevent double-tap detection
+    if (isPinching) {
+        isPinching = false; // Reset the pinch state after the gesture ends
+        return; // Exit to prevent double-tap logic from executing
+    }
+
+    // Detect double-tap (time between taps < 300ms)
+    if (tapLength < 300 && tapLength > 0) {
         const touch = event.changedTouches[0];
 
         // Get the current scale and calculate the new zoom level
@@ -257,15 +272,7 @@ elem.addEventListener('touchend', function (event) {
         });
     }
 
-    lastTap = currentTime;
-});
-
-// Prevent double-tap zoom if two fingers are on the screen
-elem.addEventListener('touchstart', function (event) {
-    // If there are two or more touches, reset lastTap to avoid double-tap trigger
-    if (event.touches.length > 1) {
-        lastTap = 0; // Reset lastTap to avoid triggering double-tap
-    }
+    lastTap = currentTime; // Update lastTap time
 });
 
 // -------------------------------------------------- SCRIPT 
