@@ -229,7 +229,7 @@ tourAudio.addEventListener('pause', () => {
 // Initialize Panzoom on the image
 const elem = document.getElementById('mapContent');
 const panzoom = Panzoom(elem, {
-    maxScale: 10, // Maximum zoom level
+    maxScale: 8, // Maximum zoom level
     minScale: 1,  // Minimum zoom level (to prevent zoom out beyond this)
     contain: 'outside', // Allow panning outside the initial container bounds
     step: 1,
@@ -264,7 +264,7 @@ elem.addEventListener('touchend', function (event) {
 
         // Get the current scale and calculate the new zoom level
         const currentScale = panzoom.getScale();
-        const newScale = currentScale * 2.25;
+        const newScale = currentScale * 2;
 
         // Perform zoom on double-tap, zooming in around the touch point
         panzoom.zoom(newScale, {
