@@ -237,6 +237,7 @@ const panzoom = Panzoom(elem, {
 // Enable mousewheel zoom
 elem.parentElement.addEventListener('wheel', panzoom.zoomWithWheel);
 
+// Handle double-tap to zoom
 let lastTap = 0;
 
 elem.addEventListener('touchend', function (event) {
@@ -252,12 +253,47 @@ elem.addEventListener('touchend', function (event) {
 
         // Perform zoom on double-tap, zooming in around the touch point
         panzoom.zoom(newScale, {
-            focal: touch.touch,
+            focal: { x: touch.clientX, y: touch.clientY }, // Fix here
             animate: true
         });
     }
 
     lastTap = currentTime;
+});
+
+// Add support for pinch-to-zoom gestures
+let initialDistance = null;
+
+elem.addEventListener('touchmove', function (event) {
+    if (event.touches.length === 2) {
+        event.preventDefault(); // Prevent scrolling when using two fingers
+
+        // Calculate the distance between the two touch points
+        const touch1 = event.touches[0];
+        const touch2 = event.touches[1];
+        const distance = Math.sqrt(
+            Math.pow(touch2.clientX - touch1.clientX, 2) +
+            Math.pow(touch2.clientY - touch1.clientY, 2)
+        );
+
+        if (initialDistance === null) {
+            initialDistance = distance;
+        } else {
+            const scale = distance / initialDistance; // Calculate the scale factor
+            const currentScale = panzoom.getScale();
+            panzoom.zoom(currentScale * scale, {
+                focal: { x: (touch1.clientX + touch2.clientX) / 2, y: (touch1.clientY + touch2.clientY) / 2 }, // Center of pinch
+                animate: false
+            });
+        }
+    }
+});
+
+elem.addEventListener('touchend', function (event) {
+    // Reset the initial distance when touch ends
+    if (event.touches.length < 2) {
+        initialDistance = null;
+    }
 });
 
 // -------------------------------------------------- SCRIPT 
