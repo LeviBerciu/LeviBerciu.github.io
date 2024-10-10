@@ -119,12 +119,14 @@ chapterCards.forEach((card, index) => {
     });
 });
 
-// Toggle play/pause functionality
+// Toggle play/pause functionality and move time back 1 second on pause
 tourPlayPauseButton.addEventListener('click', () => {
     if (tourAudio.paused) {
         tourAudio.play();
     } else {
         tourAudio.pause();
+        // Move current time back by 1 second on pause, but ensure it doesn't go below 0
+        tourAudio.currentTime = Math.max(0, tourAudio.currentTime - 1);
     }
 });
 
