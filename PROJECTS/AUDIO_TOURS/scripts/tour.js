@@ -1,5 +1,5 @@
 
-// TABS ----------
+// -------------------------------------------------- TABS
 
 document.addEventListener("DOMContentLoaded", function() {
     const tabLinks = document.querySelectorAll('.tourTabs li');
@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 
-// AUDIO PLAYER ----------
+// -------------------------------------------------- AUDIO PLAYER
 
 // Retrieve DOM elements for the audio player, progress bar, and time display
 const tourAudio = document.getElementById('tourAudio');
@@ -224,12 +224,12 @@ tourAudio.addEventListener('pause', () => {
 });
 
 
-// MAP ----------
+// -------------------------------------------------- MAP
 
 // Initialize Panzoom on the image
 const elem = document.getElementById('mapContent');
 const panzoom = Panzoom(elem, {
-    maxScale: 5, // Maximum zoom level
+    maxScale: 10, // Maximum zoom level
     contain: 'outside', // Allow panning outside the initial container bounds
     step: 1,
 });
@@ -237,8 +237,30 @@ const panzoom = Panzoom(elem, {
 // Enable mousewheel zoom
 elem.parentElement.addEventListener('wheel', panzoom.zoomWithWheel);
 
+let lastTap = 0;
 
-// SCRIPT ----------
+elem.addEventListener('touchend', function (event) {
+    const currentTime = new Date().getTime();
+    const tapLength = currentTime - lastTap;
+
+    if (tapLength < 300 && tapLength > 0) { // Detect double-tap (time between taps < 300ms)
+        const touch = event.changedTouches[0];
+
+        // Get the current scale and calculate the new zoom level
+        const currentScale = panzoom.getScale();
+        const newScale = currentScale * 2.25;
+
+        // Perform zoom on double-tap, zooming in around the touch point
+        panzoom.zoom(newScale, {
+            focal: touch.touch,
+            animate: true
+        });
+    }
+
+    lastTap = currentTime;
+});
+
+// -------------------------------------------------- SCRIPT 
 
 // Load DOCX ----------
  function loadDocx() {
