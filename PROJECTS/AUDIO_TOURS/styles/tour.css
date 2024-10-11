@@ -83,19 +83,32 @@ p, h4 {
 
 .tourDownloadMenu {
     position: absolute;
-    color: white;
+    color: #E5E5EA;
     top: 0px;
     right: 0px;
     margin: 16px;
     list-style: none;
-    background-color: black;
+    background-color: #2C2C2E;
     box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.05);
-    padding: 8px 24px;
+    padding: 0px 12px;
     border-radius: 8px;
 }
 
 .tourDownloadMenu li {
+    display: flex;
+    gap: 8px;
+    align-items: center;
     line-height: 48px;
+    border-bottom: 1px solid #48484A;
+}
+
+.tourDownloadMenu li:last-child { 
+    border-bottom: none; 
+}
+
+.tourDownloadMenu img {
+    width: 20px;
+    height: 20px;
 }
 
 /* Tabs */
