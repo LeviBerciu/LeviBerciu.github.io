@@ -14,8 +14,9 @@
         <nav class="tourNav">
             <div class="tourHeader">
                 <div class="tourHeaderButton"><a href="index.html"><img src="assets/back_icon.svg" alt=""></a></div>
-                <div class="tourHeaderTitle">Cluj-Napoca - Old Town Walk</div>
-                <div class="tourHeaderButton"><img src="assets/download_icon.svg" alt=""></div>
+                <div class="tourHeaderTitle">London - Westminster Walk</div>
+                <div id="tourDownloadButton" class="tourHeaderButton"><img src="assets/download_icon.svg" alt=""></div>
+
             </div>
             <ul class="tourTabs">
                 <li class="active"><img src="assets/tracks_icon.svg" alt=""><a href="#tourChaptersList">Chapters</a></li>
@@ -23,7 +24,15 @@
                 <li><img src="assets/script_icon.svg" alt=""><a href="#tourScript">Script</a></li>
             </ul>
         </nav>
-    
+
+        <div id="tourDownload" class="hidden">
+            <ul class="tourDownloadMenu">
+                <li class="tourDownloadMenuItem">Download Audio</li>
+                <li class="tourDownloadMenuItem">Download Map</li>
+                <li class="tourDownloadMenuItem">Download Script</li>
+            </ul>
+        </div>
+        
         <div class="tourTabContentContainer">
     
             <ul id="tourChaptersList" class="tourTabContent active" data-chapters='[

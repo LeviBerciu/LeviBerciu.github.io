@@ -1,5 +1,5 @@
 
-// -------------------------------------------------- TABS
+// -------------------------------------------------- NAVIGATION
 
 document.addEventListener("DOMContentLoaded", function() {
     const tabLinks = document.querySelectorAll('.tourTabs li');
@@ -312,3 +312,42 @@ function addLineBreakAfterParagraphs(html) {
 
 // Load the DOCX file when the page loads
 window.onload = loadDocx;
+
+
+// -------------------------------------------------- DOWNLOAD
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    const tourDownload = document.getElementById('tourDownload');
+    const tourDownloadMenu = document.querySelector('.tourDownloadMenu');
+    const tourDownloadButton = document.getElementById('tourDownloadButton');
+    const tourDownloadMenuItems = document.querySelectorAll('.tourDownloadMenuItem'); // Select all buttons in the menu
+
+    // Show the download menu when the download button is clicked
+    tourDownloadButton.addEventListener('click', function(event) {
+        event.stopPropagation(); // Prevent click from propagating to the document
+        tourDownload.classList.remove('hidden'); // Show the download menu
+    });
+
+    // Hide the download menu when the user clicks outside the menu
+    document.addEventListener('click', function(event) {
+        if (!tourDownloadMenu.contains(event.target) && event.target !== tourDownloadButton) {
+            tourDownload.classList.add('hidden'); // Hide the download menu
+        }
+    });
+
+    // Prevent clicks inside the download menu from closing it
+    tourDownloadMenu.addEventListener('click', function(event) {
+        event.stopPropagation(); // Stop clicks inside the menu from closing it
+    });
+
+    // Add event listeners to each menu item
+    tourDownloadMenuItems.forEach(function(item) {
+        item.addEventListener('click', function() {
+            // This is where you can add future functionality, such as starting a download
+
+            // Hide the download menu after clicking an item
+            tourDownload.classList.add('hidden');
+        });
+    });
+});

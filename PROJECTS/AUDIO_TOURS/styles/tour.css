@@ -44,6 +44,7 @@ p, h4 {
 /* Header */
 .tourHeader {
     display: flex;
+    position: relative;
     width: 100%;
     height: 52px;
 }
@@ -67,6 +68,36 @@ p, h4 {
     padding: 12px 12px 12px 0;
 }
 
+/* Download Menu */
+
+#tourDownload {
+    position: relative;
+    width: 100%;
+    height: 100dvh;
+    z-index: 2;
+}
+
+#tourDownload.hidden {
+    display: none;
+}
+
+.tourDownloadMenu {
+    position: absolute;
+    color: white;
+    top: 0px;
+    right: 0px;
+    margin: 16px;
+    list-style: none;
+    background-color: black;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.05);
+    padding: 8px 24px;
+    border-radius: 8px;
+}
+
+.tourDownloadMenu li {
+    line-height: 48px;
+}
+
 /* Tabs */
 .tourTabs {
     display: flex;
@@ -86,7 +117,7 @@ p, h4 {
 }
 
 .tourTabs li.active {
-    border-bottom: 4px solid #FFC400;
+    border-bottom: 4px solid #FFCC00;
     color: black;
     font-weight: bold;
 }
@@ -185,7 +216,7 @@ p, h4 {
     bottom: 0;
     width: calc(100% - 32px);
     height: 140px;
-    background-color: #FFC400;
+    background-color: #FFCC00;
     z-index: 1;
     padding: 0 16px;
 }
