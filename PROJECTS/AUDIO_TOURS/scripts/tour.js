@@ -344,7 +344,20 @@ document.addEventListener('DOMContentLoaded', function() {
     // Add event listeners to each menu item
     tourDownloadMenuItems.forEach(function(item) {
         item.addEventListener('click', function() {
-            // This is where you can add future functionality, such as starting a download
+            const fileUrl = item.getAttribute('data-file'); // Get the file URL from the data attribute
+            if (fileUrl) {
+                // Create a temporary <a> element
+                const link = document.createElement('a');
+                link.href = fileUrl;
+                link.download = ''; // Set the 'download' attribute to trigger download
+
+                // Append the link to the document and click it programmatically
+                document.body.appendChild(link);
+                link.click();
+
+                // Remove the link from the document after triggering the download
+                document.body.removeChild(link);
+            }
 
             // Hide the download menu after clicking an item
             tourDownload.classList.add('hidden');
