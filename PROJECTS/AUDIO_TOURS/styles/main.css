@@ -1,0 +1,99 @@
+/* Global Styles */
+*, *:before, *:after {
+    outline: none;
+    border: none;
+    margin: 0;
+    padding: 0;
+    background-color: transparent;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.homeContainer {
+    width: 100dvw;
+    height: 100dvh;
+    background-image: url("../assets/main/home_background.png");
+    background-size: cover;
+    background-position: center;
+}
+
+.navContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+
+}
+
+nav {
+    background-color: aquamarine;
+    width: 100%;
+    max-width: 480px;
+    height: 48px;
+    border-radius: 24px;
+    background-color: #1C1C1E;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+
+.homeLogo {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    padding: 48px 0px;
+}
+
+.homeLogo img {
+    width: 200px;
+    height: auto;
+}
+
+.homeDescription {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.homeDescription h3 {
+    max-width: 480px;
+    font-size: 20px;
+    line-height: 24px;
+    padding: 0px 48px 64px 48px;
+    text-align: center;
+    color: #FFFFFF;
+    font-weight: normal;
+}
+
+.homeButtons {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+
+button {
+    width: 100%;
+    max-width: 240px;
+    font-size: 16px;
+    font-weight: bold;
+    height: 48px;
+    border-radius: 24px;
+    padding: 0pc 48px;
+}
+
+button.primary {
+    color: #1C1C1E;
+    background-color: #FFCC00;
+}
+
+button.secondary {
+    color: #FFFFFF;
+    border: 2px solid #FFCC00;
+}

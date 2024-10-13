@@ -25,7 +25,7 @@ p, h4 {
 /* Tour Container */
 .tourContainer {
     height: 100dvh;
-    max-width: 1280px;
+    max-width: 1440px;
     position: relative;
     overflow: hidden;
     margin: auto;
@@ -337,9 +337,15 @@ p, h4 {
 }
 
 /* Media Queries */
-@media only screen and (min-width: 640px) {
+@media only screen and (min-width: 720px) {
     .tourChaptersCard {
         width: calc(50% - 8px);
     }
 }
 
+/* Media Queries */
+@media only screen and (min-width: 1080px) {
+    .tourChaptersCard {
+        width: calc(25% - 12px);
+    }
+}
