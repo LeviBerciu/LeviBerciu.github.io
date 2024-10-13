@@ -9,6 +9,8 @@
 
 body {
     font-family: Arial, Helvetica, sans-serif;
+    background-color: #1C1C1E;
+    color: #1C1C1E;
 }
 
 .homeContainer {
@@ -24,7 +26,6 @@ body {
     align-items: center;
     justify-content: center;
     padding: 16px;
-
 }
 
 nav {
@@ -43,7 +44,7 @@ nav {
     width: 100%;
     align-items: center;
     justify-content: center;
-    padding: 48px 0px;
+    padding: 32px 0px;
 }
 
 .homeLogo img {
@@ -59,7 +60,6 @@ nav {
 }
 
 .homeTitle h1{
-
     font-size: 56px;
     line-height: 56px;
     color: #FFFFFF;
