@@ -9,7 +9,8 @@
 
 body {
     font-family: Arial, Helvetica, sans-serif;
-    background-color: black;
+    background-color: #1C1C1E;
+    color: #1C1C1E;
 }
 
 img {
@@ -132,7 +133,7 @@ p, h4 {
 
 .tourTabs li.active {
     border-bottom: 4px solid #FFCC00;
-    color: black;
+    color: #1C1C1E;
     font-weight: bold;
 }
 
@@ -144,7 +145,7 @@ p, h4 {
 .tourTabs a {
     line-height: 20px;
     text-decoration: none;
-    color: black;
+    color: #1C1C1E;
 }
 
 /* Tab Content */
@@ -265,7 +266,7 @@ p, h4 {
     content: '';
     height: 4px;
     width: var(--progress) ;
-    background: black;
+    background: #1C1C1E;
     position: absolute;
     top: 0;
     left: 0;
@@ -278,7 +279,7 @@ p, h4 {
     -webkit-appearance: none;
     width: 12px;
     height: 12px;
-    background-color: black;
+    background-color: #1C1C1E;
     border-radius: 50%;
     cursor: pointer;
     position: relative;
@@ -291,7 +292,7 @@ p, h4 {
 #tourProgressSlider::-moz-range-thumb {
     width: 12px;
     height: 12px;
-    background-color: black;
+    background-color: #1C1C1E;
     border-radius: 50%;
     cursor: pointer;
     top: -4px;
@@ -304,7 +305,7 @@ p, h4 {
 }
 
 #tourProgressSlider::-moz-range-progress {
-    background: black;
+    background: #1C1C1E;
     height: 4px;
     border-radius: 2px;
 }
