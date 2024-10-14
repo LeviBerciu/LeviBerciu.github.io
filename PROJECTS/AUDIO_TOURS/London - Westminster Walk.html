@@ -10,152 +10,155 @@
 </head>
 <body>
 
-    <div class="tourContainer">
-        <nav class="tourNav">
-            <div class="tourHeader">
-                <div class="tourHeaderButton"><a href="index.html"><img src="assets/back_icon.svg" alt=""></a></div>
-                <div class="tourHeaderTitle">London - Westminster Walk</div>
-                <div id="tourDownloadButton" class="tourHeaderButton"><img src="assets/download_icon.svg" alt=""></div>
+    <div class="tourWrapper">
 
+        <div class="tourContainer">
+            <nav class="tourNav">
+                <div class="tourHeader">
+                    <div class="tourHeaderButton"><a href="index.html"><img src="assets/back_icon.svg" alt=""></a></div>
+                    <div class="tourHeaderTitle">London - Westminster Walk</div>
+                    <div id="tourDownloadButton" class="tourHeaderButton"><img src="assets/download_icon.svg" alt=""></div>
+    
+                </div>
+                <ul class="tourTabs">
+                    <li class="active"><img src="assets/chapters_icon.svg" alt=""><a href="#tourChaptersList">Chapters</a></li>
+                    <li><img src="assets/map_icon.svg" alt=""><a href="#tourMap">Map</a></li>
+                    <li><img src="assets/script_icon.svg" alt=""><a href="#tourScript">Script</a></li>
+                </ul>
+            </nav>
+    
+            <div id="tourDownload" class="hidden">
+                <ul class="tourDownloadMenu">
+                    <li class="tourDownloadMenuItem" data-file="./assets/London - Westminster Walk/London - Westminster Walk - Audio.mp3">
+                        <img src="assets/audio_icon_light.svg" alt="">Download Audio
+                    </li>
+                    <li class="tourDownloadMenuItem" data-file="./assets/London - Westminster Walk/London - Westminster Walk - Map.pdf">
+                        <img src="assets/map_icon_light.svg" alt="">Download Map
+                    </li>
+                    <li class="tourDownloadMenuItem" data-file="./assets/London - Westminster Walk/London - Westminster Walk - Script.pdf">
+                        <img src="assets/script_icon_light.svg" alt="">Download Script
+                    </li>
+                </ul>
             </div>
-            <ul class="tourTabs">
-                <li class="active"><img src="assets/tracks_icon.svg" alt=""><a href="#tourChaptersList">Chapters</a></li>
-                <li><img src="assets/map_icon.svg" alt=""><a href="#tourMap">Map</a></li>
-                <li><img src="assets/script_icon.svg" alt=""><a href="#tourScript">Script</a></li>
-            </ul>
-        </nav>
+        
+            <div class="tourTabContentContainer">
+        
+                <ul id="tourChaptersList" class="tourTabContent active" data-chapters='[
+                    {"title": "1. The Westminster Walk", "start": 0},
+                    {"title": "2. Tour Begins: Big Ben", "start": 117},
+                    {"title": "3. London Eye, River Thames", "start": 335},
+                    {"title": "4. Statue of Boadicea", "start": 594},
+                    {"title": "5. Parliament Square", "start": 813},
+                    {"title": "6. Walking Along Whitehall", "start": 1015},
+                    {"title": "7. The Cenotaph", "start": 1124},
+                    {"title": "8. #10 Downing Street", "start": 1295},
+                    {"title": "9. The Banqueting House", "start": 1628},
+                    {"title": "10. Horse Guard", "start": 1830},
+                    {"title": "11. More of Whitehall", "start": 1950},
+                    {"title": "12. Trafalgar Square", "start": 2243}
+                ]'>
+                    <li class="tourChaptersCard" style="background-image: url('assets/London - Westminster Walk/1.png'); background-size: cover;">
+                        <div class="tourChaptersCardGradient"></div>
+                        <div class="tourChaptersCardLabel">
+                            <h4>1. The Westminster Walk</h4><img src="assets/chapter_inactive_icon.svg" alt="">
+                        </div>
+                    </li>
+                    <li class="tourChaptersCard" style="background-image: url('assets/London - Westminster Walk/2.png'); background-size: cover;">
+                        <div class="tourChaptersCardGradient"></div>
+                        <div class="tourChaptersCardLabel">
+                            <h4>2. Tour Begins: Big Ben</h4><img src="assets/chapter_inactive_icon.svg" alt="">
+                        </div>
+                    </li>
+                    <li class="tourChaptersCard" style="background-image: url('assets/London - Westminster Walk/3.png'); background-size: cover;">
+                        <div class="tourChaptersCardGradient"></div>
+                        <div class="tourChaptersCardLabel">
+                            <h4>3. London Eye, River Themes</h4><img src="assets/chapter_inactive_icon.svg" alt="">
+                        </div>
+                    </li>
+                    <li class="tourChaptersCard" style="background-image: url('assets/London - Westminster Walk/4.png'); background-size: cover;">
+                        <div class="tourChaptersCardGradient"></div>
+                        <div class="tourChaptersCardLabel">
+                            <h4>4. Statue of Boadicea</h4><img src="assets/chapter_inactive_icon.svg" alt="">
+                        </div>
+                    </li>
+                    <li class="tourChaptersCard" style="background-image: url('assets/London - Westminster Walk/5.png'); background-size: cover;">
+                        <div class="tourChaptersCardGradient"></div>
+                        <div class="tourChaptersCardLabel">
+                            <h4>5. Parliament Square</h4><img src="assets/chapter_inactive_icon.svg" alt="">
+                        </div>
+                    </li>
+                    <li class="tourChaptersCard" style="background-image: url('assets/London - Westminster Walk/6.png'); background-size: cover;">
+                        <div class="tourChaptersCardGradient"></div>
+                        <div class="tourChaptersCardLabel">
+                            <h4>6. Walking Along Whitehall</h4><img src="assets/chapter_inactive_icon.svg" alt="">
+                        </div>
+                    </li>
+                    <li class="tourChaptersCard" style="background-image: url('assets/London - Westminster Walk/7.png'); background-size: cover;">
+                        <div class="tourChaptersCardGradient"></div>
+                        <div class="tourChaptersCardLabel">
+                            <h4>7. The Cenotaph</h4><img src="assets/chapter_inactive_icon.svg" alt="">
+                        </div>
+                    </li>
+                    <li class="tourChaptersCard" style="background-image: url('assets/London - Westminster Walk/8.png'); background-size: cover;">
+                        <div class="tourChaptersCardGradient"></div>
+                        <div class="tourChaptersCardLabel">
+                            <h4>8. #10 Downing Street</h4><img src="assets/chapter_inactive_icon.svg" alt="">
+                        </div>
+                    </li>
+                    <li class="tourChaptersCard" style="background-image: url('assets/London - Westminster Walk/9.png'); background-size: cover;">
+                        <div class="tourChaptersCardGradient"></div>
+                        <div class="tourChaptersCardLabel">
+                            <h4>9. The Banqueting House</h4><img src="assets/chapter_inactive_icon.svg" alt="">
+                        </div>
+                    </li>
+                    <li class="tourChaptersCard" style="background-image: url('assets/London - Westminster Walk/10.png'); background-size: cover;">
+                        <div class="tourChaptersCardGradient"></div>
+                        <div class="tourChaptersCardLabel">
+                            <h4>10. Horse Guard</h4><img src="assets/chapter_inactive_icon.svg" alt="">
+                        </div>
+                    </li>
+                    <li class="tourChaptersCard" style="background-image: url('assets/London - Westminster Walk/11.png'); background-size: cover;">
+                        <div class="tourChaptersCardGradient"></div>
+                        <div class="tourChaptersCardLabel">
+                            <h4>11. More of Whitehall</h4><img src="assets/chapter_inactive_icon.svg" alt="">
+                        </div>
+                    </li>
+                    <li class="tourChaptersCard" style="background-image: url('assets/London - Westminster Walk/12.png'); background-size: cover;">
+                        <div class="tourChaptersCardGradient"></div>
+                        <div class="tourChaptersCardLabel">
+                            <h4>12. Trafalgar Square</h4><img src="assets/chapter_inactive_icon.svg" alt="">
+                        </div>
+                    </li>
+                </ul>
+                    
+                <div id="tourMap" class="tourTabContent">
+                    <img id="mapContent" src="assets/London - Westminster Walk/London - Westminster Walk - Map.svg" alt="Map">
+                </div>
+                    
+                <div id="tourScript" class="tourTabContent">
+                    <div id="docxContent" data-docx="./assets/London - Westminster Walk/London - Westminster Walk - Script.docx"></div>
+                </div>
+        
+            </div>
+        
+            <footer class="tourPlayer">
+                <audio id="tourAudio" src="assets/London - Westminster Walk/London - Westminster Walk - Audio.mp3" preload="metadata"></audio>
+                <p id="tourChapterTitle">Chapter Title</p>
+                <input type="range" id="tourProgressSlider" min="0" max="100" value="0" step="0.1">
+                <div class="tourTimeInfo">
+                    <span id="tourCurrentTimeEl">00:00</span>
+                    <span id="tourTotalTimeEl">00:00</span>
+                </div>
+                <div class="tourControls">
+                    <button id="tourPrevChapterButton"><img src="assets/previous_chapter_icon.svg" alt=""></button>
+                    <button id="tourBack10Button"><img src="assets/back_10_icon.svg" alt=""></button>
+                    <button id="tourPlayPauseButton"><img src="assets/play_icon.svg" alt=""></button>
+                    <button id="tourForward10Button"><img src="assets/forward_10_icon.svg" alt=""></button>
+                    <button id="tourNextChapterButton"><img src="assets/next_chapter_icon.svg" alt=""></button>
+                </div>
+            </footer>
+        </div>
 
-        <div id="tourDownload" class="hidden">
-            <ul class="tourDownloadMenu">
-                <li class="tourDownloadMenuItem" data-file="./assets/London - Westminster Walk/London - Westminster Walk - Audio.mp3">
-                    <img src="assets/audio_icon_light.svg" alt="">Download Audio
-                </li>
-                <li class="tourDownloadMenuItem" data-file="./assets/London - Westminster Walk/London - Westminster Walk - Map.pdf">
-                    <img src="assets/map_icon_light.svg" alt="">Download Map
-                </li>
-                <li class="tourDownloadMenuItem" data-file="./assets/London - Westminster Walk/London - Westminster Walk - Script.pdf">
-                    <img src="assets/script_icon_light.svg" alt="">Download Script
-                </li>
-            </ul>
-        </div>
-    
-        <div class="tourTabContentContainer">
-    
-            <ul id="tourChaptersList" class="tourTabContent active" data-chapters='[
-                {"title": "1. The Westminster Walk", "start": 0},
-                {"title": "2. Tour Begins: Big Ben", "start": 117},
-                {"title": "3. London Eye, River Thames", "start": 335},
-                {"title": "4. Statue of Boadicea", "start": 594},
-                {"title": "5. Parliament Square", "start": 813},
-                {"title": "6. Walking Along Whitehall", "start": 1015},
-                {"title": "7. The Cenotaph", "start": 1124},
-                {"title": "8. #10 Downing Street", "start": 1295},
-                {"title": "9. The Banqueting House", "start": 1628},
-                {"title": "10. Horse Guard", "start": 1830},
-                {"title": "11. More of Whitehall", "start": 1950},
-                {"title": "12. Trafalgar Square", "start": 2243}
-            ]'>
-                <li class="tourChaptersCard" style="background-image: url('assets/London - Westminster Walk/1.png'); background-size: cover;">
-                    <div class="tourChaptersCardGradient"></div>
-                    <div class="tourChaptersCardLabel">
-                        <h4>1. The Westminster Walk</h4><img src="assets/chapter_inactive_icon.svg" alt="">
-                    </div>
-                </li>
-                <li class="tourChaptersCard" style="background-image: url('assets/London - Westminster Walk/2.png'); background-size: cover;">
-                    <div class="tourChaptersCardGradient"></div>
-                    <div class="tourChaptersCardLabel">
-                        <h4>2. Tour Begins: Big Ben</h4><img src="assets/chapter_inactive_icon.svg" alt="">
-                    </div>
-                </li>
-                <li class="tourChaptersCard" style="background-image: url('assets/London - Westminster Walk/3.png'); background-size: cover;">
-                    <div class="tourChaptersCardGradient"></div>
-                    <div class="tourChaptersCardLabel">
-                        <h4>3. London Eye, River Themes</h4><img src="assets/chapter_inactive_icon.svg" alt="">
-                    </div>
-                </li>
-                <li class="tourChaptersCard" style="background-image: url('assets/London - Westminster Walk/4.png'); background-size: cover;">
-                    <div class="tourChaptersCardGradient"></div>
-                    <div class="tourChaptersCardLabel">
-                        <h4>4. Statue of Boadicea</h4><img src="assets/chapter_inactive_icon.svg" alt="">
-                    </div>
-                </li>
-                <li class="tourChaptersCard" style="background-image: url('assets/London - Westminster Walk/5.png'); background-size: cover;">
-                    <div class="tourChaptersCardGradient"></div>
-                    <div class="tourChaptersCardLabel">
-                        <h4>5. Parliament Square</h4><img src="assets/chapter_inactive_icon.svg" alt="">
-                    </div>
-                </li>
-                <li class="tourChaptersCard" style="background-image: url('assets/London - Westminster Walk/6.png'); background-size: cover;">
-                    <div class="tourChaptersCardGradient"></div>
-                    <div class="tourChaptersCardLabel">
-                        <h4>6. Walking Along Whitehall</h4><img src="assets/chapter_inactive_icon.svg" alt="">
-                    </div>
-                </li>
-                <li class="tourChaptersCard" style="background-image: url('assets/London - Westminster Walk/7.png'); background-size: cover;">
-                    <div class="tourChaptersCardGradient"></div>
-                    <div class="tourChaptersCardLabel">
-                        <h4>7. The Cenotaph</h4><img src="assets/chapter_inactive_icon.svg" alt="">
-                    </div>
-                </li>
-                <li class="tourChaptersCard" style="background-image: url('assets/London - Westminster Walk/8.png'); background-size: cover;">
-                    <div class="tourChaptersCardGradient"></div>
-                    <div class="tourChaptersCardLabel">
-                        <h4>8. #10 Downing Street</h4><img src="assets/chapter_inactive_icon.svg" alt="">
-                    </div>
-                </li>
-                <li class="tourChaptersCard" style="background-image: url('assets/London - Westminster Walk/9.png'); background-size: cover;">
-                    <div class="tourChaptersCardGradient"></div>
-                    <div class="tourChaptersCardLabel">
-                        <h4>9. The Banqueting House</h4><img src="assets/chapter_inactive_icon.svg" alt="">
-                    </div>
-                </li>
-                <li class="tourChaptersCard" style="background-image: url('assets/London - Westminster Walk/10.png'); background-size: cover;">
-                    <div class="tourChaptersCardGradient"></div>
-                    <div class="tourChaptersCardLabel">
-                        <h4>10. Horse Guard</h4><img src="assets/chapter_inactive_icon.svg" alt="">
-                    </div>
-                </li>
-                <li class="tourChaptersCard" style="background-image: url('assets/London - Westminster Walk/11.png'); background-size: cover;">
-                    <div class="tourChaptersCardGradient"></div>
-                    <div class="tourChaptersCardLabel">
-                        <h4>11. More of Whitehall</h4><img src="assets/chapter_inactive_icon.svg" alt="">
-                    </div>
-                </li>
-                <li class="tourChaptersCard" style="background-image: url('assets/London - Westminster Walk/12.png'); background-size: cover;">
-                    <div class="tourChaptersCardGradient"></div>
-                    <div class="tourChaptersCardLabel">
-                        <h4>12. Trafalgar Square</h4><img src="assets/chapter_inactive_icon.svg" alt="">
-                    </div>
-                </li>
-            </ul>
-                
-            <div id="tourMap" class="tourTabContent">
-                <img id="mapContent" src="assets/London - Westminster Walk/London - Westminster Walk - Map.svg" alt="Map">
-            </div>
-                
-            <div id="tourScript" class="tourTabContent">
-                <div id="docxContent" data-docx="./assets/London - Westminster Walk/London - Westminster Walk - Script.docx"></div>
-            </div>
-    
-        </div>
-    
-    
-        <footer class="tourPlayer">
-            <audio id="tourAudio" src="assets/London - Westminster Walk/London - Westminster Walk - Audio.mp3" preload="metadata"></audio>
-            <p id="tourChapterTitle">Chapter Title</p>
-            <input type="range" id="tourProgressSlider" min="0" max="100" value="0" step="0.1">
-            <div class="tourTimeInfo">
-                <span id="tourCurrentTimeEl">00:00</span>
-                <span id="tourTotalTimeEl">00:00</span>
-            </div>
-            <div class="tourControls">
-                <button id="tourPrevChapterButton"><img src="assets/previous_chapter_icon.svg" alt=""></button>
-                <button id="tourBack10Button"><img src="assets/back_10_icon.svg" alt=""></button>
-                <button id="tourPlayPauseButton"><img src="assets/play_icon.svg" alt=""></button>
-                <button id="tourForward10Button"><img src="assets/forward_10_icon.svg" alt=""></button>
-                <button id="tourNextChapterButton"><img src="assets/next_chapter_icon.svg" alt=""></button>
-            </div>
-        </footer>
     </div>
 
     <script src="scripts/tour.js"></script>

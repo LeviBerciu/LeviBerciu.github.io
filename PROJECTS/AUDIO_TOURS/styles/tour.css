@@ -22,6 +22,11 @@ p, h4 {
     line-height: 20px;
 }
 
+.tourWrapper {
+    width: 100%;
+    background-color: #1C1C1E;
+}
+
 /* Tour Container */
 .tourContainer {
     height: 100dvh;
