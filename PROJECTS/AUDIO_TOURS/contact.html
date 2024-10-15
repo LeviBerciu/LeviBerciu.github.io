@@ -6,30 +6,39 @@
     <title>Contact | Guided Romania</title>
     <link rel="icon" type="image/png" href="assets/favicon.png">
     <link rel="stylesheet" href="styles/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <header>
-        <nav></nav>
-    </header>
-    
-    <form action="/submit-contact-form" method="POST">
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" required>
+    <div class="contactContainer">
+
+        <nav>
+            <div class="navButton"><a href="index.html"><img src="assets/logo.svg" alt=""></a></div>
+            <div class="navTitle">Guided Romania</div>
+            <div id="navMenuButton" class="navButton"><img src="assets/menu_icon.svg" alt=""></div>
+        </nav>
         
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required>
-        
-        <label for="message">Message:</label>
-        <textarea id="message" name="message" required></textarea>
-        
-        <label>
-          <input type="checkbox" name="consent" required>
-          I agree to the collection and processing of my name and email address so that you can respond to my inquiry. My information will not be shared with third parties, and I can request its deletion at any time.
-        </label>
-        
-        <button type="submit">Submit</button>
-    </form>
+        <form class="contactForm" action="/submit-contact-form" method="POST">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+            
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" required></textarea>
+            
+            <label>
+              <input type="checkbox" name="consent" required>
+              I agree to the collection and processing of my name and email address so that you can respond to my inquiry. My information will not be shared with third parties, and I can request its deletion at any time.
+            </label>
+            
+            <button type="submit">Submit</button>
+        </form>
+
+    </div>
 
 </body>
 </html>
