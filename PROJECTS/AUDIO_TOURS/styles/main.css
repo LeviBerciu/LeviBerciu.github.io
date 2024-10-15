@@ -5,6 +5,17 @@
     margin: 0;
     padding: 0;
     background-color: transparent;
+    -webkit-tap-highlight-color: transparent;
+}
+
+::-moz-selection { /* Code for Firefox */
+    color: #1C1C1E;
+    background: #FFCC00;
+  }
+  
+::selection {
+    color: #1C1C1E;
+    background: #FFCC00;
 }
 
 body {
@@ -16,12 +27,12 @@ body {
 .homeContainer {
     width: 100dvw;
     height: 100dvh;
-    background-image: url("../assets/main/home_background.png");
+    background-image: url("../assets/home_background.png");
     background-size: cover;
     background-position: center;
 }
 
-.navContainer {
+header {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -29,7 +40,6 @@ body {
 }
 
 nav {
-    background-color: aquamarine;
     width: 100%;
     max-width: 480px;
     height: 48px;
@@ -84,7 +94,7 @@ nav {
     line-height: 24px;
     padding: 0px 48px 48px 48px;
     text-align: center;
-    color: #FFFFFF;
+    color: #E5E5EA;
     font-weight: normal;
 }
 
