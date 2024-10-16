@@ -37,13 +37,13 @@ p, h4 {
     line-height: 20px;
 }
 
-.tourWrapper {
+.wrapper {
     width: 100%;
     background-color: #1C1C1E;
 }
 
 /* Tour Container */
-.tourContainer {
+.container {
     height: 100dvh;
     max-width: 1440px;
     position: relative;
@@ -53,7 +53,7 @@ p, h4 {
 }
 
 /* Navigation Bar */
-.tourNav {
+nav {
     position: absolute;
     top: 0;
     width: 100%;
@@ -63,23 +63,23 @@ p, h4 {
 }
 
 /* Header */
-.tourHeader {
+header {
     display: flex;
     position: relative;
     width: 100%;
     height: 52px;
 }
 
-.tourHeaderButton, .tourDownloadButton {
+.headerButton, .tourDownloadButton {
     display: flex;
     padding: 12px;
 }
 
-.tourHeaderButton img, .tourDownloadButton img {
+.headerButton img, .tourDownloadButton img {
     width: 28px;
 }
 
-.tourHeaderTitle {
+.headerTitle {
     font-size: 20px;
     font-weight: normal;
     width: 100%;
@@ -92,18 +92,18 @@ p, h4 {
 
 /* Download Menu */
 
-#tourDownload {
+#download {
     position: relative;
     width: 100%;
     height: 100dvh;
     z-index: 2;
 }
 
-#tourDownload.hidden {
+#download.hidden {
     display: none;
 }
 
-.tourDownloadMenu {
+.downloadMenu {
     position: absolute;
     color: #E5E5EA;
     top: 0px;
@@ -116,7 +116,7 @@ p, h4 {
     border-radius: 8px;
 }
 
-.tourDownloadMenu li {
+.downloadMenu li {
     display: flex;
     gap: 8px;
     padding-right: 4px;
@@ -125,23 +125,23 @@ p, h4 {
     border-bottom: 1px solid #48484A;
 }
 
-.tourDownloadMenu li:last-child { 
+.downloadMenu li:last-child { 
     border-bottom: none; 
 }
 
-.tourDownloadMenu img {
+.downloadMenu img {
     width: 20px;
     height: 20px;
 }
 
 /* Tabs */
-.tourTabs {
+.tabs {
     display: flex;
     padding: 0 16px;
     list-style: none;
 }
 
-.tourTabs li {
+.tabs li {
     display: flex;
     height: 44px;
     gap: 8px;
@@ -152,25 +152,25 @@ p, h4 {
     border-bottom: 4px solid inherit;
 }
 
-.tourTabs li.active {
+.tabs li.active {
     border-bottom: 4px solid #FFCC00;
     color: #1C1C1E;
     font-weight: bold;
 }
 
-.tourTabs img {
+.tabs img {
     width: 20px;
     height: 20px;
 }
 
-.tourTabs a {
+.tabs a {
     line-height: 20px;
     text-decoration: none;
     color: #1C1C1E;
 }
 
 /* Tab Content */
-.tourTabContentContainer {
+.tabContentContainer {
     position: absolute;
     top: 100px;
     width: 100%;
@@ -178,23 +178,23 @@ p, h4 {
     overflow: auto;
 }
 
-.tourTabContent {
+.tabContent {
     display: none;
 }
 
-.tourTabContent.active {
+.tabContent.active {
     display: flex;
 }
 
 /* Chapter Cards */
-#tourChaptersList {
+#chaptersList {
     flex-wrap: wrap;
     list-style: none;
     gap: 16px;
     padding: 16px;
 }
 
-.tourChaptersCard {
+.chaptersCard {
     position: relative;
     width: 100%;
     aspect-ratio: 16/9;
@@ -203,7 +203,7 @@ p, h4 {
 
 }
 
-.tourChaptersCardGradient {
+.chaptersCardGradient {
     position: absolute;
     width: 100%;
     bottom: 0;
@@ -211,7 +211,7 @@ p, h4 {
     background-image:linear-gradient(to bottom, rgba(0,0,0,0) 25%, 75%, rgba(0,0,0,1));
 }
 
-.tourChaptersCardLabel {
+.chaptersCardLabel {
     display: flex;
     width: calc(100% - 32px);
     gap: 16px;
@@ -222,12 +222,12 @@ p, h4 {
     justify-content: space-between;
 }
 
-.tourChaptersCardLabel img {
+.chaptersCardLabel img {
     width: 40px;
     height: 40px;
 }
 
-.tourChaptersCardLabel h4 {
+.chaptersCardLabel h4 {
     color: #FFFFFF;;
     display: -webkit-box;
     -webkit-line-clamp: 2;
@@ -237,17 +237,17 @@ p, h4 {
 }
 
 /* Map */
-#tourMap {
+#map {
     height: inherit;
 }
 
 /* Script Cards */
-#tourScript {
+#script {
     padding: 32px 32px 12px 32px;
 }
 
 /* Player */
-.tourPlayer {
+.player {
     position: absolute;
     bottom: 0;
     width: calc(100% - 32px);
@@ -257,7 +257,7 @@ p, h4 {
     padding: 0 16px;
 }
 
-#tourChapterTitle {
+#chapterTitle {
     width: 100%;
     padding: 12px 0 4px;
     white-space: nowrap;
@@ -266,7 +266,7 @@ p, h4 {
 }
 
 /* Progress Slider */
-#tourProgressSlider {
+#progressSlider {
     -webkit-appearance: none;
     width: 100%;
     height: 4px;
@@ -277,13 +277,13 @@ p, h4 {
     margin: 8px 0;
 }
 
-#tourProgressSlider::-webkit-slider-runnable-track {
+#progressSlider::-webkit-slider-runnable-track {
     background: #FFFFFF;;
     height: 4px;
     border-radius: 2px;
 }
 
-#tourProgressSlider::before {
+#progressSlider::before {
     content: '';
     height: 4px;
     width: var(--progress) ;
@@ -296,7 +296,7 @@ p, h4 {
 }
 
 /* Slider Thumb (Knob) */
-#tourProgressSlider::-webkit-slider-thumb {
+#progressSlider::-webkit-slider-thumb {
     -webkit-appearance: none;
     width: 12px;
     height: 12px;
@@ -310,7 +310,7 @@ p, h4 {
 }
 
 
-#tourProgressSlider::-moz-range-thumb {
+#progressSlider::-moz-range-thumb {
     width: 12px;
     height: 12px;
     background-color: #1C1C1E;
@@ -319,33 +319,33 @@ p, h4 {
     top: -4px;
 }
 
-#tourProgressSlider::-moz-range-track {
+#progressSlider::-moz-range-track {
     background: #FFFFFF;
     height: 4px;
     border-radius: 2px;
 }
 
-#tourProgressSlider::-moz-range-progress {
+#progressSlider::-moz-range-progress {
     background: #1C1C1E;
     height: 4px;
     border-radius: 2px;
 }
 
 /* Time Information */
-.tourTimeInfo {
+.timeInfo {
     display: flex;
     width: 100%;
     height: 16px;
     justify-content: space-between;
 }
 
-.tourTimeInfo span {
+.timeInfo span {
     font-size: 14px;
     line-height: 16px;
 }
 
 /* Playback Controls */
-.tourControls {
+.controls {
     display: flex;
     gap: 8px;
     width: 100%;
@@ -353,20 +353,20 @@ p, h4 {
     justify-content: center;
 }
 
-#tourPlayPauseButton {
+#playPauseButton {
     margin: 0 4px;
 }
 
 /* Media Queries */
 @media only screen and (min-width: 720px) {
-    .tourChaptersCard {
+    .chaptersCard {
         width: calc(50% - 8px);
     }
 }
 
 /* Media Queries */
 @media only screen and (min-width: 1080px) {
-    .tourChaptersCard {
+    .chaptersCard {
         width: calc(25% - 12px);
     }
 }

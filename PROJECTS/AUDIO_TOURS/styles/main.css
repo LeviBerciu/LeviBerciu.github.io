@@ -138,10 +138,17 @@ nav {
     justify-content: center;
 }
 
+/* GUIDES */
+
+.guidesContainer {
+    background-color: #FFFFFF;
+    height: 100vh;
+}
+
 /* CONTACT */
 
 .contactContainer {
-    background-color: #FFCC00;;
+    background-color: #FFCC00;
 }
 
 .contactForm {

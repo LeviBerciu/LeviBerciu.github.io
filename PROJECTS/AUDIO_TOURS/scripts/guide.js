@@ -2,8 +2,8 @@
 // -------------------------------------------------- NAVIGATION
 
 document.addEventListener("DOMContentLoaded", function() {
-    const tabLinks = document.querySelectorAll('.tourTabs li');
-    const tabs = document.querySelectorAll('.tourTabContent');
+    const tabLinks = document.querySelectorAll('.tabs li');
+    const tabs = document.querySelectorAll('.tabContent');
 
     tabLinks.forEach((tabLink) => {
         tabLink.addEventListener('click', function(e) {
@@ -25,36 +25,36 @@ document.addEventListener("DOMContentLoaded", function() {
 // -------------------------------------------------- AUDIO PLAYER
 
 // Retrieve DOM elements for the audio player, progress bar, and time display
-const tourAudio = document.getElementById('tourAudio');
-const tourChapterTitle = document.getElementById('tourChapterTitle');
-const tourProgressSlider = document.getElementById('tourProgressSlider');
-const tourCurrentTimeEl = document.getElementById('tourCurrentTimeEl');
-const tourTotalTimeEl = document.getElementById('tourTotalTimeEl');
+const audio = document.getElementById('audio');
+const chapterTitle = document.getElementById('chapterTitle');
+const progressSlider = document.getElementById('progressSlider');
+const currentTimeEl = document.getElementById('currentTimeEl');
+const totalTimeEl = document.getElementById('totalTimeEl');
 
-const tourChaptersList = document.getElementById('tourChaptersList');
+const chaptersList = document.getElementById('chaptersList');
 
 // Retrieve DOM elements for playback controls
-const tourPrevChapterButton = document.getElementById('tourPrevChapterButton');
-const tourBack10Button = document.getElementById('tourBack10Button');
-const tourPlayPauseButton = document.getElementById('tourPlayPauseButton');
-const tourForward10Button = document.getElementById('tourForward10Button');
-const tourNextChapterButton = document.getElementById('tourNextChapterButton');
+const prevChapterButton = document.getElementById('prevChapterButton');
+const back10Button = document.getElementById('back10Button');
+const playPauseButton = document.getElementById('playPauseButton');
+const forward10Button = document.getElementById('forward10Button');
+const nextChapterButton = document.getElementById('nextChapterButton');
 
 // Access the <img> tag inside the play/pause button
-const playPauseIcon = tourPlayPauseButton.querySelector('img');
+const playPauseIcon = playPauseButton.querySelector('img');
 
 // Paths to play and pause icons
 const playIconSrc = 'assets/play_icon.svg';
 const pauseIconSrc = 'assets/pause_icon.svg';
 
 // Extract chapters data from HTML data attribute
-const chapters = JSON.parse(tourChaptersList.dataset.chapters);
+const chapters = JSON.parse(chaptersList.dataset.chapters);
 
 // Track the current chapter index
 let currentChapter = 0;
 
 // Get all chapter card elements
-const chapterCards = document.querySelectorAll('.tourChaptersCard');
+const chapterCards = document.querySelectorAll('.chaptersCard');
 
 // Function to update chapter based on current audio time
 function updateChapter(currentTime) {
@@ -63,7 +63,7 @@ function updateChapter(currentTime) {
         if (currentTime >= chapters[i].start && (i === chapters.length - 1 || currentTime < chapters[i + 1].start)) {
             if (i !== currentChapter) {  // Only update if chapter changes
                 currentChapter = i;
-                tourChapterTitle.textContent = chapters[i].title;  // Update chapter title
+                chapterTitle.textContent = chapters[i].title;  // Update chapter title
 
                 // Reset all chapter icons to inactive
                 chapterCards.forEach((card) => {
@@ -104,8 +104,8 @@ function loadChapter(index) {
 
     // Set audio to start at the chapter's start time
     const chapter = chapters[index];
-    tourAudio.currentTime = chapter.start;
-    tourChapterTitle.textContent = chapter.title;  // Update chapter title display
+    audio.currentTime = chapter.start;
+    chapterTitle.textContent = chapter.title;  // Update chapter title display
     currentChapter = index;  // Update current chapter index
 
     // Scroll the active chapter card into view
@@ -120,40 +120,40 @@ chapterCards.forEach((card, index) => {
 });
 
 // Toggle play/pause functionality and move time back 1 second on pause
-tourPlayPauseButton.addEventListener('click', () => {
-    if (tourAudio.paused) {
-        tourAudio.play();
+playPauseButton.addEventListener('click', () => {
+    if (audio.paused) {
+        audio.play();
     } else {
-        tourAudio.pause();
+        audio.pause();
         // Move current time back by 1 second on pause, but ensure it doesn't go below 0
-        tourAudio.currentTime = Math.max(0, tourAudio.currentTime - 1);
+        audio.currentTime = Math.max(0, audio.currentTime - 1);
     }
 });
 
 // Update audio progress and chapter as the audio plays
-tourAudio.addEventListener('timeupdate', () => {
-    const currentTime = tourAudio.currentTime;
-    const duration = tourAudio.duration;
+audio.addEventListener('timeupdate', () => {
+    const currentTime = audio.currentTime;
+    const duration = audio.duration;
 
     // Calculate and update the progress percentage
     const progressPercent = (currentTime / duration) * 100;
-    tourProgressSlider.style.setProperty('--progress', `${progressPercent}%`);
-    tourProgressSlider.value = progressPercent;
+    progressSlider.style.setProperty('--progress', `${progressPercent}%`);
+    progressSlider.value = progressPercent;
 
     // Update current time and total duration display
-    tourCurrentTimeEl.textContent = formatTime(currentTime);
-    tourTotalTimeEl.textContent = formatTime(duration);
+    currentTimeEl.textContent = formatTime(currentTime);
+    totalTimeEl.textContent = formatTime(duration);
 
     // Update the active chapter
     updateChapter(currentTime);
 });
 
 // Ensure the total time and current time are displayed as soon as metadata is loaded
-tourAudio.addEventListener('loadedmetadata', () => {
+audio.addEventListener('loadedmetadata', () => {
     // Set the initial current time and total duration
-    const duration = tourAudio.duration;
-    tourCurrentTimeEl.textContent = formatTime(0); // Set current time to 0:00
-    tourTotalTimeEl.textContent = formatTime(duration); // Set the total time
+    const duration = audio.duration;
+    currentTimeEl.textContent = formatTime(0); // Set current time to 0:00
+    totalTimeEl.textContent = formatTime(duration); // Set the total time
 });
 
 // Load the first chapter by default when the page loads
@@ -162,17 +162,17 @@ window.addEventListener('load', () => {
 });
 
 // Handle progress bar interaction (seeking)
-tourProgressSlider.addEventListener('input', () => {
-    const duration = tourAudio.duration;
-    const seekTime = (tourProgressSlider.value / 100) * duration;
-    tourAudio.currentTime = seekTime;  // Seek to new time
+progressSlider.addEventListener('input', () => {
+    const duration = audio.duration;
+    const seekTime = (progressSlider.value / 100) * duration;
+    audio.currentTime = seekTime;  // Seek to new time
 
     // Update chapter based on seek time
     updateChapter(seekTime);
 });
 
 // Next Chapter Button functionality
-tourNextChapterButton.addEventListener('click', () => {
+nextChapterButton.addEventListener('click', () => {
     if (currentChapter < chapters.length - 1) {
         currentChapter++;
         loadChapter(currentChapter);
@@ -181,8 +181,8 @@ tourNextChapterButton.addEventListener('click', () => {
 
 
 // Previous Chapter Button functionality
-tourPrevChapterButton.addEventListener('click', () => {
-    const currentTime = tourAudio.currentTime;
+prevChapterButton.addEventListener('click', () => {
+    const currentTime = audio.currentTime;
     const currentChapterStart = chapters[currentChapter].start;
 
     // Check if the current time is less than 5 seconds into the chapter
@@ -194,32 +194,32 @@ tourPrevChapterButton.addEventListener('click', () => {
         }
     } else {
         // Otherwise, jump to the start of the current chapter
-        tourAudio.currentTime = currentChapterStart; // Set audio time to chapter start
+        audio.currentTime = currentChapterStart; // Set audio time to chapter start
     }
 });
 
 
 // Skip Forward/Backward 10 Seconds functionality
-tourForward10Button.addEventListener('click', () => {
-    tourAudio.currentTime += 10;  // Skip forward 10 seconds
+forward10Button.addEventListener('click', () => {
+    audio.currentTime += 10;  // Skip forward 10 seconds
 });
 
-tourBack10Button.addEventListener('click', () => {
-    tourAudio.currentTime -= 10;  // Skip backward 10 seconds
+back10Button.addEventListener('click', () => {
+    audio.currentTime -= 10;  // Skip backward 10 seconds
 });
 
 // Event listener for when audio playback ends
-tourAudio.addEventListener('ended', () => {
+audio.addEventListener('ended', () => {
     playPauseIcon.src = playIconSrc;  // Revert to play icon when audio finishes
 });
 
 // Listen for when the audio starts playing
-tourAudio.addEventListener('playing', () => {
+audio.addEventListener('playing', () => {
     playPauseIcon.src = pauseIconSrc;  // Update icon to pause when audio plays
 });
 
 // Listen for when the audio is paused (including external pause actions)
-tourAudio.addEventListener('pause', () => {
+audio.addEventListener('pause', () => {
     playPauseIcon.src = playIconSrc;  // Update icon to play when audio pauses
 });
 
@@ -318,31 +318,31 @@ window.onload = loadDocx;
 
 
 document.addEventListener('DOMContentLoaded', function() {
-    const tourDownload = document.getElementById('tourDownload');
-    const tourDownloadMenu = document.querySelector('.tourDownloadMenu');
-    const tourDownloadButton = document.getElementById('tourDownloadButton');
-    const tourDownloadMenuItems = document.querySelectorAll('.tourDownloadMenuItem'); // Select all buttons in the menu
+    const download = document.getElementById('download');
+    const downloadMenu = document.querySelector('.downloadMenu');
+    const downloadButton = document.getElementById('downloadButton');
+    const downloadMenuItems = document.querySelectorAll('.downloadMenuItem'); // Select all buttons in the menu
 
     // Show the download menu when the download button is clicked
-    tourDownloadButton.addEventListener('click', function(event) {
+    downloadButton.addEventListener('click', function(event) {
         event.stopPropagation(); // Prevent click from propagating to the document
-        tourDownload.classList.remove('hidden'); // Show the download menu
+        download.classList.remove('hidden'); // Show the download menu
     });
 
     // Hide the download menu when the user clicks outside the menu
     document.addEventListener('click', function(event) {
-        if (!tourDownloadMenu.contains(event.target) && event.target !== tourDownloadButton) {
-            tourDownload.classList.add('hidden'); // Hide the download menu
+        if (!downloadMenu.contains(event.target) && event.target !== downloadButton) {
+            download.classList.add('hidden'); // Hide the download menu
         }
     });
 
     // Prevent clicks inside the download menu from closing it
-    tourDownloadMenu.addEventListener('click', function(event) {
+    downloadMenu.addEventListener('click', function(event) {
         event.stopPropagation(); // Stop clicks inside the menu from closing it
     });
 
     // Add event listeners to each menu item
-    tourDownloadMenuItems.forEach(function(item) {
+    downloadMenuItems.forEach(function(item) {
         item.addEventListener('click', function() {
             const fileUrl = item.getAttribute('data-file'); // Get the file URL from the data attribute
             if (fileUrl) {
@@ -360,7 +360,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
 
             // Hide the download menu after clicking an item
-            tourDownload.classList.add('hidden');
+            download.classList.add('hidden');
         });
     });
 });
