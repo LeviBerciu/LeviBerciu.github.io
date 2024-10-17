@@ -72,10 +72,15 @@ nav {
     line-height: 52px;
 }
 
+.mainWrapper {
+    width: 100dvw;
+    height: 100dvh;
+    overflow: hidden;
+}
+
 /* HOME */
 
 .homeContainer {
-    width: 100dvw;
     height: 100dvh;
     background-image: url("../assets/home_background.png");
     background-size: cover;
@@ -147,6 +152,13 @@ nav {
 }
 
 /* GUIDES */
+
+.homeWrapper {
+    width: 100dvw;
+    height: 100dvh;
+
+    overflow: hidden;
+}
 
 .guidesContainer {
     width: 100dvw;
