@@ -1,4 +1,5 @@
 /* Global Styles */
+
 *, *:before, *:after {
     outline: none;
     border: none;
@@ -45,6 +46,7 @@ button.secondary {
 }
 
 nav {
+    position: fixed;
     display: flex;
     justify-content: space-between;
     width: 100%;
@@ -64,7 +66,7 @@ nav {
 .navTitle {
     font-family: "Bebas Neue", sans-serif;
     padding-top: 2px;
-    font-size: 18px;
+    font-size: 20px;
     letter-spacing: 0.1em;
     color: #FFFFFF;
     line-height: 52px;
@@ -78,6 +80,7 @@ nav {
     background-image: url("../assets/home_background.png");
     background-size: cover;
     background-position: center;
+    overflow: auto;
 }
 
 .homeLogo {
@@ -85,7 +88,7 @@ nav {
     width: 100%;
     align-items: center;
     justify-content: center;
-    padding: 32px 0px;
+    padding: 72px 0px;
 }
 
 .homeLogo img {
@@ -138,11 +141,18 @@ nav {
     justify-content: center;
 }
 
+.homeAbout {
+    color: #FFFFFF;
+    padding: 48px;
+}
+
 /* GUIDES */
 
 .guidesContainer {
-    background-color: #FFFFFF;
-    height: 100vh;
+    width: 100dvw;
+    height: 100dvh;
+    background-color: #E5E5EA;
+    overflow: auto;
 }
 
 /* CONTACT */
