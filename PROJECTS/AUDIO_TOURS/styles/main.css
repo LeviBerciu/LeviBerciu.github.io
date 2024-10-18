@@ -47,14 +47,15 @@ button.secondary {
 
 nav {
     position: fixed;
+    z-index: 1;
     display: flex;
     justify-content: space-between;
     width: 100%;
     height: 52px;
     background-color: transparent; /* Transparent until scroll */
-    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0);
-    transition: background-color 0.5s ease;
-    box-shadow: background-color 0.5s ease;
+    /* box-shadow: 0px 8px 16px rgba(0, 0, 0, 0); */
+    /* transition: background-color 0.5s ease;
+    box-shadow: background-color 0.5s ease; */
 }
 
 nav.scrolled {
@@ -64,14 +65,14 @@ nav.scrolled {
 }
 
 .navLogo {
-    padding: 10px;
+    padding: 12px;
     opacity: 0;
-    transition: opacity 0.5s ease;
+    /* transition: opacity 0.5s ease; */
 }
 
 .navLogo img {
-    width: 32px;
-    height: 32px;
+    width: 28px;
+    height: 28px;
 }
 
 nav.scrolled .navLogo {
@@ -86,7 +87,7 @@ nav.scrolled .navLogo {
     color: #FFFFFF;
     line-height: 52px;
     opacity: 0;
-    transition: opacity 0.5s ease;
+    /* transition: opacity 0.5s ease; */
 }
 
 nav.scrolled .navTitle {
@@ -157,7 +158,7 @@ nav.scrolled .navTitle {
     display: flex;
     flex-direction: column;
     gap: 24px;
-    padding-bottom: 24px;
+    padding-bottom: 32px;
     align-items: center;
     justify-content: center;
 }
