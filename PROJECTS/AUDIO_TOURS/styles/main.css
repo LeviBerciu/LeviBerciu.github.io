@@ -51,16 +51,31 @@ nav {
     justify-content: space-between;
     width: 100%;
     height: 52px;
+    background-color: transparent; /* Transparent until scroll */
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0);
+    transition: background-color 0.5s ease;
+    box-shadow: background-color 0.5s ease;
+}
+
+nav.scrolled {
     background-color: #1C1C1E;
     box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
+    
 }
 
-.navButton {
-    padding: 12px;
+.navLogo {
+    padding: 10px;
+    opacity: 0;
+    transition: opacity 0.5s ease;
 }
 
-.navButton img {
-    height: 100%;
+.navLogo img {
+    width: 32px;
+    height: 32px;
+}
+
+nav.scrolled .navLogo {
+    opacity: 1;
 }
 
 .navTitle {
@@ -70,13 +85,29 @@ nav {
     letter-spacing: 0.1em;
     color: #FFFFFF;
     line-height: 52px;
+    opacity: 0;
+    transition: opacity 0.5s ease;
 }
+
+nav.scrolled .navTitle {
+    opacity: 1;
+}
+
+#navMenuButton {
+    padding: 12px;
+}
+
+#navMenuButton img {
+    width: 28px;
+    height: 28px;
+}
+
+
 
 .mainWrapper {
     width: 100dvw;
     height: 100dvh;
     overflow: hidden;
-    
 }
 
 /* HOME */
@@ -136,7 +167,7 @@ nav {
     max-width: 480px;
     padding: 24px;
     margin: 24px;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.25);
     backdrop-filter: blur(24px);
     border-radius: 12px;
 }
