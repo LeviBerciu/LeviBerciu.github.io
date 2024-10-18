@@ -76,40 +76,32 @@ nav {
     width: 100dvw;
     height: 100dvh;
     overflow: hidden;
+    
 }
 
 /* HOME */
 
 .homeContainer {
     height: 100dvh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
     background-image: url("../assets/home_background.png");
     background-size: cover;
     background-position: center;
     overflow: auto;
+
 }
 
 .homeLogo {
-    display: flex;
-    width: 100%;
-    align-items: center;
-    justify-content: center;
-    padding: 72px 0px;
-}
-
-.homeLogo img {
     width: 120px;
     height: auto;
+    padding: 72px 0px 48px 0px;
 }
 
-.homeTitle{
-    display: flex;
-    width: 100%;
-    align-items: center;
-    justify-content: center;
-}
-
-.homeTitle h1{
+.homeTitle {
     font-size: 56px;
+    max-width: 480px;
     line-height: 56px;
     color: #FFFFFF;
     font-family: "Bebas Neue", sans-serif;
@@ -121,13 +113,6 @@ nav {
 }
 
 .homeDescription {
-    display: flex;
-    width: 100%;
-    align-items: center;
-    justify-content: center;
-}
-
-.homeDescription h2 {
     max-width: 480px;
     font-size: 20px;
     line-height: 24px;
@@ -140,15 +125,27 @@ nav {
 .homeButtons {
     display: flex;
     flex-direction: column;
-    gap: 16px;
-    width: 100%;
+    gap: 24px;
+    padding-bottom: 24px;
     align-items: center;
     justify-content: center;
 }
 
 .homeAbout {
     color: #FFFFFF;
-    padding: 48px;
+    max-width: 480px;
+    padding: 24px;
+    margin: 24px;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(24px);
+    border-radius: 12px;
+}
+
+.homeFooter {
+    line-height: 24px;
+    color: #FFCC00;
+    font-weight: bold;
+    padding: 8px 0px 32px 0px;
 }
 
 /* GUIDES */
