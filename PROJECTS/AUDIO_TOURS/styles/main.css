@@ -50,6 +50,7 @@ nav {
     display: flex;
     justify-content: space-between;
     width: 100%;
+    max-width: 1440px;
     height: 52px;
     background-color: transparent; /* Transparent until scroll */
 }
@@ -57,7 +58,6 @@ nav {
 nav.scrolled {
     background-color: #1C1C1E;
     box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
-    
 }
 
 .navLogo {
@@ -101,6 +101,8 @@ nav.scrolled .navTitle {
 
 .mainWrapper {
     width: 100dvw;
+    max-width: 1440px;
+    margin: auto;
     height: 100dvh;
     overflow: hidden;
 }
@@ -116,7 +118,10 @@ nav.scrolled .navTitle {
     background-size: cover;
     background-position: center;
     overflow: auto;
+}
 
+.homeContainer::-webkit-scrollbar {
+    display: none;
 }
 
 .homeLogo {
@@ -177,18 +182,16 @@ nav.scrolled .navTitle {
 
 /* GUIDES */
 
-.homeWrapper {
-    width: 100dvw;
-    height: 100dvh;
-
-    overflow: hidden;
-}
-
 .guidesContainer {
     width: 100dvw;
+    max-width: 1440px;
     height: 100dvh;
     background-color: #E5E5EA;
     overflow: auto;
+}
+
+.homeContainer::-webkit-scrollbar {
+    display: none;
 }
 
 .guidesGroupsContainer {
@@ -209,7 +212,7 @@ nav.scrolled .navTitle {
 }
 
 .guidesGroupList {
-    padding: 0px 16px;
+    padding: 0px 0px 0px 16px;
     background-color: #FFFFFF;
     border-radius: 8px;
 }
@@ -218,8 +221,9 @@ nav.scrolled .navTitle {
     display: flex;
     justify-content: space-between;
     gap: 16px;
+    padding: 12px 0px;
+    line-height: 20px;
     align-items: center;
-    height: 48px;
     color: #1C1C1E;
     text-decoration: none;
     border-bottom: 1px solid #E5E5EA;
@@ -231,6 +235,7 @@ nav.scrolled .navTitle {
 
 .guideElLeft {
     display: flex;
+    align-items: center;
     gap: 8px;
 }
 
@@ -240,15 +245,14 @@ nav.scrolled .navTitle {
 }
 
 .guideElLeft p {
-    width: 100%;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    line-height: 20px;
 }
 
 .guideElRight {
     display: flex;
+    align-items: center;
     gap: 8px;
+    padding-right: 8px;
 }
 
 .guideElRight img {
@@ -258,10 +262,11 @@ nav.scrolled .navTitle {
 
 .guideElRight p {
     background: #FFCC00;
+    height: 18px;
     font-size: 12px;
     color: #FFFFFF;
     font-weight: bold;
-    line-height: 20px;
+    line-height: 18px;
     padding: 0px 4px;
     border-radius: 2px;
 }
@@ -270,6 +275,10 @@ nav.scrolled .navTitle {
 
 .contactContainer {
     background-color: #FFCC00;
+}
+
+.contactContainer::-webkit-scrollbar {
+    display: none;
 }
 
 .contactForm {
