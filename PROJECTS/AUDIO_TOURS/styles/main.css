@@ -186,7 +186,7 @@ nav.scrolled .navTitle {
     width: 100dvw;
     max-width: 1440px;
     height: 100dvh;
-    background-color: #E5E5EA;
+    background-color: #F2F2F7;
     overflow: auto;
 }
 
@@ -194,25 +194,38 @@ nav.scrolled .navTitle {
     display: none;
 }
 
-.guidesGroupsContainer {
+.guidesGroups {
     display: flex;
     flex-direction: column;
     gap: 16px;
     padding: 68px 16px 16px 16px;
 }
 
-.guidesGroup {
+.guidesNotification {
+    padding: 12px;
+    /* background-color: #E5E5EA; */
+    background-color: #636366;
+    border-radius: 8px;
+}
 
+.guidesNotification p {
+    font-size: 14px;
+    line-height: 18px;
+    color: #E5E5EA;
+}
+
+.guidesNotification a {
+    color: #E5E5EA;
 }
 
 .guidesGroupTitle {
     font-size: 14px;
-    color: #8E8E93;
-    padding: 0px 16px 8px 16px;
+    color: #AEAEB2;
+    padding: 0px 12px 8px 12px;
 }
 
 .guidesGroupList {
-    padding: 0px 0px 0px 16px;
+    padding: 0px 0px 0px 12px;
     background-color: #FFFFFF;
     border-radius: 8px;
 }
