@@ -164,12 +164,12 @@ nav.scrolled .navTitle {
 }
 
 .homeAbout {
-    color: #FFFFFF;
+    color: #1C1C1E;
     max-width: 480px;
     padding: 24px;
     margin: 24px;
-    background-color: rgba(0, 0, 0, 0.25);
-    backdrop-filter: blur(24px);
+    background-color: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(16px);
     border-radius: 12px;
 }
 
@@ -186,7 +186,7 @@ nav.scrolled .navTitle {
     width: 100dvw;
     max-width: 1440px;
     height: 100dvh;
-    background-color: #F2F2F7;
+    background-color: #E5E5EA;
     overflow: auto;
 }
 
@@ -203,7 +203,6 @@ nav.scrolled .navTitle {
 
 .guidesNotification {
     padding: 12px;
-    /* background-color: #E5E5EA; */
     background-color: #636366;
     border-radius: 8px;
 }
@@ -220,7 +219,7 @@ nav.scrolled .navTitle {
 
 .guidesGroupTitle {
     font-size: 14px;
-    color: #AEAEB2;
+    color: #8E8E93;
     padding: 0px 12px 8px 12px;
 }
 
