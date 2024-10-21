@@ -190,7 +190,7 @@ nav.scrolled .navTitle {
     overflow: auto;
 }
 
-.homeContainer::-webkit-scrollbar {
+.guidesContainer::-webkit-scrollbar {
     display: none;
 }
 
@@ -219,7 +219,7 @@ nav.scrolled .navTitle {
 
 .guidesGroupTitle {
     font-size: 14px;
-    color: #8E8E93;
+    color: #636366;
     padding: 0px 12px 8px 12px;
 }
 
@@ -286,7 +286,11 @@ nav.scrolled .navTitle {
 /* CONTACT */
 
 .contactContainer {
+    width: 100dvw;
+    max-width: 1440px;
+    height: 100dvh;
     background-color: #FFCC00;
+    overflow: auto;
 }
 
 .contactContainer::-webkit-scrollbar {
@@ -294,7 +298,7 @@ nav.scrolled .navTitle {
 }
 
 .contactForm {
-    padding: 32px;
+    padding: 68px 16px 16px 16px;
     gap: 16px;
     display: flex;
     flex-direction: column;
