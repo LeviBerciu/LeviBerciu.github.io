@@ -50,7 +50,6 @@ nav {
     display: flex;
     justify-content: space-between;
     width: 100%;
-    max-width: 1440px;
     height: 52px;
     background-color: transparent; /* Transparent until scroll */
 }
@@ -97,14 +96,6 @@ nav.scrolled .navTitle {
     height: 28px;
 }
 
-.mainWrapper {
-    width: 100dvw;
-    max-width: 1440px;
-    margin: auto;
-    height: 100dvh;
-    overflow: hidden;
-}
-
 /* HOME */
 
 .homeContainer {
@@ -130,7 +121,7 @@ nav.scrolled .navTitle {
 
 .homeTitle {
     font-size: 56px;
-    max-width: 480px;
+    max-width: 640px;
     line-height: 56px;
     color: #FFFFFF;
     font-family: "Bebas Neue", sans-serif;
@@ -181,8 +172,7 @@ nav.scrolled .navTitle {
 /* GUIDES */
 
 .guidesContainer {
-    width: 100dvw;
-    max-width: 1440px;
+    margin: auto;
     height: 100dvh;
     background-color: #E5E5EA;
     overflow: auto;
@@ -197,22 +187,6 @@ nav.scrolled .navTitle {
     flex-direction: column;
     gap: 16px;
     padding: 68px 16px 16px 16px;
-}
-
-.guidesNotification {
-    padding: 12px;
-    background-color: #636366;
-    border-radius: 8px;
-}
-
-.guidesNotification p {
-    font-size: 14px;
-    line-height: 18px;
-    color: #E5E5EA;
-}
-
-.guidesNotification a {
-    color: #E5E5EA;
 }
 
 .guidesGroupTitle {
@@ -281,11 +255,29 @@ nav.scrolled .navTitle {
     border-radius: 2px;
 }
 
+.guidesNotification {
+    position: fixed;
+    width: 100dvw;
+    bottom: 0;
+    background-color: #FFCC00;
+}
+
+.guidesNotification p {
+    text-align: center;
+    font-size: 14px;
+    line-height: 16px;
+    color: #1C1C1E;
+    padding: 16px;
+}
+
+.guidesNotification a {
+    color: #1C1C1E;
+}
+
 /* CONTACT */
 
 .contactContainer {
     width: 100dvw;
-    max-width: 1440px;
     height: 100dvh;
     background-color: #FFCC00;
     overflow: auto;
@@ -296,6 +288,8 @@ nav.scrolled .navTitle {
 }
 
 .contactForm {
+    max-width: 640px;
+    margin: auto;
     padding: 84px 32px 32px 32px;
     gap: 16px;
     display: flex;
