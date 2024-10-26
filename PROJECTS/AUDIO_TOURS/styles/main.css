@@ -96,6 +96,12 @@ nav.scrolled .navTitle {
     height: 28px;
 }
 
+.mainWrapper { /* this makes the website height fixed on mobile */
+    width: 100dvw;
+    height: 100dvh;
+    overflow: hidden;
+}
+
 /* HOME */
 
 .homeContainer {
