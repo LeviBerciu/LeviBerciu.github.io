@@ -244,12 +244,19 @@ nav {
 
 /* ---------- DETAILS ---------- */
 
+
 .details-container {
     padding-top: 120px;
     padding-right: 480px;
     padding-bottom: 0px;
     margin-left: 240px;
     margin-right: 240px;
+}
+.details-grid{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    /* gap: 40px; */
+    column-gap: 20px;
 }
 .details-header, .details-visual{
     overflow: hidden;
